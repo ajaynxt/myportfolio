@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ajaynxt.com/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ajaynxt.com/assets/brand/ajay-saini-og.jpg</image:loc>
+      <image:title>Ajay Saini — Web Developer and Video Editor</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ajaynxt.com/projects.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ajaynxt.com/assets/brand/ajay-saini-og.jpg</image:loc>
+      <image:title>Website projects and live demos by Ajay Saini</image:title>
+    </image:image>
+  </url>
+</urlset>

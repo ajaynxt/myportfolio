@@ -1,0 +1,22 @@
+{
+  "id": "/",
+  "name": "Ajay Saini Portfolio",
+  "short_name": "Ajay Saini",
+  "description": "Official web development, UI/UX design and video editing portfolio of Ajay Saini.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "background_color": "#f5efe8",
+  "theme_color": "#f5efe8",
+  "categories": ["business", "portfolio", "design"],
+  "icons": [
+    {
+      "src": "assets/brand/lion-mark-black-circle.png",
+      "sizes": "386x386",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
