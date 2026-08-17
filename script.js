@@ -299,3 +299,20 @@ const applyFilter = (filter) => {
 
 filterButtons.forEach((button) => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
 if (archiveCards.length) applyFilter("all");
+
+// Keep portfolio counters accurate without implying the showcased edits are the total body of work.
+const heroStats = [...document.querySelectorAll(".hero-stats > div")];
+if (heroStats[0]) {
+  const value = heroStats[0].querySelector("strong");
+  if (value) value.textContent = "25+";
+}
+if (heroStats[2]) {
+  const label = heroStats[2].querySelector("span");
+  if (label) label.textContent = "Featured edits";
+}
+
+const viewMoreDemoCount = document.querySelector(".view-more .button span");
+if (viewMoreDemoCount) viewMoreDemoCount.textContent = "25+ live demos";
+
+const filmsIntro = document.querySelector("#films .section-head p:last-child");
+if (filmsIntro) filmsIntro.textContent = "Nine selected cinematic edits from a much larger body of video work. Select any film to watch.";
