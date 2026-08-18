@@ -316,3 +316,18 @@ if (viewMoreDemoCount) viewMoreDemoCount.textContent = "25+ live demos";
 
 const filmsIntro = document.querySelector("#films .section-head p:last-child");
 if (filmsIntro) filmsIntro.textContent = "Nine selected cinematic edits from a much larger body of video work. Select any film to watch.";
+
+// Correct the third showcased film: it is a Haldi edit, not a pregnancy announcement.
+const thirdFilmCard = filmCards[2];
+if (thirdFilmCard) {
+  thirdFilmCard.dataset.title = "Haldi";
+  thirdFilmCard.setAttribute("aria-label", "Play Haldi wedding highlight");
+  const cover = thirdFilmCard.querySelector(".film-cover");
+  if (cover) cover.alt = "Haldi wedding highlight film cover";
+  const category = thirdFilmCard.querySelector("small");
+  if (category) category.textContent = "Wedding highlight";
+  const title = thirdFilmCard.querySelector("strong");
+  if (title) title.textContent = "Haldi";
+  const subtitle = thirdFilmCard.querySelector("b");
+  if (subtitle) subtitle.textContent = "Haldi ceremony";
+}
