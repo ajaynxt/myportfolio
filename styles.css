@@ -486,9 +486,16 @@ button, select { cursor: pointer; }
 .archive-page { background: var(--paper-soft); }
 .archive-hero { padding: calc(var(--header-height) + 90px) 0 80px; background: radial-gradient(circle at 85% 10%, rgba(122,83,219,0.09), transparent 24%), var(--paper); border-bottom: 1px solid var(--line); }
 .archive-hero-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(270px,0.34fr); align-items: end; gap: 60px; }
-.archive-hero h1 { margin-top: 18px; max-width: 900px; font-family: var(--display); font-size: clamp(56px, 8vw, 112px); font-weight: 600; letter-spacing: -0.065em; line-height: 0.88; }
-.archive-hero h1 em { color: var(--copper); font-style: normal; }
-.archive-hero p:last-child { color: var(--muted); }
+.archive-hero h1 { margin-top: 18px; max-width: 900px; font-family: var(--display); font-size: clamp(56px, 7.8vw, 112px); font-weight: 800; letter-spacing: -0.035em; line-height: 0.92; }
+.archive-hero h1 em {
+  background: linear-gradient(90deg, var(--copper), var(--ember));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: normal;
+  font-weight: 800;
+}
+.archive-hero p:last-child { color: var(--muted); font-size: 17px; line-height: 1.6; }
 .archive-main { padding-block: 80px 130px; }
 .client-feature { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: 28px; padding: 30px; border: 1px solid var(--line); background: var(--ink); color: var(--paper-soft); }
 .client-feature .archive-icon { color: #ef946b; background: rgba(255,250,244,0.09); }
