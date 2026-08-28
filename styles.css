@@ -124,19 +124,22 @@ button, select { cursor: pointer; }
 .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 0; }
 .brand-mark, .footer-mark {
   position: relative;
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   overflow: hidden;
   flex: 0 0 auto;
-  border: 1px solid rgba(180, 95, 61, 0.24);
+  border: 1.5px solid rgba(200, 104, 46, 0.35);
   border-radius: 50%;
-  background: #fff8ef;
+  background: #080d1a;
+  box-shadow: var(--shadow-sm);
 }
 .brand-mark img, .footer-mark img {
-  width: 76px;
-  max-width: none;
-  height: auto;
-  transform: translate(-12px, -4px);
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  transform: none;
 }
 .brand-name { display: grid; line-height: 1.05; }
 .brand-name strong { font-family: var(--display); font-size: 14px; letter-spacing: 0.13em; }
@@ -291,16 +294,23 @@ button, select { cursor: pointer; }
   position: absolute;
   left: -82px;
   top: 14%;
-  width: 190px;
-  height: 190px;
+  width: 180px;
+  height: 180px;
   overflow: hidden;
-  border: 1px solid rgba(180, 95, 61, 0.24);
+  border: 1.5px solid rgba(200, 104, 46, 0.35);
   border-radius: 50%;
-  background: rgba(255, 248, 239, 0.92);
-  box-shadow: var(--shadow-sm);
+  background: #080d1a;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   transform: rotate(-7deg);
 }
-.hero-emblem img { width: 270px; max-width: none; height: auto; transform: translate(-40px, -15px); }
+.hero-emblem img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  transform: none;
+}
 .float-tag { position: absolute; z-index: 3; display: flex; align-items: center; gap: 8px; padding: 11px 15px; border: 1px solid rgba(29, 23, 19, 0.13); border-radius: 999px; background: rgba(255, 250, 244, 0.9); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); font-size: 11px; font-weight: 400; letter-spacing: 0.04em; }
 .float-tag svg { width: 16px; height: 16px; fill: none; stroke: var(--copper); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .tag-code { right: -38px; top: 31%; }
@@ -628,8 +638,8 @@ button, select { cursor: pointer; }
   .section-pad { padding-block: 78px; }
   .brand-name small { display: none; }
   .brand-name strong { font-size: 12px; }
-  .brand-mark { width: 46px; height: 46px; }
-  .brand-mark img { width: 68px; transform: translate(-11px,-4px); }
+  .brand-mark { width: 44px; height: 44px; }
+  .brand-mark img { width: 100%; height: 100%; object-fit: contain; transform: none; }
   .hero { padding-top: calc(var(--header-height) + 42px); }
   .hero-copy h1 { margin-top: 17px; font-size: clamp(51px,16.2vw,74px); line-height: 0.92; }
   .hero-intro { margin-top: 23px; font-size: 16px; }
@@ -638,8 +648,8 @@ button, select { cursor: pointer; }
   .availability b { width: 100%; margin-left: 20px; }
   .hero-visual { width: 92%; }
   .portrait-frame { border-radius: 42% 42% 18px 18px; }
-  .hero-emblem { left: -30px; top: 8%; width: 115px; height: 115px; }
-  .hero-emblem img { width: 166px; transform: translate(-25px,-9px); }
+  .hero-emblem { left: -25px; top: 8%; width: 110px; height: 110px; }
+  .hero-emblem img { width: 100%; height: 100%; object-fit: contain; transform: none; }
   .float-tag { padding: 9px 11px; font-size: 9px; }
   .tag-code { top: 33%; right: -14px; }
   .tag-film { left: -10px; bottom: 13%; }
@@ -661,8 +671,8 @@ button, select { cursor: pointer; }
   .service-card-wide p { margin-top: 12px; }
   .service-card-wide a { margin-top: auto; padding-top: 24px; }
   .about-art { min-height: 430px; }
-  .about-emblem { width: 240px; height: 260px; }
-  .about-emblem img { width: 350px; transform: translate(-55px,-17px); }
+  .about-emblem { width: 220px; height: 220px; }
+  .about-emblem img { width: 100%; height: 100%; object-fit: contain; transform: none; }
   .about-number { top: -30px; font-size: 390px; }
   .about-copy h2, .booking-copy h2, .global-grid h2 { font-size: clamp(39px,11vw,54px); }
   .about-copy .about-lead { font-size: 17px; }
