@@ -718,10 +718,10 @@ button, select { cursor: pointer; }
   .role-word { transition: none; }
 }
 
-/* Round Black Lion Mark Emblem */
+/* Round Panther Logo Emblem */
 .brand-mark, .footer-mark, .hero-emblem, .about-emblem, .not-found-mark {
-  border: 1.5px solid rgba(200, 104, 46, 0.4);
-  background: #080d1a;
+  border: 0;
+  background: transparent;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
