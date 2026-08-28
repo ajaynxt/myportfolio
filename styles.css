@@ -708,26 +708,30 @@ button, select { cursor: pointer; }
   .role-word { transition: none; }
 }
 
-/* Keep the supplied lion mark centred while its black circle fills every emblem. */
+/* Round Black Lion Mark Emblem */
 .brand-mark, .footer-mark, .hero-emblem, .about-emblem, .not-found-mark {
-  border: 0;
-  background: var(--paper-soft);
+  border: 1.5px solid rgba(200, 104, 46, 0.4);
+  background: #080d1a;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 .not-found-mark { position: relative; }
 .brand-mark img, .footer-mark img, .hero-emblem img, .about-emblem img, .not-found-mark img {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 105%;
+  width: 100%;
   max-width: none;
-  height: 105%;
+  height: 100%;
   object-fit: contain;
+  border-radius: 50%;
   transform: translate(-50%, -50%);
 }
 .hero-emblem { transform: none; }
-.about-emblem { height: 320px; }
+.about-emblem { width: 300px; height: 300px; }
 
 @media (max-width: 620px) {
-  .about-emblem { width: 240px; height: 240px; }
+  .about-emblem { width: 220px; height: 220px; }
   .role-word.tone-1 { font-size: 0.9em; letter-spacing: -0.075em; }
 }
