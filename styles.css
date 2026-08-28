@@ -16,8 +16,8 @@
   --line-dark: rgba(255, 250, 244, 0.16);
   --shadow-sm: 0 18px 50px rgba(60, 37, 25, 0.08);
   --shadow-lg: 0 34px 90px rgba(45, 25, 15, 0.18);
-  --display: "Clash Display", "Archivo", Arial, sans-serif;
-  --body: "Satoshi", "Space Grotesk", Arial, sans-serif;
+  --display: "Syne", "Clash Display", sans-serif;
+  --body: "Plus Jakarta Sans", "Satoshi", sans-serif;
   --container: 1240px;
   --header-height: 82px;
   --radius-sm: 12px;
