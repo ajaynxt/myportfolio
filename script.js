@@ -331,3 +331,153 @@ if (thirdFilmCard) {
   const subtitle = thirdFilmCard.querySelector("b");
   if (subtitle) subtitle.textContent = "Golden rituals, timeless memories";
 }
+
+/* ==========================================================================
+   Interactive AI Assistant Logic (Knowledge & Response Engine)
+   ========================================================================== */
+const aiWidget = document.querySelector("[data-ai-widget]");
+const aiToggle = document.querySelector("[data-ai-toggle]");
+const aiModal = document.querySelector("[data-ai-modal]");
+const aiClose = document.querySelector("[data-ai-close]");
+const aiMessages = document.querySelector("[data-ai-messages]");
+const aiForm = document.querySelector("[data-ai-form]");
+const aiInput = document.querySelector("[data-ai-input]");
+const aiSuggestions = document.querySelector("[data-ai-suggestions]");
+
+if (aiWidget && aiToggle && aiModal && aiMessages) {
+  const toggleAi = (open) => {
+    aiModal.hidden = !open;
+    aiToggle.setAttribute("aria-expanded", String(open));
+    if (open) {
+      aiInput?.focus();
+      aiMessages.scrollTop = aiMessages.scrollHeight;
+    }
+  };
+
+  aiToggle.addEventListener("click", () => toggleAi(aiModal.hidden));
+  aiClose?.addEventListener("click", () => toggleAi(false));
+
+  const appendMsg = (text, sender = "bot", isHtml = false) => {
+    const msg = document.createElement("div");
+    msg.className = `ai-msg ai-msg-${sender}`;
+    if (isHtml) msg.innerHTML = text;
+    else msg.textContent = text;
+    aiMessages.appendChild(msg);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+    return msg;
+  };
+
+  const showTyping = () => {
+    const typing = document.createElement("div");
+    typing.className = "ai-typing";
+    typing.innerHTML = "<span></span><span></span><span></span>";
+    aiMessages.appendChild(typing);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+    return typing;
+  };
+
+  const knowledgeBase = {
+    services: `Ajay provides end-to-end digital solutions:<br>
+      • <strong>Web Design & Development</strong> (High-speed, luxury aesthetic, custom responsive websites)<br>
+      • <strong>Cinematic Video Editing</strong> (Commercials, brand films, wedding highlights, YouTube & reels)<br>
+      • <strong>UI/UX Design & AI Workflows</strong> (Modern interactive web experiences & automation)<br>
+      <br>👉 <a href="projects.html">Explore 25+ Live Demo Websites</a>`,
+
+    tech: `Ajay's core engineering & creative stack:<br>
+      • <strong>Frontend:</strong> Modern JavaScript (ES6+), React, Next.js, HTML5/CSS3, Tailwind CSS<br>
+      • <strong>Backend & Cloud:</strong> Node.js, Python, Firebase, GCP Cloud Architecture<br>
+      • <strong>Video & Motion:</strong> Adobe Premiere Pro, After Effects, DaVinci Resolve, Motion Graphics`,
+
+    films: `Ajay creates cinematic, story-driven films with meticulous pacing, color grading and sound design. Featured categories include:<br>
+      • <strong>Haldi & Wedding Highlights</strong><br>
+      • <strong>Commercial Brand Stories</strong><br>
+      • <strong>Automotive & High-Energy Edits</strong><br>
+      <br>👉 <a href="#films">Watch featured films above</a>`,
+
+    location: `📍 <strong>Location:</strong> Sikar, Rajasthan, India (Serving clients worldwide across India, USA, UK, Europe & UAE).<br><br>
+      ⏱️ <strong>Typical Timelines:</strong><br>
+      • Landing pages & portfolios: 3–5 days<br>
+      • Full multi-page web applications: 1–2 weeks`,
+
+    contact: `You can reach Ajay directly for project discussions:<br>
+      • 📱 <strong>WhatsApp:</strong> <a href="https://wa.me/919929562585" target="_blank">+91 99295 62585</a><br>
+      • 📧 <strong>Email:</strong> <a href="mailto:ajayx3neha@gmail.com">ajayx3neha@gmail.com</a><br>
+      • 📅 <strong>Book Online:</strong> <a href="#book">Fill the project booking form</a>`
+  };
+
+  const getSmartReply = (query) => {
+    const q = query.toLowerCase();
+    if (q.includes("service") || q.includes("work") || q.includes("website") || q.includes("develop") || q.includes("kya krte ho")) {
+      return knowledgeBase.services;
+    }
+    if (q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("code") || q.includes("react") || q.includes("python")) {
+      return knowledgeBase.tech;
+    }
+    if (q.includes("video") || q.includes("film") || q.includes("edit") || q.includes("premiere") || q.includes("camera")) {
+      return knowledgeBase.films;
+    }
+    if (q.includes("location") || q.includes("where") || q.includes("kahan") || q.includes("time") || q.includes("timeline") || q.includes("sikar") || q.includes("rajasthan")) {
+      return knowledgeBase.location;
+    }
+    if (q.includes("contact") || q.includes("hire") || q.includes("call") || q.includes("phone") || q.includes("whatsapp") || q.includes("number") || q.includes("book") || q.includes("price") || q.includes("cost") || q.includes("budget")) {
+      return knowledgeBase.contact;
+    }
+    if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("namaste")) {
+      return "Hello! How can I assist you with your next web development or video editing project?";
+    }
+    return `Ajay specializes in high-converting websites and cinematic video editing. Would you like to check <a href="projects.html">25+ Live Demo Websites</a> or <a href="https://wa.me/919929562585" target="_blank">Chat with Ajay on WhatsApp</a>?`;
+  };
+
+  const handleUserQuery = (text, key = "") => {
+    appendMsg(text, "user");
+    const typing = showTyping();
+    window.setTimeout(() => {
+      typing.remove();
+      const reply = key && knowledgeBase[key] ? knowledgeBase[key] : getSmartReply(text);
+      appendMsg(reply, "bot", true);
+    }, 450);
+  };
+
+  aiSuggestions?.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const qKey = btn.dataset.question || "";
+      handleUserQuery(btn.textContent.trim(), qKey);
+    });
+  });
+
+  aiForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!aiInput) return;
+    const text = aiInput.value.trim();
+    if (!text) return;
+    aiInput.value = "";
+    handleUserQuery(text);
+  });
+}
+
+/* ==========================================================================
+   Cookie Consent Banner Logic
+   ========================================================================== */
+const cookieBanner = document.querySelector("[data-cookie-banner]");
+const cookieAccept = document.querySelector("[data-cookie-accept]");
+const cookieDecline = document.querySelector("[data-cookie-decline]");
+
+if (cookieBanner) {
+  const consent = localStorage.getItem("ajay_cookie_consent");
+  if (!consent) {
+    window.setTimeout(() => {
+      cookieBanner.hidden = false;
+    }, 1200);
+  }
+
+  cookieAccept?.addEventListener("click", () => {
+    localStorage.setItem("ajay_cookie_consent", "accepted");
+    cookieBanner.hidden = true;
+  });
+
+  cookieDecline?.addEventListener("click", () => {
+    localStorage.setItem("ajay_cookie_consent", "declined");
+    cookieBanner.hidden = true;
+  });
+}
+
