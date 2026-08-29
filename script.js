@@ -333,7 +333,7 @@ if (thirdFilmCard) {
 }
 
 /* ==========================================================================
-   Interactive AI Assistant Logic (Knowledge & Response Engine)
+   Interactive AI Assistant Logic (Comprehensive Knowledge & Response Engine)
    ========================================================================== */
 const aiWidget = document.querySelector("[data-ai-widget]");
 const aiToggle = document.querySelector("[data-ai-toggle]");
@@ -376,56 +376,143 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
     return typing;
   };
 
+  const demoCatalog = [
+    { title: "Diamond Restaurants", category: "Client Work", url: "https://diamondrestaurants.com/", desc: "Restaurant, bakery & sweets full ordering platform." },
+    { title: "Celestique Jewellery", category: "Luxury Retail", url: "https://jewellery.ajaynxt.com/", desc: "Editorial luxury storefront for fine jewelry." },
+    { title: "Rajmahal Lake Palace", category: "Luxury Hospitality", url: "https://hotel.ajaynxt.com/", desc: "Heritage luxury palace hotel guest experience." },
+    { title: "Mediora Diagnostics", category: "Healthcare", url: "https://diagnostic.ajaynxt.com/", desc: "Patient-first medical lab & diagnostic booking." },
+    { title: "Stonecrest Developers", category: "Construction & Real Estate", url: "https://construction.ajaynxt.com/", desc: "Corporate construction & commercial developer showcase." },
+    { title: "CasaForma Living", category: "Furniture & Interiors", url: "https://furniture.ajaynxt.com/", desc: "Crafted living, bespoke furniture & contemporary spaces." },
+    { title: "Solvanta Energy", category: "Clean Tech & Solar", url: "https://solar.ajaynxt.com/", desc: "Solar panel energy solutions & quotation funnels." },
+    { title: "Aurevia Retreat & Spa", category: "Resort & Wellness", url: "https://stay.ajaynxt.com/", desc: "Luxury wellness resort, spa & sanctuary stays." },
+    { title: "Velora Health Institute", category: "Hospital & Care", url: "https://health.ajaynxt.com/", desc: "Multi-speciality hospital with department booking." },
+    { title: "Arclune Estates", category: "Luxury Real Estate", url: "https://realty.ajaynxt.com/", desc: "High-end luxury estates and residential property portal." },
+    { title: "Velune Skin", category: "D2C E-commerce", url: "https://shop.ajaynxt.com/", desc: "Skincare, cosmetics & beauty online storefront." },
+    { title: "Nexora Academy", category: "Education & Coaching", url: "https://academy.2.ajaynxt.com/", desc: "Modern academy for courses, learning & admissions." },
+    { title: "Meroza Kitchen", category: "Food & Dining", url: "https://food.ajaynxt.com/", desc: "Fast online food ordering & gourmet menu experience." },
+    { title: "Aureon Motors", category: "Automotive", url: "https://auto.2.ajaynxt.com/", desc: "High-performance automotive dealership & supercar showcase." },
+    { title: "Real Estate Property", category: "Property Listing", url: "https://estate.ajaynxt.com/", desc: "Property buy/sell/rent marketplace portal." },
+    { title: "Wedding Planner & Films", category: "Wedding & Events", url: "https://wedding.ajaynxt.com/", desc: "Cinematic weddings, photography & event coordination." },
+    { title: "Salon, Spa & Beauty", category: "Beauty & Grooming", url: "https://salon.ajaynxt.com/", desc: "Luxury salon appointments & premium beauty packages." },
+    { title: "Travel & Homestay", category: "Travel & Hospitality", url: "https://travel.ajaynxt.com/", desc: "Destination vacations, homestays & guided travel." },
+    { title: "Interior Designer & Architect", category: "Architecture", url: "https://interior.ajaynxt.com/", desc: "Architectural portfolio & luxury interior planning." },
+    { title: "Fashion Store", category: "Fashion E-commerce", url: "https://store.ajaynxt.com/", desc: "Contemporary apparel, clothing & fashion brand." },
+    { title: "SaaS Business Software", category: "Tech & Software", url: "https://saas.ajaynxt.com/", desc: "Product-led SaaS conversion landing page." },
+    { title: "Restaurant & Cafe", category: "Dining & Cafe", url: "https://restaurant.ajaynxt.com/", desc: "Artisan cafe and dining experience." },
+    { title: "Fitness & Gym", category: "Fitness & Training", url: "https://fitness.ajaynxt.com/", desc: "High-energy gym, trainers & membership plans." },
+    { title: "Clinic & Doctor", category: "Healthcare Practice", url: "https://clinic.ajaynxt.com/", desc: "Doctor appointments & specialist medical care." },
+    { title: "Lawyer & Legal Consultant", category: "Legal Services", url: "https://legal.ajaynxt.com/", desc: "Corporate law, legal consultations & dispute practice." },
+    { title: "Eye Care Clinic", category: "Optometry & Health", url: "https://eye.ajaynxt.com/", desc: "Ophthalmology, vision testing & eye surgery care." }
+  ];
+
   const knowledgeBase = {
-    services: `Ajay provides end-to-end digital solutions:<br>
-      • <strong>Web Design & Development</strong> (High-speed, luxury aesthetic, custom responsive websites)<br>
-      • <strong>Cinematic Video Editing</strong> (Commercials, brand films, wedding highlights, YouTube & reels)<br>
-      • <strong>UI/UX Design & AI Workflows</strong> (Modern interactive web experiences & automation)<br>
+    services: `Ajay provides end-to-end digital & creative solutions:<br>
+      • <strong>Web Design & Engineering:</strong> Ultra-fast, responsive custom websites, landing pages, luxury portfolios & e-commerce stores.<br>
+      • <strong>Cinematic Video Editing:</strong> Commercial brand films, wedding/haldi highlights, high-energy automotive edits, YouTube & reels.<br>
+      • <strong>UI/UX Design & AI Workflows:</strong> Modern interactive prototypes, AI chatbots, automated business pipelines.<br>
       <br>👉 <a href="projects.html">Explore 25+ Live Demo Websites</a>`,
 
-    tech: `Ajay's core engineering & creative stack:<br>
-      • <strong>Frontend:</strong> Modern JavaScript (ES6+), React, Next.js, HTML5/CSS3, Tailwind CSS<br>
-      • <strong>Backend & Cloud:</strong> Node.js, Python, Firebase, GCP Cloud Architecture<br>
-      • <strong>Video & Motion:</strong> Adobe Premiere Pro, After Effects, DaVinci Resolve, Motion Graphics`,
+    tech: `Ajay's full engineering & creative technology stack:<br>
+      • <strong>Frontend:</strong> React, Next.js, Modern JavaScript (ES6+), HTML5, CSS3 (Grid & Flexbox), Tailwind CSS<br>
+      • <strong>Backend & Cloud:</strong> Node.js, Python, Firebase Hosting & Firestore, Google Cloud Platform (GCP)<br>
+      • <strong>Video & Motion Graphics:</strong> Adobe Premiere Pro, After Effects, DaVinci Resolve, Color Grading (Log/LUTs), Sound Design<br>
+      • <strong>Performance & SEO:</strong> 100% Mobile Responsive, Core Web Vitals Optimization, Schema.org JSON-LD SEO`,
 
-    films: `Ajay creates cinematic, story-driven films with meticulous pacing, color grading and sound design. Featured categories include:<br>
-      • <strong>Haldi & Wedding Highlights</strong><br>
-      • <strong>Commercial Brand Stories</strong><br>
-      • <strong>Automotive & High-Energy Edits</strong><br>
-      <br>👉 <a href="#films">Watch featured films above</a>`,
+    films: `Ajay creates cinematic, story-driven films with meticulous pacing, cinematic color grading, and custom sound design:<br>
+      • <strong>Haldi Glow:</strong> Golden rituals, wedding highlights & joyful celebrations<br>
+      • <strong>Himalayan Escapes:</strong> Cinematic mountain landscapes & travel visuals<br>
+      • <strong>Crimson Drift:</strong> High-energy automotive motion & sound design<br>
+      • <strong>The Royal Heritage:</strong> Timeless palace architectures & heritage stories<br>
+      <br>👉 <a href="index.html#films">Watch featured films with live player</a>`,
 
-    location: `📍 <strong>Location:</strong> Sikar, Rajasthan, India (Serving clients worldwide across India, USA, UK, Europe & UAE).<br><br>
-      ⏱️ <strong>Typical Timelines:</strong><br>
-      • Landing pages & portfolios: 3–5 days<br>
-      • Full multi-page web applications: 1–2 weeks`,
+    location: `📍 <strong>Headquarters:</strong> Sikar, Rajasthan, India.<br>
+      🌍 <strong>Global Reach:</strong> Serving clients worldwide across India, United States, United Kingdom, Europe & UAE.<br><br>
+      ⏱️ <strong>Turnaround Timelines:</strong><br>
+      • Single-page Landing Pages & Portfolios: <strong>3–5 Days</strong><br>
+      • Multi-page Business Websites & E-commerce: <strong>1–2 Weeks</strong><br>
+      • Video Editing & Social Campaigns: <strong>24–72 Hours</strong>`,
 
-    contact: `You can reach Ajay directly for project discussions:<br>
+    pricing: `💰 <strong>Transparent & Value-Driven Pricing:</strong><br>
+      • <strong>Landing Pages / Portfolio Sites:</strong> ₹12,000 – ₹25,000 ($200 – $400 USD)<br>
+      • <strong>Full Business / Multi-Page Websites:</strong> ₹25,000 – ₹60,000 ($400 – $900 USD)<br>
+      • <strong>E-Commerce / Custom Web Apps:</strong> ₹45,000+ ($700+ USD)<br>
+      • <strong>Video Editing (Reels, Commercials, Films):</strong> Per project or monthly retainer<br>
+      <em>Multi-currency accepted: INR (₹), USD ($), EUR (€), GBP (£), AED (د.إ).</em><br>
+      <br>👉 <a href="https://wa.me/919929562585" target="_blank">Get a custom instant quote on WhatsApp</a>`,
+
+    contact: `Connect directly with Ajay Saini:<br>
       • 📱 <strong>WhatsApp:</strong> <a href="https://wa.me/919929562585" target="_blank">+91 99295 62585</a><br>
       • 📧 <strong>Email:</strong> <a href="mailto:ajayx3neha@gmail.com">ajayx3neha@gmail.com</a><br>
-      • 📅 <strong>Book Online:</strong> <a href="#book">Fill the project booking form</a>`
+      • 📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/ajay_nxt_/" target="_blank">@ajay_nxt_</a><br>
+      • 💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajaynxt/" target="_blank">linkedin.com/in/ajaynxt</a><br>
+      • 📅 <strong>Book a Call:</strong> <a href="index.html#book">Fill the project booking form</a>`,
+
+    demos: `Ajay has built a live archive of <strong>25+ specialized industry demos</strong>:<br><br>
+      🏢 <strong>Real Estate & Construction:</strong><br>
+      • <a href="https://realty.ajaynxt.com/" target="_blank">Arclune Estates ↗</a> · <a href="https://estate.ajaynxt.com/" target="_blank">Property Portal ↗</a> · <a href="https://construction.ajaynxt.com/" target="_blank">Stonecrest Developers ↗</a><br><br>
+      🏨 <strong>Hospitality & Resorts:</strong><br>
+      • <a href="https://hotel.ajaynxt.com/" target="_blank">Rajmahal Lake Palace ↗</a> · <a href="https://stay.ajaynxt.com/" target="_blank">Aurevia Spa Resort ↗</a> · <a href="https://travel.ajaynxt.com/" target="_blank">Travel Homestay ↗</a><br><br>
+      🛍️ <strong>E-Commerce & Luxury Retail:</strong><br>
+      • <a href="https://jewellery.ajaynxt.com/" target="_blank">Celestique Jewellery ↗</a> · <a href="https://shop.ajaynxt.com/" target="_blank">Velune Skin ↗</a> · <a href="https://store.ajaynxt.com/" target="_blank">Fashion Store ↗</a><br><br>
+      🏥 <strong>Healthcare & Clinics:</strong><br>
+      • <a href="https://health.ajaynxt.com/" target="_blank">Velora Hospital ↗</a> · <a href="https://diagnostic.ajaynxt.com/" target="_blank">Mediora Diagnostics ↗</a> · <a href="https://clinic.ajaynxt.com/" target="_blank">Doctor Clinic ↗</a><br><br>
+      🍽️ <strong>Food & Dining:</strong><br>
+      • <a href="https://diamondrestaurants.com/" target="_blank">Diamond Restaurants (Live Client) ↗</a> · <a href="https://restaurant.ajaynxt.com/" target="_blank">Restaurant & Cafe ↗</a><br><br>
+      👉 <a href="projects.html">View all 25+ demo websites here</a>`
+  };
+
+  const findMatchingDemos = (query) => {
+    const q = query.toLowerCase();
+    return demoCatalog.filter((item) => {
+      const matchText = `${item.title} ${item.category} ${item.desc} ${item.url}`.toLowerCase();
+      const words = q.split(" ").filter((w) => w.length > 2);
+      return words.some((word) => matchText.includes(word));
+    });
   };
 
   const getSmartReply = (query) => {
     const q = query.toLowerCase();
-    if (q.includes("service") || q.includes("work") || q.includes("website") || q.includes("develop") || q.includes("kya krte ho")) {
+
+    // Industry & Specific Demo queries
+    const matchedDemos = findMatchingDemos(q);
+    if (matchedDemos.length > 0 && (q.includes("demo") || q.includes("example") || q.includes("sample") || q.includes("website") || q.includes("link") || q.includes("show") || matchedDemos.length <= 4)) {
+      let reply = `Here are the matching live demo websites built by Ajay:<br><br>`;
+      matchedDemos.slice(0, 5).forEach((d) => {
+        reply += `🔗 <strong><a href="${d.url}" target="_blank">${d.title}</a></strong> (${d.category})<br><em>${d.desc}</em><br><br>`;
+      });
+      reply += `👉 <a href="projects.html">See all 25+ live demo websites</a> or <a href="https://wa.me/919929562585" target="_blank">WhatsApp Ajay for custom work</a>.`;
+      return reply;
+    }
+
+    if (q.includes("all demo") || q.includes("list demo") || q.includes("projects") || q.includes("portfolio") || q.includes("kya banaya")) {
+      return knowledgeBase.demos;
+    }
+    if (q.includes("price") || q.includes("cost") || q.includes("budget") || q.includes("rate") || q.includes("charge") || q.includes("kitna") || q.includes("paisa")) {
+      return knowledgeBase.pricing;
+    }
+    if (q.includes("service") || q.includes("work") || q.includes("develop") || q.includes("kya krte") || q.includes("offer")) {
       return knowledgeBase.services;
     }
-    if (q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("code") || q.includes("react") || q.includes("python")) {
+    if (q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("code") || q.includes("react") || q.includes("next") || q.includes("python") || q.includes("skill")) {
       return knowledgeBase.tech;
     }
-    if (q.includes("video") || q.includes("film") || q.includes("edit") || q.includes("premiere") || q.includes("camera")) {
+    if (q.includes("video") || q.includes("film") || q.includes("edit") || q.includes("premiere") || q.includes("davinci") || q.includes("haldi") || q.includes("reel")) {
       return knowledgeBase.films;
     }
-    if (q.includes("location") || q.includes("where") || q.includes("kahan") || q.includes("time") || q.includes("timeline") || q.includes("sikar") || q.includes("rajasthan")) {
+    if (q.includes("location") || q.includes("where") || q.includes("kahan") || q.includes("time") || q.includes("timeline") || q.includes("sikar") || q.includes("rajasthan") || q.includes("kitne din")) {
       return knowledgeBase.location;
     }
-    if (q.includes("contact") || q.includes("hire") || q.includes("call") || q.includes("phone") || q.includes("whatsapp") || q.includes("number") || q.includes("book") || q.includes("price") || q.includes("cost") || q.includes("budget")) {
+    if (q.includes("contact") || q.includes("hire") || q.includes("call") || q.includes("phone") || q.includes("whatsapp") || q.includes("number") || q.includes("book") || q.includes("email") || q.includes("talk")) {
       return knowledgeBase.contact;
     }
-    if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("namaste")) {
-      return "Hello! How can I assist you with your next web development or video editing project?";
+    if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("namaste") || q.includes("kaise ho")) {
+      return "Namaste! How can I assist you today? You can ask me about Ajay's <strong>25+ live demo websites</strong>, web development services, video editing, pricing, or project timelines!";
     }
-    return `Ajay specializes in high-converting websites and cinematic video editing. Would you like to check <a href="projects.html">25+ Live Demo Websites</a> or <a href="https://wa.me/919929562585" target="_blank">Chat with Ajay on WhatsApp</a>?`;
+
+    return `Ajay specializes in high-converting custom websites and cinematic video editing with over 25+ live demos across multiple industries.<br><br>
+      • <a href="projects.html">Explore 25+ Live Demo Websites</a><br>
+      • <a href="index.html#book">Book a project call</a><br>
+      • <a href="https://wa.me/919929562585" target="_blank">Chat with Ajay on WhatsApp</a>`;
   };
 
   const handleUserQuery = (text, key = "") => {
@@ -435,7 +522,7 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       typing.remove();
       const reply = key && knowledgeBase[key] ? knowledgeBase[key] : getSmartReply(text);
       appendMsg(reply, "bot", true);
-    }, 450);
+    }, 400);
   };
 
   aiSuggestions?.querySelectorAll("button").forEach((btn) => {
