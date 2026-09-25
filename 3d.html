@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1120">
+  <meta name="description" content="Ajay Saini - 3D Interactive Portfolio Experience">
+  <meta name="robots" content="index,follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Ajay Saini — 3D Portfolio</title>
+  <style>
+    :root {
+      --paper: #0b1120;
+      --paper-soft: #111827;
+      --ink: #f4f6fa;
+      --ink-soft: #cbd5e1;
+      --muted: #94a3b8;
+      --blue: #3b82f6;
+      --violet: #7c3aed;
+      --rose: #8b5cf6;
+      --gold: #6366f1;
+      --white: #ffffff;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+    body {
+      min-width: 320px;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 16px;
+      font-weight: 350;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    #canvas-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      pointer-events: none;
+    }
+
+    .hero-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 0.95;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      text-shadow: none;
+      filter: drop-shadow(0 4px 20px rgba(99, 102, 241, 0.25));
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: clamp(24px, 5vw, 60px);
+      margin-bottom: 48px;
+    }
+
+    .hero-stats div {
+      text-align: center;
+    }
+
+    .hero-stats strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .hero-stats span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 6px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      pointer-events: auto;
+    }
+
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.25s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-solid {
+      background: linear-gradient(135deg, #3b82f6, #7c3aed);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-solid:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      pointer-events: auto;
+    }
+
+    .bottom-bar a {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: all 0.25s var(--ease);
+      font-size: 14px;
+    }
+
+    .bottom-bar a:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .bottom-bar a svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    .bottom-bar .wa-link {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    @media (max-width: 620px) {
+      .hero-stats { gap: 16px; }
+      .hero-stats div { min-width: 70px; }
+      .hero-stats strong { font-size: 1.8rem; }
+      .bottom-bar { gap: 6px; }
+      .bottom-bar a { width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <div class="overlay">
+    <h1 class="hero-title">Ajay Saini</h1>
+    <p class="hero-sub">Web Developer &amp; Cinematic Video Editor</p>
+    <div class="hero-stats">
+      <div><strong>25+</strong><span>Live Demos</span></div>
+      <div><strong>10+</strong><span>Industries</span></div>
+      <div><strong>09</strong><span>Films</span></div>
+      <div><strong>01</strong><span>Studio</span></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="index.html">
+        <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+        Back to Portfolio
+      </a>
+      <a class="btn btn-ghost" href="https://wa.me/919929562585?text=Hello%20Ajay%20ji%21%20I%20saw%20your%203D%20portfolio%20and%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg aria-hidden="true"><rect x="3" y="9" width="4" height="12"/><path d="M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/><path d="M11 21V9h4v2a5 5 0 0 1 4-2c2 0 2 2 2 5v7h-4v-7c0-1-.5-2-1.5-2S15 13 15 14v7h-4Z"/></svg>
+    </a>
+    <a href="https://github.com/ajaynxt" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489c.5.092.682-.217.682-.482c0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.338-3.369-1.338c-.454-1.154-1.11-1.462-1.11-1.462c-.908-.62.069-.608.069-.608c1.127.071 1.737 1.13 1.737 1.13c.647 1.73 2.443 1.748 3.104.843c.092-.648.35-1.078.636-1.336c-.436-.087-.884-.188-1.35-.235c.714.099 1.488.234 2.256.369c.856.136 1.726.283 2.596.429c1.932.675 3.863 1.348 5.748 1.994c1.25-.13 2.434-.37 3.54-.675c.385.147.756.283 1.146.416c.682-.217 1.25-.562 1.706-1.017c.385.147.756.283 1.146.416c.385.147.756.283 1.146.416c.371.385.608.875.675 1.474c.136-.625.37-1.178.682-1.625c1.932-.675 3.863-1.348 5.748-1.994c.87-.146 1.74-.283 2.596-.429c.768-.135 1.542-.27 2.256-.369c-.466.047-.914.148-1.35.235c.286.258.546.588.636 1.336c.5.092.682.217 1.146.416c.49-.554.963-1.135 1.706-1.017c.39.133.761.269 1.146.416c.385.147.756.283 1.146.416c.682-.217 1.25-.562 1.706-1.017c.385.147.756.283 1.146.416c.371.385.608.875.675 1.474c.136-.625.37-1.178.682-1.625c1.932-.675 3.863-1.348 5.748-1.994c.87-.146 1.74-.283 2.596-.429c.768-.135 1.542-.27 2.256-.369c-.466.047-.914.148-1.35.235c.286.258.546.588.636 1.336c.5.092.682.217 1.146.416c.49-.554.963-1.135 1.706-1.017M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489c.5.092.682-.217.682-.482c0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.338-3.369-1.338c-.454-1.154-1.11-1.462-1.11-1.462c-.908-.62.069-.608.069-.608c1.127.071 1.737 1.13 1.737 1.13c.647 1.73 2.443 1.748 3.104.843c.092-.648.35-1.078.636-1.336c-.436-.087-.884-.188-1.35-.235c.714.099 1.488.234 2.256.369c.856.136 1.726.283 2.596.429c1.932.675 3.863 1.348 5.748 1.994c1.25-.13 2.434-.37 3.54-.675c.385.147.756.283 1.146.416c.682-.217 1.25-.562 1.706-1.017"/></svg>
+    </a>
+    <a href="mailto:ajayx3neha@gmail.com" aria-label="Email">
+      <svg aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      <span class="status-dot"></span>
+    </a>
+  </div>
+
+  <svg class="icon-sprite" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7L3 20l1.5-5.1A8 8 0 1 1 20 11.5Z"/><path d="M8.5 7.5c.3-.4.7-.3 1 0l1 2c.2.4-.2.8-.6 1 .7 1.5 1.8 2.6 3.3 3.3.2-.4.6-.8 1-.6l2 1c.4.2.4.7 0 1-1 1-2.1 1.2-3.5.7-3.2-1.1-5.6-3.5-6.7-6.7-.4-1.4-.2-2.6.8-3.5Z"/></symbol>
+  </svg>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 10);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    container.appendChild(renderer.domElement);
+
+    // Lights
+    const ambient = new THREE.AmbientLight(0x222244, 0.6);
+    scene.add(ambient);
+
+    const keyLight = new THREE.DirectionalLight(0x3b82f6, 2.5);
+    keyLight.position.set(4, 6, 8);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0x7c3aed, 1.8);
+    fillLight.position.set(-5, -3, 6);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0x8b5cf6, 1.2);
+    rimLight.position.set(0, -8, -5);
+    scene.add(rimLight);
+
+    const pointLight = new THREE.PointLight(0x6366f1, 3, 20);
+    pointLight.position.set(0, 0, 4);
+    scene.add(pointLight);
+
+    // Main 3D Object - Torus Knot
+    const geo = new THREE.TorusKnotGeometry(1.8, 0.55, 200, 30);
+    const mat = new THREE.MeshPhysicalMaterial({
+      color: 0x3b82f6,
+      metalness: 0.4,
+      roughness: 0.15,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.25,
+      emissive: 0x1a3a6a,
+      emissiveIntensity: 0.4,
+      envMapIntensity: 1.2,
+    });
+    const knot = new THREE.Mesh(geo, mat);
+    scene.add(knot);
+
+    // Wireframe ring
+    const wireGeo = new THREE.TorusKnotGeometry(1.85, 0.58, 60, 14);
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x8b5cf6,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.12,
+    });
+    const wire = new THREE.Mesh(wireGeo, wireMat);
+    scene.add(wire);
+
+    // Outer glow ring
+    const glowGeo = new THREE.RingGeometry(2.3, 2.8, 64);
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0x7c3aed,
+      transparent: true,
+      opacity: 0.08,
+      side: THREE.DoubleSide,
+    });
+    const glow = new THREE.Mesh(glowGeo, glowMat);
+    glow.position.z = -1;
+    scene.add(glow);
+
+    // Secondary small knot
+    const smallGeo = new THREE.TorusKnotGeometry(0.6, 0.2, 80, 12);
+    const smallMat = new THREE.MeshPhysicalMaterial({
+      color: 0x8b5cf6,
+      metalness: 0.6,
+      roughness: 0.2,
+      emissive: 0x3b82f6,
+      emissiveIntensity: 0.2,
+    });
+    const smallKnot = new THREE.Mesh(smallGeo, smallMat);
+    smallKnot.position.set(3.2, 1.5, 1);
+    scene.add(smallKnot);
+
+    // Particles
+    const particleCount = 800;
+    const positions = new Float32Array(particleCount * 3);
+    const sizes = new Float32Array(particleCount);
+    const colors = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      const r = 5 + Math.random() * 20;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = r * Math.cos(phi);
+      positions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
+      sizes[i] = 0.02 + Math.random() * 0.08;
+      const c = new THREE.Color().setHSL(0.62 + Math.random() * 0.18, 0.7, 0.4 + Math.random() * 0.4);
+      colors[i * 3] = c.r;
+      colors[i * 3 + 1] = c.g;
+      colors[i * 3 + 2] = c.b;
+    }
+    const particleGeo = new THREE.BufferGeometry();
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particleGeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+    particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    const particleMat = new THREE.PointsMaterial({
+      size: 0.06,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.85,
+      blending: THREE.AdditiveBlending,
+      sizeAttenuation: true,
+    });
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    // Mouse tracking
+    let mouseX = 0, mouseY = 0;
+    let targetRotX = 0, targetRotY = 0;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        mouseX = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+      }
+    }, { passive: true });
+
+    // Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Animation
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      targetRotX += (mouseY - targetRotX) * 0.04;
+      targetRotY += (mouseX - targetRotY) * 0.04;
+
+      knot.rotation.x = t * 0.15 + targetRotX * 0.6;
+      knot.rotation.y = t * 0.25 + targetRotY * 0.8;
+      wire.rotation.copy(knot.rotation);
+      glow.rotation.x = knot.rotation.x;
+      glow.rotation.y = knot.rotation.y;
+      glow.rotation.z = t * 0.1;
+
+      smallKnot.rotation.x = t * 0.4;
+      smallKnot.rotation.y = t * 0.5;
+      smallKnot.position.y = 1.5 + Math.sin(t * 0.8) * 0.4;
+      smallKnot.position.x = 3.2 + Math.cos(t * 0.6) * 0.3;
+
+      pointLight.position.x = Math.sin(t * 0.5) * 3;
+      pointLight.position.y = Math.cos(t * 0.7) * 2;
+      pointLight.intensity = 3 + Math.sin(t * 1.2) * 1.2;
+
+      particles.rotation.y = t * 0.015;
+      particles.rotation.x = Math.sin(t * 0.05) * 0.05;
+
+      camera.position.x = Math.sin(t * 0.08) * 0.8 + targetRotY * 0.3;
+      camera.position.y = Math.cos(t * 0.1) * 0.5 + targetRotX * 0.2;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>
