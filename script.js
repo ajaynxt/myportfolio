@@ -58,6 +58,107 @@ window.addEventListener("resize", () => {
   if (window.innerWidth > 1100) setMenu(false);
 });
 
+/* ============================================
+   Particle System — Background Canvas Animation
+   ============================================ */
+const canvas = document.querySelector(".hero-canvas");
+if (canvas && !reducedMotion.matches) {
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  let animationId = null;
+  let mouseX = 0, mouseY = 0;
+
+  const resizeCanvas = () => {
+    const hero = canvas.parentElement;
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  };
+
+  const createParticles = () => {
+    particles = [];
+    const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.4 + 0.1
+      });
+    }
+  };
+
+  const updateParticles = () => {
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+    });
+  };
+
+  const drawParticles = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(59, 130, 246, ${p.opacity})`;
+      ctx.fill();
+    });
+
+    // Draw connections between nearby particles
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(59, 130, 246, ${0.08 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  };
+
+  const animate = () => {
+    updateParticles();
+    drawParticles();
+    animationId = requestAnimationFrame(animate);
+  };
+
+  resizeCanvas();
+  createParticles();
+  animate();
+
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    createParticles();
+  });
+
+  // Mouse interaction — particles subtly follow cursor
+  canvas.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left) / rect.width;
+    mouseY = (e.clientY - rect.top) / rect.height;
+    particles.forEach((p, i) => {
+      const dx = mouseX - p.x / canvas.width;
+      const dy = mouseY - p.y / canvas.height;
+      p.vx += dx * 0.0002;
+      p.vy += dy * 0.0002;
+      // Damping
+      p.vx *= 0.98;
+      p.vy *= 0.98;
+    });
+  });
+}
+
 const roleWord = document.querySelector("[data-role-word]");
 const roleToggle = document.querySelector("[data-role-toggle]");
 if (roleWord) {
