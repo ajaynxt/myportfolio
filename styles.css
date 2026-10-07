@@ -3017,3 +3017,14 @@ button, select { cursor: pointer; }
   .ai-modal { width: calc(100vw - 28px); right: -6px; height: 72vh; }
   .cookie-banner { left: 14px; right: 14px; bottom: 14px; max-width: none; }
 }
+
+/* AJAYNXT visual polish: deeper contrast, warmer accent and more readable type. */
+:root{--bg-primary:#0d1118;--bg-secondary:#121923;--bg-card:#17202c;--bg-card-hover:#202c3a;--bg-elevated:#263443;--text-primary:#f7f2e9;--text-secondary:#d8d0c4;--text-muted:#aeb3ba;--text-faint:#77818d;--gold:#e7b86b;--gold-light:#f4d08d;--gold-dark:#b98237;--copper:#d87554;--copper-light:#ee9a78;--copper-dark:#a94f35;--accent-gradient:linear-gradient(135deg,var(--gold-light),var(--gold),var(--copper-light));--accent-gradient-strong:linear-gradient(135deg,var(--gold),var(--copper));--border-color:rgba(231,184,107,.18);--border-hover:rgba(231,184,107,.45);--border-light:rgba(247,242,233,.1);--display:"Cormorant Garamond",serif;--serif:"Cormorant Garamond",serif;--body:"Plus Jakarta Sans",sans-serif}
+body{font-size:16px;line-height:1.7;-webkit-tap-highlight-color:rgba(231,184,107,.22)}
+h1,h2,h3,p{text-wrap:pretty}
+.hero-copy h1{font-size:clamp(4.5rem,8vw,8.2rem);line-height:.86;letter-spacing:-.045em}
+.hero-intro{font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.75}
+.eyebrow,.nav-link,.button,.project-card a,.project-meta,.availability,.footer-meta{letter-spacing:.1em}
+.button{font-size:.78rem;min-height:52px}
+.project-card p,.service-card p,.about-copy p,.contact-copy p{font-size:.95rem;line-height:1.8}
+@media(max-width:760px){.hero-copy h1{font-size:clamp(3.8rem,18vw,5.5rem)}.hero-intro{font-size:1rem}.button{font-size:.72rem}}
