@@ -24,9 +24,9 @@
 
     const ctx = canvas.getContext("2d", { alpha: true });
     const blobs = [
-      { x: .70, y: .31, r: .19, hue: 20, phase: .2 },
-      { x: .82, y: .63, r: .17, hue: 280, phase: 2.6 },
-      { x: .56, y: .78, r: .14, hue: 145, phase: 4.1 }
+      { x: .70, y: .31, r: .19, hue: 4, phase: .2 },
+      { x: .82, y: .63, r: .17, hue: 350, phase: 2.6 },
+      { x: .56, y: .78, r: .14, hue: 38, phase: 4.1 }
     ];
     let w = 0, h = 0, dpr = 1, raf = 0;
 
@@ -64,7 +64,7 @@
       ctx.save();
       ctx.globalAlpha = .075;
       ctx.lineWidth = Math.max(1, Math.min(2, w / 900));
-      ctx.strokeStyle = "#c8682e";
+      ctx.strokeStyle = "#c5302d";
       for (let k = 0; k < 3; k++) {
         const base = h * (.30 + k*.17);
         ctx.beginPath();
