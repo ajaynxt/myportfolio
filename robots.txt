@@ -1,4 +1,27 @@
+# robots.txt for ajaynxt.com (Official Portfolio of Ajay Saini)
 User-agent: *
 Allow: /
+Allow: /assets/
+Allow: /styles.css
+Allow: /mst-premium.css
+Allow: /script.js
+Allow: /mst-flow.js
 
+# Specific Search Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Host
+Host: https://ajaynxt.com
+
+# XML Sitemap
 Sitemap: https://ajaynxt.com/sitemap.xml
