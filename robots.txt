@@ -5,7 +5,7 @@ Allow: /assets/
 Allow: /styles.css
 Allow: /mst-premium.css
 Allow: /script.js
-Allow: /mst-flow.js
+Allow: /mst-flow.js\nAllow: /brand-system.css\nAllow: /brand-navigation.js
 
 # Specific Search Bots
 User-agent: Googlebot
