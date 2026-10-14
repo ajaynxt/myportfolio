@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://api.fontshare.com; font-src 'self' https://cdn.fontshare.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://api.fontshare.com https://fonts.googleapis.com; font-src 'self' https://cdn.fontshare.com https://fonts.gstatic.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Explore 25 live website demos and selected client work by Ajay Saini across hospitality, healthcare, e-commerce, real estate and professional services.">
   <meta name="author" content="Ajay Saini">
@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="assets/brand/lion-mark-black-circle.png" type="image/png">
+  <link rel="icon" href="assets/brand/lion-mark-orig.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/brand/lion-mark-black-circle.png">
   <meta name="application-name" content="Ajay Saini Portfolio">
   <meta name="apple-mobile-web-app-title" content="Ajay Saini">
@@ -143,17 +143,38 @@
     <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7L3 20l1.5-5.1A8 8 0 1 1 20 11.5Z"/><path d="M8.5 7.5c.3-.4.7-.3 1 0l1 2c.2.4-.2.8-.6 1 .7 1.5 1.8 2.6 3.3 3.3.2-.4.6-.8 1-.6l2 1c.4.2.4.7 0 1-1 1-2.1 1.2-3.5.7-3.2-1.1-5.6-3.5-6.7-6.7-.4-1.4-.2-2.6.8-3.5Z"/></symbol>
   </svg>
 
-  <header class="site-header is-scrolled" data-header>
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Ajay Saini home"><span class="brand-mark" aria-hidden="true"><img src="assets/brand/lion-mark-black-circle.png" alt="" width="386" height="386"></span><span class="brand-name"><strong>AJAY SAINI</strong><small>Creative developer</small></span></a>
-      <nav class="desktop-nav" aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a><a href="index.html#about">About</a><a href="index.html#social">Connect</a></nav>
-      <div class="header-actions"><a class="button button-solid header-cta" href="index.html#book">Book a call <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span></button></div>
+  <header class="site-header" data-header>
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="Ajay Saini home">
+      <span class="brand-mark" aria-hidden="true"><img src="assets/brand/lion-mark-orig.png" alt="" width="386" height="386"></span>
+      <span class="brand-name"><strong>AJAY SAINI</strong><small>Web Developer &amp; Video Editor</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html#work">Work</a><a href="projects.html" aria-current="page">Projects</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a><a href="index.html#about">About</a><a href="index.html#social">Connect</a>
+    </nav>
+    <div class="header-actions">
+      <a class="button button-solid header-cta" href="index.html#book">Book a call</a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span></button>
     </div>
-    <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="Mobile navigation" hidden><a href="index.html">Home</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a><a href="index.html#about">About</a><a href="index.html#social">Connect</a><a href="index.html#book">Book a call</a></nav>
-  </header>
+  </div>
+  <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="Mobile navigation" hidden>
+    <a href="index.html#work">Work</a><a href="projects.html" aria-current="page">Projects</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a><a href="index.html#about">About</a><a href="index.html#social">Connect</a><a href="index.html#book">Book a call</a>
+  </nav>
+</header>
 
   <main id="main">
-    <section class="archive-hero"><div class="container archive-hero-grid"><div class="reveal"><p class="eyebrow"><span></span> Project archive</p><h1>Ideas across industries. <em>Built to be remembered.</em></h1></div><p class="reveal" data-reveal-delay="1">One client website and 25 live demo experiences. Browse by category and open any project directly.</p></div></section>
+    <section class="archive-hero">
+  <div class="container archive-hero-grid">
+    <div class="reveal">
+      <p class="eyebrow"><span></span> Project archive</p>
+      <h1>Ideas across industries. <em>Built to be remembered.</em></h1>
+    </div>
+    <div class="archive-intro-meta reveal" data-reveal-delay="1">
+      <img src="assets/brand/ajay-portrait.webp" alt="Ajay Saini, web developer and video editor" width="1122" height="1402" loading="eager" decoding="async">
+      <p>One client website and 25 live demo experiences. Browse by category and open any project directly.</p>
+    </div>
+  </div>
+</section>
 
     <section class="archive-main"><div class="container">
       <article class="client-feature reveal"><div class="archive-icon"><svg aria-hidden="true"><use href="#i-utensils"/></svg></div><div><small>Client work · Restaurant, bakery & sweets</small><h2>Diamond Restaurants</h2><p>A complete customer experience connecting brand, menus, discovery and online ordering.</p></div><a href="https://diamondrestaurants.com/" target="_blank" rel="noopener noreferrer">View live client work ↗</a></article>
@@ -192,7 +213,7 @@
     </div></section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><h2>Ajay Saini</h2><p>Creative developer and video editor building digital work with clarity, character and purpose.</p></div><div><h3>Explore</h3><a href="index.html">Home</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a></div><div><h3>Connect</h3><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.facebook.com/share/1JEe6e7LYB/" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:ajayx3neha@gmail.com">Email ↗</a></div><div><h3>Availability</h3><p class="footer-status"><span></span> Open for selected projects</p><p>Sikar, Rajasthan<br>Working worldwide</p><a class="footer-book" href="index.html#book">Book a project call ↗</a></div></div><div class="container footer-bottom"><span>© 2026 Ajay Saini. All rights reserved.</span><a href="#top">Back to top <svg aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div></footer>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><h2>Ajay Saini</h2><p>Creative developer and video editor building digital work with clarity, character and purpose.</p></div><div><h3>Explore</h3><a href="index.html">Home</a><a href="3d.html">3D portfolio</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a></div><div><h3>Connect</h3><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.facebook.com/share/1JEe6e7LYB/" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:ajayx3neha@gmail.com">Email ↗</a></div><div><h3>Availability</h3><p class="footer-status"><span></span> Open for selected projects</p><p>Sikar, Rajasthan<br>Working worldwide</p><a class="footer-book" href="index.html#book">Book a project call ↗</a></div></div><div class="container footer-bottom"><span>© 2026 Ajay Saini. All rights reserved.</span><a href="#top">Back to top <svg aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div></footer>
 
   <a class="floating-whatsapp" href="https://wa.me/919929562585" target="_blank" rel="noopener noreferrer" aria-label="Chat with Ajay on WhatsApp"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
   <button class="go-top" type="button" data-go-top aria-label="Go to top"><svg aria-hidden="true"><use href="#i-arrow-up"/></svg><span>Top</span></button>
@@ -208,7 +229,7 @@
     <div class="ai-modal" data-ai-modal hidden>
       <div class="ai-header">
         <div class="ai-header-brand">
-          <span class="ai-avatar"><img src="assets/brand/lion-mark-black-circle.png" alt="" width="36" height="36"></span>
+          <span class="ai-avatar"><img src="assets/brand/lion-mark-orig.png" alt="" width="36" height="36"></span>
           <div>
             <strong>Ajay's AI Assistant</strong>
             <small><span class="ai-status-dot"></span> Online · Instant answers</small>
