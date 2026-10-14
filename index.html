@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://api.fontshare.com; font-src 'self' https://cdn.fontshare.com data:; img-src 'self' data:; frame-src https://drive.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://api.fontshare.com https://fonts.googleapis.com; font-src 'self' https://cdn.fontshare.com https://fonts.gstatic.com data:; img-src 'self' data:; frame-src https://drive.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Ajay Saini is a web developer and video editor in India creating responsive business websites, UI/UX experiences, e-commerce sites and cinematic films.">
   <meta name="author" content="Ajay Saini">
@@ -43,6 +43,7 @@
   <meta name="geo.placename" content="Sikar, Rajasthan">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mst-premium.css">
+  <link rel="stylesheet" href="brand-system.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -83,7 +84,7 @@
         "name": "Ajay Saini",
         "alternateName": "AJAYNXT",
         "url": "https://ajaynxt.com/",
-        "image": { "@id": "https://ajaynxt.com/#primaryimage" },
+        "image": "https://ajaynxt.com/assets/brand/ajay-portrait.webp",
         "description": "Creative developer, UI/UX designer and video editor crafting high-converting websites and cinematic visual stories.",
         "jobTitle": ["Creative Web Developer", "UI/UX Designer", "Cinematic Video Editor"],
         "email": "mailto:ajayx3neha@gmail.com",
@@ -229,23 +230,23 @@
   </svg>
 
   <header class="site-header" data-header>
-    <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Ajay Saini home">
-        <span class="brand-mark" aria-hidden="true"><img src="assets/brand/lion-mark-orig.png" alt="" width="386" height="386"></span>
-        <span class="brand-name"><strong>AJAY SAINI</strong><small>Creative developer</small></span>
-      </a>
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#work">Work</a><a href="#films">Films</a><a href="#services">Services</a><a href="#about">About</a><a href="#social">Connect</a>
-      </nav>
-      <div class="header-actions">
-        <a class="button button-solid header-cta" href="#book">Book a call <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span></button>
-      </div>
-    </div>
-    <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="Mobile navigation" hidden>
-      <a href="#work">Work</a><a href="#films">Films</a><a href="#services">Services</a><a href="#about">About</a><a href="#social">Connect</a><a href="#book">Book a call</a>
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="Ajay Saini home">
+      <span class="brand-mark" aria-hidden="true"><img src="assets/brand/lion-mark-orig.png" alt="" width="386" height="386"></span>
+      <span class="brand-name"><strong>AJAY SAINI</strong><small>Web Developer &amp; Video Editor</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#work">Work</a><a href="projects.html">Projects</a><a href="#films">Films</a><a href="#services">Services</a><a href="#about">About</a><a href="#social">Connect</a>
     </nav>
-  </header>
+    <div class="header-actions">
+      <a class="button button-solid header-cta" href="#book">Book a call</a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="Mobile navigation" hidden>
+    <a href="#work">Work</a><a href="projects.html">Projects</a><a href="#films">Films</a><a href="#services">Services</a><a href="#about">About</a><a href="#social">Connect</a><a href="#book">Book a call</a>
+  </nav>
+</header>
 
   <main id="main">
     <section class="hero section-pad" aria-labelledby="hero-title">
@@ -257,7 +258,7 @@
           <p class="hero-intro">I create modern websites and engaging visual stories by combining thoughtful design, clean development and creative video editing.</p>
           <div class="hero-actions">
             <a class="button button-solid" href="#work">Explore my work <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="button button-solid whatsapp-button" style="background:#25D366;color:#0b1218;border-color:#25D366;font-weight:700;" href="https://wa.me/919929562585?text=Hello%20Ajay%20ji%21%20I%20saw%20your%20portfolio%20on%20ajaynxt.com%20and%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Chat on WhatsApp</a>
+            <a class="button button-solid whatsapp-button" href="https://wa.me/919929562585?text=Hello%20Ajay%20ji%21%20I%20saw%20your%20portfolio%20on%20ajaynxt.com%20and%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Chat on WhatsApp</a>
             <a class="button button-ghost" href="#book"><svg aria-hidden="true"><use href="#i-calendar"/></svg> Book a call</a>
             <button class="role-control" type="button" data-role-toggle aria-pressed="false" aria-label="Pause rotating roles"><svg class="pause-icon" aria-hidden="true"><use href="#i-pause"/></svg><svg class="resume-icon" aria-hidden="true"><use href="#i-play"/></svg><span data-role-control-label>Pause roles</span></button>
           </div>
@@ -351,12 +352,12 @@
           <div class="field field-full"><label for="book-details">Tell me about your project</label><textarea id="book-details" name="details" rows="5" minlength="20" maxlength="500" required placeholder="What are you building, who is it for, and what should it achieve?" aria-describedby="book-details-count book-details-error"></textarea><div class="textarea-meta"><small class="field-help" id="book-details-count" data-char-count>0 / 500</small><small class="field-error" id="book-details-error" data-error-for="book-details"></small></div></div>
         </div>
         <label class="consent" for="book-consent"><input id="book-consent" name="consent" type="checkbox" required aria-describedby="book-consent-error"><span>I understand that submitting this form opens WhatsApp and does not create an automatic calendar booking.</span></label><small class="field-error consent-error" id="book-consent-error" data-error-for="book-consent"></small>
-        <button class="button button-solid form-submit" type="submit" style="background:var(--accent-gradient-strong);color:#1a1208;border-color:var(--gold);box-shadow:0 10px 28px rgba(212,168,75,0.2);">Prepare WhatsApp booking <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="button button-solid form-submit" type="submit">Prepare WhatsApp booking <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </form>
     </div></section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><h2>Ajay Saini</h2><p>Creative developer and video editor building digital work with clarity, character and purpose.</p></div><div><h3>Explore</h3><a href="#work">Selected work</a><a href="projects.html">All projects</a><a href="#films">Films</a><a href="#services">Services</a></div><div><h3>Connect</h3><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.facebook.com/share/1JEe6e7LYB/" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:ajayx3neha@gmail.com">Email ↗</a></div><div><h3>Availability</h3><p class="footer-status"><span></span> Open for selected projects</p><p>Sikar, Rajasthan<br>Working worldwide</p><a class="footer-book" href="#book">Book a project call ↗</a></div></div><div class="container footer-bottom"><span>© 2026 Ajay Saini. All rights reserved.</span><a href="#top">Back to top <svg aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div></footer>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><h2>Ajay Saini</h2><p>Creative developer and video editor building digital work with clarity, character and purpose.</p></div><div><h3>Explore</h3><a href="#work">Selected work</a><a href="projects.html">All projects</a><a href="3d.html">3D portfolio</a><a href="#films">Films</a><a href="#services">Services</a></div><div><h3>Connect</h3><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.facebook.com/share/1JEe6e7LYB/" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:ajayx3neha@gmail.com">Email ↗</a></div><div><h3>Availability</h3><p class="footer-status"><span></span> Open for selected projects</p><p>Sikar, Rajasthan<br>Working worldwide</p><a class="footer-book" href="#book">Book a project call ↗</a></div></div><div class="container footer-bottom"><span>© 2026 Ajay Saini. All rights reserved.</span><a href="#top">Back to top <svg aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div></footer>
 
   <a class="floating-whatsapp" href="https://wa.me/919929562585" target="_blank" rel="noopener noreferrer" aria-label="Chat with Ajay on WhatsApp"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
   <button class="go-top" type="button" data-go-top aria-label="Go to top"><svg aria-hidden="true"><use href="#i-arrow-up"/></svg><span>Top</span></button>
