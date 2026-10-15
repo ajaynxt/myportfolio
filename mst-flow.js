@@ -284,10 +284,13 @@
         showToast("Navigating to Projects... [P]");
         window.location.href = "projects.html";
       }
-    } else if (key === "3") {
-      if (!window.location.pathname.includes("3d.html")) {
-        showToast("Entering 3D World... [3]");
-        window.location.href = "3d.html";
+    } else if (key === "f") {
+      showToast("Jumping to Films & Reels... [F]");
+      const filmsSec = document.querySelector("#films");
+      if (filmsSec) {
+        filmsSec.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = "index.html#films";
       }
     } else if (key === "h") {
       if (window.location.pathname.includes("projects.html") || window.location.pathname.includes("3d.html")) {

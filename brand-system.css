@@ -245,13 +245,21 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 /* Editorial Hero Subline, Emblem, and Branded Badges */
 .hero-subline {
   display: inline-block;
-  font-family: var(--serif, "Cormorant Garamond", serif);
-  font-weight: 600;
-  font-style: italic;
-  font-size: 0.95em;
-  color: var(--brand-accent, #b81424);
-  letter-spacing: -0.01em;
+  font-family: var(--display, "Syne", sans-serif);
+  font-weight: 800;
+  font-style: normal;
+  font-size: 1em;
+  color: #0e0f12;
+  letter-spacing: -0.035em;
   line-height: 1.05;
+}
+.hero-subline em {
+  font-family: var(--serif, "Cormorant Garamond", serif) !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  color: var(--brand-accent, #b81424) !important;
+  -webkit-text-fill-color: var(--brand-accent, #b81424) !important;
+  font-size: 1.04em;
 }
 
 .hero-emblem {
