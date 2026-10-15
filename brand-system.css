@@ -43,15 +43,23 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   overflow: hidden;
   border: 2px solid var(--border-color, #181818);
   border-radius: 50%;
-  background: #0d1322;
-  box-shadow: 3px 3px 0 var(--border-color, #181818);
+  background: #141414;
+  box-shadow: 2px 2px 0 var(--border-color, #181818);
+  flex-shrink: 0;
+  position: relative;
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .brand:hover .brand-mark {
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 var(--border-color, #181818);
+  box-shadow: 3px 3px 0 var(--border-color, #181818);
 }
-.brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
 .brand-name { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-name strong {
   color: var(--brand-ink);
@@ -229,9 +237,9 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 /* Editorial Hero Subline, Emblem, and Branded Badges */
 .hero-subline {
   display: inline-block;
-  font-family: var(--serif, "Cormorant Garamond", Georgia, serif);
-  font-weight: 600;
-  font-style: italic;
+  font-family: var(--display, "Syne", sans-serif);
+  font-weight: 700;
+  font-style: normal;
   font-size: 0.9em;
   color: var(--brand-accent, #9f2638);
   letter-spacing: -0.02em;
@@ -240,7 +248,7 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 
 .hero-emblem {
   border-radius: 50% !important;
-  background: #0d1322 !important;
+  background: #141414 !important;
   border: 2.5px solid var(--border-color, #181818) !important;
   box-shadow: 5px 5px 0 var(--border-color, #181818), 0 16px 36px rgba(0, 0, 0, .22) !important;
   padding: 0 !important;
@@ -258,7 +266,7 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 
 .about-emblem {
   border-radius: 50% !important;
-  background: #0d1322 !important;
+  background: #141414 !important;
   border: 3px solid var(--border-color, #181818) !important;
   box-shadow: 6px 6px 0 var(--border-color, #181818) !important;
   padding: 0 !important;
@@ -276,7 +284,7 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 
 .ai-avatar {
   border-radius: 50% !important;
-  background: #0d1322 !important;
+  background: #141414 !important;
   border: 1.5px solid var(--border-color, #181818) !important;
   overflow: hidden !important;
   padding: 0 !important;
