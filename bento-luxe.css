@@ -60,7 +60,8 @@
   --radius-card: 22px;
   --radius-pill: 9999px;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Plus Jakarta Sans', Georgia, serif;
+  --font-luxury: 'Italiana', 'Cormorant Garamond', Georgia, serif;
   --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -466,20 +467,20 @@ body::after {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.2vw, 2.65rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  font-size: clamp(1.65rem, 2.7vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
   color: #fff;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1rem;
 }
 .hero-desc {
-  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
-  color: #94a3b8;
-  line-height: 1.68;
-  max-width: 520px;
-  margin-bottom: 1.75rem;
-  font-weight: 300;
+  font-size: clamp(0.85rem, 0.95vw, 0.92rem);
+  color: #e2e8f0;
+  line-height: 1.65;
+  max-width: 480px;
+  margin-bottom: 1.6rem;
+  font-weight: 400;
 }
 .hero-actions {
   display: flex;
@@ -583,19 +584,19 @@ body::after {
 }
 .metric-num {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2vw, 1.85rem);
-  font-weight: 800;
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  font-weight: 700;
   line-height: 1;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 .metric-label {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: #fff;
 }
 .metric-sub {
-  font-size: 0.68rem;
-  color: var(--text-dim);
+  font-size: 0.65rem;
+  color: #cbd5e1;
   margin-top: 0.15rem;
 }
 
@@ -605,19 +606,19 @@ body::after {
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: #fff;
-  line-height: 1.18;
+  line-height: 1.2;
 }
 .section-desc {
-  font-size: clamp(0.84rem, 0.98vw, 0.92rem);
-  color: var(--text-muted);
-  max-width: 520px;
-  margin-top: 0.5rem;
-  line-height: 1.65;
-  font-weight: 300;
+  font-size: clamp(0.82rem, 0.9vw, 0.88rem);
+  color: #cbd5e1;
+  max-width: 480px;
+  margin-top: 0.4rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 /* ── Interactive Category Filters ── */
@@ -781,20 +782,21 @@ body::after {
 }
 .project-title {
   font-family: var(--font-display);
-  font-size: 1.18rem;
-  font-weight: 800;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: #fff;
   transition: color 0.2s ease;
 }
 .project-card:hover .project-title {
-  color: var(--gold-300);
+  color: var(--saffron-400);
 }
 .project-summary {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.82rem;
+  color: #cbd5e1;
   line-height: 1.6;
-  margin-top: 0.5rem;
-  font-weight: 300;
+  margin-top: 0.4rem;
+  font-weight: 400;
 }
 .project-tags {
   display: flex;
@@ -878,16 +880,17 @@ body::after {
 
 .skill-title {
   font-family: var(--font-display);
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: #fff;
   margin-bottom: 0.35rem;
 }
 .skill-desc {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.82rem;
+  color: #cbd5e1;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
 }
 .skill-pills {
   display: flex;
