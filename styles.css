@@ -506,10 +506,10 @@ button, select { cursor: pointer; }
 
 .hero-copy h1 .role-wrap .role-word {
   display: inline-block;
-  font-family: var(--display);
-  font-style: normal;
+  font-family: var(--serif);
+  font-style: italic;
   font-weight: 700;
-  font-size: 1em;
+  font-size: 1.05em;
   color: #9f2638;
   -webkit-text-fill-color: #9f2638;
   background: none;

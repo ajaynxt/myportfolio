@@ -245,12 +245,12 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 /* Editorial Hero Subline, Emblem, and Branded Badges */
 .hero-subline {
   display: inline-block;
-  font-family: var(--display, "Syne", sans-serif);
-  font-weight: 700;
-  font-style: normal;
-  font-size: 0.9em;
+  font-family: var(--serif, "Cormorant Garamond", serif);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.95em;
   color: var(--brand-accent, #9f2638);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.05;
 }
 
@@ -302,6 +302,92 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   height: 100% !important;
   object-fit: cover !important;
   display: block !important;
+}
+
+/* ── Khatarnak Luxury Editorial Aesthetics ── */
+.brand-name strong {
+  font-family: var(--display, "Syne", sans-serif) !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+  color: #141414 !important;
+}
+.brand-name small {
+  font-family: var(--body, "Plus Jakarta Sans", sans-serif) !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  color: var(--brand-accent, #9f2638) !important;
+  text-transform: uppercase !important;
+}
+
+.eyebrow {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: var(--body, "Plus Jakarta Sans", sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: var(--brand-accent, #9f2638) !important;
+}
+.eyebrow span {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: var(--brand-accent, #9f2638) !important;
+  box-shadow: 0 0 0 3px rgba(159, 38, 56, .22) !important;
+}
+
+.hero-stats {
+  background: var(--bg-card, #fffdf8) !important;
+  border: 2.5px solid var(--border-color, #181818) !important;
+  box-shadow: 6px 6px 0 var(--border-color, #181818) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+.hero-stats div {
+  border-color: var(--border-color, #181818) !important;
+  transition: background .2s ease !important;
+}
+.hero-stats div:hover {
+  background: rgba(159, 38, 56, .04) !important;
+}
+.hero-stats strong {
+  font-family: var(--display, "Syne", sans-serif) !important;
+  font-weight: 800 !important;
+  font-size: 38px !important;
+  color: #141414 !important;
+  -webkit-text-fill-color: #141414 !important;
+  letter-spacing: -.02em !important;
+}
+.hero-stats span {
+  font-family: var(--body, "Plus Jakarta Sans", sans-serif) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  color: #262626 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+.ticker-strip {
+  background: #141414 !important;
+  color: #f7f2e8 !important;
+  border-top: 2.5px solid #181818 !important;
+  border-bottom: 2.5px solid #181818 !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .15) !important;
+}
+.ticker-group span {
+  font-family: var(--display, "Syne", sans-serif) !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+}
+.ticker-star {
+  color: var(--brand-accent, #9f2638) !important;
+}
+
+.portrait-frame {
+  border: 3px solid var(--border-color, #181818) !important;
+  box-shadow: 8px 8px 0 var(--border-color, #181818), 0 24px 60px rgba(0,0,0,.15) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

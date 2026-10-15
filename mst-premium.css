@@ -444,10 +444,10 @@ body{background:var(--bg-primary);color:var(--text-primary)}
 .header-cta{background:var(--accent-gradient-strong);box-shadow:3px 3px 0 var(--border-color)}
 .hero{background-color:var(--bg-primary);background-image:linear-gradient(rgba(24,24,24,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(24,24,24,.055) 1px,transparent 1px),radial-gradient(circle at 72% 22%,rgba(159,38,56,.13),transparent 20%),radial-gradient(circle at 52% 72%,rgba(159,38,56,.08),transparent 25%);background-size:72px 72px,72px 72px,auto,auto}
 .hero::after{background:radial-gradient(circle at 78% 44%,transparent 0 12%,rgba(159,38,56,.14) 12.2%,transparent 12.5%),radial-gradient(circle at 78% 44%,transparent 0 23%,rgba(24,24,24,.15) 23.2%,transparent 23.5%)}
-.hero-copy h1{color:#141414!important;-webkit-text-fill-color:#141414!important;background:none!important}
-.hero-copy h1 .role-word{color:var(--gold)!important;-webkit-text-fill-color:var(--gold)!important;background:none!important;font-style:normal!important}
+.hero-copy h1{font-family:var(--display,'Syne',sans-serif)!important;font-size:clamp(38px,4.8vw,68px)!important;font-weight:800!important;line-height:1.02!important;letter-spacing:-.035em!important;color:#141414!important;-webkit-text-fill-color:#141414!important;background:none!important}
+.hero-copy h1 .role-word{font-family:var(--serif,'Cormorant Garamond',serif)!important;color:var(--gold,#9f2638)!important;-webkit-text-fill-color:var(--gold,#9f2638)!important;background:none!important;font-style:italic!important;font-weight:700!important;font-size:1.05em}
 .section-head h2{color:#141414!important;-webkit-text-fill-color:#141414!important}
-.section-head h2 em,.about-copy h2 em,.booking-copy h2 em{color:var(--gold)!important;-webkit-text-fill-color:var(--gold)!important;background:none!important;font-style:normal!important}
+.section-head h2 em,.about-copy h2 em,.booking-copy h2 em{font-family:var(--serif,'Cormorant Garamond',serif)!important;color:var(--gold,#9f2638)!important;-webkit-text-fill-color:var(--gold,#9f2638)!important;background:none!important;font-style:italic!important;font-weight:600!important}
 .hero-intro,.section-head>p,.project-card p,.service-card p,.about-copy>p:not(.eyebrow):not(.about-lead),.booking-copy>p:not(.eyebrow){color:#262626!important}
 .button-solid,.form-submit{background:var(--accent-gradient-strong)!important;color:#fff!important}
 .button-ghost{background:#fffdf8;color:#141414}
