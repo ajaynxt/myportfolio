@@ -1,0 +1,496 @@
+/* ==========================================================================
+   AJAY SAINI — AWWWARDS BENTO LUXE COMPREHENSIVE OVERRIDE SYSTEM
+   Applied directly to myportfolio/index.html for live deployment.
+   ========================================================================== */
+
+:root {
+  --bento-bg: #06070a;
+  --bento-surface: rgba(14, 17, 26, 0.78);
+  --bento-surface-hover: rgba(22, 26, 38, 0.92);
+  --bento-gold: #d4af37;
+  --bento-gold-light: #f5d77f;
+  --bento-gold-dark: #b89228;
+  --bento-border: rgba(255, 255, 255, 0.08);
+  --bento-border-gold: rgba(212, 175, 55, 0.4);
+  --bento-glow: 0 0 45px -10px rgba(212, 175, 55, 0.25);
+  --bento-radius: 20px;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+
+/* 1. Global Page Background & Smoothness */
+html, body {
+  background-color: var(--bento-bg) !important;
+  color: #f1f5f9 !important;
+  font-family: var(--font-body) !important;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Background Ambient Lighting */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 95vw);
+  height: 600px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.03) 45%, transparent 70%);
+  filter: blur(140px);
+  pointer-events-none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 10%;
+  right: -5%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, transparent 70%);
+  filter: blur(160px);
+  pointer-events-none;
+  z-index: 0;
+}
+
+/* 2. Floating Site Header */
+.site-header {
+  position: fixed !important;
+  top: 0;
+  inset-x: 0;
+  z-index: 1000;
+  height: auto !important;
+  padding: max(0.9rem, env(safe-area-inset-top)) 1.5rem 0.9rem !important;
+  background: rgba(6, 7, 10, 0.75) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--bento-border) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(6, 7, 10, 0.92) !important;
+  border-bottom-color: rgba(212, 175, 55, 0.25) !important;
+  padding-top: max(0.65rem, env(safe-area-inset-top)) !important;
+  padding-bottom: 0.65rem !important;
+}
+
+.brand-mark {
+  border: 2px solid var(--bento-gold) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.35) !important;
+  border-radius: 50% !important;
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.brand-name strong {
+  font-family: var(--font-display) !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.06em !important;
+  color: #fff !important;
+}
+
+.brand-name small {
+  color: var(--bento-gold-light) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+}
+
+.desktop-nav {
+  background: rgba(14, 17, 26, 0.65) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--bento-border) !important;
+  padding: 0.3rem 0.6rem !important;
+  border-radius: 9999px !important;
+  gap: 0.25rem !important;
+}
+
+.desktop-nav a {
+  color: #94a3b8 !important;
+  font-size: 0.78rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  font-weight: 700 !important;
+  padding: 0.45rem 0.95rem !important;
+  border-radius: 9999px !important;
+  transition: all 0.2s ease !important;
+}
+
+.desktop-nav a:hover {
+  color: var(--bento-gold-light) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 3. Hero Section Overhaul */
+.hero {
+  position: relative;
+  padding-top: clamp(7.5rem, 15vh, 10rem) !important;
+  padding-bottom: clamp(3rem, 7vh, 5.5rem) !important;
+  background: transparent !important;
+  z-index: 1;
+}
+
+.hero-copy .eyebrow {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem !important;
+  border-radius: 9999px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--bento-border) !important;
+  color: var(--bento-gold-light) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.hero-copy .eyebrow span {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #10b981 !important;
+  box-shadow: 0 0 10px #10b981 !important;
+  animation: pulseRadar 2s infinite;
+}
+
+#hero-title {
+  font-family: var(--font-display) !important;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+  color: #fff !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.hero-subline {
+  background: linear-gradient(135deg, #ffffff 15%, var(--bento-gold-light) 65%, var(--bento-gold) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hero-intro {
+  font-size: clamp(1rem, 1.3vw, 1.15rem) !important;
+  color: #cbd5e1 !important;
+  line-height: 1.75 !important;
+  max-width: 620px !important;
+  font-weight: 300 !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Hero Portrait Frame */
+.portrait-frame {
+  position: relative !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(212, 175, 55, 0.35) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.9), var(--bento-glow) !important;
+  background: #0d1017 !important;
+  aspect-ratio: 0.88 !important;
+}
+
+.portrait-frame img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 25% !important;
+  transition: transform 0.7s ease !important;
+}
+
+.hero-visual:hover .portrait-frame img {
+  transform: scale(1.04) !important;
+}
+
+.hero-emblem {
+  position: absolute !important;
+  bottom: -10px !important;
+  left: -10px !important;
+  width: 68px !important;
+  height: 68px !important;
+  border-radius: 50% !important;
+  padding: 3px !important;
+  background: linear-gradient(135deg, var(--bento-gold-light), var(--bento-gold-dark)) !important;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5) !important;
+  z-index: 10 !important;
+}
+
+.hero-emblem img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
+.float-tag {
+  background: rgba(6, 7, 10, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--bento-border-gold) !important;
+  color: #fff !important;
+  padding: 0.4rem 0.9rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Hero Stats Bar */
+.hero-stats {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1rem !important;
+  margin-top: 3.5rem !important;
+}
+
+@media (min-width: 768px) {
+  .hero-stats {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+.hero-stats > div {
+  background: var(--bento-surface) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--bento-border) !important;
+  border-radius: var(--bento-radius) !important;
+  padding: 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: all 0.3s ease !important;
+}
+
+.hero-stats > div:hover {
+  border-color: var(--bento-border-gold) !important;
+  box-shadow: var(--bento-glow) !important;
+  transform: translateY(-2px) !important;
+}
+
+.hero-stats strong {
+  font-family: var(--font-display) !important;
+  font-size: clamp(2rem, 3.5vw, 2.75rem) !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #ffffff 15%, var(--bento-gold-light) 65%, var(--bento-gold) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hero-stats span {
+  font-size: 0.82rem !important;
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+  margin-top: 0.25rem !important;
+}
+
+/* 4. Marquee Strip */
+.ticker-strip {
+  background: rgba(14, 17, 26, 0.4) !important;
+  border-top: 1px solid var(--bento-border) !important;
+  border-bottom: 1px solid var(--bento-border) !important;
+  padding: 1.25rem 0 !important;
+}
+
+.ticker-group span {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  font-size: 0.85rem !important;
+  color: #cbd5e1 !important;
+}
+
+.ticker-star {
+  color: var(--bento-gold) !important;
+  font-size: 1rem !important;
+  padding: 0 1.25rem !important;
+}
+
+/* 5. Bento Project Cards */
+.project-card {
+  background: var(--bento-surface) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--bento-border) !important;
+  border-radius: var(--bento-radius) !important;
+  padding: 2rem !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.project-card:hover {
+  border-color: var(--bento-border-gold) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), var(--bento-glow) !important;
+  transform: translateY(-4px) !important;
+}
+
+.project-card h3 {
+  font-family: var(--font-display) !important;
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  margin-top: 0.75rem !important;
+}
+
+.project-card p {
+  color: #94a3b8 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  margin-top: 0.5rem !important;
+}
+
+.project-card a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: var(--bento-gold-light) !important;
+  text-decoration: none !important;
+  margin-top: 1.25rem !important;
+  transition: gap 0.2s ease !important;
+}
+
+.project-card:hover a {
+  gap: 0.65rem !important;
+  color: var(--bento-gold) !important;
+}
+
+/* 6. Bento Service Cards */
+.service-card {
+  background: var(--bento-surface) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--bento-border) !important;
+  border-radius: var(--bento-radius) !important;
+  padding: 2rem !important;
+  transition: all 0.35s ease !important;
+}
+
+.service-card:hover {
+  border-color: var(--bento-border-gold) !important;
+  box-shadow: var(--bento-glow) !important;
+  transform: translateY(-3px) !important;
+}
+
+.service-card h3 {
+  font-family: var(--font-display) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+}
+
+.service-card p {
+  color: #94a3b8 !important;
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+}
+
+/* 7. Buttons Overhaul */
+.button-solid {
+  background: linear-gradient(135deg, var(--bento-gold-light) 0%, var(--bento-gold) 60%, var(--bento-gold-dark) 100%) !important;
+  color: #06070a !important;
+  font-weight: 800 !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35) !important;
+  border: none !important;
+  min-height: 46px !important;
+}
+
+.button-solid:hover {
+  filter: brightness(1.1) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5) !important;
+}
+
+.button-ghost, .button-outline {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--bento-border) !important;
+  color: #fff !important;
+  border-radius: 9999px !important;
+  min-height: 46px !important;
+}
+
+.button-ghost:hover, .button-outline:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--bento-border-gold) !important;
+  color: var(--bento-gold-light) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 8. Booking Section Glass Form */
+.booking-form {
+  background: var(--bento-surface) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--bento-border) !important;
+  border-radius: var(--bento-radius) !important;
+  padding: 2.25rem !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+.field input, .field select, .field textarea {
+  background: rgba(6, 7, 10, 0.75) !important;
+  border: 1px solid var(--bento-border) !important;
+  border-radius: 12px !important;
+  color: #fff !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--bento-gold) !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25) !important;
+  outline: none !important;
+}
+
+/* 9. Mobile Sticky Bottom Quick Dock */
+.mobile-bento-dock {
+  display: flex;
+  position: fixed;
+  bottom: max(0.85rem, env(safe-area-inset-bottom));
+  left: 1rem;
+  right: 1rem;
+  z-index: 999;
+  background: rgba(10, 12, 18, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 768px) {
+  .mobile-bento-dock {
+    display: none !important;
+  }
+}
+
+.mobile-bento-dock a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.mobile-bento-dock a.dock-active, .mobile-bento-dock a:hover {
+  color: var(--bento-gold);
+}
+
+.mobile-bento-dock a.dock-cta {
+  background: linear-gradient(135deg, var(--bento-gold-light), var(--bento-gold));
+  color: #06070a !important;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  flex-direction: row;
+  gap: 5px;
+}
