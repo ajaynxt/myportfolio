@@ -890,3 +890,258 @@ body{background:var(--bg-primary);color:var(--text-primary)}
     color: var(--ink, #0d1322);
   }
 }
+
+/* ==========================================================================
+   EDITORIAL TYPOGRAPHY & TEXT CONTRAST SYSTEM
+   Precision font smoothing, letter-spacing, line-height & hierarchical clarity
+   ========================================================================== */
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 1. Eyebrow Badges & Status */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.eyebrow span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(159, 38, 56, 0.4);
+}
+
+/* 2. Hero Typography */
+.hero-copy h1 {
+  font-family: var(--display);
+  font-size: clamp(3.8rem, 6.8vw, 7rem);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+  color: var(--text-primary);
+}
+
+.hero-copy h1 .role-word {
+  color: var(--gold);
+  font-weight: 800;
+  font-family: var(--display);
+  text-decoration: underline;
+  text-decoration-color: rgba(159, 38, 56, 0.35);
+  text-underline-offset: 6px;
+}
+
+.hero-intro {
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 530px;
+}
+
+/* 3. Section Headers & Lead Copy */
+.section-head h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  color: var(--text-primary);
+}
+
+.section-head h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.section-head > p {
+  font-family: var(--body);
+  color: var(--text-secondary);
+  font-size: 15.5px;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+/* 4. Project Cards Typography */
+.project-card h3 {
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-block: 10px 8px;
+}
+
+.project-card p {
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.project-meta span {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(159, 38, 56, 0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.project-meta b {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.project-card a {
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease, gap 0.2s ease;
+}
+
+.project-card a:hover {
+  gap: 10px;
+}
+
+/* 5. Films Section (Dark Mode High-Contrast Typography) */
+.films .section-head h2 {
+  color: #ffffff;
+}
+
+.films .section-head h2 em {
+  color: #f6d58f;
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+.films .section-head > p {
+  color: #d6cec1;
+}
+
+.film-card small {
+  color: #f6d58f;
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.film-card strong {
+  color: #ffffff;
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.film-card b {
+  color: #aeb3ba;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 6. Services & Process Typography */
+.service-card h3 {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-block: 12px 8px;
+}
+
+.service-card p {
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.service-card a {
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.about-lead {
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.68;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.about-copy blockquote {
+  border-left: 3px solid var(--gold);
+  padding-left: 18px;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-block: 18px;
+}
+
+.skill-tags span {
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+}
+
+/* 7. Social Grid Typography */
+.social-card small {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.social-card strong {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
