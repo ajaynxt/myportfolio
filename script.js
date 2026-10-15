@@ -163,7 +163,7 @@ const roleWord = document.querySelector("[data-role-word]");
 const roleToggle = document.querySelector("[data-role-toggle]");
 if (roleWord) {
   if (reducedMotion.matches) {
-    roleWord.textContent = "Developer & Video Editor";
+    roleWord.textContent = "Developer";
     roleToggle?.setAttribute("hidden", "");
   } else {
     const roles = ["Developer", "Video Editor"];
