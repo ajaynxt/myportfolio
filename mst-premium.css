@@ -649,3 +649,244 @@ body{background:var(--bg-primary);color:var(--text-primary)}
   .filter-bar { flex-direction: column; align-items: flex-start; }
   .archive-cta { box-shadow: 5px 5px 0 var(--border-color); }
 }
+
+/* ==========================================================================
+   AWARD-WINNING PORTFOLIO ENHANCEMENTS (REVERSE-ENGINEERED UI/UX)
+   ========================================================================== */
+
+/* 1. Infinite High-Impact Marquee Ticker (Locomotive Agency / Studio Freight) */
+.ticker-strip {
+  width: 100%;
+  overflow: hidden;
+  background: var(--ink, #0d1322);
+  color: #fff;
+  border-top: 3px solid var(--border-color, #181818);
+  border-bottom: 3px solid var(--border-color, #181818);
+  padding: 14px 0;
+  margin: 36px 0 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 5;
+  user-select: none;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: mstTicker 30s linear infinite;
+}
+
+.ticker-strip:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  white-space: nowrap;
+  font-family: var(--display, 'Syne', sans-serif);
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ticker-star {
+  color: var(--ember, #ea580c);
+  font-size: 15px;
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+@keyframes mstTicker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+    overflow-x: auto;
+  }
+}
+
+/* 2. Live Availability & Real-Time IST World Clock (Dennis Snellenberg) */
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.availability-divider {
+  color: rgba(13, 19, 34, 0.35);
+  font-weight: 400;
+}
+
+.live-clock {
+  font-family: var(--body, "Plus Jakarta Sans", sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary, #0d1322);
+  background: rgba(200, 104, 46, 0.12);
+  border: 1px solid rgba(200, 104, 46, 0.35);
+  border-radius: 6px;
+  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 3. Magnetic Custom Cursor with Context Preview (Dennis Snellenberg / Olivier Larose) */
+@media (hover: hover) and (pointer: fine) {
+  .mst-cursor-dot,
+  .mst-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    border-radius: 50%;
+    opacity: 0;
+    will-change: transform, width, height, opacity;
+  }
+
+  .mst-cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--ember, #ea580c);
+    margin-top: -3px;
+    margin-left: -3px;
+    transition: opacity 0.2s ease, transform 0.05s linear;
+  }
+
+  .mst-cursor-ring {
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    margin-left: -18px;
+    border: 1.5px solid rgba(200, 104, 46, 0.55);
+    background: rgba(200, 104, 46, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.22s var(--mst-ease), height 0.22s var(--mst-ease), margin 0.22s var(--mst-ease), background 0.22s ease, border-color 0.22s ease, opacity 0.25s ease;
+  }
+
+  .mst-cursor-ring .mst-cursor-label {
+    display: none;
+    font-family: var(--display, 'Syne', sans-serif);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  body.cursor-hover .mst-cursor-ring {
+    width: 52px;
+    height: 52px;
+    margin-top: -26px;
+    margin-left: -26px;
+    background: rgba(200, 104, 46, 0.14);
+    border-color: rgba(200, 104, 46, 0.9);
+  }
+
+  body.cursor-preview .mst-cursor-ring {
+    width: 76px;
+    height: 76px;
+    margin-top: -38px;
+    margin-left: -38px;
+    background: var(--ink, #0d1322);
+    border: 2px solid var(--gold, #9f2638);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  }
+
+  body.cursor-preview .mst-cursor-ring .mst-cursor-label {
+    display: block;
+  }
+
+  body.cursor-preview .mst-cursor-dot {
+    opacity: 0;
+  }
+}
+
+@media (hover: none) or (pointer: coarse) {
+  .mst-cursor-dot,
+  .mst-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* 4. Emil Kowalski Style Micro-Toast Notification */
+.mst-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translate3d(-50%, 40px, 0) scale(0.92);
+  background: var(--ink, #0d1322);
+  color: #fff;
+  border: 2px solid var(--border-color, #181818);
+  border-radius: 999px;
+  padding: 11px 24px;
+  font-family: var(--body, "Plus Jakarta Sans", sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28), 4px 4px 0 var(--border-color, #181818);
+  z-index: 100000;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mst-toast.is-active {
+  transform: translate3d(-50%, 0, 0) scale(1);
+  opacity: 1;
+}
+
+.mst-toast-icon {
+  color: #10b981;
+}
+
+/* 5. Bruno Simon Desktop Keyboard Shortcut Hint Bar */
+.keyboard-bar {
+  display: none;
+}
+
+@media (min-width: 960px) and (hover: hover) {
+  .keyboard-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary, #555);
+    background: rgba(13, 19, 34, 0.05);
+    border: 1px solid rgba(13, 19, 34, 0.14);
+    border-radius: 999px;
+    padding: 4px 14px;
+  }
+
+  .kbd-key {
+    background: #fff;
+    border: 1px solid rgba(13, 19, 34, 0.25);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--ink, #0d1322);
+  }
+}
