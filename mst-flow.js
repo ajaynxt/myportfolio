@@ -116,7 +116,7 @@
 
   // Magnetic feel on primary CTAs, restrained for touch and accessibility.
   if (!reduce && window.matchMedia("(pointer:fine)").matches) {
-    document.querySelectorAll(".hero-actions .button, .view-more .button, .booking-form .button").forEach((button) => {
+    document.querySelectorAll(".hero-actions .button, .view-more .button, .booking-form .button, .archive-cta .button").forEach((button) => {
       button.addEventListener("pointermove", (event) => {
         const r = button.getBoundingClientRect();
         const dx = (event.clientX - (r.left + r.width / 2)) / r.width;
