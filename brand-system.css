@@ -168,19 +168,27 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 .site-footer h2, .site-footer h3 { color: #f7f2e8; }
 .site-footer p, .site-footer a, .site-footer span { color: rgba(247, 242, 232, .72); }
 .button.whatsapp-button {
-  background: #0d1322;
-  color: #fff;
-  border: 2px solid var(--border-color, #181818);
-  box-shadow: 3px 3px 0 var(--border-color, #181818);
-  font-weight: 700;
-  border-radius: 9px;
-  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  background: #25d366 !important;
+  color: #ffffff !important;
+  border: 2px solid var(--border-color, #181818) !important;
+  box-shadow: 3px 3px 0 var(--border-color, #181818) !important;
+  font-weight: 700 !important;
+  border-radius: 9px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease !important;
+}
+.button.whatsapp-button svg {
+  stroke: #ffffff !important;
+  fill: none !important;
+  stroke-width: 2 !important;
 }
 .button.whatsapp-button:hover {
-  background: #128c7e;
-  color: #fff;
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--border-color, #181818);
+  background: #1eb857 !important;
+  color: #ffffff !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 5px 5px 0 var(--border-color, #181818) !important;
 }
 .button.form-submit { background: var(--gold, #9f2638) !important; color: #fff !important; border: 2px solid var(--border-color, #181818) !important; box-shadow: 3px 3px 0 var(--border-color, #181818) !important; }
 .archive-intro-meta { display: flex; align-items: center; gap: clamp(14px, 2vw, 24px); min-width: 0; }

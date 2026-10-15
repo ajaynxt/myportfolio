@@ -740,11 +740,12 @@ body{background:var(--bg-primary);color:var(--text-primary)}
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--text-primary, #0d1322);
-  background: rgba(200, 104, 46, 0.12);
-  border: 1px solid rgba(200, 104, 46, 0.35);
-  border-radius: 6px;
-  padding: 2px 8px;
+  color: var(--text-primary, #141414);
+  background: var(--bg-card, #fffdf8);
+  border: 1.5px solid var(--border-color, #181818);
+  box-shadow: 2px 2px 0 var(--border-color, #181818);
+  border-radius: 8px;
+  padding: 3px 10px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
