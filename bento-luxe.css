@@ -59,9 +59,8 @@
 
   --radius-card: 22px;
   --radius-pill: 9999px;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Cormorant Garamond', 'Plus Jakarta Sans', Georgia, serif;
-  --font-luxury: 'Italiana', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -243,14 +242,14 @@ body::after {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 153, 51, 0.45), rgba(255, 255, 255, 0.4), rgba(16, 185, 129, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
   pointer-events: none;
 }
 .bento-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-gold);
-  box-shadow: 0 25px 65px -15px rgba(0, 0, 0, 0.9), 0 0 45px -5px var(--saffron-glow), 0 0 60px -10px var(--green-glow);
-  transform: translateY(-5px);
+  box-shadow: 0 25px 65px -15px rgba(0, 0, 0, 0.9), 0 0 35px -5px var(--saffron-glow);
+  transform: translateY(-4px);
 }
 
 /* ── Floating Header ── */
