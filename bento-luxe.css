@@ -447,19 +447,19 @@ body::after {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4.1rem);
+  font-size: clamp(1.75rem, 3.2vw, 2.65rem);
   font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: #fff;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
 }
 .hero-desc {
-  font-size: clamp(0.98rem, 1.2vw, 1.15rem);
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
   color: #94a3b8;
-  line-height: 1.75;
-  max-width: 600px;
-  margin-bottom: 2rem;
+  line-height: 1.68;
+  max-width: 520px;
+  margin-bottom: 1.75rem;
   font-weight: 300;
 }
 .hero-actions {
@@ -564,40 +564,40 @@ body::after {
 }
 .metric-num {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 .metric-label {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: #fff;
 }
 .metric-sub {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--text-dim);
-  margin-top: 0.2rem;
+  margin-top: 0.15rem;
 }
 
 /* ── Section Headings ── */
 .section-head {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
   font-weight: 800;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   color: #fff;
-  line-height: 1.12;
+  line-height: 1.18;
 }
 .section-desc {
-  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  font-size: clamp(0.84rem, 0.98vw, 0.92rem);
   color: var(--text-muted);
-  max-width: 580px;
-  margin-top: 0.65rem;
-  line-height: 1.7;
+  max-width: 520px;
+  margin-top: 0.5rem;
+  line-height: 1.65;
   font-weight: 300;
 }
 
@@ -762,7 +762,7 @@ body::after {
 }
 .project-title {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.18rem;
   font-weight: 800;
   color: #fff;
   transition: color 0.2s ease;
@@ -859,10 +859,10 @@ body::after {
 
 .skill-title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.08rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 .skill-desc {
   font-size: 0.85rem;
