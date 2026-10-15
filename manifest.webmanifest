@@ -8,9 +8,9 @@
   "display": "standalone",
   "lang": "en-IN",
   "dir": "ltr",
-  "background_color": "#f5efe8",
-  "theme_color": "#f5efe8",
-  "categories": ["business", "portfolio", "design"],
+  "background_color": "#faf7ee",
+  "theme_color": "#faf7ee",
+  "categories": ["business", "portfolio", "design", "development", "multimedia"],
   "icons": [
     {
       "src": "assets/brand/lion-mark-black-circle.png",
