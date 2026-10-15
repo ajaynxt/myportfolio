@@ -1,9 +1,9 @@
 /* AJAYNXT shared brand system — header, navigation, contact actions and image framing */
 :root {
-  --brand-paper: #f7f2e8;
-  --brand-ink: #141414;
-  --brand-muted: #756d63;
-  --brand-accent: #9f2638;
+  --brand-paper: #f8f4eb;
+  --brand-ink: #0e0f12;
+  --brand-muted: #555963;
+  --brand-accent: #b81424;
   --brand-line: #181818;
 }
 html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
@@ -14,13 +14,13 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   width: 100%;
   height: var(--header-height, 82px);
   color: var(--brand-ink);
-  background: rgba(247, 242, 232, .95);
+  background: rgba(248, 244, 235, .95);
   border-bottom: 2px solid var(--border-color, #181818);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
 .site-header.is-scrolled {
-  background: rgba(247, 242, 232, .985);
+  background: rgba(248, 244, 235, .985);
   box-shadow: 0 8px 24px rgba(24, 24, 24, .08);
 }
 .header-inner {
@@ -190,7 +190,7 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   transform: translate(-2px, -2px) !important;
   box-shadow: 5px 5px 0 var(--border-color, #181818) !important;
 }
-.button.form-submit { background: var(--gold, #9f2638) !important; color: #fff !important; border: 2px solid var(--border-color, #181818) !important; box-shadow: 3px 3px 0 var(--border-color, #181818) !important; }
+.button.form-submit { background: var(--gold, #b81424) !important; color: #fff !important; border: 2px solid var(--border-color, #181818) !important; box-shadow: 3px 3px 0 var(--border-color, #181818) !important; }
 .archive-intro-meta { display: flex; align-items: center; gap: clamp(14px, 2vw, 24px); min-width: 0; }
 .archive-intro-meta img {
   display: block;
@@ -249,14 +249,14 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   font-weight: 600;
   font-style: italic;
   font-size: 0.95em;
-  color: var(--brand-accent, #9f2638);
+  color: var(--brand-accent, #b81424);
   letter-spacing: -0.01em;
   line-height: 1.05;
 }
 
 .hero-emblem {
   border-radius: 50% !important;
-  background: #141414 !important;
+  background: #0e0f12 !important;
   border: 2.5px solid var(--border-color, #181818) !important;
   box-shadow: 5px 5px 0 var(--border-color, #181818), 0 16px 36px rgba(0, 0, 0, .22) !important;
   padding: 0 !important;
@@ -274,7 +274,7 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 
 .about-emblem {
   border-radius: 50% !important;
-  background: #141414 !important;
+  background: #0e0f12 !important;
   border: 3px solid var(--border-color, #181818) !important;
   box-shadow: 6px 6px 0 var(--border-color, #181818) !important;
   padding: 0 !important;
@@ -292,7 +292,7 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 
 .ai-avatar {
   border-radius: 50% !important;
-  background: #141414 !important;
+  background: #0e0f12 !important;
   border: 1.5px solid var(--border-color, #181818) !important;
   overflow: hidden !important;
   padding: 0 !important;
@@ -309,13 +309,13 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   font-family: var(--display, "Syne", sans-serif) !important;
   font-weight: 800 !important;
   letter-spacing: .08em !important;
-  color: #141414 !important;
+  color: #0e0f12 !important;
 }
 .brand-name small {
   font-family: var(--body, "Plus Jakarta Sans", sans-serif) !important;
   font-weight: 700 !important;
   letter-spacing: .12em !important;
-  color: var(--brand-accent, #9f2638) !important;
+  color: var(--brand-accent, #b81424) !important;
   text-transform: uppercase !important;
 }
 
@@ -328,18 +328,18 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   font-weight: 700 !important;
   letter-spacing: .12em !important;
   text-transform: uppercase !important;
-  color: var(--brand-accent, #9f2638) !important;
+  color: var(--brand-accent, #b81424) !important;
 }
 .eyebrow span {
   width: 8px !important;
   height: 8px !important;
   border-radius: 50% !important;
-  background: var(--brand-accent, #9f2638) !important;
-  box-shadow: 0 0 0 3px rgba(159, 38, 56, .22) !important;
+  background: var(--brand-accent, #b81424) !important;
+  box-shadow: 0 0 0 3px rgba(184, 20, 36, .22) !important;
 }
 
 .hero-stats {
-  background: var(--bg-card, #fffdf8) !important;
+  background: var(--bg-card, #ffffff) !important;
   border: 2.5px solid var(--border-color, #181818) !important;
   box-shadow: 6px 6px 0 var(--border-color, #181818) !important;
   border-radius: 16px !important;
@@ -350,28 +350,28 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   transition: background .2s ease !important;
 }
 .hero-stats div:hover {
-  background: rgba(159, 38, 56, .04) !important;
+  background: rgba(184, 20, 36, .05) !important;
 }
 .hero-stats strong {
   font-family: var(--display, "Syne", sans-serif) !important;
   font-weight: 800 !important;
   font-size: 38px !important;
-  color: #141414 !important;
-  -webkit-text-fill-color: #141414 !important;
+  color: #0e0f12 !important;
+  -webkit-text-fill-color: #0e0f12 !important;
   letter-spacing: -.02em !important;
 }
 .hero-stats span {
   font-family: var(--body, "Plus Jakarta Sans", sans-serif) !important;
   font-weight: 700 !important;
   font-size: 11px !important;
-  color: #262626 !important;
+  color: #22242a !important;
   letter-spacing: .08em !important;
   text-transform: uppercase !important;
 }
 
 .ticker-strip {
-  background: #141414 !important;
-  color: #f7f2e8 !important;
+  background: #0e1014 !important;
+  color: #f8f4eb !important;
   border-top: 2.5px solid #181818 !important;
   border-bottom: 2.5px solid #181818 !important;
   box-shadow: 0 8px 30px rgba(0, 0, 0, .15) !important;
@@ -382,7 +382,7 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
   letter-spacing: .08em !important;
 }
 .ticker-star {
-  color: var(--brand-accent, #9f2638) !important;
+  color: var(--brand-accent, #b81424) !important;
 }
 
 .portrait-frame {

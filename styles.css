@@ -3,44 +3,44 @@
    ========================================================================== */
 
 :root {
-  /* ── Premium Color Palette ── */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-card: #181820;
-  --bg-card-hover: #1f1f28;
-  --bg-elevated: #22222c;
+  /* ── Royal Velvet Crimson & Silk Ivory Luxury Palette ── */
+  --bg-primary:   #f8f4eb;
+  --bg-secondary: #ede7da;
+  --bg-card:      #ffffff;
+  --bg-card-hover:#fff9f0;
+  --bg-elevated:  #e4dccc;
 
-  --text-primary: #141414;
-  --text-secondary: #333333;
-  --text-muted: #555555;
-  --text-faint: #777777;
+  --text-primary:   #0e0f12;
+  --text-secondary: #22242a;
+  --text-muted:     #555963;
+  --text-faint:     #777c88;
 
-  /* Gold / Copper / Amber — the luxury triad */
-  --gold:        #d4a84b;
-  --gold-light:  #e8c572;
-  --gold-dark:   #a67c2e;
-  --copper:      #c8794a;
-  --copper-light:#e0956a;
-  --copper-dark: #9e5530;
-  --amber:       #d4923a;
-  --bronze:      #b87333;
+  /* Royal Velvet Crimson Accent */
+  --gold:         #b81424;
+  --gold-light:   #d32338;
+  --gold-dark:    #880e1b;
+  --copper:       #b81424;
+  --copper-light: #d32338;
+  --copper-dark:  #880e1b;
+  --amber:        #b81424;
+  --bronze:       #880e1b;
 
-  /* Accent gradient — warm gold-to-copper */
-  --accent-gradient: linear-gradient(135deg, var(--gold-light), var(--gold), var(--copper-light));
-  --accent-gradient-soft: linear-gradient(135deg, rgba(212,168,75,0.15), rgba(200,121,74,0.10));
-  --accent-gradient-strong: linear-gradient(135deg, var(--gold), var(--copper));
+  /* Accent gradient — rich velvet ruby to deep wine */
+  --accent-gradient:        linear-gradient(135deg, #d32338 0%, #b81424 55%, #880e1b 100%);
+  --accent-gradient-soft:   linear-gradient(135deg, rgba(184,20,36,0.12), rgba(136,14,27,0.08));
+  --accent-gradient-strong: linear-gradient(135deg, #d32338 0%, #b81424 100%);
 
   /* Surface colors */
-  --paper:       #f5f0eb;
-  --paper-soft:  #ebe5dc;
-  --paper-deep:  #d4c8b8;
-  --ink:         #0a0a0f;
-  --ink-soft:    #1a1a22;
+  --paper:       #f8f4eb;
+  --paper-soft:  #ede7da;
+  --paper-deep:  #e4dccc;
+  --ink:         #0e0f12;
+  --ink-soft:    #181a20;
 
-  /* Borders */
-  --border-color: rgba(212, 168, 75, 0.11);
-  --border-hover: rgba(212, 168, 75, 0.35);
-  --border-light: rgba(245, 240, 235, 0.08);
+  /* Borders & Brutalist Outlines */
+  --border-color: #181818;
+  --border-hover: #b81424;
+  --border-light: rgba(24, 24, 24, 0.14);
 
   /* Shadows & Glows */
   --shadow-sm:   0 4px 16px rgba(0,0,0,0.25);
@@ -510,8 +510,8 @@ button, select { cursor: pointer; }
   font-style: italic;
   font-weight: 700;
   font-size: 1.05em;
-  color: #9f2638;
-  -webkit-text-fill-color: #9f2638;
+  color: var(--gold, #b81424);
+  -webkit-text-fill-color: #b81424;
   background: none;
   transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), filter 0.25s var(--ease);
 }
@@ -793,11 +793,11 @@ button, select { cursor: pointer; }
 .section-head h2 em,
 .about-copy h2 em,
 .booking-copy h2 em {
-  font-family: var(--display);
-  font-style: normal;
+  font-family: var(--serif);
+  font-style: italic;
   font-weight: 700;
-  color: #9f2638;
-  -webkit-text-fill-color: #9f2638;
+  color: var(--gold, #b81424);
+  -webkit-text-fill-color: #b81424;
   background: none;
 }
 
@@ -2158,8 +2158,8 @@ button, select { cursor: pointer; }
   font-family: var(--serif);
   font-style: italic;
   font-weight: 700;
-  color: var(--gold, #9f2638);
-  -webkit-text-fill-color: #9f2638;
+  color: var(--gold, #b81424);
+  -webkit-text-fill-color: #b81424;
   background: none;
 }
 
