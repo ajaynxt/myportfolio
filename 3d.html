@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1120">
+  <meta name="theme-color" content="#faf7ee">
   <meta name="description" content="Explore Ajay Saini’s interactive 3D portfolio, responsive website projects, UI/UX design and cinematic video editing at AJAYNXT.">
   <meta name="author" content="Ajay Saini">
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -30,7 +30,7 @@
   <link rel="preload" as="image" href="assets/brand/ajay-portrait.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,34 +58,27 @@
     "inLanguage": "en-IN"
   }
   </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mst-premium.css">
   <link rel="stylesheet" href="brand-system.css">
   <title>3D Portfolio Experience | Ajay Saini — AJAYNXT</title>
   <style>
-    :root {
-      --paper: #0b1120;
-      --paper-soft: #111827;
-      --ink: #f4f6fa;
-      --ink-soft: #cbd5e1;
-      --muted: #94a3b8;
-      --blue: #3b82f6;
-      --violet: #7c3aed;
-      --rose: #8b5cf6;
-      --gold: #6366f1;
-      --white: #ffffff;
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
-    body {
+    html { scroll-behavior: smooth; background: var(--bg-primary, #f7f2e8); }
+    body.three-page {
       min-width: 320px;
       overflow: hidden;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "Plus Jakarta Sans", sans-serif;
+      background-color: var(--bg-primary, #f7f2e8);
+      background-image:
+        linear-gradient(rgba(24, 24, 24, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(24, 24, 24, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at 75% 25%, rgba(185, 146, 87, 0.16), transparent 32%),
+        radial-gradient(circle at 25% 75%, rgba(159, 38, 56, 0.1), transparent 28%);
+      background-size: 64px 64px, 64px 64px, auto, auto;
+      color: var(--text-primary, #141414);
+      font-family: var(--body, "Plus Jakarta Sans", sans-serif);
       font-size: 16px;
-      font-weight: 350;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -97,9 +90,11 @@
       z-index: 0;
     }
 
-    .overlay {
+    .three-page .overlay {
       position: fixed;
       inset: 0;
+      top: calc(var(--header-height, 82px) + 12px);
+      bottom: 78px;
       z-index: 1;
       display: flex;
       flex-direction: column;
@@ -108,147 +103,193 @@
       text-align: center;
       padding: 24px;
       pointer-events: none;
+      overflow-y: auto;
     }
 
-    .hero-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 10vw, 8rem);
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      line-height: 0.95;
-      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #7c3aed 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .three-portrait {
+      display: block;
+      width: 78px;
+      height: 98px;
+      margin: 0 auto 16px;
+      object-fit: cover;
+      object-position: 50% 31%;
+      border: 3px solid var(--border-color, #181818);
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 var(--border-color, #181818);
+      background: var(--bg-card, #fffdf8);
+      pointer-events: auto;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .three-portrait:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--gold, #9f2638);
+    }
+
+    .three-page .hero-title {
+      font-family: var(--display, "Syne", sans-serif);
+      font-size: clamp(2.8rem, 7.5vw, 5.8rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 0.98;
+      color: var(--text-primary, #141414);
       margin-bottom: 12px;
+      filter: none;
       text-shadow: none;
-      filter: drop-shadow(0 4px 20px rgba(99, 102, 241, 0.25));
+      -webkit-text-fill-color: initial;
+      background: none;
     }
 
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.6rem);
-      color: rgba(255, 255, 255, 0.55);
-      letter-spacing: 0.15em;
+    .three-page .hero-sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: linear-gradient(145deg, #fffdf8, #eee5d6);
+      border: 2px solid var(--border-color, #181818);
+      border-radius: 999px;
+      box-shadow: 3px 3px 0 var(--border-color, #181818);
+      font-family: var(--body, "Plus Jakarta Sans", sans-serif);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-weight: 300;
-      margin-bottom: 40px;
+      color: var(--gold, #9f2638);
+      margin-bottom: 30px;
     }
 
-    .hero-stats {
+    .three-page .hero-stats {
       display: flex;
-      gap: clamp(24px, 5vw, 60px);
-      margin-bottom: 48px;
+      gap: clamp(16px, 4vw, 42px);
+      padding: 18px 34px;
+      background: linear-gradient(145deg, rgba(255, 253, 248, 0.94), rgba(238, 229, 214, 0.94));
+      backdrop-filter: blur(10px);
+      border: 3px solid var(--border-color, #181818);
+      border-radius: 16px;
+      box-shadow: 6px 6px 0 var(--border-color, #181818);
+      margin-bottom: 32px;
+      pointer-events: auto;
     }
 
-    .hero-stats div {
+    .three-page .hero-stats div {
       text-align: center;
     }
 
-    .hero-stats strong {
+    .three-page .hero-stats strong {
       display: block;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 400;
-      color: #fff;
+      font-family: var(--display, "Syne", sans-serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--gold, #9f2638);
       line-height: 1;
     }
 
-    .hero-stats span {
+    .three-page .hero-stats span {
       display: block;
       font-size: 10px;
-      letter-spacing: 0.12em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--text-muted, #756d63);
       margin-top: 6px;
     }
 
-    .cta-row {
+    .three-page .cta-row {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
       pointer-events: auto;
     }
 
-    .btn {
-      min-height: 50px;
+    .three-page .btn {
+      min-height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 0 26px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
+      padding: 0 24px;
+      border: 2px solid var(--border-color, #181818);
+      border-radius: 9px;
+      font-family: var(--body, "Plus Jakarta Sans", sans-serif);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      transition: all 0.25s var(--ease);
       text-decoration: none;
+      box-shadow: 4px 4px 0 var(--border-color, #181818);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
-    .btn-solid {
-      background: linear-gradient(135deg, #3b82f6, #7c3aed);
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
-    }
-
-    .btn-solid:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 40px rgba(99, 102, 241, 0.5);
-    }
-
-    .btn-ghost {
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.04);
-      color: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(8px);
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(255, 255, 255, 0.35);
-      background: rgba(255, 255, 255, 0.1);
+    .three-page .btn-solid {
+      background: var(--gold, #9f2638);
       color: #fff;
     }
 
-    .btn svg {
+    .three-page .btn-solid:hover {
+      background: var(--gold-dark, #771625);
+      color: #fff;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--border-color, #181818);
+    }
+
+    .three-page .btn-ghost {
+      background: #fff;
+      color: var(--text-primary, #141414);
+      backdrop-filter: none;
+    }
+
+    .three-page .btn-ghost:hover {
+      background: var(--bg-card-hover, #fff6e7);
+      color: var(--gold, #9f2638);
+      border-color: var(--border-color, #181818);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--border-color, #181818);
+    }
+
+    .three-page .btn svg {
       width: 16px;
       height: 16px;
       fill: none;
       stroke: currentColor;
-      stroke-width: 1.8;
+      stroke-width: 2.2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     .bottom-bar {
       position: fixed;
-      bottom: 24px;
+      bottom: 22px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 2;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
       pointer-events: auto;
     }
 
     .bottom-bar a {
+      position: relative;
       display: grid;
       place-items: center;
       width: 44px;
       height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.6);
+      border-radius: 11px;
+      background: #fff;
+      border: 2px solid var(--border-color, #181818);
+      box-shadow: 3px 3px 0 var(--border-color, #181818);
+      color: var(--text-primary, #141414);
       text-decoration: none;
-      transition: all 0.25s var(--ease);
+      transition: all 0.2s ease;
       font-size: 14px;
     }
 
     .bottom-bar a:hover {
-      border-color: rgba(255, 255, 255, 0.35);
-      color: #fff;
-      transform: translateY(-2px);
+      background: var(--bg-card-hover, #fff6e7);
+      color: var(--gold, #9f2638);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--border-color, #181818);
     }
 
     .bottom-bar a svg {
@@ -256,34 +297,34 @@
       height: 18px;
       fill: none;
       stroke: currentColor;
-      stroke-width: 1.8;
+      stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     .status-dot {
       position: absolute;
-      bottom: 4px;
-      left: 4px;
-      width: 8px;
-      height: 8px;
+      top: -3px;
+      right: -3px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
-    }
-
-    .bottom-bar .wa-link {
-      position: relative;
-      display: grid;
-      place-items: center;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1.5px var(--border-color, #181818);
     }
 
     @media (max-width: 620px) {
-      .hero-stats { gap: 16px; }
-      .hero-stats div { min-width: 70px; }
-      .hero-stats strong { font-size: 1.8rem; }
-      .bottom-bar { gap: 6px; }
-      .bottom-bar a { width: 38px; height: 38px; }
+      .three-page .hero-stats {
+        gap: 12px 20px;
+        padding: 14px 20px;
+        box-shadow: 4px 4px 0 var(--border-color, #181818);
+      }
+      .three-page .hero-stats div { min-width: 65px; }
+      .three-page .hero-stats strong { font-size: 1.8rem; }
+      .bottom-bar { gap: 8px; bottom: 14px; }
+      .bottom-bar a { width: 38px; height: 38px; border-radius: 9px; }
+      .three-page .btn { min-height: 44px; padding: 0 18px; font-size: 10px; }
     }
   </style>
 </head>
@@ -375,79 +416,79 @@
     renderer.toneMappingExposure = 1.2;
     container.appendChild(renderer.domElement);
 
-    // Lights
-    const ambient = new THREE.AmbientLight(0x222244, 0.6);
+    // Lights - Warm Champagne Gold, Ruby Wine & Amber
+    const ambient = new THREE.AmbientLight(0xfff5ea, 1.2);
     scene.add(ambient);
 
-    const keyLight = new THREE.DirectionalLight(0x3b82f6, 2.5);
-    keyLight.position.set(4, 6, 8);
+    const keyLight = new THREE.DirectionalLight(0xd4a84b, 3.5);
+    keyLight.position.set(5, 7, 8);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0x7c3aed, 1.8);
-    fillLight.position.set(-5, -3, 6);
+    const fillLight = new THREE.DirectionalLight(0x9f2638, 2.4);
+    fillLight.position.set(-6, -4, 6);
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0x8b5cf6, 1.2);
-    rimLight.position.set(0, -8, -5);
+    const rimLight = new THREE.DirectionalLight(0xc8794a, 2.2);
+    rimLight.position.set(0, -6, -4);
     scene.add(rimLight);
 
-    const pointLight = new THREE.PointLight(0x6366f1, 3, 20);
+    const pointLight = new THREE.PointLight(0xe8c77b, 4, 25);
     pointLight.position.set(0, 0, 4);
     scene.add(pointLight);
 
-    // Main 3D Object - Torus Knot
-    const geo = new THREE.TorusKnotGeometry(1.8, 0.55, 200, 30);
+    // Main 3D Object - Polished Champagne Gold Torus Knot
+    const geo = new THREE.TorusKnotGeometry(1.8, 0.55, 220, 32);
     const mat = new THREE.MeshPhysicalMaterial({
-      color: 0x3b82f6,
-      metalness: 0.4,
-      roughness: 0.15,
+      color: 0xd4a84b,
+      metalness: 0.85,
+      roughness: 0.16,
       clearcoat: 1.0,
-      clearcoatRoughness: 0.25,
-      emissive: 0x1a3a6a,
-      emissiveIntensity: 0.4,
+      clearcoatRoughness: 0.2,
+      emissive: 0x5a3415,
+      emissiveIntensity: 0.35,
       envMapIntensity: 1.2,
     });
     const knot = new THREE.Mesh(geo, mat);
     scene.add(knot);
 
-    // Wireframe ring
-    const wireGeo = new THREE.TorusKnotGeometry(1.85, 0.58, 60, 14);
+    // Wireframe ring - Luxury Wine accent
+    const wireGeo = new THREE.TorusKnotGeometry(1.85, 0.58, 64, 16);
     const wireMat = new THREE.MeshBasicMaterial({
-      color: 0x8b5cf6,
+      color: 0x9f2638,
       wireframe: true,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.22,
     });
     const wire = new THREE.Mesh(wireGeo, wireMat);
     scene.add(wire);
 
-    // Outer glow ring
+    // Outer glow ring - Warm champagne
     const glowGeo = new THREE.RingGeometry(2.3, 2.8, 64);
     const glowMat = new THREE.MeshBasicMaterial({
-      color: 0x7c3aed,
+      color: 0xd4a84b,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.14,
       side: THREE.DoubleSide,
     });
     const glow = new THREE.Mesh(glowGeo, glowMat);
     glow.position.z = -1;
     scene.add(glow);
 
-    // Secondary small knot
+    // Secondary small knot - Royal Wine
     const smallGeo = new THREE.TorusKnotGeometry(0.6, 0.2, 80, 12);
     const smallMat = new THREE.MeshPhysicalMaterial({
-      color: 0x8b5cf6,
-      metalness: 0.6,
+      color: 0x9f2638,
+      metalness: 0.8,
       roughness: 0.2,
-      emissive: 0x3b82f6,
-      emissiveIntensity: 0.2,
+      emissive: 0x5a121f,
+      emissiveIntensity: 0.4,
     });
     const smallKnot = new THREE.Mesh(smallGeo, smallMat);
     smallKnot.position.set(3.2, 1.5, 1);
     scene.add(smallKnot);
 
-    // Particles
-    const particleCount = 800;
+    // Particles - Warm Champagne Gold & Amber Stardust
+    const particleCount = 700;
     const positions = new Float32Array(particleCount * 3);
     const sizes = new Float32Array(particleCount);
     const colors = new Float32Array(particleCount * 3);
@@ -458,8 +499,8 @@
       positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       positions[i * 3 + 1] = r * Math.cos(phi);
       positions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
-      sizes[i] = 0.02 + Math.random() * 0.08;
-      const c = new THREE.Color().setHSL(0.62 + Math.random() * 0.18, 0.7, 0.4 + Math.random() * 0.4);
+      sizes[i] = 0.02 + Math.random() * 0.07;
+      const c = new THREE.Color().setHSL(0.08 + Math.random() * 0.06, 0.85, 0.45 + Math.random() * 0.35);
       colors[i * 3] = c.r;
       colors[i * 3 + 1] = c.g;
       colors[i * 3 + 2] = c.b;
@@ -469,11 +510,11 @@
     particleGeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
     particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     const particleMat = new THREE.PointsMaterial({
-      size: 0.06,
+      size: 0.065,
       vertexColors: true,
       transparent: true,
       opacity: 0.85,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending,
       sizeAttenuation: true,
     });
     const particles = new THREE.Points(particleGeo, particleMat);
