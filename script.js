@@ -518,7 +518,19 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       • <strong>Web Design & Engineering:</strong> Ultra-fast, responsive custom websites, landing pages, luxury portfolios & e-commerce stores.<br>
       • <strong>Cinematic Video Editing:</strong> Commercial brand films, wedding/haldi highlights, high-energy automotive edits, YouTube & reels.<br>
       • <strong>UI/UX Design & AI Workflows:</strong> Modern interactive prototypes, AI chatbots, automated business pipelines.<br>
-      <br>👉 <a href="projects.html">Explore 25+ Live Demo Websites</a>`,
+      <br>👉 <a href="projects.html">Explore 27+ Live Websites & Demos</a>`,
+
+    reviews: `⭐ <strong>5.0 / 5.0 Verified Client Reviews:</strong><br><br>
+      • <strong>Aman (Founder & Director, Diamond Restaurants & Sweets):</strong><br>
+      <em>&ldquo;Ajay completely transformed our online presence for Diamond Restaurants & Sweets. He built a high-speed digital ordering system with luxury aesthetic that truly represents our heritage and sweets brand. Customer inquiries and table bookings went up immediately. His work ethics and delivery speed are unmatched!&rdquo;</em><br>
+      🔗 <a href="https://diamondrestaurants.com/" target="_blank">diamondrestaurants.com ↗</a><br><br>
+      • <strong>Bharat Saini (Creative Director & Filmmaker, Wedding Shedding):</strong><br>
+      <em>&ldquo;Bharat Saini here from Wedding Shedding. Ajay edited our flagship 4K wedding films and UGC social reels with phenomenal pacing, sound design, and color grading in DaVinci. On top of that, he built our official luxury studio website that converts couples seamlessly. Absolutely world-class video editor and developer!&rdquo;</em><br>
+      🔗 <a href="https://weddingshedding.in/" target="_blank">weddingshedding.in ↗</a><br><br>
+      • <strong>Sonu Kumar (Co-Founder, Tea 20 Cafe, Jaipur):</strong><br>
+      <em>&ldquo;Working with Ajay for Tea 20 Cafe Jaipur was a game changer for our footfall. The viral UGC short-form reels and cafe promotional video edits brought thousands of new visitors from Jaipur and Instagram. His understanding of Gen-Z aesthetics, beat sync, and retention hooks is phenomenal.&rdquo;</em><br>
+      📍 Tea 20 Cafe · Jaipur (Viral UGC & Social Edits)<br><br>
+      👉 <a href="index.html#feedback">Read verified reviews on portfolio</a>`,
 
     tech: `Ajay's full engineering & creative technology stack:<br>
       • <strong>Frontend:</strong> React, Next.js, Modern JavaScript (ES6+), HTML5, CSS3 (Grid & Flexbox), Tailwind CSS<br>
@@ -593,10 +605,13 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       matchedDemos.slice(0, 5).forEach((d) => {
         reply += `🔗 <strong><a href="${d.url}" target="_blank">${d.title}</a></strong> (${d.category})<br><em>${d.desc}</em><br><br>`;
       });
-      reply += `👉 <a href="projects.html">See all 25+ live demo websites</a> or <a href="https://wa.me/919929562585" target="_blank">WhatsApp Ajay for custom work</a>.`;
+      reply += `👉 <a href="projects.html">See all 27+ live client & demo websites</a> or <a href="https://wa.me/919929562585" target="_blank">WhatsApp Ajay for custom work</a>.`;
       return reply;
     }
 
+    if (q.includes("review") || q.includes("feedback") || q.includes("testimonial") || q.includes("rating") || q.includes("aman") || q.includes("bharat") || q.includes("sonu") || q.includes("tea 20") || q.includes("wedding shedding") || q.includes("diamond")) {
+      return knowledgeBase.reviews;
+    }
     if (q.includes("all demo") || q.includes("list demo") || q.includes("projects") || q.includes("portfolio") || q.includes("kya banaya")) {
       return knowledgeBase.demos;
     }
@@ -619,11 +634,12 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       return knowledgeBase.contact;
     }
     if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("namaste") || q.includes("kaise ho")) {
-      return "Namaste! How can I assist you today? You can ask me about Ajay's <strong>25+ live demo websites</strong>, web development services, video editing, pricing, or project timelines!";
+      return "Namaste! How can I assist you today? You can ask me about Ajay's <strong>27+ live client & demo websites</strong>, verified client reviews, web development, video editing, pricing, or project timelines!";
     }
 
-    return `Ajay specializes in high-converting custom websites and cinematic video editing with over 25+ live demos across multiple industries.<br><br>
-      • <a href="projects.html">Explore 25+ Live Demo Websites</a><br>
+    return `Ajay specializes in high-converting custom websites and cinematic video editing with over 27+ live builds across multiple industries.<br><br>
+      • <a href="projects.html">Explore 27+ Live Websites</a><br>
+      • <a href="index.html#feedback">Read 5.0★ Client Reviews</a><br>
       • <a href="index.html#book">Book a project call</a><br>
       • <a href="https://wa.me/919929562585" target="_blank">Chat with Ajay on WhatsApp</a>`;
   };
