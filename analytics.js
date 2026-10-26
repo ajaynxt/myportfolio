@@ -143,7 +143,7 @@
 
     // Demo Project / Client Link Click
     const isProjectCard = target.closest('.project-card, .project-preview, [data-project-item]');
-    if (isProjectCard || href.includes('ajaynxt.com') || href.includes('diamondrestaurants.com')) {
+    if (isProjectCard || href.includes('ajaynxt.com') || href.includes('diamondrestaurants.com') || href.includes('weddingshedding.in')) {
       // Find project title if available
       const projectTitle = isProjectCard?.querySelector('h3, h2, .project-title')?.innerText || text || href;
       if (href && !href.startsWith('#')) {

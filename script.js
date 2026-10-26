@@ -411,9 +411,15 @@ if (heroStats[2]) {
   const label = heroStats[2].querySelector("span");
   if (label) label.textContent = "Featured edits";
 }
+if (heroStats[3]) {
+  const value = heroStats[3].querySelector("strong");
+  const label = heroStats[3].querySelector("span");
+  if (value) value.textContent = "02";
+  if (label) label.textContent = "Client websites";
+}
 
 const viewMoreDemoCount = document.querySelector(".view-more .button span");
-if (viewMoreDemoCount) viewMoreDemoCount.textContent = "25+ live demos";
+if (viewMoreDemoCount) viewMoreDemoCount.textContent = "27 live builds";
 
 const filmsIntro = document.querySelector("#films .section-head p:last-child");
 if (filmsIntro) filmsIntro.textContent = "Nine selected cinematic edits from a much larger body of video work. Select any film to watch.";
@@ -479,6 +485,7 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
 
   const demoCatalog = [
     { title: "Diamond Restaurants", category: "Client Work", url: "https://diamondrestaurants.com/", desc: "Restaurant, bakery & sweets full ordering platform." },
+    { title: "Wedding Shedding", category: "Client Work", url: "https://weddingshedding.in/", desc: "Luxury wedding photography & 4K cinematic films studio." },
     { title: "Celestique Jewellery", category: "Luxury Retail", url: "https://jewellery.ajaynxt.com/", desc: "Editorial luxury storefront for fine jewelry." },
     { title: "Rajmahal Lake Palace", category: "Luxury Hospitality", url: "https://hotel.ajaynxt.com/", desc: "Heritage luxury palace hotel guest experience." },
     { title: "Mediora Diagnostics", category: "Healthcare", url: "https://diagnostic.ajaynxt.com/", desc: "Patient-first medical lab & diagnostic booking." },
@@ -548,7 +555,12 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       • 💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajaynxt/" target="_blank">linkedin.com/in/ajaynxt</a><br>
       • 📅 <strong>Book a Call:</strong> <a href="index.html#book">Fill the project booking form</a>`,
 
-    demos: `Ajay has built a live archive of <strong>25+ specialized industry demos</strong>:<br><br>
+    demos: `Ajay has built a live archive of <strong>27+ specialized websites & live demos</strong>:<br><br>
+      💼 <strong>Live Client Websites:</strong><br>
+      • <a href="https://diamondrestaurants.com/" target="_blank">Diamond Restaurants (Live Client) ↗</a><br>
+      • <a href="https://weddingshedding.in/" target="_blank">Wedding Shedding (Live Client) ↗</a><br><br>
+      💍 <strong>Weddings & Film Services:</strong><br>
+      • <a href="https://weddingshedding.in/" target="_blank">Wedding Shedding (Live Client) ↗</a> · <a href="https://wedding.ajaynxt.com/" target="_blank">Wedding Planner & Films ↗</a><br><br>
       🏢 <strong>Real Estate & Construction:</strong><br>
       • <a href="https://realty.ajaynxt.com/" target="_blank">Arclune Estates ↗</a> · <a href="https://estate.ajaynxt.com/" target="_blank">Property Portal ↗</a> · <a href="https://construction.ajaynxt.com/" target="_blank">Stonecrest Developers ↗</a><br><br>
       🏨 <strong>Hospitality & Resorts:</strong><br>
@@ -559,7 +571,7 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       • <a href="https://health.ajaynxt.com/" target="_blank">Velora Hospital ↗</a> · <a href="https://diagnostic.ajaynxt.com/" target="_blank">Mediora Diagnostics ↗</a> · <a href="https://clinic.ajaynxt.com/" target="_blank">Doctor Clinic ↗</a><br><br>
       🍽️ <strong>Food & Dining:</strong><br>
       • <a href="https://diamondrestaurants.com/" target="_blank">Diamond Restaurants (Live Client) ↗</a> · <a href="https://restaurant.ajaynxt.com/" target="_blank">Restaurant & Cafe ↗</a><br><br>
-      👉 <a href="projects.html">View all 25+ demo websites here</a>`
+      👉 <a href="projects.html">View all 27+ live websites here</a>`
   };
 
   const findMatchingDemos = (query) => {
