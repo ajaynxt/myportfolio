@@ -525,11 +525,11 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       <em>&ldquo;Ajay completely transformed our online presence for Diamond Restaurants & Sweets. He built a high-speed digital ordering system with luxury aesthetic that truly represents our heritage and sweets brand. Customer inquiries and table bookings went up immediately. His work ethics and delivery speed are unmatched!&rdquo;</em><br>
       🔗 <a href="https://diamondrestaurants.com/" target="_blank">diamondrestaurants.com ↗</a><br><br>
       • <strong>Bharat Saini (Creative Director & Filmmaker, Wedding Shedding):</strong><br>
-      <em>&ldquo;Bharat Saini here from Wedding Shedding. Ajay edited our flagship 4K wedding films and UGC social reels with phenomenal pacing, sound design, and color grading in DaVinci. On top of that, he built our official luxury studio website that converts couples seamlessly. Absolutely world-class video editor and developer!&rdquo;</em><br>
+      <em>&ldquo;Thank you so much bhai! Hamare moment me or char chand lga diye aapne. Ajay edited our cinematic couple reels and 4K wedding films with phenomenal pacing, sound design, and color grading in DaVinci. On top of that, he built our official luxury studio website that converts couples seamlessly. Absolutely world-class video editor and developer!&rdquo;</em><br>
       🔗 <a href="https://weddingshedding.in/" target="_blank">weddingshedding.in ↗</a><br><br>
-      • <strong>Sonu Kumar (Co-Founder, Tea 20 Cafe, Jaipur):</strong><br>
-      <em>&ldquo;Working with Ajay for Tea 20 Cafe Jaipur was a game changer for our footfall. The viral UGC short-form reels and cafe promotional video edits brought thousands of new visitors from Jaipur and Instagram. His understanding of Gen-Z aesthetics, beat sync, and retention hooks is phenomenal.&rdquo;</em><br>
-      📍 Tea 20 Cafe · Jaipur (Viral UGC & Social Edits)<br><br>
+      • <strong>Sonu Kumar (Co-Founder & Cinematographer, Wedding Shedding):</strong><br>
+      <em>&ldquo;Working with Ajay on our Wedding Shedding films and client stories has been exceptional. His cinematic editing, audio synchronization, and technical reliability give our wedding photography studio a huge edge. Highly recommended!&rdquo;</em><br>
+      🔗 <a href="https://weddingshedding.in/" target="_blank">weddingshedding.in ↗</a><br><br>
       👉 <a href="index.html#feedback">Read verified reviews on portfolio</a>`,
 
     tech: `Ajay's full engineering & creative technology stack:<br>
