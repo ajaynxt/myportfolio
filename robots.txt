@@ -1,6 +1,7 @@
 # robots.txt for ajaynxt.com (Official Portfolio of Ajay Saini)
 User-agent: *
 Allow: /
+Disallow: /showcase-admin.html
 Allow: /assets/
 Allow: /styles.css
 Allow: /mst-premium.css
