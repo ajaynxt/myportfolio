@@ -1,31 +1,38 @@
-# AJAYNXT Showcase — Firebase setup
+# AJAYNXT Showcase — Firebase setup and security
 
-## What is stored where
-- `showcase_public` (Firestore): title, category, industry, short summary, preview image URL/path, featured/active flags, sort order and timestamps. These fields are visible to visitors.
-- `showcase_private` (Firestore): full prompt text and optional internal notes. Only the verified admin email in the rules can read or write this collection.
-- `showcase/{designId}/...` (Firebase Storage): uploaded visual preview images. Images are public; uploads and deletes require the verified admin account.
+## Data separation
+- `showcase_public`: visitor-safe title, category, industry, short summary, preview URL/path, featured/active flags, sort order and timestamps.
+- `showcase_private`: full prompt text and private notes. Firestore rules allow access only to the verified owner email.
+- `showcase/{designId}/...`: visual preview images. Visitors can read previews; only the verified owner can upload, replace or delete.
 
-The public page never requests `showcase_private`. Do not add prompt text to public documents, image metadata, filenames or public descriptions.
+The public page never requests `showcase_private`. Never add prompt text to public records, page source, filenames, image metadata or analytics events.
 
-## Firebase console steps
-1. Create or open a Firebase project and register a Web app.
-2. In Project settings → General → Your apps, copy the web config into `firebase-config.js`.
-3. In Authentication → Sign-in method, enable Google.
-4. In Authentication → Settings → Authorized domains, add `ajaynxt.com`.
-5. Create a Cloud Firestore database and paste the root `firestore.rules`.
-6. Create the Storage bucket and paste the root `storage.rules`.
-7. Deploy the Hosting files and rules using your Firebase CLI / existing hosting workflow.
+## Firebase console setup
+1. Create/open a Firebase project and register a Web app.
+2. Copy the Web App config into `firebase-config.js`.
+3. Enable Google in Authentication → Sign-in method.
+4. Add `ajaynxt.com` in Authentication → Settings → Authorized domains.
+5. Create Firestore in production/locked mode and publish `firestore.rules`.
+6. Create/activate Cloud Storage and publish `storage.rules`.
+7. Deploy the site and rules using your Firebase CLI / existing hosting workflow.
 
-**Billing note:** Firebase Storage may require the Blaze billing plan for new projects. Check the current Firebase console requirements before enabling it. No billing plan is activated by this repository change.
+**Billing:** Cloud Storage for Firebase requires the Blaze pay-as-you-go plan from February 3, 2026. No-cost quotas remain available on Blaze, but usage above included quotas can be billed. Do not upgrade until billing and budget alerts are reviewed. Firestore is separate from Storage.
 
-## Admin access
-Open `https://ajaynxt.com/showcase-admin.html` and sign in with the verified Google account `ajayx3neha@gmail.com`. Other accounts are rejected in the UI and, importantly, by Firestore/Storage security rules.
+## Owner-only access
+Open `https://ajaynxt.com/showcase-admin.html`. Sign in using the verified Google account `ajayx3neha@gmail.com`. The UI check is not the security boundary: the Firestore and Storage rules independently reject other accounts. Protect the Google account with 2-Step Verification and a unique password.
+
+## App Check
+The client supports reCAPTCHA v3 App Check. Register the website in Firebase App Check, put the site key in `appCheckSiteKey` in `firebase-config.js`, monitor valid traffic first, then enforce App Check for Firestore and Storage. App Check complements but does not replace Authentication and Security Rules.
 
 ## Google Analytics 4
-Open GA4 → Admin → Data streams → Web → copy the Measurement ID (format `G-XXXXXXXXXX`). Replace the placeholder in `ga4.js`. The same file is loaded by the homepage, projects page and showcase. It tracks page views, WhatsApp/phone/email clicks, navigation, project clicks and showcase-specific events. No form values, prompts or message text are sent.
+Add the GA4 Web Measurement ID (format `G-XXXXXXXXXX`) in `ga4.js`. Until a real ID is entered, the tag stays inactive. Events include page views, navigation, project clicks, category filters, design impressions and WhatsApp prompt requests. Private prompts, email addresses, form contents and WhatsApp message text are not sent.
 
-## Important deployment checks
-- Verify Firestore rules and Storage rules are published before opening the admin panel.
-- Never set `showcase_private` to public read.
-- Never put prompts into `showcase_public`.
-- Test the public page in a signed-out/incognito browser and test admin with the owner Google account.
+## Before launch
+- Publish Firestore and Storage rules before enabling the admin panel.
+- Test the public page signed out: only `showcase_public` records with `active: true` should be visible.
+- Test prompt reads signed out: `showcase_private` must be denied.
+- Test writes from a second Google account: all admin writes must be denied.
+- Enable App Check enforcement only after checking valid traffic.
+- Review Google Cloud budget alerts and usage.
+
+This raises the security level substantially, but no public website can be guaranteed impossible to attack. Keep dependencies, account recovery methods and rules reviewed.
