@@ -7,17 +7,12 @@ service firebase.storage {
         && request.auth.token.email_verified == true;
     }
 
-    // Public previews only. Full prompt text is never stored in image metadata.
+    // Only visual preview files are public. Prompt text must never be stored here.
     match /showcase/{designId}/{fileName} {
       allow read: if true;
       allow create, update: if isAjayAdmin()
         && request.resource.size < 8 * 1024 * 1024
-        && request.resource.contentType.matches('^image/(jpeg|png|webp);
-      allow delete: if isAjayAdmin();
-    }
-  }
-}
-);
+        && request.resource.contentType.matches('^image/(jpeg|png|webp)$');
       allow delete: if isAjayAdmin();
     }
   }
