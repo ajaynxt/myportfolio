@@ -36,3 +36,8 @@ Add the GA4 Web Measurement ID (format `G-XXXXXXXXXX`) in `ga4.js`. Until a real
 - Review Google Cloud budget alerts and usage.
 
 This raises the security level substantially, but no public website can be guaranteed impossible to attack. Keep dependencies, account recovery methods and rules reviewed.
+
+## Hosting-level browser protections
+The root `firebase.json` config now sets HSTS (one year, apex only), nosniff, frame denial, a strict referrer policy, a limited Permissions-Policy, and CSP directives for framing/object/base-URL protections. The admin HTML and its loader JavaScript receive no-store cache headers; the admin route is also marked noindex. These are Firebase Hosting headers: they take effect only after deploying this repository to the Firebase Hosting project that serves the live domain.
+
+These headers do not activate Cloudflare. Cloudflare DNS proxy, WAF managed rules, DDoS controls, Bot Fight Mode, rate limits, and Cloudflare TLS settings must be configured separately in the domain's Cloudflare zone.
