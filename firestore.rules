@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAjayAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'ajayx3neha@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    // This collection contains ONLY visitor-safe showcase metadata.
+    // Never store prompt text or private notes in showcase_public.
+    match /showcase_public/{designId} {
+      allow get, list: if isAjayAdmin() || resource.data.active == true;
+      allow create, update, delete: if isAjayAdmin();
+    }
+
+    // Full prompts are separated from public metadata and are admin-only.
+    match /showcase_private/{designId} {
+      allow read, write: if isAjayAdmin();
+    }
+
+    // Deny every other collection unless a later feature defines its own rules.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
