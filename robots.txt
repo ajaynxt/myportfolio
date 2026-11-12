@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Disallow: /showcase-admin.html
+Disallow: /showcase-admin.js
 Allow: /assets/
 Allow: /styles.css
 Allow: /mst-premium.css
