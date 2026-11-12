@@ -1,7 +1,7 @@
 import {
   firebaseReady, auth, db, storage, googleProvider, ADMIN_EMAIL,
   signInWithPopup, signOut, onAuthStateChanged,
-  collection, doc, getDoc, getDocs, serverTimestamp, setDoc, writeBatch, deleteDoc,
+  collection, doc, getDoc, getDocs, serverTimestamp, writeBatch,
   ref, uploadBytes, getDownloadURL, deleteObject
 } from "./firebase-client.js";
 
@@ -13,7 +13,7 @@ const workspaceAlert = $("workspace-alert"), form = $("design-form");
 const saveButton = $("save-button"), saveStatus = $("save-status");
 const designList = $("design-list"), listCount = $("list-count");
 const fileInput = $("visual"), preview = $("image-preview");
-let currentUser = null, currentItems = [], currentImageUrl = "", currentImagePath = "";
+let currentItems = [], currentImageUrl = "", currentImagePath = "";
 
 function message(el, text, type = "") {
   el.textContent = text;
@@ -34,10 +34,7 @@ function resetForm() {
 }
 function showImage(url) {
   preview.replaceChildren();
-  if (!url) {
-    preview.append(Object.assign(document.createElement("span"), {textContent:"Image preview will appear here"}));
-    return;
-  }
+  if (!url) { preview.append(Object.assign(document.createElement("span"), {textContent:"Image preview will appear here"})); return; }
   const img = new Image(); img.alt = "Selected design preview"; img.src = url; preview.append(img);
 }
 fileInput.addEventListener("change", () => {
@@ -47,7 +44,7 @@ fileInput.addEventListener("change", () => {
   if (!allowed.includes(file.type) || file.size > 8 * 1024 * 1024) {
     fileInput.value = ""; message(workspaceAlert, "Choose a JPG, PNG or WebP image smaller than 8 MB.", "warning"); showImage(currentImageUrl); return;
   }
-  const localUrl = URL.createObjectURL(file); showImage(localUrl);
+  showImage(URL.createObjectURL(file));
 });
 
 async function loadItems() {
@@ -74,12 +71,11 @@ async function loadItems() {
     actions.append(edit,remove); info.append(title,meta,actions); card.append(info); designList.append(card);
   });
 }
-
 async function editItem(id) {
   const item=currentItems.find((entry)=>entry.id===id); if(!item) return;
   status("Loading private prompt…");
   const privateSnap=await getDoc(doc(db,"showcase_private",id));
-  if(!privateSnap.exists()) throw new Error("The private prompt record is missing. This design cannot be edited until its prompt record is restored.");
+  if(!privateSnap.exists()) throw new Error("The private prompt record is missing. Restore it before editing this design.");
   const secret=privateSnap.data();
   $("design-id").value=id; $("title").value=item.title||""; $("category").value=item.category||"Sites";
   $("industry").value=item.industry||""; $("summary").value=item.summary||"";
@@ -89,16 +85,12 @@ async function editItem(id) {
   showImage(currentImageUrl); $("form-heading").textContent="Edit design"; saveButton.textContent="Update design";
   status("Private prompt loaded for admin only."); form.scrollIntoView({behavior:"smooth",block:"start"});
 }
-
 async function saveItem(event) {
   event.preventDefault();
   const id=$("design-id").value || crypto.randomUUID();
-  const title=cleanText($("title").value,80);
-  const category=$("category").value;
-  const industry=cleanText($("industry").value,40);
-  const summary=cleanText($("summary").value,220);
-  const prompt=cleanText($("prompt").value,16000);
-  const notes=cleanText($("notes").value,1000);
+  const title=cleanText($("title").value,80), category=$("category").value;
+  const industry=cleanText($("industry").value,40), summary=cleanText($("summary").value,220);
+  const prompt=cleanText($("prompt").value,16000), notes=cleanText($("notes").value,1000);
   const file=fileInput.files?.[0];
   if(!title||!industry||!summary||!prompt){message(workspaceAlert,"Title, industry, summary and private prompt are required.","warning");return;}
   if(!currentImageUrl && !file){message(workspaceAlert,"Add a visual preview image before saving this design.","warning");return;}
@@ -114,40 +106,28 @@ async function saveItem(event) {
       imageUrl=await getDownloadURL(imageRef);imagePath=uploadedPath;
     }
     const existing=currentItems.find((item)=>item.id===id);
-    const publicData={
-      title,category,industry,summary,imageUrl,imagePath,
-      featured:$("featured").checked,active:$("active").checked,
-      sortOrder:Number(existing?.sortOrder||Date.now()),
-      createdAt:existing?.createdAt||serverTimestamp(),updatedAt:serverTimestamp()
-    };
+    const publicData={title,category,industry,summary,imageUrl,imagePath,featured:$("featured").checked,active:$("active").checked,sortOrder:Number(existing?.sortOrder||Date.now()),createdAt:existing?.createdAt||serverTimestamp(),updatedAt:serverTimestamp()};
     const batch=writeBatch(db);
     batch.set(doc(db,"showcase_public",id),publicData,{merge:true});
     batch.set(doc(db,"showcase_private",id),{prompt,internalNotes:notes,updatedAt:serverTimestamp()},{merge:true});
     await batch.commit();
-    if(file && currentImagePath && currentImagePath!==uploadedPath){
-      try{await deleteObject(ref(storage,currentImagePath));}catch(cleanupError){console.warn("Old preview cleanup failed",cleanupError);}
-    }
-    currentImageUrl=imageUrl;currentImagePath=imagePath;
-    resetForm();await loadItems();message(workspaceAlert,"Design saved. The prompt is private; only its visual card is public.");
+    if(file && currentImagePath && currentImagePath!==uploadedPath){try{await deleteObject(ref(storage,currentImagePath));}catch(cleanupError){console.warn("Old preview cleanup failed",cleanupError);}}
+    resetForm();await loadItems();message(workspaceAlert,"Design saved. Only its visual card is public; the prompt remains private.");
   }catch(error){
     if(uploadedPath){try{await deleteObject(ref(storage,uploadedPath));}catch{}}
-    console.error("[AJAYNXT Admin]",error);message(workspaceAlert,"Save failed. Check Firebase setup, billing, and security rules, then retry. "+(error.code||""),"warning");status("Not saved.");
+    console.error("[AJAYNXT Admin]",error);message(workspaceAlert,"Save failed. Check Firebase setup, billing and security rules, then retry. "+(error.code||""),"warning");status("Not saved.");
   }finally{saveButton.disabled=false;}
 }
-
 async function deleteItem(id) {
   const item=currentItems.find((entry)=>entry.id===id);
   if(!item||!confirm(`Delete "${item.title}" and its private prompt? This cannot be undone.`))return;
-  try{
-    const batch=writeBatch(db);
-    batch.delete(doc(db,"showcase_public",id));batch.delete(doc(db,"showcase_private",id));
-    await batch.commit();
-    if(item.imagePath){try{await deleteObject(ref(storage,item.imagePath));}catch(error){console.warn("Image cleanup failed",error);}}
-    if($("design-id").value===id)resetForm();
-    await loadItems();message(workspaceAlert,"Design and private prompt deleted.");
-  }catch(error){console.error(error);message(workspaceAlert,"Delete failed. Check Firebase security rules and try again.","warning");}
+  const batch=writeBatch(db);
+  batch.delete(doc(db,"showcase_public",id));batch.delete(doc(db,"showcase_private",id));
+  await batch.commit();
+  if(item.imagePath){try{await deleteObject(ref(storage,item.imagePath));}catch(error){console.warn("Image cleanup failed",error);}}
+  if($("design-id").value===id)resetForm();
+  await loadItems();message(workspaceAlert,"Design and private prompt deleted.");
 }
-
 designList.addEventListener("click",async(event)=>{
   const button=event.target.closest("button[data-action]");if(!button)return;
   button.disabled=true;
@@ -168,19 +148,20 @@ signInButton.addEventListener("click",async()=>{
 signOutButton.addEventListener("click",()=>signOut(auth));
 
 if(!firebaseReady){
-  setupAlert.hidden=false;setupAlert.textContent="Firebase Web App settings are not configured yet. Add the project values in firebase-config.js and deploy Firestore/Storage security rules before using this panel.";
-  signInButton.disabled=true;
+  setupAlert.hidden=false;setupAlert.textContent="Firebase Web App settings are not configured. Add the project values in firebase-config.js and publish Firestore/Storage rules before using this panel.";
+  signInButton.disabled=true;$("account-state").textContent="Setup required";
+  loginPanel.hidden=false;workspace.hidden=true;signOutButton.hidden=true;
+}else{
+  onAuthStateChanged(auth,(user)=>{
+    if(!user){loginPanel.hidden=false;workspace.hidden=true;signOutButton.hidden=true;$("account-state").textContent="Not signed in";return;}
+    if(user.email!==ADMIN_EMAIL||!user.emailVerified){
+      signOut(auth).catch(()=>{});
+      loginPanel.hidden=false;workspace.hidden=true;
+      message(loginAlert,"Access denied. Sign in with the verified authorised owner account.","warning");
+      return;
+    }
+    loginPanel.hidden=true;workspace.hidden=false;signOutButton.hidden=false;
+    $("account-state").textContent=user.email;
+    loadItems().catch((error)=>message(workspaceAlert,"Could not load designs. Check Firestore rules. "+(error.code||""),"warning"));
+  });
 }
-onAuthStateChanged(auth,(user)=>{
-  currentUser=user||null;
-  if(!user){loginPanel.hidden=false;workspace.hidden=true;signOutButton.hidden=true;$("account-state").textContent="Not signed in";return;}
-  if(user.email!==ADMIN_EMAIL||!user.emailVerified){
-    signOut(auth).catch(()=>{});
-    loginPanel.hidden=false;workspace.hidden=true;
-    message(loginAlert,"Access denied. Sign in with the verified authorised owner account.","warning");
-    return;
-  }
-  loginPanel.hidden=true;workspace.hidden=false;signOutButton.hidden=false;
-  $("account-state").textContent=user.email;
-  loadItems().catch((error)=>message(workspaceAlert,"Could not load designs. Check Firestore rules. "+(error.code||""),"warning"));
-});
