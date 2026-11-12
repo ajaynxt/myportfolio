@@ -3,10 +3,16 @@
  <url><loc>https://ajaynxt.com/</loc><lastmod>2026-11-12</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
  <url><loc>https://ajaynxt.com/projects.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
  <url><loc>https://ajaynxt.com/3d.html</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
- <url><loc>https://ajaynxt.com/locations/jaipur/</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
- <url><loc>https://ajaynxt.com/locations/sikar/</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
- <url><loc>https://ajaynxt.com/locations/rajasthan/</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
- <url><loc>https://ajaynxt.com/locations/delhi-ncr/</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
- <url><loc>https://ajaynxt.com/locations/india/</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
- <url><loc>https://ajaynxt.com/locations/worldwide/</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+ <url><loc>https://ajaynxt.com/services/website-design/</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+ <url><loc>https://ajaynxt.com/services/seo/</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+ <url><loc>https://ajaynxt.com/services/digital-marketing/</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+ <url><loc>https://ajaynxt.com/services/ecommerce/</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+ <url><loc>https://ajaynxt.com/services/social-media/</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+ <url><loc>https://ajaynxt.com/services/ai-workflows/</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+ <url><loc>https://ajaynxt.com/locations/jaipur/</loc><lastmod>2026-11-12</lastmod><priority>0.7</priority></url>
+ <url><loc>https://ajaynxt.com/locations/sikar/</loc><lastmod>2026-11-12</lastmod><priority>0.7</priority></url>
+ <url><loc>https://ajaynxt.com/locations/rajasthan/</loc><lastmod>2026-11-12</lastmod><priority>0.7</priority></url>
+ <url><loc>https://ajaynxt.com/locations/delhi-ncr/</loc><lastmod>2026-11-12</lastmod><priority>0.7</priority></url>
+ <url><loc>https://ajaynxt.com/locations/india/</loc><lastmod>2026-11-12</lastmod><priority>0.7</priority></url>
+ <url><loc>https://ajaynxt.com/locations/worldwide/</loc><lastmod>2026-11-12</lastmod><priority>0.7</priority></url>
 </urlset>
