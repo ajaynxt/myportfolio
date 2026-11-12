@@ -7,19 +7,51 @@ service cloud.firestore {
         && request.auth.token.email_verified == true;
     }
 
-    // This collection contains ONLY visitor-safe showcase metadata.
-    // Never store prompt text or private notes in showcase_public.
+    function validPublicDesign(data) {
+      return data.keys().hasOnly([
+          'title', 'category', 'industry', 'summary', 'imageUrl',
+          'imagePath', 'featured', 'active', 'sortOrder', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasAll([
+          'title', 'category', 'industry', 'summary', 'imageUrl',
+          'imagePath', 'featured', 'active', 'sortOrder', 'createdAt', 'updatedAt'
+        ])
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 80
+        && data.category in ['Sites', 'Dashboards', 'Social']
+        && data.industry is string && data.industry.size() <= 40
+        && data.summary is string && data.summary.size() > 0 && data.summary.size() <= 220
+        && data.imageUrl is string && data.imageUrl.size() <= 2048
+        && data.imagePath is string && data.imagePath.size() <= 300
+        && data.featured is bool
+        && data.active is bool
+        && data.sortOrder is int
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function validPrivateDesign(data) {
+      return data.keys().hasOnly(['prompt', 'internalNotes', 'updatedAt'])
+        && data.keys().hasAll(['prompt', 'internalNotes', 'updatedAt'])
+        && data.prompt is string && data.prompt.size() > 0 && data.prompt.size() <= 16000
+        && data.internalNotes is string && data.internalNotes.size() <= 1000
+        && data.updatedAt is timestamp;
+    }
+
+    // Public collection contains only visitor-safe card information.
     match /showcase_public/{designId} {
       allow get, list: if isAjayAdmin() || resource.data.active == true;
-      allow create, update, delete: if isAjayAdmin();
+      allow create, update: if isAjayAdmin() && validPublicDesign(request.resource.data);
+      allow delete: if isAjayAdmin();
     }
 
-    // Full prompts are separated from public metadata and are admin-only.
+    // Full prompts and internal notes can only be read or written by the owner.
     match /showcase_private/{designId} {
-      allow read, write: if isAjayAdmin();
+      allow get, list: if isAjayAdmin();
+      allow create, update: if isAjayAdmin() && validPrivateDesign(request.resource.data);
+      allow delete: if isAjayAdmin();
     }
 
-    // Deny every other collection unless a later feature defines its own rules.
+    // Deny all other collections until separately secured rules are added.
     match /{document=**} {
       allow read, write: if false;
     }
