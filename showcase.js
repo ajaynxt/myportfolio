@@ -10,6 +10,7 @@ const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav-links");
 let designs = [];
 let activeFilter = "All";
+let searchEventSent = false;
 const seen = new Set();
 
 const escapeHTML = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({
@@ -19,7 +20,7 @@ const escapeHTML = (value = "") => String(value).replace(/[&<>"']/g, (char) => (
 const safeImage = (value) => {
   try {
     const url = new URL(value, window.location.origin);
-    return ["https:", "http:"].includes(url.protocol) ? url.href : "";
+    return url.protocol === "https:" ? url.href : "";
   } catch { return ""; }
 };
 
@@ -126,7 +127,12 @@ filterButtons.forEach((button) => button.addEventListener("click", () => {
   render();
 }));
 searchInput.addEventListener("input", () => {
-  window.trackAJAYNXT?.("showcase_search", { search_used: Boolean(searchInput.value.trim()) });
+  const hasQuery = Boolean(searchInput.value.trim());
+  if (hasQuery && !searchEventSent) {
+    window.trackAJAYNXT?.("showcase_search", { search_used: true });
+    searchEventSent = true;
+  }
+  if (!hasQuery) searchEventSent = false;
   render();
 });
 sortSelect.addEventListener("change", render);
