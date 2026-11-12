@@ -1,0 +1,19 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAjayAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'ajayx3neha@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    // Public previews only. Full prompt text is never stored in image metadata.
+    match /showcase/{designId}/{fileName} {
+      allow read: if true;
+      allow create, update: if isAjayAdmin()
+        && request.resource.size < 8 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp)');
+      allow delete: if isAjayAdmin();
+    }
+  }
+}
