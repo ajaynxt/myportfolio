@@ -5,11 +5,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   capture:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    environment:
+      name: github-pages
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -21,7 +25,7 @@ jobs:
           node-version: 22
       - name: Install Playwright
         run: |
-          npm install --no-save playwright
+          npm install --no-save --package-lock=false playwright
           npx playwright install --with-deps chromium
       - name: Capture clean client homepage heroes
         run: node scripts/capture-client-previews.mjs
@@ -36,3 +40,12 @@ jobs:
             git commit -m "Refresh clean client homepage previews"
             git push origin main
           fi
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy updated site
+        id: deployment
+        uses: actions/deploy-pages@v4
