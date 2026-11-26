@@ -587,6 +587,8 @@ button, select { cursor: pointer; }
 
 .availability b { color: var(--text-secondary); font-weight: 400; }
 
+.archive-availability { margin-top: 14px; }
+
 .status-dot {
   width: 8px;
   height: 8px;
