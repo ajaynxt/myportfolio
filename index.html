@@ -547,8 +547,8 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classLi
 document.getElementById('year').textContent=new Date().getFullYear();
 const leadForm=document.getElementById('leadform');
 function getLeadMessage(){if(!leadForm.reportValidity())return null;const d=new FormData(leadForm);return ['New AJAYNXT project enquiry','Name: '+d.get('name'),'Business: '+(d.get('business')||'Not provided'),'Service: '+d.get('service'),'Details: '+d.get('message')].join('\n')}
-leadForm.addEventListener('submit',(event)=>{event.preventDefault();const msg=getLeadMessage();if(msg){document.getElementById('enquiry-status').textContent='Opening WhatsApp. Review your message and send it there.';window.location.href='https://wa.me/919929562585?text='+encodeURIComponent(msg)}});
-document.getElementById('send-email').addEventListener('click',()=>{const msg=getLeadMessage();if(msg){document.getElementById('enquiry-status').textContent='Opening your email app. Review and send your draft there.';const subject='New AJAYNXT project enquiry';window.location.href='mailto:ajayx3neha@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(msg)}});
+leadForm.addEventListener('submit',(event)=>{event.preventDefault();const msg=getLeadMessage();if(msg){window.ajaynxtPinterestLead?.('WhatsApp enquiry handoff');document.getElementById('enquiry-status').textContent='Opening WhatsApp. Review your message and send it there.';window.location.href='https://wa.me/919929562585?text='+encodeURIComponent(msg)}});
+document.getElementById('send-email').addEventListener('click',()=>{const msg=getLeadMessage();if(msg){window.ajaynxtPinterestLead?.('Email enquiry handoff');document.getElementById('enquiry-status').textContent='Opening your email app. Review and send your draft there.';const subject='New AJAYNXT project enquiry';window.location.href='mailto:ajayx3neha@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(msg)}});
 </script>
 <script src="/homepage-media.js" defer></script>
 <script src="/film-showcase.js" defer></script>
