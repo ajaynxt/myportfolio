@@ -2,48 +2,63 @@
 <html lang="en-IN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.clarity.ms https://scripts.clarity.ms https://www.googletagmanager.com; connect-src 'self' https://*.clarity.ms https://*.bing.com https://www.google-analytics.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://c.clarity.ms https://c.bing.com https://www.google-analytics.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#faf7ee">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Italiana&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="assets/brand/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/brand/logo.png">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="mst-premium.css">
-  <link rel="stylesheet" href="brand-system.css">
-  <title>Page Not Found (404) — Ajay Saini</title>
+  <meta name="theme-color" content="#f4f3ed">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>404 — Find your way back | AJAYNXT</title>
+  <link rel="icon" href="/assets/brand/logo.png" type="image/png">
+  <style>
+    :root{--paper:#f4f3ed;--ink:#171b25;--blue:#3157e8;--deep:#203fbd;--lime:#d9f36a;--line:#d5d9d4;--muted:#5e6570}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;display:flex;flex-direction:column}a{color:inherit;text-decoration:none}button,input{font:inherit}a:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}.skip{position:absolute;left:12px;top:12px;background:#fff;padding:10px;z-index:5;transform:translateY(-150%)}.skip:focus{transform:none}
+    header{border-top:5px solid var(--blue);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;gap:10px;align-items:center;font-size:20px;font-weight:850;letter-spacing:-1px}.brand img{width:38px;height:38px;object-fit:contain}.brand b{color:var(--blue)}.navlinks{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:650}.navlinks a:hover{color:var(--blue)}
+    main{flex:1;padding:clamp(34px,6vw,76px) 0 44px}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,78px);align-items:center}.copy{min-width:0}.kicker{display:inline-flex;gap:9px;align-items:center;color:var(--deep);font-size:11px;font-weight:850;letter-spacing:.15em;text-transform:uppercase}.kicker:before{content:"";width:23px;height:2px;background:var(--blue)}h1{font-size:clamp(43px,6.4vw,79px);line-height:1.02;letter-spacing:-.065em;margin:18px 0;font-weight:850}h1 em{font-style:normal;color:var(--blue)}.intro{font-size:16px;color:var(--muted);max-width:480px}.path{display:block;font-size:12px;color:var(--muted);margin-top:18px;overflow-wrap:anywhere}.path code{font-size:12px;background:#e7e9e4;padding:3px 6px;color:var(--ink)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:13px 19px;min-height:48px;border:1px solid var(--blue);background:var(--blue);color:white;font-size:14px;font-weight:750;border-radius:7px;transition:background .2s,transform .2s}.btn:hover{background:var(--deep);transform:translateY(-2px)}.btn.alt{background:transparent;color:var(--ink);border-color:#b6bcb5}.btn.alt:hover{background:white}
+    .scene{position:relative;isolation:isolate;perspective:800px;min-height:360px;aspect-ratio:1.16;display:grid;place-items:center;overflow:hidden;border-radius:24px;border:1px solid #d4dacb;background:radial-gradient(ellipse at 50% 40%,#fff 0,#e7edfa 48%,#dce3f1 100%);--rx:0deg;--ry:0deg}.scene:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(#8591ac18 1px,transparent 1px),linear-gradient(90deg,#8591ac18 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse,#000,transparent 85%)}.scene-content{position:relative;width:90%;height:80%;display:grid;place-items:center;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .18s ease-out}.orbit{position:absolute;width:87%;height:48%;border:1px solid #3157e86b;border-radius:50%;transform:rotate(-25deg)}.orbit.two{transform:rotate(25deg);border-style:dashed;opacity:.75}.digits{display:flex;align-items:center;justify-content:center;gap:2%;width:100%;position:relative;z-index:2;transform:translateZ(28px);font-size:clamp(80px,12vw,175px);font-weight:900;letter-spacing:-.11em;line-height:1;color:var(--blue);text-shadow:1px 1px #233ca8,2px 2px #233ca8,3px 3px #233ca8,4px 4px #233ca8,5px 5px #233ca8,6px 6px #233ca8,7px 7px #233ca8,8px 8px #233ca8,9px 9px #233ca8,10px 10px 18px #152a8f45}.ring{width:.67em;height:.67em;display:inline-block;flex:none;border-radius:50%;border:.12em solid #3157e8;background:radial-gradient(circle,#f7f9ff 28%,#cad5ff 70%);box-shadow:inset -6px -6px 12px #1f399a66,4px 5px #1f399a,7px 9px 15px #152a8f45;transform:rotate(-12deg);position:relative}.ring:after{content:"";position:absolute;width:36%;height:36%;border-radius:50%;background:var(--lime);box-shadow:0 4px 12px #233ca840;top:32%;left:32%}.dot{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--lime);box-shadow:0 4px 13px #182b7133;top:20%;right:15%;transform:translateZ(45px)}.dot.small{width:9px;height:9px;top:76%;left:12%;background:var(--blue)}.scene-label{position:absolute;bottom:19px;left:22px;right:22px;display:flex;justify-content:space-between;gap:10px;font-size:10px;font-weight:800;letter-spacing:.11em;color:#4a5875}.scene-label b{color:var(--deep)}
+    .recovery{margin-top:48px;border-top:1px solid var(--line);padding-top:25px}.recovery-head{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap}.recovery h2{margin:0;font-size:23px;letter-spacing:-.035em}.recovery p{margin:4px 0;color:var(--muted);font-size:13px}.search{min-width:min(100%,300px);display:grid;gap:5px;font-size:12px;font-weight:700}.search input{width:100%;min-height:44px;padding:10px 13px;border:1px solid #abb3bf;border-radius:7px;background:#fff;color:var(--ink)}.pages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}.page{display:flex;justify-content:space-between;gap:8px;align-items:center;min-height:48px;padding:12px 15px;background:#fff;border:1px solid var(--line);border-radius:7px;font-size:14px;font-weight:700}.page:hover{border-color:var(--blue);color:var(--blue)}.page span:last-child{color:var(--blue)}[hidden]{display:none!important}.status{min-height:1.5em}.support{color:var(--deep);text-decoration:underline;text-underline-offset:3px;font-weight:700}footer{border-top:1px solid var(--line);padding:20px 0;font-size:12px;color:var(--muted)}.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    @media(max-width:800px){.hero{grid-template-columns:1fr}.scene{order:-1;min-height:0;aspect-ratio:1.5;max-height:340px}.digits{font-size:clamp(84px,20vw,150px)}.pages{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{gap:12px}.navlinks a:first-child{display:none}}
+    @media(max-width:440px){.wrap{width:calc(100% - 32px)}.nav{min-height:64px}.navlinks a:nth-child(2){display:none}.navlinks{font-size:12px}.brand{font-size:18px}.brand img{width:32px;height:32px}.scene{border-radius:16px}.scene-label{font-size:8px;left:13px;right:13px;bottom:12px}.actions .btn{flex:1 1 100%}.pages{grid-template-columns:1fr}.recovery{margin-top:30px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.scene-content,.btn:hover{transform:none}}
+  </style>
+  <script src="/404-recovery.js" defer></script>
 </head>
-<body class="not-found-page mst-shell">
-  <header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html" aria-label="Ajay Saini home">
-      <span class="brand-mark" aria-hidden="true"><img src="assets/brand/logo.png" alt="Ajay Saini Logo" width="1024" height="1024"></span>
-      <span class="brand-name"><strong>AJAY SAINI</strong><small>Creative Developer &amp; Video Editor</small></span>
-    </a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="index.html#work">Work</a><a href="projects.html">Projects</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a><a href="index.html#about">About</a><a href="index.html#social">Connect</a>
-    </nav>
-    <div class="header-actions">
-      <a class="button button-solid header-cta" href="index.html#book">Book a call</a>
-      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span></button>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap nav">
+  <a class="brand" href="/" aria-label="AJAYNXT home"><img src="/assets/brand/logo.png" alt="" width="38" height="38"><span>AJAY<b>NXT</b></span></a>
+  <nav class="navlinks" aria-label="Main navigation"><a href="/#services">Services</a><a href="/projects.html">Projects</a><a href="/#contact">Contact ↗</a></nav>
+</div></header>
+<main id="main" class="wrap">
+  <section class="hero" aria-labelledby="heading">
+    <div class="copy">
+      <span class="kicker">Error 404 · Page not found</span>
+      <h1 id="heading">Lost in the <em>digital space?</em></h1>
+      <p class="intro">This page may have moved, or the link may be incorrect. Let's get you back to the right place.</p>
+      <span class="path">Requested path: <code data-missing-path>Unavailable</code></span>
+      <div class="actions"><a class="btn" href="/">Back to home <span aria-hidden="true">↗</span></a><a class="btn alt" href="/projects.html">Explore projects <span aria-hidden="true">↗</span></a></div>
+      <p class="intro">Still can't find something? <a class="support" href="https://wa.me/919929562585">Contact AJAYNXT on WhatsApp.</a></p>
     </div>
-  </div>
-  <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="Mobile navigation" hidden>
-    <a href="index.html#work">Work</a><a href="projects.html">Projects</a><a href="index.html#films">Films</a><a href="index.html#services">Services</a><a href="index.html#about">About</a><a href="index.html#social">Connect</a><a href="index.html#book">Book a call</a>
-  </nav>
-</header>
-
-  <main class="not-found">
-    <p class="eyebrow"><span></span> Error 404 <span></span></p>
-    <h1>This page wandered off.</h1>
-    <p>The link may be old, but the main portfolio is right here.</p>
-    <a class="button button-solid" href="index.html">Return to Ajay Saini</a>
-  </main>
-  <script src="brand-navigation.js" defer></script>
-  <script src="analytics.js" defer></script>
+    <div class="scene" data-scene aria-hidden="true">
+      <div class="scene-content"><div class="orbit"></div><div class="orbit two"></div><div class="dot"></div><div class="dot small"></div><div class="digits"><span>4</span><i class="ring"></i><span>4</span></div></div>
+      <div class="scene-label"><b>AJAYNXT / ERROR LAB</b><span>STATUS: NOT FOUND</span></div>
+    </div>
+  </section>
+  <section class="recovery" aria-labelledby="recovery-heading">
+    <div class="recovery-head"><div><h2 id="recovery-heading">Find your next destination.</h2><p>Popular pages and services.</p></div><label class="search">Find a page<input type="search" data-page-search placeholder="Try SEO, design, projects..." autocomplete="off"></label></div>
+    <nav class="pages" aria-label="Suggested pages">
+      <a class="page" href="/services/website-design/" data-recovery-link="website development web design"><span>Website design</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/services/seo/" data-recovery-link="google rankings search visibility"><span>SEO &amp; search visibility</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/services/digital-marketing/" data-recovery-link="ads campaigns growth"><span>Digital marketing</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/projects.html" data-recovery-link="portfolio demo client work"><span>Project archive</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/showcase.html" data-recovery-link="ui creative inspiration"><span>Design showcase</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/case-studies/" data-recovery-link="client projects examples"><span>Client case studies</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/blog/" data-recovery-link="articles guides insights"><span>Insights</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/tools/" data-recovery-link="free resources calculator"><span>Free tools</span><span aria-hidden="true">↗</span></a>
+      <a class="page" href="/#contact" data-recovery-link="enquiry email whatsapp hire"><span>Discuss your project</span><span aria-hidden="true">↗</span></a>
+    </nav>
+    <p class="status" data-search-status role="status" aria-live="polite"></p>
+  </section>
+</main>
+<footer><div class="wrap footer"><span>AJAYNXT · Digital studio</span><span>Rajasthan, India · Working worldwide</span></div></footer>
 </body>
 </html>

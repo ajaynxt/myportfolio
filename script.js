@@ -383,29 +383,39 @@ if (bookingForm instanceof HTMLFormElement) {
 }
 
 const filterButtons = [...document.querySelectorAll("[data-filter]")];
-const archiveCards = [...document.querySelectorAll("[data-category]")];
+const archiveCards = [...document.querySelectorAll(".project-card[data-category]")];
 const projectCount = document.querySelector("[data-project-count]");
-
-const applyFilter = (filter) => {
+const projectSearch = document.querySelector("[data-project-search]");
+const projectClear = document.querySelector("[data-clear-project-search]");
+const projectEmpty = document.querySelector("[data-project-empty]");
+let activeProjectFilter = "all";
+const applyFilter = (filter = activeProjectFilter) => {
+  activeProjectFilter = filter;
+  const words = (projectSearch?.value || "").trim().toLowerCase().split(/\s+/).filter(Boolean);
   let visible = 0;
-  archiveCards.forEach((card) => {
+  archiveCards.forEach(card => {
     const categories = (card.dataset.category || "").split(" ");
-    const show = filter === "all" || categories.includes(filter);
+    const text = (card.textContent + " " + card.dataset.category).toLowerCase();
+    const show = (filter === "all" || categories.includes(filter)) && words.every(word => text.includes(word));
     card.hidden = !show;
-    if (show) visible += 1;
+    if (show) visible++;
   });
-  filterButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.filter === filter)));
-  if (projectCount) projectCount.textContent = `${visible} projects shown`;
+  filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.filter === filter)));
+  if (projectCount) projectCount.textContent = visible + " of " + archiveCards.length + " projects shown";
+  if (projectEmpty) projectEmpty.hidden = visible !== 0;
+  if (projectClear) projectClear.hidden = !projectSearch?.value;
 };
-
-filterButtons.forEach((button) => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
+filterButtons.forEach(button => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
+projectSearch?.addEventListener("input", () => applyFilter());
+projectClear?.addEventListener("click", () => { if (projectSearch) { projectSearch.value = ""; applyFilter(); projectSearch.focus(); } });
+document.querySelector("[data-reset-projects]")?.addEventListener("click", () => { if (projectSearch) projectSearch.value = ""; applyFilter("all"); projectSearch?.focus(); });
 if (archiveCards.length) applyFilter("all");
 
 // Keep portfolio counters accurate without implying the showcased edits are the total body of work.
 const heroStats = [...document.querySelectorAll(".hero-stats > div")];
 if (heroStats[0]) {
   const value = heroStats[0].querySelector("strong");
-  if (value) value.textContent = "25+";
+  if (value) value.textContent = "28";
 }
 if (heroStats[2]) {
   const label = heroStats[2].querySelector("span");
@@ -414,12 +424,12 @@ if (heroStats[2]) {
 if (heroStats[3]) {
   const value = heroStats[3].querySelector("strong");
   const label = heroStats[3].querySelector("span");
-  if (value) value.textContent = "02";
+  if (value) value.textContent = "03";
   if (label) label.textContent = "Client websites";
 }
 
 const viewMoreDemoCount = document.querySelector(".view-more .button span");
-if (viewMoreDemoCount) viewMoreDemoCount.textContent = "27 live builds";
+if (viewMoreDemoCount) viewMoreDemoCount.textContent = "28 projects";
 
 const filmsIntro = document.querySelector("#films .section-head p:last-child");
 if (filmsIntro) filmsIntro.textContent = "Nine selected cinematic edits from a much larger body of video work. Select any film to watch.";
@@ -518,72 +528,51 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       • <strong>Web Design & Engineering:</strong> Ultra-fast, responsive custom websites, landing pages, luxury portfolios & e-commerce stores.<br>
       • <strong>Cinematic Video Editing:</strong> Commercial brand films, wedding/haldi highlights, high-energy automotive edits, YouTube & reels.<br>
       • <strong>UI/UX Design & AI Workflows:</strong> Modern interactive prototypes, AI chatbots, automated business pipelines.<br>
-      <br>👉 <a href="projects.html">Explore 27+ Live Websites & Demos</a>`,
+      <br>👉 <a href="projects.html">Explore 28 Live Websites & Demos</a>`,
 
-    reviews: `⭐ <strong>5.0 / 5.0 Verified Client Reviews:</strong><br><br>
-      • <strong>Aman (Founder & Director, Diamond Restaurants & Sweets):</strong><br>
-      <em>&ldquo;Ajay completely transformed our online presence for Diamond Restaurants & Sweets. He built a high-speed digital ordering system with luxury aesthetic that truly represents our heritage and sweets brand. Customer inquiries and table bookings went up immediately. His work ethics and delivery speed are unmatched!&rdquo;</em><br>
-      🔗 <a href="https://diamondrestaurants.com/" target="_blank">diamondrestaurants.com ↗</a><br><br>
-      • <strong>Bharat Saini (Creative Director & Filmmaker, Wedding Shedding):</strong><br>
-      <em>&ldquo;Thank you so much bhai! Hamare moment me or char chand lga diye aapne. Ajay edited our cinematic couple reels and 4K wedding films with phenomenal pacing, sound design, and color grading in DaVinci. On top of that, he built our official luxury studio website that converts couples seamlessly. Absolutely world-class video editor and developer!&rdquo;</em><br>
-      🔗 <a href="https://weddingshedding.in/" target="_blank">weddingshedding.in ↗</a><br><br>
-      • <strong>Sonu Kumar (Co-Founder & Cinematographer, Wedding Shedding):</strong><br>
-      <em>&ldquo;Working with Ajay on our Wedding Shedding films and client stories has been exceptional. His cinematic editing, audio synchronization, and technical reliability give our wedding photography studio a huge edge. Highly recommended!&rdquo;</em><br>
-      🔗 <a href="https://weddingshedding.in/" target="_blank">weddingshedding.in ↗</a><br><br>
-      👉 <a href="index.html#feedback">Read verified reviews on portfolio</a>`,
+    reviews: `Explore AJAYNXT’s client project context and work delivered:<br>• Diamond Restaurants<br>• Wedding Shedding<br>• Safar Sathi<br> <a href="/case-studies/">Read client case studies</a>`,
 
     tech: `Ajay's full engineering & creative technology stack:<br>
       • <strong>Frontend:</strong> React, Next.js, Modern JavaScript (ES6+), HTML5, CSS3 (Grid & Flexbox), Tailwind CSS<br>
       • <strong>Backend & Cloud:</strong> Node.js, Python, Firebase Hosting & Firestore, Google Cloud Platform (GCP)<br>
       • <strong>Video & Motion Graphics:</strong> Adobe Premiere Pro, After Effects, DaVinci Resolve, Color Grading (Log/LUTs), Sound Design<br>
-      • <strong>Performance & SEO:</strong> 100% Mobile Responsive, Core Web Vitals Optimization, Schema.org JSON-LD SEO`,
+      • <strong>Performance & SEO:</strong> Responsive web design, Core Web Vitals Optimization, Schema.org JSON-LD SEO`,
 
     films: `Ajay creates cinematic, story-driven films with meticulous pacing, cinematic color grading, and custom sound design:<br>
       • <strong>Haldi Glow:</strong> Golden rituals, wedding highlights & joyful celebrations<br>
       • <strong>Himalayan Escapes:</strong> Cinematic mountain landscapes & travel visuals<br>
       • <strong>Crimson Drift:</strong> High-energy automotive motion & sound design<br>
       • <strong>The Royal Heritage:</strong> Timeless palace architectures & heritage stories<br>
-      <br>👉 <a href="index.html#films">Watch featured films with live player</a>`,
+      <br>👉 <a href="/services/social-media/">Explore creative and video services</a>`,
 
-    location: `📍 <strong>Headquarters:</strong> Sikar, Rajasthan, India.<br>
-      🌍 <strong>Global Reach:</strong> Serving clients worldwide across India, United States, United Kingdom, Europe & UAE.<br><br>
-      ⏱️ <strong>Turnaround Timelines:</strong><br>
-      • Single-page Landing Pages & Portfolios: <strong>3–5 Days</strong><br>
-      • Multi-page Business Websites & E-commerce: <strong>1–2 Weeks</strong><br>
-      • Video Editing & Social Campaigns: <strong>24–72 Hours</strong>`,
+    location: `AJAYNXT is based in Rajasthan, India and works remotely with clients across India and internationally. Delivery timelines depend on scope, content readiness and agreed review milestones. <a href="/#contact">Discuss your timeline</a>`,
 
-    pricing: `💰 <strong>Transparent & Value-Driven Pricing:</strong><br>
-      • <strong>Landing Pages / Portfolio Sites:</strong> ₹12,000 – ₹25,000 ($200 – $400 USD)<br>
-      • <strong>Full Business / Multi-Page Websites:</strong> ₹25,000 – ₹60,000 ($400 – $900 USD)<br>
-      • <strong>E-Commerce / Custom Web Apps:</strong> ₹45,000+ ($700+ USD)<br>
-      • <strong>Video Editing (Reels, Commercials, Films):</strong> Per project or monthly retainer<br>
-      <em>Multi-currency accepted: INR (₹), USD ($), EUR (€), GBP (£), AED (د.إ).</em><br>
-      <br>👉 <a href="https://wa.me/919929562585" target="_blank">Get a custom instant quote on WhatsApp</a>`,
+    pricing: `Pricing depends on the scope, deliverables, integrations, content requirements and timeline. Share your brief to request a tailored estimate.<br><a href="/#contact">Discuss your project</a>`,
 
     contact: `Connect directly with Ajay Saini:<br>
-      • 📱 <strong>WhatsApp:</strong> <a href="https://wa.me/919929562585" target="_blank">+91 99295 62585</a><br>
+      • 📱 <strong>WhatsApp:</strong> <a href="https://wa.me/919929562585" target="_blank" rel="noopener noreferrer">+91 99295 62585</a><br>
       • 📧 <strong>Email:</strong> <a href="mailto:ajayx3neha@gmail.com">ajayx3neha@gmail.com</a><br>
-      • 📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/ajay_nxt_/" target="_blank">@ajay_nxt_</a><br>
-      • 💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajaynxt/" target="_blank">linkedin.com/in/ajaynxt</a><br>
-      • 📅 <strong>Book a Call:</strong> <a href="index.html#book">Fill the project booking form</a>`,
+      • 📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer">@ajay_nxt_</a><br>
+      • 💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ajaynxt</a><br>
+      • 📅 <strong>Book a Call:</strong> <a href="/#contact">Open the project enquiry form</a>`,
 
-    demos: `Ajay has built a live archive of <strong>27+ specialized websites & live demos</strong>:<br><br>
+    demos: `Ajay has built a live archive of <strong>28 specialized websites & live demos</strong>:<br><br>
       💼 <strong>Live Client Websites:</strong><br>
-      • <a href="https://diamondrestaurants.com/" target="_blank">Diamond Restaurants (Live Client) ↗</a><br>
-      • <a href="https://weddingshedding.in/" target="_blank">Wedding Shedding (Live Client) ↗</a><br><br>
+      • <a href="https://diamondrestaurants.com/" target="_blank" rel="noopener noreferrer">Diamond Restaurants (Live Client) ↗</a><br>
+      • <a href="https://weddingshedding.in/" target="_blank" rel="noopener noreferrer">Wedding Shedding (Live Client) ↗</a><br>• <a href="https://safarsathi.in/" target="_blank" rel="noopener noreferrer">Safar Sathi (Live Client) ↗</a><br><br>
       💍 <strong>Weddings & Film Services:</strong><br>
-      • <a href="https://weddingshedding.in/" target="_blank">Wedding Shedding (Live Client) ↗</a> · <a href="https://wedding.ajaynxt.com/" target="_blank">Wedding Planner & Films ↗</a><br><br>
+      • <a href="https://weddingshedding.in/" target="_blank" rel="noopener noreferrer">Wedding Shedding (Live Client) ↗</a> · <a href="https://wedding.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Wedding Planner & Films ↗</a><br><br>
       🏢 <strong>Real Estate & Construction:</strong><br>
-      • <a href="https://realty.ajaynxt.com/" target="_blank">Arclune Estates ↗</a> · <a href="https://estate.ajaynxt.com/" target="_blank">Property Portal ↗</a> · <a href="https://construction.ajaynxt.com/" target="_blank">Stonecrest Developers ↗</a><br><br>
+      • <a href="https://realty.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Arclune Estates ↗</a> · <a href="https://estate.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Property Portal ↗</a> · <a href="https://construction.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Stonecrest Developers ↗</a><br><br>
       🏨 <strong>Hospitality & Resorts:</strong><br>
-      • <a href="https://hotel.ajaynxt.com/" target="_blank">Rajmahal Lake Palace ↗</a> · <a href="https://stay.ajaynxt.com/" target="_blank">Aurevia Spa Resort ↗</a> · <a href="https://travel.ajaynxt.com/" target="_blank">Travel Homestay ↗</a><br><br>
+      • <a href="https://hotel.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Rajmahal Lake Palace ↗</a> · <a href="https://stay.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Aurevia Spa Resort ↗</a> · <a href="https://travel.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Travel Homestay ↗</a><br><br>
       🛍️ <strong>E-Commerce & Luxury Retail:</strong><br>
-      • <a href="https://jewellery.ajaynxt.com/" target="_blank">Celestique Jewellery ↗</a> · <a href="https://shop.ajaynxt.com/" target="_blank">Velune Skin ↗</a> · <a href="https://store.ajaynxt.com/" target="_blank">Fashion Store ↗</a><br><br>
+      • <a href="https://jewellery.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Celestique Jewellery ↗</a> · <a href="https://shop.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Velune Skin ↗</a> · <a href="https://store.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Fashion Store ↗</a><br><br>
       🏥 <strong>Healthcare & Clinics:</strong><br>
-      • <a href="https://health.ajaynxt.com/" target="_blank">Velora Hospital ↗</a> · <a href="https://diagnostic.ajaynxt.com/" target="_blank">Mediora Diagnostics ↗</a> · <a href="https://clinic.ajaynxt.com/" target="_blank">Doctor Clinic ↗</a><br><br>
+      • <a href="https://health.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Velora Hospital ↗</a> · <a href="https://diagnostic.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Mediora Diagnostics ↗</a> · <a href="https://clinic.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Doctor Clinic ↗</a><br><br>
       🍽️ <strong>Food & Dining:</strong><br>
-      • <a href="https://diamondrestaurants.com/" target="_blank">Diamond Restaurants (Live Client) ↗</a> · <a href="https://restaurant.ajaynxt.com/" target="_blank">Restaurant & Cafe ↗</a><br><br>
-      👉 <a href="projects.html">View all 27+ live websites here</a>`
+      • <a href="https://diamondrestaurants.com/" target="_blank" rel="noopener noreferrer">Diamond Restaurants (Live Client) ↗</a> · <a href="https://restaurant.ajaynxt.com/" target="_blank" rel="noopener noreferrer">Restaurant & Cafe ↗</a><br><br>
+      👉 <a href="projects.html">View all 28 live websites here</a>`
   };
 
   const findMatchingDemos = (query) => {
@@ -601,11 +590,11 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
     // Industry & Specific Demo queries
     const matchedDemos = findMatchingDemos(q);
     if (matchedDemos.length > 0 && (q.includes("demo") || q.includes("example") || q.includes("sample") || q.includes("website") || q.includes("link") || q.includes("show") || matchedDemos.length <= 4)) {
-      let reply = `Here are the matching live demo websites built by Ajay:<br><br>`;
+      let reply = `Here are matching client projects and website demos by AJAYNXT:<br><br>`;
       matchedDemos.slice(0, 5).forEach((d) => {
-        reply += `🔗 <strong><a href="${d.url}" target="_blank">${d.title}</a></strong> (${d.category})<br><em>${d.desc}</em><br><br>`;
+        reply += `🔗 <strong><a href="${d.url}" target="_blank" rel="noopener noreferrer">${d.title}</a></strong> (${d.category})<br><em>${d.desc}</em><br><br>`;
       });
-      reply += `👉 <a href="projects.html">See all 27+ live client & demo websites</a> or <a href="https://wa.me/919929562585" target="_blank">WhatsApp Ajay for custom work</a>.`;
+      reply += `👉 <a href="projects.html">See all 28 live client & demo websites</a> or <a href="https://wa.me/919929562585" target="_blank" rel="noopener noreferrer">WhatsApp Ajay for custom work</a>.`;
       return reply;
     }
 
@@ -634,14 +623,14 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       return knowledgeBase.contact;
     }
     if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("namaste") || q.includes("kaise ho")) {
-      return "Namaste! How can I assist you today? You can ask me about Ajay's <strong>27+ live client & demo websites</strong>, verified client reviews, web development, video editing, pricing, or project timelines!";
+      return "Namaste! How can I assist you today? You can ask me about Ajay's <strong>28 live client & demo websites</strong>, client case studies, web development, video editing, pricing, or project timelines!";
     }
 
-    return `Ajay specializes in high-converting custom websites and cinematic video editing with over 27+ live builds across multiple industries.<br><br>
-      • <a href="projects.html">Explore 27+ Live Websites</a><br>
-      • <a href="index.html#feedback">Read 5.0★ Client Reviews</a><br>
-      • <a href="index.html#book">Book a project call</a><br>
-      • <a href="https://wa.me/919929562585" target="_blank">Chat with Ajay on WhatsApp</a>`;
+    return `Ajay specializes in business-focused websites and cinematic video editing with 28 listed projects across multiple industries.<br><br>
+      • <a href="projects.html">Explore 28 Live Websites</a><br>
+      • <a href="/case-studies/">Explore client case studies</a><br>
+      • <a href="/#contact">Discuss your project</a><br>
+      • <a href="https://wa.me/919929562585" target="_blank" rel="noopener noreferrer">Chat with Ajay on WhatsApp</a>`;
   };
 
   const handleUserQuery = (text, key = "") => {

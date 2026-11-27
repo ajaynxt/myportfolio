@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Ajay Saini Portfolio",
-  "short_name": "Ajay Saini",
-  "description": "Official web development, UI/UX design and video editing portfolio of Ajay Saini.",
+  "name": "AJAYNXT Digital Studio",
+  "short_name": "AJAYNXT",
+  "description": "Founder-led digital studio for websites, SEO, digital marketing and creative production.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -10,7 +10,13 @@
   "dir": "ltr",
   "background_color": "#faf7ee",
   "theme_color": "#faf7ee",
-  "categories": ["business", "portfolio", "design", "development", "multimedia"],
+  "categories": [
+    "business",
+    "portfolio",
+    "design",
+    "development",
+    "multimedia"
+  ],
   "icons": [
     {
       "src": "assets/brand/lion-mark-black-circle.png",
