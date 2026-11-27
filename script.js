@@ -389,22 +389,25 @@ const projectSearch = document.querySelector("[data-project-search]");
 const projectClear = document.querySelector("[data-clear-project-search]");
 const projectEmpty = document.querySelector("[data-project-empty]");
 let activeProjectFilter = "all";
-const applyFilter = (filter = activeProjectFilter) => {
-  activeProjectFilter = filter;
-  const words = (projectSearch?.value || "").trim().toLowerCase().split(/\s+/).filter(Boolean);
-  let visible = 0;
-  archiveCards.forEach(card => {
-    const categories = (card.dataset.category || "").split(" ");
-    const text = (card.textContent + " " + card.dataset.category).toLowerCase();
-    const show = (filter === "all" || categories.includes(filter)) && words.every(word => text.includes(word));
-    card.hidden = !show;
-    if (show) visible++;
-  });
-  filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.filter === filter)));
-  if (projectCount) projectCount.textContent = visible + " of " + archiveCards.length + " projects shown";
-  if (projectEmpty) projectEmpty.hidden = visible !== 0;
-  if (projectClear) projectClear.hidden = !projectSearch?.value;
+let projectPage = 0;
+const pagination=document.querySelector("[data-project-pagination]");
+const pagePrev=document.querySelector("[data-project-prev]"),pageNext=document.querySelector("[data-project-next]"),pageStatus=document.querySelector("[data-project-page-status]");
+const pageSize=()=>window.innerWidth<=620?1:window.innerWidth<=1100?2:3;
+const filteredCards=()=>{const words=(projectSearch?.value||"").trim().toLowerCase().split(/\s+/).filter(Boolean);return archiveCards.filter(card=>{const categories=(card.dataset.category||"").split(" ");const text=(card.textContent+" "+card.dataset.category).toLowerCase();return(activeProjectFilter==="all"||categories.includes(activeProjectFilter))&&words.every(word=>text.includes(word));});};
+const renderProjectPage=()=>{
+  const matches=filteredCards(),size=pagination?pageSize():Math.max(matches.length,1),pages=Math.max(1,Math.ceil(matches.length/size));
+  projectPage=Math.min(Math.max(0,projectPage),pages-1);
+  const visible=new Set(matches.slice(projectPage*size,(projectPage+1)*size));
+  archiveCards.forEach(card=>{card.hidden=!visible.has(card);});
+  if(projectCount)projectCount.textContent=matches.length+" of "+archiveCards.length+" matching projects";
+  if(projectEmpty)projectEmpty.hidden=matches.length!==0;
+  if(projectClear)projectClear.hidden=!projectSearch?.value;
+  if(pagination){pagination.hidden=matches.length===0;pagePrev.disabled=projectPage===0;pageNext.disabled=projectPage>=pages-1;pageStatus.textContent="Page "+(projectPage+1)+" of "+pages;}
 };
+const applyFilter=(filter=activeProjectFilter)=>{activeProjectFilter=filter;projectPage=0;filterButtons.forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.filter===filter)));renderProjectPage();};
+pagePrev?.addEventListener("click",()=>{projectPage--;renderProjectPage();});
+pageNext?.addEventListener("click",()=>{projectPage++;renderProjectPage();});
+let lastPageSize=pageSize();window.addEventListener("resize",()=>{if(lastPageSize!==pageSize()){lastPageSize=pageSize();projectPage=0;renderProjectPage();}},{passive:true});
 filterButtons.forEach(button => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
 projectSearch?.addEventListener("input", () => applyFilter());
 projectClear?.addEventListener("click", () => { if (projectSearch) { projectSearch.value = ""; applyFilter(); projectSearch.focus(); } });
