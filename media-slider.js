@@ -27,7 +27,7 @@
       else if(direction < 0 && track.scrollLeft <= 3) destination = max;
       track.scrollTo({left:Math.max(0,Math.min(max,destination)),behavior:motion.matches?"auto":"smooth"});
     };
-    const hold = () => { holdUntil = Date.now() + 5000; };
+    const hold = () => { holdUntil = Date.now() + 3000; };
     prev.addEventListener("click",()=>{hold();step(-1);});
     next.addEventListener("click",()=>{hold();step(1);});
     toggle.addEventListener("click",()=>{paused=!paused;sync();});
@@ -41,7 +41,7 @@
     if("IntersectionObserver" in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;},{threshold:0.15}).observe(rail);
     if("ResizeObserver" in window)new ResizeObserver(sync).observe(track);else window.addEventListener("resize",sync,{passive:true});
     motion.addEventListener?.("change",()=>{paused=motion.matches;sync();});
-    setInterval(()=>{if(!paused&&visible&&!hover&&!touching&&!document.hidden&&!track.contains(document.activeElement)&&!document.querySelector("dialog[open]")&&Date.now()>holdUntil)step(1);},rail.classList.contains("client-slider-shell")?5500:3500);
+    setInterval(()=>{if(!paused&&visible&&!hover&&!touching&&!document.hidden&&!track.contains(document.activeElement)&&!document.querySelector("dialog[open]")&&Date.now()>holdUntil)step(1);},2200);
     sync();
   }
 })();
