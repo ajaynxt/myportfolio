@@ -4,7 +4,7 @@
 <!-- GTM-K65RVPV5 reserved for reviewed container deployment; GA4 uses shared consent-controlled ga4.js. -->
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#faf7ee">
+  <meta name="theme-color" content="#f7f1e8">
   <meta name="description" content="Explore Ajay Saini’s interactive 3D web portfolio, built with Three.js and WebGL, featuring creative web development and motion design.">
   <meta name="author" content="Ajay Saini">
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -86,18 +86,18 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; background: var(--bg-primary, #f7f2e8); }
+    html { scroll-behavior: smooth; background: var(--bg-primary, #f7f1e8); }
     body.three-page {
       min-width: 320px;
       overflow: hidden;
-      background-color: var(--bg-primary, #f7f2e8);
+      background-color: var(--bg-primary, #f7f1e8);
       background-image:
         linear-gradient(rgba(24, 24, 24, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(24, 24, 24, 0.05) 1px, transparent 1px),
         radial-gradient(circle at 75% 25%, rgba(185, 146, 87, 0.16), transparent 32%),
-        radial-gradient(circle at 25% 75%, rgba(159, 38, 56, 0.1), transparent 28%);
+        radial-gradient(circle at 25% 75%, rgba(128, 83, 51, 0.1), transparent 28%);
       background-size: 64px 64px, 64px 64px, auto, auto;
-      color: var(--text-primary, #141414);
+      color: var(--text-primary, #30241d);
       font-family: var(--body, "Plus Jakarta Sans", sans-serif);
       font-size: 16px;
       line-height: 1.6;
@@ -134,17 +134,17 @@
       margin: 0 auto 16px;
       object-fit: cover;
       object-position: 50% 31%;
-      border: 3px solid var(--border-color, #181818);
+      border: 3px solid var(--border-color, #69412b);
       border-radius: 14px;
-      box-shadow: 5px 5px 0 var(--border-color, #181818);
-      background: var(--bg-card, #fffdf8);
+      box-shadow: 5px 5px 0 var(--border-color, #69412b);
+      background: var(--bg-card, #fffdf9);
       pointer-events: auto;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .three-portrait:hover {
       transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0 var(--gold, #9f2638);
+      box-shadow: 7px 7px 0 var(--gold, #805333);
     }
 
     .three-page .hero-title {
@@ -153,7 +153,7 @@
       font-weight: 700;
       letter-spacing: -0.05em;
       line-height: 0.98;
-      color: var(--text-primary, #141414);
+      color: var(--text-primary, #30241d);
       margin-bottom: 12px;
       filter: none;
       text-shadow: none;
@@ -166,16 +166,16 @@
       align-items: center;
       gap: 8px;
       padding: 6px 16px;
-      background: linear-gradient(145deg, #fffdf8, #eee5d6);
-      border: 2px solid var(--border-color, #181818);
+      background: linear-gradient(145deg, #fffdf9, #efe1d2);
+      border: 2px solid var(--border-color, #69412b);
       border-radius: 999px;
-      box-shadow: 3px 3px 0 var(--border-color, #181818);
+      box-shadow: 3px 3px 0 var(--border-color, #69412b);
       font-family: var(--body, "Plus Jakarta Sans", sans-serif);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gold, #9f2638);
+      color: var(--gold, #805333);
       margin-bottom: 30px;
     }
 
@@ -185,9 +185,9 @@
       padding: 18px 34px;
       background: linear-gradient(145deg, rgba(255, 253, 248, 0.94), rgba(238, 229, 214, 0.94));
       backdrop-filter: blur(10px);
-      border: 3px solid var(--border-color, #181818);
+      border: 3px solid var(--border-color, #69412b);
       border-radius: 16px;
-      box-shadow: 6px 6px 0 var(--border-color, #181818);
+      box-shadow: 6px 6px 0 var(--border-color, #69412b);
       margin-bottom: 32px;
       pointer-events: auto;
     }
@@ -201,7 +201,7 @@
       font-family: var(--display, "Syne", sans-serif);
       font-size: clamp(2.2rem, 4.5vw, 3.4rem);
       font-weight: 700;
-      color: var(--gold, #9f2638);
+      color: var(--gold, #805333);
       line-height: 1;
     }
 
@@ -211,7 +211,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-muted, #756d63);
+      color: var(--text-muted, #716359);
       margin-top: 6px;
     }
 
@@ -230,7 +230,7 @@
       justify-content: center;
       gap: 10px;
       padding: 0 24px;
-      border: 2px solid var(--border-color, #181818);
+      border: 2px solid var(--border-color, #69412b);
       border-radius: 9px;
       font-family: var(--body, "Plus Jakarta Sans", sans-serif);
       font-size: 11.5px;
@@ -238,34 +238,34 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
-      box-shadow: 4px 4px 0 var(--border-color, #181818);
+      box-shadow: 4px 4px 0 var(--border-color, #69412b);
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
     .three-page .btn-solid {
-      background: var(--gold, #9f2638);
+      background: var(--gold, #805333);
       color: #fff;
     }
 
     .three-page .btn-solid:hover {
-      background: var(--gold-dark, #771625);
+      background: var(--gold-dark, #69412b);
       color: #fff;
       transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--border-color, #181818);
+      box-shadow: 6px 6px 0 var(--border-color, #69412b);
     }
 
     .three-page .btn-ghost {
       background: #fff;
-      color: var(--text-primary, #141414);
+      color: var(--text-primary, #30241d);
       backdrop-filter: none;
     }
 
     .three-page .btn-ghost:hover {
-      background: var(--bg-card-hover, #fff6e7);
-      color: var(--gold, #9f2638);
-      border-color: var(--border-color, #181818);
+      background: var(--bg-card-hover, #fffaf4);
+      color: var(--gold, #805333);
+      border-color: var(--border-color, #69412b);
       transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--border-color, #181818);
+      box-shadow: 6px 6px 0 var(--border-color, #69412b);
     }
 
     .three-page .btn svg {
@@ -298,19 +298,19 @@
       height: 44px;
       border-radius: 11px;
       background: #fff;
-      border: 2px solid var(--border-color, #181818);
-      box-shadow: 3px 3px 0 var(--border-color, #181818);
-      color: var(--text-primary, #141414);
+      border: 2px solid var(--border-color, #69412b);
+      box-shadow: 3px 3px 0 var(--border-color, #69412b);
+      color: var(--text-primary, #30241d);
       text-decoration: none;
       transition: all 0.2s ease;
       font-size: 14px;
     }
 
     .bottom-bar a:hover {
-      background: var(--bg-card-hover, #fff6e7);
-      color: var(--gold, #9f2638);
+      background: var(--bg-card-hover, #fffaf4);
+      color: var(--gold, #805333);
       transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0 var(--border-color, #181818);
+      box-shadow: 5px 5px 0 var(--border-color, #69412b);
     }
 
     .bottom-bar a svg {
@@ -332,14 +332,14 @@
       border-radius: 50%;
       background: #22c55e;
       border: 2px solid #fff;
-      box-shadow: 0 0 0 1.5px var(--border-color, #181818);
+      box-shadow: 0 0 0 1.5px var(--border-color, #69412b);
     }
 
     @media (max-width: 620px) {
       .three-page .hero-stats {
         gap: 12px 20px;
         padding: 14px 20px;
-        box-shadow: 4px 4px 0 var(--border-color, #181818);
+        box-shadow: 4px 4px 0 var(--border-color, #69412b);
       }
       .three-page .hero-stats div { min-width: 65px; }
       .three-page .hero-stats strong { font-size: 1.8rem; }
@@ -352,6 +352,7 @@
 
 <link rel="stylesheet" href="/pinterest-consent.css">
 <script src="/pinterest-consent.js" defer></script>
+<style id="nx-three-warm">body.three-page{--brand-paper:#f7f1e8;--brand-ink:#30241d;--brand-muted:#716359;--brand-accent:#805333;--brand-line:#e3d6c7;--bg-primary:#f7f1e8;--bg-card:#fffdf9;--bg-card-hover:#f1e4d5;--text-primary:#30241d;--text-secondary:#66564a;--text-muted:#716359;--border-color:#c9ad92;--border-hover:#805333;--gold:#805333;--gold-dark:#69412b;--gold-light:#f4d6a0;background-color:#f7f1e8;color:#30241d}.three-page .site-header{background:#fffaf4f5;border-color:#e3d6c7}.three-page .site-header .header-cta:hover{background:#69412b}.three-page .mobile-nav{background:#fffaf4}.three-page .mobile-nav a:hover,.three-page .mobile-nav a[aria-current="page"]{background:#f1e4d5;color:#69412b}.three-page .hero-stats,.three-page .hero-sub{background:linear-gradient(145deg,#fffdf9,#efe1d2)}.three-page .hero-title{color:#30241d}.three-page .bottom-bar a,.three-page .btn-ghost{background:#fffdf9;color:#30241d}.three-page .btn-solid{background:#805333;color:#fffdf9}</style>
 </head>
 <body class="three-page">
   <header class="site-header">
