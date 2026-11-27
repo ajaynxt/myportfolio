@@ -810,6 +810,21 @@ body.compact-flow .nx-mac-dock .nx-dock-ui>span:first-child{background:linear-gr
 }
 </style>
 <style id="nx-social-original-frame">#social-posts .nx-social-art-preview{display:grid;place-content:center;justify-items:center;gap:10px;aspect-ratio:1;background:linear-gradient(145deg,#fffdf9,#eddbc8);text-align:center;padding:18px;color:#69412b}#social-posts .nx-social-art-preview>span{font-size:35px}#social-posts .nx-social-art-preview strong{font-size:18px}#social-posts .nx-social-art-preview small{font-size:12px;color:#716359}</style>
+<style id="nx-wide-desktop-dock">
+/* Full-width Mac-inspired dock across the available laptop workspace. */
+@media(min-width:1100px){
+body.compact-flow{padding-bottom:108px}
+html:has(body.compact-flow){scroll-padding-bottom:116px}
+body.compact-flow .nx-mac-dock{left:calc(var(--nx-rail) + 18px);right:18px;bottom:10px;width:auto;max-width:none;transform:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));align-items:center;gap:clamp(6px,1vw,16px);padding:10px 16px 8px;border-radius:20px;box-sizing:border-box;background:#f3eee9f5;box-shadow:0 10px 32px #392b1d25,inset 0 1px 0 #fff}
+@supports(backdrop-filter:blur(14px)){body.compact-flow .nx-mac-dock{background:rgba(242,238,233,.88);backdrop-filter:blur(14px) saturate(1.15)}}
+body.compact-flow .nx-mac-dock a{min-width:0;width:100%;padding:2px 4px;gap:5px;font-size:12px;line-height:1.25;border-radius:12px}
+body.compact-flow .nx-mac-dock a>span:first-child{width:48px;height:48px;border-radius:13px}
+body.compact-flow .nx-mac-dock svg{width:25px;height:25px}
+body.compact-flow .nx-mac-dock .nx-dock-trend{top:-5px;right:auto;left:calc(50% + 9px);font-size:9px;padding:3px 6px}
+body.compact-flow .nx-mac-dock a:hover,body.compact-flow .nx-mac-dock a:focus-visible{background:#e5d7c8a8}
+}
+@media(min-width:1450px){body.compact-flow .nx-mac-dock a>span:first-child{width:52px;height:52px}body.compact-flow .nx-mac-dock svg{width:27px;height:27px}}
+</style>
 </head>
 <body id="top" class="compact-flow">
 <a class="skip-link" href="#main">Skip to content</a>
