@@ -1,0 +1,41 @@
+# AJAYNXT Digital Studio
+
+> Independent digital studio based in Sikar, Rajasthan, India, working with businesses in India and internationally. Services include website development, UI/UX, digital marketing, SEO, paid advertising, AI-assisted content and video production.
+
+The official website is https://ajaynxt.com/. Public service pages describe the current scope and contact options. Website development starts from INR 10,000; UGC video production starts from INR 800 per video. Final quotes depend on scope and requirements. These are starting prices, not fixed package quotes.
+
+## Services
+
+- [Digital marketing](https://ajaynxt.com/services/digital-marketing/): Campaign strategy and performance marketing.
+- [Google Ads](https://ajaynxt.com/services/google-ads/): PPC, keyword targeting and conversion tracking.
+- [Meta Ads](https://ajaynxt.com/services/meta-ads/): Facebook and Instagram advertising.
+- [SEO services](https://ajaynxt.com/services/seo/): Local, technical and on-page search optimisation.
+- [SEO keyword research](https://ajaynxt.com/services/seo-keyword-research/): Search intent and competitor research.
+- [AI content creation](https://ajaynxt.com/services/ai-content/): AI-assisted copy, scripts and content planning with human review.
+- [UGC and video editing](https://ajaynxt.com/services/video-editing/): Creator-style videos, reels, Shorts and editing.
+- [Social media marketing](https://ajaynxt.com/services/social-media/): Social creatives and content strategy.
+- [Pinterest marketing](https://ajaynxt.com/services/pinterest-marketing/): Pin creatives, visual search and paid campaigns.
+- [Website design](https://ajaynxt.com/services/website-design/): Responsive websites and landing pages.
+- [E-commerce](https://ajaynxt.com/services/ecommerce/): Online stores and product experiences.
+- [AI workflows](https://ajaynxt.com/services/ai-workflows/): AI-assisted business workflows.
+
+## Portfolio
+
+- [Projects](https://ajaynxt.com/projects.html): Client work and concept websites, separately identified.
+- [UI/UX Showcase](https://ajaynxt.com/showcase.html): Interactive 3D, motion and website design concepts. Concepts are not client endorsements or commercial offers.
+- [Case studies](https://ajaynxt.com/case-studies/): Selected project descriptions.
+- [3D portfolio](https://ajaynxt.com/3d.html): Interactive portfolio experience.
+
+## Resources and contact
+
+- [Blog](https://ajaynxt.com/blog/): Website planning, SEO and performance articles.
+- [Tools](https://ajaynxt.com/tools/): Public business and website planning resources.
+- [Contact](https://ajaynxt.com/#contact): Project enquiries and service scope.
+- [Privacy](https://ajaynxt.com/privacy/): Website privacy information.
+- [XML sitemap](https://ajaynxt.com/sitemap.xml): Public canonical page inventory.
+
+## Optional
+
+- [India services](https://ajaynxt.com/locations/india/)
+- [Rajasthan services](https://ajaynxt.com/locations/rajasthan/)
+- [Worldwide services](https://ajaynxt.com/locations/worldwide/)
