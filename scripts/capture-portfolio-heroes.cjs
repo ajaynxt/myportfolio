@@ -145,6 +145,49 @@ const projects = [
     "file": "assets/demo-previews/demo-28.webp"
   }
 ];
+/* These two demos have independently checked public source repositories.
+   When their custom domain is unavailable, render the real project source locally. */
+const { execFileSync } = require("node:child_process");
+const http = require("node:http");
+const os = require("node:os");
+const fallbackSources = {
+  "assets/demo-previews/demo-05.webp": {repo:"https://github.com/ajaynxt/hotel.git",heading:/Where the lake\s*holds the palace/i,title:/Rajmahal Lake Palace/i},
+  "assets/demo-previews/demo-07.webp": {repo:"https://github.com/ajaynxt/construction.git",heading:/Building places\s*that move life forward/i,title:/Stonecrest Developers/i}
+};
+const types={".html":"text/html; charset=utf-8",".css":"text/css",".js":"text/javascript",".mjs":"text/javascript",".json":"application/json",".webp":"image/webp",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".svg":"image/svg+xml",".gif":"image/gif",".woff":"font/woff",".woff2":"font/woff2",".mp4":"video/mp4",".ico":"image/x-icon"};
+async function captureFromSource(project,browser) {
+  const spec=fallbackSources[project.file]; if(!spec)return false;
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),"ajaynxt-demo-"));
+  let server,context;
+  try{
+    execFileSync("git",["clone","--depth","1","--branch","main",spec.repo,root],{timeout:60000,stdio:"inherit"});
+    server=http.createServer(async(req,res)=>{
+      try{
+        const pathname=decodeURIComponent(new URL(req.url,"http://127.0.0.1").pathname);
+        let file=path.resolve(root,"."+pathname);
+        if(file!==root&&!file.startsWith(root+path.sep))throw Error("Invalid path");
+        if((await fs.stat(file)).isDirectory())file=path.join(file,"index.html");
+        const bytes=await fs.readFile(file);res.writeHead(200,{"Content-Type":types[path.extname(file).toLowerCase()]||"application/octet-stream"});res.end(bytes);
+      }catch{res.writeHead(404);res.end("Not found");}
+    });
+    await new Promise((resolve,reject)=>{server.once("error",reject);server.listen(0,"127.0.0.1",resolve);});
+    context=await browser.newContext({viewport:{width:1440,height:814},deviceScaleFactor:1,reducedMotion:"reduce"});
+    const page=await context.newPage();
+    const response=await page.goto("http://127.0.0.1:"+server.address().port+"/",{waitUntil:"domcontentloaded",timeout:30000});
+    if(!response?.ok())throw Error("Source server returned an error");
+    await page.waitForLoadState("load",{timeout:15000}).catch(()=>{});
+    await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise(resolve=>setTimeout(resolve,3500))])).catch(()=>{});
+    const title=await page.title();const heading=await page.locator("h1").first().innerText({timeout:10000});
+    if(!spec.title.test(title)||!spec.heading.test(heading.replace(/\s+/g," ")))throw Error("Source does not match expected project");
+    await page.waitForTimeout(2500);await page.evaluate(()=>window.scrollTo(0,0));
+    const png=await page.screenshot({type:"png",fullPage:false,animations:"disabled",timeout:15000});
+    const output=await sharp(png).webp({quality:84}).toBuffer();
+    const stats=await sharp(output).stats();if(stats.entropy<2)throw Error("Source capture appears blank");
+    await fs.writeFile(project.file,output);console.log("Captured verified original project source:",project.name,output.length+" bytes");return true;
+  }catch(error){console.warn("Source fallback unavailable:",project.name,error.message);return false;}
+  finally{if(context)await context.close();if(server)await new Promise(resolve=>server.close(resolve));await fs.rm(root,{recursive:true,force:true});}
+}
+
 async function exists(file) { try { await fs.access(file); return true; } catch { return false; } }
 (async () => {
   await fs.mkdir("assets/client-previews", {recursive:true});
@@ -173,7 +216,7 @@ async function exists(file) { try { await fs.access(file); return true; } catch 
         const stats=await sharp(target).stats();if(stats.entropy<2)throw Error("Screenshot appears blank");
         await fs.writeFile(project.file,target);
         completed++;console.log("Captured",project.name,target.length+" bytes");
-      } catch(error) { console.warn("Skipped",project.name,error.message); }
+      } catch(error) { console.warn("Live capture failed",project.name,error.message); if(await captureFromSource(project,browser))completed++; }
       finally {await context.close();}
     }
   } finally {await browser.close();}
