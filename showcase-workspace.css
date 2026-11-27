@@ -105,3 +105,11 @@
 .nx-motion-dialog-note{font-size:11px;color:#716359;margin:7px 0 0}
 @media(max-width:420px){.nx-ws-card .nx-motion-play{top:40px;font-size:10px;padding:5px 6px;min-height:28px}}
 @media(prefers-reduced-motion:reduce){.nx-motion-surface{transition:none}}
+
+/* Continuous floating gallery — no paging, no permanent motion outside hover. */
+.nx-ws-card{border-radius:15px;box-shadow:0 5px 16px #5037280b;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.nx-ws-card-body h2{font-weight:600;letter-spacing:-.02em}
+.nx-ws-card-foot a{font-weight:600}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){body:not(.nx-motion-off) .nx-ws-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px #5037281a}}
+@media(max-width:600px){.nx-ws-grid{grid-template-columns:minmax(0,1fr);gap:14px}}
+@media(prefers-reduced-motion:reduce){.nx-ws-card{transition:none}.nx-ws-card:hover{transform:none}}
