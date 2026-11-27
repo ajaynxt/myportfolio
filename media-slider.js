@@ -25,14 +25,14 @@
       let destination = track.scrollLeft + distance * direction;
       if(direction > 0 && track.scrollLeft >= max - 3) destination = 0;
       else if(direction < 0 && track.scrollLeft <= 3) destination = max;
-      track.scrollTo({left:Math.max(0,Math.min(max,destination)),behavior:motion.matches?"instant":"smooth"});
+      track.scrollTo({left:Math.max(0,Math.min(max,destination)),behavior:motion.matches?"auto":"smooth"});
     };
     const hold = () => { holdUntil = Date.now() + 5000; };
     prev.addEventListener("click",()=>{hold();step(-1);});
     next.addEventListener("click",()=>{hold();step(1);});
     toggle.addEventListener("click",()=>{paused=!paused;sync();});
-    rail.addEventListener("mouseenter",()=>{hover=true;});
-    rail.addEventListener("mouseleave",()=>{hover=false;});
+    rail.addEventListener("pointerenter",event=>{if(event.pointerType==="mouse")hover=true;});
+    rail.addEventListener("pointerleave",()=>{hover=false;});
     track.addEventListener("touchstart",()=>{touching=true;hold();},{passive:true});
     track.addEventListener("touchend",()=>{touching=false;hold();},{passive:true});
     track.addEventListener("touchcancel",()=>{touching=false;hold();},{passive:true});
@@ -41,7 +41,7 @@
     if("IntersectionObserver" in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;},{threshold:0.15}).observe(rail);
     if("ResizeObserver" in window)new ResizeObserver(sync).observe(track);else window.addEventListener("resize",sync,{passive:true});
     motion.addEventListener?.("change",()=>{paused=motion.matches;sync();});
-    setInterval(()=>{if(!paused&&visible&&!hover&&!touching&&!document.hidden&&!rail.contains(document.activeElement)&&!document.querySelector("dialog[open]")&&Date.now()>holdUntil)step(1);},3000);
+    setInterval(()=>{if(!paused&&visible&&!hover&&!touching&&!document.hidden&&!track.contains(document.activeElement)&&!document.querySelector("dialog[open]")&&Date.now()>holdUntil)step(1);},rail.classList.contains("client-slider-shell")?5500:3500);
     sync();
   }
 })();
