@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="AJAYNXT, led by Ajay Saini, provides website design, SEO, digital marketing, e-commerce and creative services from Rajasthan, India, for clients worldwide.">
 <meta name="twitter:image" content="https://ajaynxt.com/assets/brand/ajay-saini-og.jpg">
 <link rel="icon" href="/assets/brand/logo.png" type="image/png">
-<link rel="preload" as="image" href="/assets/client-previews/diamond-cover.svg" type="image/svg+xml" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/client-previews/diamond-home.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -240,6 +240,29 @@ body.screen-layout{min-height:100dvh;display:flex;flex-direction:column}body.scr
 @media(max-width:760px){.screen-layout .nav{height:58px}.screen-layout .editorial-grid{padding:8px 0;gap:12px}.screen-layout .editorial-hero h1{font-size:clamp(38px,9.5vw,65px)}.screen-layout .editorial-top{font-size:9px}.screen-layout .editorial-visual{max-width:460px}.screen-layout .feature-stage{max-height:26vh;aspect-ratio:1.8}.screen-layout .editorial-bottom{gap:8px;padding:8px 0}.screen-layout .hero-actions{margin:12px 0}.screen-layout .hero-copy{font-size:14px}.screen-layout .section-head{margin-bottom:12px}.screen-layout .section-head h2{font-size:32px}.screen-layout .screen-label{display:none}.screen-layout .screen-nav-inner{gap:6px}.screen-layout .screen-nav-inner button,.screen-layout .screen-nav-inner select{min-height:44px;padding:6px 9px}.screen-layout #main>section:not([hidden]){justify-content:flex-start}.screen-layout .work-card .work-image.site-shot{max-height:25vh}.screen-layout .work-card .work-image.site-shot img{max-height:23vh}.screen-layout .work-card .work-info{padding:12px}.screen-layout .media-slider .compact-media-card{flex-basis:clamp(100px,34vw,125px)}.screen-layout .media-slider .instagram-post-gallery .compact-media-card{flex-basis:clamp(110px,38vw,150px)}.screen-layout .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.screen-layout .service{padding:11px}.screen-layout .service h3{font-size:17px}.screen-layout .service p{font-size:12px}.screen-layout .contact-form{padding:12px}.screen-layout .contact-grid{gap:14px}.screen-layout footer .footer-row{padding:8px 0}.screen-layout .contact-form .form-actions .btn{min-height:44px}.screen-layout .navlinks{top:58px}}
 @media(max-width:350px){.screen-layout .service-grid{grid-template-columns:1fr}}
 
+/* Premium editorial hero with verified original project imagery. */
+#home .hero-real-visual{width:100%;max-width:760px;background:#e5e8ef;border:1px solid #ced5e1;border-radius:16px;padding:12px;box-shadow:0 18px 55px #283e6a13}
+#home .visual-index{padding:2px 3px 10px;letter-spacing:.09em;font-size:10px}
+#home .visual-index>span:first-child{display:flex;align-items:center;gap:7px}.hero-live-dot{width:7px;height:7px;background:#3157e8;border-radius:50%;box-shadow:0 0 0 3px #3157e819}
+#home .hero-real-stage{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;position:relative;isolation:isolate;padding:14px;aspect-ratio:1.6;background:radial-gradient(ellipse at 22% 10%,#6687f6 0,#3157e8 42%,#203a99 100%);border-radius:10px;overflow:hidden}
+#home .hero-real-stage:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(#ffffff12 1px,transparent 1px),linear-gradient(90deg,#ffffff12 1px,transparent 1px);background-size:22px 22px}
+#home .hero-project-frame{display:flex;min-width:0;min-height:0;flex-direction:column;background:#fff;overflow:hidden;border-radius:7px;box-shadow:0 8px 24px #0c205843;transition:transform .24s ease,box-shadow .24s ease;border:1px solid #ffffff9c}
+#home .hero-project-1{grid-row:1/3;justify-content:center;background:#111b35}
+#home .hero-project-frame img{display:block;width:100%;min-height:0;height:100%;flex:1;object-fit:contain;object-position:center;background:#e9ecf2}
+#home .hero-project-1 img{object-fit:contain;background:#111b35}
+#home .hero-browser{display:flex;align-items:center;gap:6px;padding:5px 8px;min-height:23px;font:600 9px/1.2 "DM Sans",sans-serif;color:#5c6471;background:#f4f3ed;flex:none}
+#home .hero-browser>span:nth-child(2){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+#home .hero-browser-dots{display:flex;gap:3px;flex:none}.hero-browser-dots i{height:5px;width:5px;border-radius:50%;background:#aeb7c6}.hero-browser-arrow{color:#3157e8;font-size:12px}
+#home .hero-project-label{background:#fff;display:flex;flex-direction:column;padding:6px 9px;gap:1px;flex:none;line-height:1.15}
+#home .hero-project-label strong{color:#171b25;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#home .hero-project-label span{color:#646b75;font-size:9px}
+#home .hero-project-frame:hover,#home .hero-project-frame:focus-visible{transform:translateY(-2px);box-shadow:0 12px 28px #0c205875}
+#home .hero-project-frame:focus-visible{outline:3px solid #d9f36a;outline-offset:-3px}
+#home .visual-captionline{padding:10px 3px 0;font-size:11px}
+@media(min-width:761px) and (max-height:800px){#home .hero-real-stage{max-height:43vh;aspect-ratio:1.8}#home .hero-project-label{padding:4px 7px}#home .hero-project-label span{display:none}}
+@media(max-width:760px){#home .hero-real-visual{max-width:480px;padding:7px;border-radius:10px}#home .hero-real-stage{aspect-ratio:1.75;padding:7px;gap:5px;border-radius:7px;max-height:32vh}#home .hero-browser{padding:3px 4px;min-height:17px;font-size:7px;gap:4px}#home .hero-browser-dots{display:none}#home .hero-project-label{padding:4px 5px}#home .hero-project-label strong{font-size:9px}#home .hero-project-label span{display:none}#home .visual-index,#home .visual-captionline{font-size:9px;padding:5px 2px}#home .hero-project-frame{border-radius:4px}#home .editorial-grid{gap:10px}}
+@media(prefers-reduced-motion:reduce){#home .hero-project-frame{transition:none;transform:none!important}}
+
 </style>
 <script src="/ga4.js" defer></script>
 <meta property="og:locale" content="en_IN">
@@ -264,15 +287,9 @@ body.screen-layout{min-height:100dvh;display:flex;flex-direction:column}body.scr
       <p class="hero-copy">Founder-led website design, web development, SEO and digital marketing from Rajasthan, India. We build distinctive digital experiences for businesses in India and worldwide.</p>
       <div class="hero-actions"><a class="btn" href="#contact">Discuss your project <span aria-hidden="true">↗</span></a><a class="btn secondary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a></div>
     </div>
-    <div class="editorial-visual" aria-label="Featured AJAYNXT website projects">
-      <div class="visual-index"><span>01 / SELECTED WORK</span><span>AJAYNXT</span></div>
-      <div class="feature-stage">
-        <a class="feature-main" href="/case-studies/diamond-restaurants/" aria-label="Diamond Restaurants case study"><div class="feature-browser"><span aria-hidden="true">● ● ●</span><b>diamondrestaurants.com</b></div><img src="/assets/client-previews/diamond-cover.svg" data-screenshot="/assets/client-previews/diamond-home.webp" data-screenshot-alt="Diamond Restaurants original website hero screenshot" alt="Diamond Restaurants — illustrated project cover" width="1200" height="760" fetchpriority="high" decoding="async"></a>
-        <a class="feature-mini" href="/case-studies/wedding-shedding/" aria-label="Wedding Shedding case study"><img src="/assets/client-previews/wedding-shedding-cover.svg" data-screenshot="/assets/client-previews/wedding-shedding-home.webp" data-screenshot-alt="Wedding Shedding original website hero screenshot" alt="Wedding Shedding — illustrated project cover" width="1200" height="760" decoding="async"></a>
-        <span class="visual-stamp" aria-hidden="true">DESIGN<br>WITH<br>INTENT.<b>↗</b></span>
-      </div>
-      <div class="visual-captionline"><span>Client work / Hospitality &amp; creative</span><a href="/projects.html">View 28 projects ↗</a></div>
-    </div>
+    <div class="editorial-visual hero-real-visual" aria-label="Three original client website previews"><div class="visual-index"><span><i class="hero-live-dot" aria-hidden="true"></i> SELECTED CLIENT WORK</span><span>01 — 03</span></div><div class="hero-real-stage"><a class="hero-project-frame hero-project-1" href="/case-studies/diamond-restaurants/" aria-label="View Diamond Restaurants case study"><div class="hero-browser"><span class="hero-browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>diamondrestaurants.com</span><span class="hero-browser-arrow" aria-hidden="true">↗</span></div><img src="/assets/client-previews/diamond-home.webp" alt="Diamond Restaurants actual website homepage" width="1440" height="900" fetchpriority="high" decoding="async"><div class="hero-project-label"><strong>Diamond Restaurants</strong><span>Hospitality & retail</span></div></a>
+<a class="hero-project-frame hero-project-2" href="/case-studies/wedding-shedding/" aria-label="View Wedding Shedding case study"><div class="hero-browser"><span class="hero-browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>weddingshedding.in</span><span class="hero-browser-arrow" aria-hidden="true">↗</span></div><img src="/assets/client-previews/wedding-shedding-home.webp" alt="Wedding Shedding actual website homepage" width="1440" height="900" fetchpriority="low" decoding="async"><div class="hero-project-label"><strong>Wedding Shedding</strong><span>Wedding & cinema</span></div></a>
+<a class="hero-project-frame hero-project-3" href="/case-studies/safar-sathi/" aria-label="View Safar Sathi case study"><div class="hero-browser"><span class="hero-browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>safarsathi.in</span><span class="hero-browser-arrow" aria-hidden="true">↗</span></div><img src="/assets/client-previews/safar-sathi-home.webp" alt="Safar Sathi actual website homepage" width="1440" height="900" fetchpriority="low" decoding="async"><div class="hero-project-label"><strong>Safar Sathi</strong><span>Travel & experiences</span></div></a></div><div class="visual-captionline"><span>Real websites · Real client projects</span><a href="/projects.html">View all 28 projects ↗</a></div></div>
   </div>
   <div class="editorial-bottom"><a href="#work" class="scroll-link"><span aria-hidden="true">↓</span> Explore next section</a><div class="editorial-stat"><strong>03</strong> Client websites</div><div class="editorial-stat"><strong>25</strong> Concept demos</div><a class="editorial-lab" href="/3d.html">Explore 3D experience ↗</a></div>
 </div></section>
