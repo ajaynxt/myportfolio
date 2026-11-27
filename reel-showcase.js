@@ -8,6 +8,9 @@
   const external = dialog.querySelector("[data-reel-external]");
   const status = dialog.querySelector("[data-instagram-status]");
   let trigger = null, scriptPromise = null, generation = 0, timer;
+  const localMedia = new Map();
+  const allowedPath = value => typeof value === 'string' && /^\/assets\/social-media\/[A-Za-z0-9_-]+\.(webp|jpg|jpeg|png|mp4|webm)$/.test(value);
+  fetch('/assets/social-media/manifest.json').then(r=>r.ok?r.json():{}).then(items=>{for(const link of document.querySelectorAll('[data-reel-id]')){const item=items[link.dataset.reelId];if(!item||typeof item!=='object')continue;const media={poster:allowedPath(item.poster)&&! /\.(mp4|webm)$/.test(item.poster)?item.poster:null,video:allowedPath(item.video)&&/\.(mp4|webm)$/.test(item.video)?item.video:null};if(!media.poster&&!media.video)continue;localMedia.set(link.dataset.reelId,media);if(media.poster){const img=new Image();img.loading='lazy';img.decoding='async';img.alt='';img.onload=()=>{link.prepend(img);link.dataset.mediaReady='true';};img.src=media.poster;}}}).catch(()=>{});
   function loadInstagram() {
     if (window.instgrm?.Embeds?.process) return Promise.resolve();
     if (scriptPromise) return scriptPromise;
@@ -34,6 +37,15 @@
       title.textContent = "Instagram " + (kind === "p" ? "post " : "reel ") + link.dataset.reelNumber;
       external.href = permalink;
       status.textContent = "Loading Instagram content…";
+      const media=localMedia.get(id);
+      if(media?.video || (kind==="p" && media?.poster)){
+        const element=document.createElement(media.video?"video":"img");
+        element.src=media.video||media.poster;
+        if(media.video){element.controls=true;element.playsInline=true;element.preload="metadata";if(media.poster)element.poster=media.poster;}
+        else element.alt=title.textContent;
+        element.addEventListener("error",()=>{status.textContent="Local media unavailable. Open the original link below.";});
+        frame.replaceChildren(element);status.textContent="";dialog.showModal();if(media.video)element.play().catch(()=>{});return;
+      }
       const embed = document.createElement("blockquote");
       embed.className = "instagram-media";
       embed.setAttribute("data-instgrm-permalink", permalink);
