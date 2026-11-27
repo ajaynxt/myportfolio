@@ -401,3 +401,14 @@ html { scroll-padding-top: calc(var(--header-height, 82px) + 18px); }
 @media (prefers-reduced-motion: reduce) {
   .site-header .header-cta, .desktop-nav a { transition: none; }
 }
+
+/* Project discovery and accessible controls */
+.archive-search{display:flex;align-items:center;gap:12px;margin:0 0 16px;padding:14px;background:#fff;border:1px solid #d8d9d5;border-radius:10px}
+.archive-search label{font-size:13px;font-weight:750;white-space:nowrap}
+.archive-search input{flex:1;min-width:0;min-height:44px;border:1px solid #aeb3bc;border-radius:6px;padding:10px 12px;background:#fff;color:#171b25;font:inherit}
+.archive-search button{min-height:44px;padding:8px 12px;border:1px solid #aeb3bc;border-radius:6px;background:#fff;cursor:pointer;color:#171b25;font:inherit}
+.archive-empty{padding:32px 20px;text-align:center;background:#fff;border:1px solid #d8d9d5;border-radius:10px;margin:20px 0}
+.archive-main [hidden]{display:none!important}
+.archive-main :focus-visible{outline:3px solid #3157e8;outline-offset:4px}
+.archive-main .filter-list button{min-height:44px}
+@media(max-width:600px){.archive-search{flex-wrap:wrap;gap:8px}.archive-search label{flex:1 1 100%}.archive-main .filter-list{display:flex;flex-wrap:wrap;gap:6px}}
