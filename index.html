@@ -595,6 +595,19 @@ body.compact-flow #reel-player{width:min(640px,calc(100% - 32px));max-height:cal
 }
 @media(min-width:761px) and (max-width:1099px){body.compact-flow #ugc #reel-slider .compact-media-card{flex-basis:clamp(200px,29vw,275px)}body.compact-flow #social-posts #post-slider .compact-media-card{flex-basis:clamp(210px,31vw,310px)}}
 </style>
+<style id="nx-social-frame-fit">
+/* Social portfolio: the full source image stays inside a stable, explicit frame. */
+body.compact-flow #reel-slider .compact-media-card,body.compact-flow #post-slider .compact-media-card{min-width:0;box-sizing:border-box;overflow:hidden;flex-shrink:0}
+body.compact-flow #reel-slider .compact-open[data-media-ready],body.compact-flow #post-slider .compact-open[data-media-ready]{position:relative;display:block!important;width:100%;height:auto!important;min-height:0!important;max-height:none!important;box-sizing:border-box;overflow:hidden;padding:0!important;background:#f7f1e8!important;border:1px solid #e3d6c7;border-radius:12px;isolation:isolate}
+body.compact-flow #reel-slider .compact-open[data-media-ready]{aspect-ratio:9/16!important}
+body.compact-flow #post-slider .compact-open[data-media-ready]{aspect-ratio:1/1!important}
+body.compact-flow #reel-slider .compact-open[data-media-ready] img,body.compact-flow #post-slider .compact-open[data-media-ready] img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;object-fit:contain!important;object-position:center!important;display:block!important;transform:none!important;transition:none!important;border-radius:0!important}
+body.compact-flow #reel-slider .compact-open[data-media-ready] .compact-media-fallback{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:48px;height:48px;z-index:2;display:grid;place-items:center;background:#fffdf9e8;border-radius:50%;padding:0;pointer-events:none}
+body.compact-flow #reel-slider .compact-open[data-media-ready] .compact-media-fallback:after{font-size:18px}
+body.compact-flow #post-slider .compact-open[data-media-ready]:not([data-local-video]) .compact-media-fallback{display:none}
+@media(min-width:761px){body.compact-flow #reel-slider .compact-media-card{flex-basis:clamp(205px,calc((100% - 48px)/3.4),310px)}body.compact-flow #post-slider .compact-media-card{flex-basis:clamp(220px,calc((100% - 32px)/3),355px)}}
+@media(max-width:760px){body.compact-flow #reel-slider .compact-open[data-media-ready],body.compact-flow #post-slider .compact-open[data-media-ready]{border-radius:8px}body.compact-flow #reel-slider .compact-open[data-media-ready] .compact-media-fallback{width:34px;height:34px}}
+</style>
 </head>
 <body id="top" class="compact-flow">
 <a class="skip-link" href="#main">Skip to content</a>
