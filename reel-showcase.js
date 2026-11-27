@@ -13,7 +13,10 @@
   let trigger = null, scriptPromise = null, generation = 0, timer;
   const localMedia = new Map();
   const allowedPath = value => typeof value === 'string' && /^\/assets\/social-media\/[A-Za-z0-9_-]+\.(webp|jpg|jpeg|png|mp4|webm)$/.test(value);
-  fetch('/assets/social-media/manifest.json').then(r=>r.ok?r.json():{}).then(items=>{for(const link of document.querySelectorAll('[data-reel-id]')){const item=items[link.dataset.reelId];if(!item||typeof item!=='object')continue;const media={poster:allowedPath(item.poster)&&! /\.(mp4|webm)$/.test(item.poster)?item.poster:null,video:allowedPath(item.video)&&/\.(mp4|webm)$/.test(item.video)?item.video:null};if(!media.poster&&!media.video)continue;localMedia.set(link.dataset.reelId,media);if(link.dataset.instagramKind!=="p"&&media.poster&&!link.querySelector('img')){const img=new Image();img.loading='lazy';img.decoding='async';img.alt='';img.onload=()=>{link.prepend(img);link.dataset.mediaReady='true';const inline=link.parentElement.querySelector('.compact-embed-frame');if(media.video)link.dataset.localVideo='true';if(inline){inline.hidden=true;inline.querySelector('iframe')?.remove();}};img.src=media.poster;}}}).catch(()=>{});
+  let manifestPromise;
+  const loadManifest=()=>manifestPromise||(manifestPromise=fetch('/assets/social-media/manifest.json').then(r=>r.ok?r.json():{}).then(items=>{for(const link of document.querySelectorAll('[data-reel-id]')){const item=items[link.dataset.reelId];if(!item||typeof item!=='object')continue;const media={poster:allowedPath(item.poster)&&! /\.(mp4|webm)$/.test(item.poster)?item.poster:null,video:allowedPath(item.video)&&/\.(mp4|webm)$/.test(item.video)?item.video:null};if(!media.poster&&!media.video)continue;localMedia.set(link.dataset.reelId,media);if(link.dataset.instagramKind!=="p"&&media.poster&&!link.querySelector('img')){const img=new Image();img.loading='lazy';img.decoding='async';img.alt='';img.onload=()=>{link.prepend(img);link.dataset.mediaReady='true';const inline=link.parentElement.querySelector('.compact-embed-frame');if(media.video)link.dataset.localVideo='true';if(inline){inline.hidden=true;inline.querySelector('iframe')?.remove();}};img.src=media.poster;}}}).catch(()=>{}));
+  const mediaSection=document.getElementById('ugc');
+  if(mediaSection&&'IntersectionObserver' in window){const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();loadManifest();}},{rootMargin:'350px'});io.observe(mediaSection);}else if('requestIdleCallback' in window)requestIdleCallback(loadManifest,{timeout:3000});else window.addEventListener('load',loadManifest,{once:true});
   function loadInstagram() {
     if (window.instgrm?.Embeds?.process) return Promise.resolve();
     if (scriptPromise) return scriptPromise;
@@ -40,6 +43,8 @@
       title.textContent = "Instagram " + (kind === "p" ? "post " : "reel ") + link.dataset.reelNumber;
       external.href = permalink;
       status.textContent = "Loading Instagram content…";
+      await loadManifest();
+      if(current!==generation)return;
       const media=localMedia.get(id);
       if(kind==="reel" && media?.video){
         const element=document.createElement(media.video?"video":"img");
