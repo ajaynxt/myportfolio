@@ -839,11 +839,11 @@ body.compact-flow button,body.compact-flow input,body.compact-flow textarea,body
 body.compact-flow .hero-actions .btn,body.compact-flow .gallery-cta{letter-spacing:0;line-height:1.35}
 body.compact-flow a:focus-visible,body.compact-flow button:focus-visible{outline:2px solid #805333;outline-offset:3px}
 @media(min-width:1100px){
-body.compact-flow .nx-mac-dock{padding:9px 18px 10px;gap:clamp(8px,1vw,16px);border:1px solid #ffffff90;background:rgba(255,253,249,.20);box-shadow:0 8px 28px #392b1d16,inset 0 1px 0 #ffffffb0}
+body.compact-flow .nx-mac-dock{padding:6px 18px 7px;gap:clamp(8px,1vw,16px);border:1px solid #ffffff90;background:rgba(255,253,249,.20);box-shadow:0 8px 28px #392b1d16,inset 0 1px 0 #ffffffb0}
 @supports(backdrop-filter:blur(20px)){body.compact-flow .nx-mac-dock{backdrop-filter:blur(20px) saturate(1.25);background:rgba(255,253,249,.25)}}
-body.compact-flow .nx-mac-dock a{position:relative;gap:3px;padding:3px 2px 8px;min-height:76px;color:#4c3527;font:650 12px/1.25 "DM Sans",system-ui,sans-serif;letter-spacing:.015em}
-body.compact-flow .nx-mac-dock a>span.nx-dock-icon{display:grid;place-items:center;width:46px;height:46px;color:inherit;background:none!important;box-shadow:none;border-radius:0}
-body.compact-flow .nx-mac-dock svg{width:29px;height:29px;stroke-width:1.65;overflow:visible}
+body.compact-flow .nx-mac-dock a{position:relative;gap:3px;padding:3px 2px 8px;min-height:66px;color:#4c3527;font:650 11.5px/1.25 "DM Sans",system-ui,sans-serif;letter-spacing:.015em}
+body.compact-flow .nx-mac-dock a>span.nx-dock-icon{display:grid;place-items:center;width:40px;height:40px;color:inherit;background:none!important;box-shadow:none;border-radius:0}
+body.compact-flow .nx-mac-dock svg{width:25px;height:25px;stroke-width:1.7;overflow:visible}
 body.compact-flow .nx-mac-dock a[aria-current]{color:#805333;font-weight:800}
 body.compact-flow .nx-mac-dock a[aria-current]::after{content:"";position:absolute;bottom:1px;left:50%;width:18px;height:2px;border-radius:9px;background:currentColor;transform:translateX(-50%)}
 body.compact-flow .nx-mac-dock a:hover{color:#986139;background:transparent}
@@ -851,7 +851,13 @@ body.compact-flow .nx-mac-dock .nx-dock-trend{top:0;left:auto;right:0;padding:1p
 body.compact-flow>header .navlinks a{font-weight:650;letter-spacing:.005em}
 body.compact-flow .nx-global-nav a{font-size:13px}
 }
-@media(min-width:1450px){body.compact-flow .nx-mac-dock svg{width:31px;height:31px}body.compact-flow .nx-mac-dock a{font-size:13px}}
+@media(min-width:1450px){body.compact-flow .nx-mac-dock svg{width:27px;height:27px}body.compact-flow .nx-mac-dock a{font-size:13px}}
+@media(min-width:1100px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+body.compact-flow:not(.nx-motion-off) .nx-mac-dock a .nx-dock-icon svg{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+body.compact-flow:not(.nx-motion-off) .nx-mac-dock a:hover .nx-dock-icon svg,body.compact-flow:not(.nx-motion-off) .nx-mac-dock a:focus-visible .nx-dock-icon svg{animation:nxDockBounce .52s cubic-bezier(.2,.65,.35,1) both}
+@keyframes nxDockBounce{0%,100%{transform:translateY(0) scale(1)}35%{transform:translateY(-7px) scale(1.09)}62%{transform:translateY(1px) scale(.97)}82%{transform:translateY(-3px) scale(1.03)}}
+}
+@media(min-width:1100px){body.compact-flow{padding-bottom:94px}html:has(body.compact-flow){scroll-padding-bottom:102px}}
 </style>
 </head>
 <body id="top" class="compact-flow">
@@ -1086,7 +1092,7 @@ const btn=document.createElement("button");btn.type="button";btn.className="nx-m
 function sync(){body.classList.toggle("nx-motion-off",off());btn.setAttribute("aria-pressed",String(off()));btn.textContent=off()?"Motion reduced · On":"Reduce motion · Off";btn.disabled=media.matches;if(off()){resetDock();for(const a of document.getAnimations?.()||[]){if(a.effect?.target?.closest?.("#main .demo-tile,#main .work-card,#main .service,.nx-mac-dock,#home .editorial-copy"))a.cancel();}}}
 btn.addEventListener("click",()=>{userOff=!userOff;try{localStorage.setItem("nx-motion-off",userOff?"1":"0");}catch(e){}sync();});if(nav)nav.insertBefore(btn,nav.querySelector(".navcta"));media.addEventListener?.("change",sync);
 const items=dock?[...dock.querySelectorAll("a")]:[];let frame=0,mouseX=0,active=null;function resetDock(){if(dock)dock.classList.remove("nx-pointer-dock");for(const item of items){item.style.removeProperty("--nx-dock-scale");item.style.removeProperty("--nx-dock-y");}}
-function measureDock(){frame=0;if(off()||!pointer.matches||!dock||!active)return;const positions=items.map(a=>{const r=a.getBoundingClientRect();return r.left+r.width/2});dock.classList.add("nx-pointer-dock");items.forEach((a,i)=>{const dist=Math.abs(mouseX-positions[i]);const weight=Math.max(0,1-dist/112);const ease=weight*weight*(3-2*weight);a.style.setProperty("--nx-dock-scale",(1+ease*.44).toFixed(3));a.style.setProperty("--nx-dock-y",(-ease*10).toFixed(2)+"px");});}
+function measureDock(){frame=0;if(off()||!pointer.matches||!dock||!active)return;const positions=items.map(a=>{const r=a.getBoundingClientRect();return r.left+r.width/2});dock.classList.add("nx-pointer-dock");items.forEach((a,i)=>{const dist=Math.abs(mouseX-positions[i]);const weight=Math.max(0,1-dist/112);const ease=weight*weight*(3-2*weight);a.style.setProperty("--nx-dock-scale",(1+ease*.18).toFixed(3));a.style.setProperty("--nx-dock-y",(-ease*3).toFixed(2)+"px");});}
 if(dock){dock.addEventListener("pointermove",e=>{if(off()||!pointer.matches)return;active=dock;mouseX=e.clientX;if(!frame)frame=requestAnimationFrame(measureDock);},{passive:true});dock.addEventListener("pointerleave",()=>{active=null;if(frame){cancelAnimationFrame(frame);frame=0;}resetDock();});dock.addEventListener("focusin",()=>{active=null;resetDock();});}
 sync();
 const meter=document.createElement("div");meter.className="nx-scroll-meter";meter.setAttribute("aria-hidden","true");const bar=document.createElement("span");meter.append(bar);body.append(meter);
