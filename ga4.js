@@ -1,56 +1,44 @@
-/* AJAYNXT Google Analytics 4.
-   * Add the real Measurement ID (G-XXXXXXXXXX) below after creating/opening the GA4 web stream.
-   * No form values, prompt content, email addresses or WhatsApp message text are sent to GA4.
-   */
-(() => {
-  "use strict";
-  const GA4_ID = "G-REPLACE_WITH_MEASUREMENT_ID";
-  if (!/^G-[A-Z0-9]+$/.test(GA4_ID) || GA4_ID.includes("REPLACE")) {
-    console.info("[AJAYNXT Analytics] Add the GA4 Measurement ID in ga4.js to activate Google Analytics.");
-    window.trackAJAYNXT = () => {};
-    return;
-  }
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-  window.gtag("js", new Date());
-  window.gtag("config", GA4_ID, { send_page_view: true });
-  const tag = document.createElement("script");
-  tag.async = true;
-  tag.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA4_ID);
-  document.head.appendChild(tag);
-
-  window.trackAJAYNXT = (eventName, parameters = {}) => {
-    if (typeof window.gtag !== "function") return;
-    const safe = {};
-    for (const [key, value] of Object.entries(parameters)) {
-      if (value == null || typeof value === "boolean" || typeof value === "number") safe[key] = value;
-      else if (typeof value === "string") safe[key] = value.slice(0, 100);
-    }
-    window.gtag("event", eventName, safe);
-  };
-
-  document.addEventListener("click", (event) => {
-    const target = event.target.closest("a,button");
-    if (!target) return;
-    const href = target.getAttribute("href") || "";
-    const label = (target.dataset.gaLabel || target.innerText || target.getAttribute("aria-label") || "link").trim().replace(/\s+/g, " ").slice(0, 70);
-    if (target.matches("[data-showcase-request]")) {
-      window.trackAJAYNXT("showcase_prompt_request", {
-        design_id: target.dataset.designId || "unknown",
-        design_category: target.dataset.designCategory || "unknown",
-        link_text: "Message for prompt"
-      });
-    } else if (/wa\.me|whatsapp\.com/.test(href)) {
-      window.trackAJAYNXT("whatsapp_click", { link_text: label });
-    } else if (href.startsWith("tel:")) {
-      window.trackAJAYNXT("phone_click", { link_text: label });
-    } else if (href.startsWith("mailto:")) {
-      window.trackAJAYNXT("email_click", { link_text: label });
-    } else if (target.closest("nav")) {
-      window.trackAJAYNXT("navigation_click", { link_text: label });
-    } else if (target.closest(".project-card, .design-card, [data-project-item]")) {
-      window.trackAJAYNXT("portfolio_item_click", { item_name: label });
-    }
-  }, { passive: true });
+/* AJAYNXT GA4: optional analytics, no form contents. */
+(()=>{"use strict";
+if(window.ajaynxtGA4Initialized)return;
+window.ajaynxtGA4Initialized=true;
+const id="G-YDCKPQYM3X",key="ajaynxt-analytics-consent-v1";
+let choice=null,started=false;
+try{choice=localStorage.getItem(key);}catch{}
+window.dataLayer=window.dataLayer||[];
+window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+const consent=value=>({analytics_storage:value,ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});
+window.gtag("consent","default",consent("denied"));
+function start(){
+ if(started||choice!=="allow")return;
+ started=true;
+ window.gtag("consent","update",consent("granted"));
+ window.gtag("js",new Date());
+ window.gtag("config",id,{send_page_view:true,allow_google_signals:false,allow_ad_personalization_signals:false,page_location:location.origin+location.pathname});
+ const tag=document.createElement("script");tag.async=true;tag.src="https://www.googletagmanager.com/gtag/js?id="+id;document.head.appendChild(tag);
+}
+window.addEventListener("ajaynxt-analytics-consent",event=>{
+ choice=event.detail==="allow"?"allow":"deny";
+ if(choice==="allow")start();
+ else if(started)window.gtag("consent","update",consent("denied"));
+});
+const types=new Set(["whatsapp_click","phone_click","email_click","enquiry_handoff","showcase_prompt_request","navigation_click","portfolio_item_click"]);
+window.trackAJAYNXT=(name,params={})=>{
+ if(!started||choice!=="allow"||!types.has(name))return;
+ const safe={send_to:id};
+ if(["whatsapp","email","phone"].includes(params.contact_method))safe.contact_method=params.contact_method;
+ window.gtag("event",name,safe);
+};
+document.addEventListener("click",event=>{
+ const el=event.target instanceof Element?event.target.closest("a[href],button"):null;
+ if(!el)return;
+ let url;try{url=new URL(el.getAttribute("href")||"",location.href);}catch{return;}
+ if(el.matches("[data-showcase-request]"))window.trackAJAYNXT("showcase_prompt_request");
+ else if(url.hostname==="wa.me"||url.hostname==="api.whatsapp.com")window.trackAJAYNXT("whatsapp_click",{contact_method:"whatsapp"});
+ else if(url.protocol==="tel:")window.trackAJAYNXT("phone_click",{contact_method:"phone"});
+ else if(url.protocol==="mailto:")window.trackAJAYNXT("email_click",{contact_method:"email"});
+ else if(el.closest("nav"))window.trackAJAYNXT("navigation_click");
+ else if(el.closest(".project-card,.design-card,[data-project-item]"))window.trackAJAYNXT("portfolio_item_click");
+},{passive:true});
+start();
 })();
