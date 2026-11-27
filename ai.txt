@@ -1,0 +1,16 @@
+# AJAYNXT — public AI reference
+# Informational file; not a standardized crawler directive or a change to licensing terms.
+
+Official website: https://ajaynxt.com/
+Business: AJAYNXT Digital Studio
+Location: Sikar, Rajasthan, India
+Service area: India and worldwide
+
+Public information and service links: https://ajaynxt.com/llms.txt
+Page discovery: https://ajaynxt.com/sitemap.xml
+Crawler access rules: https://ajaynxt.com/robots.txt
+Privacy information: https://ajaynxt.com/privacy/
+
+Services: digital marketing, Google Ads, Meta Ads, SEO, keyword research, Pinterest marketing, AI content creation, UGC video production, video editing, website development, e-commerce, interactive UI/UX and 3D web experiences.
+
+For current pricing, deliverables and scope, refer to official service pages or contact AJAYNXT directly. Interactive design demos are concepts, not client endorsements. This file does not grant additional rights to third-party assets or modify existing access or licensing terms.
