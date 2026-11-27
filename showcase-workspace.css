@@ -74,3 +74,19 @@
 @media(min-width:861px){.nx-workspace{padding:14px 0 12px;gap:16px}.nx-ws-heading{margin-bottom:10px}.nx-ws-heading h1{font-size:clamp(29px,3vw,40px)}.nx-ws-toolbar{padding:7px;margin-bottom:4px}.nx-ws-results{margin:5px 2px 9px}.nx-ws-cover{aspect-ratio:auto;height:clamp(105px,calc((100svh - 470px)/2),210px)}.nx-ws-card-body{min-height:70px;padding:8px 10px}.nx-ws-card-body h2{margin:3px 0 5px}.nx-ws-card-foot{margin-top:6px}.nx-ws-grid{gap:11px}.nx-ws-status:empty{display:none}}
 @media(min-width:861px) and (max-height:679px){.nx-ws-cover{height:clamp(120px,32svh,220px)}.nx-ws-side{position:relative;top:auto}.nx-ws-side-note{font-size:11px}.nx-ws-filter{min-height:34px;padding:6px 8px}}
 @media(max-width:420px){.nx-ws-results .nx-ws-paging{gap:5px}.nx-ws-results .nx-ws-paging button{font-size:11px;padding:5px 7px}}
+
+
+/* Pagination should be discoverable without hovering or reaching the footer. */
+.nx-ws-results .nx-ws-paging{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:7px}
+.nx-ws-page-numbers{display:flex;align-items:center;gap:4px}
+.nx-ws-results .nx-ws-paging .nx-ws-page-number{min-width:34px;padding:5px 7px;text-align:center}
+.nx-ws-page-number[aria-current="page"]{background:#efe1d2!important;border-color:#805333!important;color:#69412b!important;font-weight:800}
+.nx-ws-page-dots{padding:0 2px}
+.nx-ws-results .nx-ws-paging #nx-ws-next,.nx-ws-bottom-paging #nx-ws-bottom-next{background:#69412b;color:#fffdf9;border-color:#69412b;min-height:40px;padding:8px 14px;font-weight:800}
+.nx-ws-results .nx-ws-paging #nx-ws-next:not(:disabled):hover,.nx-ws-bottom-paging #nx-ws-bottom-next:not(:disabled):hover{background:#50301e}
+.nx-ws-browse-tip{margin:2px 2px 10px;color:#716359;font-size:12px;line-height:1.45}
+.nx-ws-bottom-paging{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;margin-top:12px;background:#fffdf9;border:1px solid #e3d6c7;border-radius:10px;color:#716359;font-size:12px}
+.nx-ws-bottom-paging button{min-height:40px;padding:8px 12px;border:1px solid #d9c6b3;border-radius:8px;background:#f7f1e8;color:#69412b;font-size:12px;font-weight:750;cursor:pointer}
+.nx-ws-bottom-paging button:disabled{opacity:.45;cursor:default}
+.nx-ws-bottom-paging button:focus-visible{outline:3px solid #805333;outline-offset:2px}
+@media(max-width:760px){.nx-ws-results .nx-ws-paging{width:100%;justify-content:space-between}.nx-ws-results .nx-ws-paging #nx-ws-page{order:-2}.nx-ws-results .nx-ws-paging .nx-ws-page-numbers{order:5;justify-content:center;width:100%;padding:4px 0}.nx-ws-results .nx-ws-paging button{min-height:40px}.nx-ws-bottom-paging{padding:9px;gap:6px}.nx-ws-bottom-paging button{padding:8px;font-size:11px}}
