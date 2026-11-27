@@ -1,0 +1,44 @@
+name: Capture portfolio hero screenshots
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/capture-portfolio-heroes.yml'
+      - 'scripts/capture-portfolio-heroes.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-hero-capture
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install screenshot tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/portfolio-capture" --no-save --no-package-lock playwright sharp
+          "$RUNNER_TEMP/portfolio-capture/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Capture public websites
+        env:
+          NODE_PATH: ${{ runner.temp }}/portfolio-capture/node_modules
+        run: node scripts/capture-portfolio-heroes.cjs
+      - name: Save captured WebP files
+        run: |
+          git add assets/client-previews assets/demo-previews
+          if git diff --cached --quiet; then
+            echo "No new screenshots to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh portfolio hero screenshots"
+          git pull --rebase origin main
+          git push origin HEAD:main
