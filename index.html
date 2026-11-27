@@ -384,13 +384,65 @@ html{scroll-padding-top:76px}
 
 <link rel="stylesheet" href="/pinterest-consent.css">
 <script src="/pinterest-consent.js" defer></script>
+<style id="nx-mac-shell">
+/* Desktop studio shell: native document scroll preserves deep links and existing media scripts. */
+.nx-mac-dock,.nx-shell-label,.nx-window-dots{display:none}
+@media(min-width:1100px){
+ body.compact-flow{--nx-rail:clamp(208px,18vw,256px);padding-left:var(--nx-rail);padding-bottom:88px;background:#f4f3ed}
+ body.compact-flow>.topline{height:3px}
+ body.compact-flow>header{position:fixed;inset:0 auto 0 0;width:var(--nx-rail);height:100dvh;z-index:25;background:#f9f9f6;border-right:1px solid #dce0e5;border-bottom:0;overflow:auto;overscroll-behavior:contain;backdrop-filter:none}
+ @supports(backdrop-filter:blur(18px)){body.compact-flow>header{background:rgba(249,249,246,.94);backdrop-filter:blur(18px) saturate(1.2)}}
+ body.compact-flow>header>.nav{width:100%;height:auto;min-height:100%;margin:0;padding:23px 18px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:20px}
+ .nx-window-dots{display:flex;gap:7px;align-items:center;height:12px;padding-left:4px}
+ .nx-window-dots i{height:10px;width:10px;border-radius:50%;background:#ff6058}
+ .nx-window-dots i:nth-child(2){background:#ffbd2e}.nx-window-dots i:nth-child(3){background:#28ca42}
+ .nx-shell-label{display:block;font-size:10px;font-weight:700;letter-spacing:.13em;color:#596274;padding:0 5px}
+ body.compact-flow>header .brand{justify-content:flex-start;padding:0 4px}
+ body.compact-flow>header .navlinks{position:static;display:flex;flex-direction:column;align-items:stretch;gap:4px;max-height:none;overflow:visible;padding:0;border:0;background:transparent}
+ body.compact-flow>header .navlinks a{display:flex;align-items:center;min-height:42px;padding:9px 11px;font-size:14px;line-height:1.3;border-radius:9px;color:#263141;white-space:normal;transition:background-color .18s,color .18s}
+ body.compact-flow>header .navlinks a:hover,body.compact-flow>header .navlinks a:focus-visible{background:#e6ebf9;color:#203fbd}
+ body.compact-flow>header .navcta{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;margin-top:auto;white-space:normal}
+ body.compact-flow>header .menu{display:none}
+ body.compact-flow #main>section[id],body.compact-flow #main{scroll-margin-top:20px}
+ html:has(body.compact-flow){scroll-padding-bottom:100px}
+ body.compact-flow #main>.wrap,body.compact-flow #main section>.wrap,body.compact-flow>footer>.wrap{width:min(var(--max),calc(100% - 56px))}
+ body.compact-flow .editorial-hero h1{font-size:clamp(42px,4.7vw,82px)}
+ body.compact-flow .editorial-grid{gap:24px}
+ body.compact-flow .section-head h2{font-size:clamp(30px,3.3vw,52px)}
+ .nx-mac-dock{display:flex;position:fixed;z-index:24;bottom:18px;left:calc(var(--nx-rail) + (100% - var(--nx-rail))/2);transform:translateX(-50%);align-items:flex-end;gap:8px;padding:8px 12px;border:1px solid #fff;border-radius:20px;background:#e8ecf4;box-shadow:0 12px 32px #19283d25,inset 0 1px 0 #fff}
+ @supports(backdrop-filter:blur(18px)){.nx-mac-dock{background:rgba(235,239,247,.86);backdrop-filter:blur(18px) saturate(1.3)}}
+ .nx-mac-dock a{position:relative;display:grid;justify-items:center;gap:3px;min-width:56px;padding:3px;color:#243045;font-size:10px;font-weight:700;text-align:center}
+ .nx-mac-dock a>span:first-child{display:grid;place-items:center;width:43px;height:43px;border-radius:12px;background:linear-gradient(150deg,#6585fd,#2545c7);color:white;box-shadow:0 3px 9px #22334c30,inset 0 1px 0 #ffffff60;transform-origin:bottom center;transition:transform .24s cubic-bezier(.2,.8,.2,1)}
+ .nx-mac-dock a:nth-child(2n)>span:first-child{background:linear-gradient(150deg,#35465e,#172337)}
+ .nx-mac-dock a:last-child>span:first-child{background:linear-gradient(150deg,#4a936e,#246142)}
+ .nx-mac-dock svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+ .nx-mac-dock a:focus-visible{border-radius:12px;outline:3px solid #3157e8;outline-offset:3px}
+ @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .nx-mac-dock a:hover>span:first-child,.nx-mac-dock a:focus-visible>span:first-child{transform:translateY(-7px) scale(1.22)}
+ .nx-mac-dock a:has(+a:hover)>span:first-child,.nx-mac-dock a:hover+a>span:first-child{transform:translateY(-3px) scale(1.09)}
+ }
+}
+@media(min-width:851px) and (max-width:1099px){
+ body.compact-flow>header .navlinks{display:none;position:absolute;left:0;right:0;top:66px;background:var(--paper);padding:16px 24px;flex-direction:column;align-items:stretch;max-height:calc(100dvh - 66px);overflow:auto}
+ body.compact-flow>header .navlinks.open{display:flex}
+ body.compact-flow>header .navlinks a{min-height:44px;display:flex;align-items:center}
+ body.compact-flow>header .menu{display:block;min-height:44px}
+ body.compact-flow>header .navcta{display:none}
+}
+@media(min-width:1100px) and (max-width:1350px){
+ body.compact-flow .editorial-grid{grid-template-columns:minmax(0,1fr)}
+ body.compact-flow .editorial-grid .nx-visual{max-width:620px}
+ body.compact-flow .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){.nx-mac-dock a>span:first-child,body.compact-flow>header .navlinks a{transition:none;transform:none}}
+</style>
 </head>
 <body id="top" class="compact-flow">
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="topline"></div>
-<header><div class="wrap nav">
+<header><div class="wrap nav"><div class="nx-window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
 <a class="brand" href="/" aria-label="AJAYNXT home"><img src="/assets/brand/logo.png" alt="" width="38" height="38" decoding="async"><b>AJAY<span>NXT</span></b></a>
-<nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#services">Services</a><a href="#work">Our work</a><a href="#industry-showcase">Demos</a><a href="/projects.html">Projects</a><a href="/showcase.html">Showcase</a><a href="#films">Films &amp; UGC</a><a href="#ugc" class="mobile-contact">Reels</a><a href="#about">About</a><a href="#resources">Resources</a><a href="#contact" class="mobile-contact">Contact</a></nav>
+<span class="nx-shell-label" aria-hidden="true">STUDIO / EXPLORE</span><nav class="navlinks" id="navlinks" aria-label="Main navigation"><a href="#services">Services</a><a href="#work">Our work</a><a href="#industry-showcase">Demos</a><a href="/projects.html">Projects</a><a href="/showcase.html">Showcase</a><a href="#films">Films &amp; UGC</a><a href="#ugc" class="mobile-contact">Reels</a><a href="#about">About</a><a href="#resources">Resources</a><a href="#contact" class="mobile-contact">Contact</a></nav>
 <a class="navcta" href="#contact">Discuss your project ↗</a><button type="button" class="menu" id="menu" aria-expanded="false" aria-controls="navlinks">Menu</button>
 </div></header>
 <main id="main" tabindex="-1">
@@ -536,6 +588,7 @@ html{scroll-padding-top:76px}
 </div></section>
 </main>
 <footer><div class="wrap footer-row"><span>© <span id="year"></span> AJAYNXT · Digital studio</span><span>Rajasthan, India · Working worldwide</span><span><a href="/blog/">Insights</a> · <a href="/tools/">Free tools</a> · <a href="/case-studies/">Case studies</a></span><span><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="/privacy/">Privacy</a></span><a href="#top">Back to top ↑</a></div></footer>
+<nav class="nx-mac-dock" aria-label="Quick studio navigation"><a href="#home"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 10l9-7 9 7v10h-6v-6H9v6H3z"/></svg></span><span>Home</span></a><a href="#work"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4h8v3M3 13h18"/></svg></span><span>Work</span></a><a href="#industry-showcase"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>Demos</span></a><a href="#films"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span><span>Films</span></a><a href="#services"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg></span><span>Services</span></a><a href="#contact"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 5h16v12H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg></span><span>Enquire</span></a></nav>
 <nav class="nx-mobile-contact" aria-label="Quick contact"><a href="tel:+919929562585">Call us</a><a href="https://wa.me/919929562585?text=Hi%20AJAYNXT%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">WhatsApp enquiry ↗</a></nav>
 <script>
 const menu=document.getElementById('menu'),nav=document.getElementById('navlinks');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
