@@ -45,7 +45,7 @@ function init(){
  const panel=document.createElement("section");panel.className="nx-pinterest-consent";panel.setAttribute("aria-label","Analytics and advertising preferences");panel.hidden=true;
  const title=document.createElement("strong");title.textContent="Privacy preferences";
  const info=document.createElement("p");info.textContent="Choose optional website analytics (Google Analytics) and Pinterest advertising measurement. You can change your choices at any time.";
- const link=document.createElement("a");link.href="https://policy.pinterest.com/en/privacy-policy";link.target="_blank";link.rel="noopener noreferrer";link.textContent="Pinterest privacy policy";
+ const link=document.createElement("a");link.href="/privacy/";link.textContent="Privacy notice";
  const actions=document.createElement("div");actions.className="nx-consent-actions";
  const allow=document.createElement("button"),deny=document.createElement("button");allow.type=deny.type="button";allow.textContent="Save choices";deny.textContent="Decline all";
  const analytics=document.createElement("input"),ads=document.createElement("input");analytics.type=ads.type="checkbox";
