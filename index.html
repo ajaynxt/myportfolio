@@ -1,15 +1,7 @@
 <!doctype html>
 <html lang="en-IN">
 <head>
-<!-- Google Tag Manager -->
-<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-K65RVPV5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
-<!-- End Google Tag Manager -->
-
+<!-- GTM-K65RVPV5 reserved for reviewed container deployment; GA4 uses shared consent-controlled ga4.js. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f4f3ed">
@@ -382,6 +374,9 @@ html{scroll-padding-top:76px}
 #home .nx-orbit ellipse{animation:none!important}
 #home .nx-float{transform-box:fill-box;transform-origin:center}
 @media(max-width:760px){header{backdrop-filter:none;background:#f4f3ed}#home .nx-visual{box-shadow:0 12px 28px #233fa218}}
+/* Mobile enquiry access without changing the desktop layout. */
+.nx-mobile-contact{display:none}
+@media(max-width:760px){body.compact-flow{padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}.nx-mobile-contact{position:fixed;z-index:30;bottom:0;left:0;right:0;display:grid;grid-template-columns:1fr 1.6fr;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:#f4f3ed;border-top:1px solid #d9dcd7}.nx-mobile-contact a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:6px;font-size:14px;font-weight:800;background:#fff;color:#203fbd;border:1px solid #203fbd}.nx-mobile-contact a:last-child{background:#203fbd;color:#fff}.compact-flow .nx-pinterest-consent{bottom:calc(78px + env(safe-area-inset-bottom,0px))}.compact-flow:has(dialog[open]) .nx-mobile-contact{display:none}}
 </style>
 <script src="/ga4.js" defer></script>
 <meta property="og:locale" content="en_IN">
@@ -536,11 +531,12 @@ html{scroll-padding-top:76px}
 <details class="faq-item"><summary>Can I see measurable results from past projects?</summary><p>Selected work is shown with its project context and focus. Verified analytics, ranking changes or sales figures will only be published when the client has approved sharing them.</p></details>
 <details class="faq-item"><summary>Can I contact AJAYNXT without WhatsApp?</summary><p>Yes. Use the email option in the enquiry form to open a pre-filled email draft, or write directly to ajayx3neha@gmail.com.</p></details>
 </div></div></section>
-<section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow" style="color:var(--lime)">Start a conversation</div><h2>Have a project<br>in mind?</h2><p>Tell us what you want to build or improve. Share a few details and start a direct conversation with AJAYNXT.</p><div class="contact-links"><a href="https://wa.me/919929562585" target="_blank" rel="noopener">WhatsApp · +91 99295 62585 ↗</a><a href="mailto:ajayx3neha@gmail.com">ajayx3neha@gmail.com ↗</a><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener">@ajay_nxt_ ↗</a></div></div>
+<section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow" style="color:var(--lime)">Start a conversation</div><h2>Have a project<br>in mind?</h2><p>Tell us what you want to build or improve. Share a few details and start a direct conversation with AJAYNXT.</p><div class="contact-links"><a href="https://wa.me/919929562585" target="_blank" rel="noopener">WhatsApp · +91 99295 62585 ↗</a><a href="tel:+919929562585">Call · +91 99295 62585 ↗</a><a href="mailto:ajayx3neha@gmail.com">ajayx3neha@gmail.com ↗</a><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener">@ajay_nxt_ ↗</a></div></div>
 <form class="contact-form" id="leadform" method="post" action="/#contact"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required maxlength="70" placeholder="Name"><label for="business">Business / brand</label><input id="business" name="business" autocomplete="organization" maxlength="100" placeholder="Business name"><label for="service">What do you need?</label><select id="service" name="service" required><option value="">Choose a service</option><option>Website design & development</option><option>E-commerce website</option><option>SEO / keyword research</option><option>Digital marketing</option><option>Google Ads / PPC</option><option>Meta Ads / Facebook &amp; Instagram</option><option>Pinterest marketing / Ads</option><option>Social media & video editing</option><option>UGC videos & Instagram reels</option><option>AI-assisted workflows</option><option>Not sure yet</option></select><label for="message">Project details</label><textarea id="message" name="message" required maxlength="1000" placeholder="What are you trying to achieve?"></textarea><div class="form-actions"><button class="btn" type="submit" id="send-whatsapp">Continue on WhatsApp ↗</button><button class="btn email-btn" type="button" id="send-email">Continue by email ↗</button></div><p id="enquiry-status" class="enquiry-status" role="status"></p><p class="form-note">Choose WhatsApp or email. Your details are not stored on this website; the selected app opens with your enquiry pre-filled.</p><noscript><p>JavaScript is required to prepare the enquiry. Please use the direct WhatsApp or email links instead.</p></noscript></form>
 </div></section>
 </main>
-<footer><div class="wrap footer-row"><span>© <span id="year"></span> AJAYNXT · Digital studio</span><span>Rajasthan, India · Working worldwide</span><span><a href="/blog/">Insights</a> · <a href="/tools/">Free tools</a> · <a href="/case-studies/">Case studies</a></span><a href="#top">Back to top ↑</a></div></footer>
+<footer><div class="wrap footer-row"><span>© <span id="year"></span> AJAYNXT · Digital studio</span><span>Rajasthan, India · Working worldwide</span><span><a href="/blog/">Insights</a> · <a href="/tools/">Free tools</a> · <a href="/case-studies/">Case studies</a></span><span><a href="https://www.instagram.com/ajay_nxt_/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://www.linkedin.com/in/ajaynxt/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="/privacy/">Privacy</a></span><a href="#top">Back to top ↑</a></div></footer>
+<nav class="nx-mobile-contact" aria-label="Quick contact"><a href="tel:+919929562585">Call us</a><a href="https://wa.me/919929562585?text=Hi%20AJAYNXT%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">WhatsApp enquiry ↗</a></nav>
 <script>
 const menu=document.getElementById('menu'),nav=document.getElementById('navlinks');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});
