@@ -530,7 +530,7 @@ if (aiWidget && aiToggle && aiModal && aiMessages) {
       • <strong>UI/UX Design & AI Workflows:</strong> Modern interactive prototypes, AI chatbots, automated business pipelines.<br>
       <br>👉 <a href="projects.html">Explore 28 Live Websites & Demos</a>`,
 
-    reviews: `Explore AJAYNXT’s client project context and work delivered:<br>• Diamond Restaurants<br>• Wedding Shedding<br>• Safar Sathi<br> <a href="/case-studies/">Read client case studies</a>`,
+    reviews: `Explore AJAYNXT’s client project context and work delivered:<br>• Diamond Restaurants — Amann Sharma (owner)<br>• Wedding Shedding — Sonu Kumar<br>• Safar Sathi — Happy Dhaiman<br> <a href="/case-studies/">Read client case studies</a>`,
 
     tech: `Ajay's full engineering & creative technology stack:<br>
       • <strong>Frontend:</strong> React, Next.js, Modern JavaScript (ES6+), HTML5, CSS3 (Grid & Flexbox), Tailwind CSS<br>
