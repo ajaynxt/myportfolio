@@ -1,0 +1,388 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AccordionGallery — Interactive Image Panels | AJAYNXT</title><meta name="description" content="Interactive GSAP image accordion with expanding panels, parallax and responsive layouts. React Bits component demonstration."><link rel="canonical" href="https://ajaynxt.com/accordion-gallery.html"><style>.accordion-gallery {
+  --ag-accent: #ffffff;
+  --ag-overlay: #060010;
+  --ag-text: #ffffff;
+  --ag-gap: 10px;
+  --ag-radius: 16px;
+  --ag-media-size: 320px;
+
+  display: flex;
+  flex-direction: row;
+  gap: var(--ag-gap);
+  width: 100%;
+  max-width: 100%;
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+}
+
+.accordion-gallery--vertical {
+  flex-direction: column;
+}
+
+.ag-panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--ag-radius);
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  outline: none;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  background: #0a0713;
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+  will-change: flex-grow, transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ag-panel:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--ag-accent),
+    0 10px 30px -18px rgba(0, 0, 0, 0.8);
+}
+
+.ag-panel__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.ag-panel__media {
+  --ag-gray: 1;
+  --ag-dim: 0.35;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--ag-media-size);
+  height: 100%;
+  filter: grayscale(var(--ag-gray));
+  will-change: transform, filter;
+}
+
+.accordion-gallery--vertical .ag-panel__media {
+  width: 100%;
+  height: var(--ag-media-size);
+}
+
+.ag-panel__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.ag-panel__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--ag-overlay) 78%, transparent) 100%),
+    color-mix(in srgb, var(--ag-overlay) calc(var(--ag-dim, 0.35) * 100%), transparent);
+}
+
+.ag-panel__label {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ag-panel__bar {
+  flex: 0 0 auto;
+  width: 3px;
+  height: 26px;
+  border-radius: 3px;
+  background: var(--ag-accent);
+  opacity: 0;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--ag-accent) 60%, transparent);
+}
+
+.ag-panel__text {
+  color: var(--ag-text);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 520px) {
+  .accordion-gallery {
+    flex-direction: column;
+    perspective: none;
+    height: auto !important;
+  }
+  .ag-panel {
+    min-height: 84px;
+    transform: none !important;
+  }
+  .accordion-gallery .ag-panel__media {
+    width: 100%;
+    height: var(--ag-media-size);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ag-panel,
+  .ag-panel__media {
+    will-change: auto;
+  }
+}
+
+*{box-sizing:border-box}body{margin:0;background:#f4ede4;color:#493525;font:14px/1.5 system-ui,sans-serif;min-height:100vh}header{display:flex;justify-content:space-between;gap:12px;padding:15px 24px;border-bottom:1px solid #d9c6b3}a{color:inherit}main{max-width:1120px;margin:auto;padding:24px 20px;text-align:center}h1{font-size:clamp(25px,4vw,42px);font-weight:500;letter-spacing:-.04em;margin:10px 0}.intro{color:#716359;margin:0 0 25px}.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0}.controls button{font:inherit;border:1px solid #c9b49f;background:#fffaf4;border-radius:9px;padding:9px 15px;color:#493525;cursor:pointer}button:focus-visible{outline:2px solid #805333;outline-offset:3px}.credit{font-size:11px;color:#716359}.ag-panel__media{transform:translate(-50%,-50%)}.ag-panel__frame{background:#8b7563}.ag-panel--active .ag-panel__media{--ag-gray:0;--ag-dim:0}.ag-panel--active .ag-panel__label{opacity:1}
+@media(max-width:600px){main{padding:14px 12px}header{padding:12px}.accordion-gallery.accordion-gallery--vertical{height:624px!important;flex-direction:column}.accordion-gallery:not(.accordion-gallery--vertical){flex-direction:row;height:320px!important}.accordion-gallery:not(.accordion-gallery--vertical) .ag-panel{min-height:0}.accordion-gallery:not(.accordion-gallery--vertical) .ag-panel__media{height:100%;width:var(--ag-media-size)}.ag-panel__label{left:12px;bottom:12px;right:12px}.ag-panel__text{font-size:14px}}
+</style><script type="importmap">{"imports":{"react":"https://esm.sh/react@18.3.1","react-dom/client":"https://esm.sh/react-dom@18.3.1/client?external=react","gsap":"https://esm.sh/gsap@3.13.0"}}</script><script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.26.10/babel.min.js" defer></script></head><body><header><a href="/showcase.html">← Showcase</a><span>AJAYNXT / Interaction Lab</span></header><main><h1>Accordion Gallery</h1><p class="intro">Hover, tap or use arrow keys to explore the images.</p><div id="root"><p>Loading interactive gallery…</p></div><p class="credit">Component source: <a href="https://reactbits.dev/" target="_blank" rel="noopener noreferrer">React Bits</a> · Sample images: Picsum · Integration demo</p></main><script type="text/babel" data-type="module" data-presets="react">import React from "react";import {createRoot} from "react-dom/client";
+
+
+import { useRef, useEffect, useState, useCallback } from 'react';
+import { gsap } from 'gsap';
+
+
+
+const DEFAULT_ITEMS = [
+  { image: 'https://picsum.photos/id/1015/900/1200', label: 'Canyon', link: '#' },
+  { image: 'https://picsum.photos/id/1018/900/1200', label: 'Ridgeline', link: '#' },
+  { image: 'https://picsum.photos/id/1039/900/1200', label: 'Falls', link: '#' },
+  { image: 'https://picsum.photos/id/1043/900/1200', label: 'Harbour', link: '#' },
+  { image: 'https://picsum.photos/id/1044/900/1200', label: 'Skyline', link: '#' }
+];
+
+const AccordionGallery = ({
+  items = DEFAULT_ITEMS,
+  defaultIndex = 2,
+  accentColor = '#ffffff',
+  overlayColor = '#060010',
+  textColor = '#ffffff',
+  height = 460,
+  gap = 10,
+  radius = 16,
+  expandRatio = 0.52,
+  orientation = 'horizontal',
+  duration = 0.6,
+  ease = 'power3.out',
+  parallax = 0.5,
+  tilt = 8,
+  stagger = 0.06,
+  trigger = 'hover',
+  showLabels = true,
+  grayscale = true,
+  className = ''
+}) => {
+  const rootRef = useRef(null);
+  const panelRefs = useRef([]);
+  const mediaRefs = useRef([]);
+  const barRefs = useRef([]);
+  const textRefs = useRef([]);
+  const tlRef = useRef(null);
+  const firstRunRef = useRef(true);
+  const mediaSizeRef = useRef(320);
+
+  const vertical = orientation === 'vertical';
+  const count = items.length;
+  const [active, setActive] = useState(Math.min(Math.max(defaultIndex, 0), count - 1));
+
+  const prefersReduced =
+    typeof window !== 'undefined' && window.matchMedia
+      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      : false;
+
+  const applyLayout = useCallback(
+    animate => {
+      const panels = panelRefs.current;
+      if (!panels.length) return;
+
+      const r = Math.min(Math.max(expandRatio, 0.2), 0.9);
+      const grow = count > 1 ? (r * (count - 1)) / (1 - r) : 1;
+      const mediaSize = mediaSizeRef.current;
+
+      tlRef.current?.kill();
+      const dur = animate && !prefersReduced ? duration : 0;
+      const tl = gsap.timeline();
+
+      panels.forEach((panel, i) => {
+        if (!panel) return;
+        const isActive = i === active;
+        const media = mediaRefs.current[i];
+        const bar = barRefs.current[i];
+        const text = textRefs.current[i];
+
+        const rot = isActive ? 0 : i < active ? tilt : -tilt;
+        const rotProp = vertical ? { rotateX: -rot } : { rotateY: rot };
+
+        tl.to(panel, { flexGrow: isActive ? grow : 1, ...rotProp, duration: dur, ease }, 0);
+
+        if (media) {
+          const drift = Math.max(-1.5, Math.min(1.5, active - i));
+          const shift = drift * parallax * mediaSize * 0.06;
+          const gray = grayscale ? (isActive ? 0 : 1) : 0;
+          tl.to(
+            media,
+            {
+              xPercent: -50,
+              yPercent: -50,
+              x: vertical ? 0 : isActive ? 0 : shift,
+              y: vertical ? (isActive ? 0 : shift) : 0,
+              '--ag-gray': gray,
+              '--ag-dim': isActive ? 0 : 0.35,
+              duration: dur,
+              ease
+            },
+            0
+          );
+        }
+
+        if (showLabels && bar && text) {
+          if (isActive) {
+            tl.to([bar, text], { opacity: 1, x: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
+          } else {
+            tl.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease }, 0);
+          }
+        }
+      });
+
+      tlRef.current = tl;
+    },
+    [
+      active,
+      count,
+      expandRatio,
+      duration,
+      ease,
+      vertical,
+      tilt,
+      parallax,
+      grayscale,
+      showLabels,
+      stagger,
+      prefersReduced
+    ]
+  );
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      const total = vertical ? rect.height : rect.width;
+      const usable = Math.max(total - gap * (count - 1), 120);
+      const size = Math.max(140, usable * Math.min(Math.max(expandRatio, 0.2), 0.9) * 1.22);
+      mediaSizeRef.current = size;
+      el.style.setProperty('--ag-media-size', `${size}px`);
+      applyLayout(!firstRunRef.current);
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [applyLayout, gap, count, expandRatio, vertical]);
+
+  useEffect(() => {
+    applyLayout(!firstRunRef.current);
+    firstRunRef.current = false;
+  }, [applyLayout]);
+
+  useEffect(
+    () => () => {
+      tlRef.current?.kill();
+    },
+    []
+  );
+
+  const handleEnter = i => {
+    if (trigger === 'hover') setActive(i);
+  };
+
+  const handleClick = (i, e) => {
+    if (i !== active) {
+      e.preventDefault();
+      setActive(i);
+    }
+  };
+
+  const handleKeyDown = (i, e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next=(i+1)%count;setActive(next);panelRefs.current[next]?.focus();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const next=(i-1+count)%count;setActive(next);panelRefs.current[next]?.focus();
+    }
+  };
+
+  return (
+    <div
+      ref={rootRef}
+      className={`accordion-gallery${vertical ? ' accordion-gallery--vertical' : ''}${className ? ` ${className}` : ''}`}
+      style={{
+        '--ag-accent': accentColor,
+        '--ag-overlay': overlayColor,
+        '--ag-text': textColor,
+        '--ag-gap': `${gap}px`,
+        '--ag-radius': `${radius}px`,
+        height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px`
+      }}
+      role="list"
+      aria-label="Image accordion gallery"
+    >
+      {items.map((item, i) => {
+        const isActive = i === active;
+        const Tag = item.link ? 'a' : 'div';
+        return (
+          <Tag
+            key={i}
+            ref={el => (panelRefs.current[i] = el)}
+            className={`ag-panel${isActive ? ' ag-panel--active' : ''}`}
+            style={{ borderRadius: `${radius}px` }}
+            href={item.link || undefined}
+            onClick={e => handleClick(i, e)}
+            onMouseEnter={() => handleEnter(i)}
+            onFocus={() => setActive(i)}
+            onKeyDown={e => handleKeyDown(i, e)}
+            role="listitem"
+            tabIndex={0}
+            aria-current={isActive ? 'true' : undefined}
+            aria-label={item.label}
+          >
+            <span className="ag-panel__frame">
+              <span className="ag-panel__media" ref={el => (mediaRefs.current[i] = el)}>
+                <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
+              </span>
+              <span className="ag-panel__overlay" aria-hidden="true" />
+            </span>
+            {showLabels && (
+              <span className="ag-panel__label" aria-hidden="true">
+                <span className="ag-panel__bar" ref={el => (barRefs.current[i] = el)} />
+                <span className="ag-panel__text" ref={el => (textRefs.current[i] = el)}>
+                  {item.label}
+                </span>
+              </span>
+            )}
+          </Tag>
+        );
+      })}
+    </div>
+  );
+};
+
+
+
+function Demo(){const [vertical,setVertical]=useState(innerWidth<=600),[trigger,setTrigger]=useState("hover"),[cycle,setCycle]=useState(2);const preview=new URLSearchParams(location.search).has("showcase_preview");useEffect(()=>{const mq=matchMedia("(max-width:600px)"),sync=()=>setVertical(mq.matches);mq.addEventListener("change",sync);return()=>mq.removeEventListener("change",sync)},[]);useEffect(()=>{if(!preview||matchMedia("(prefers-reduced-motion: reduce)").matches)return;const id=setInterval(()=>{if(!document.hidden)setCycle(i=>(i+1)%5)},3000);return()=>clearInterval(id)},[preview]);const items=DEFAULT_ITEMS.map(({image,label})=>({image,label,alt:label+" landscape photograph"}));return <><AccordionGallery key={vertical+"-"+(preview?cycle:0)} items={items} defaultIndex={cycle} expandRatio={.52} orientation={vertical?"vertical":"horizontal"} trigger={trigger} height={vertical?390:460} accentColor="#fff4dc" overlayColor="#30241d"/><div className="controls"><button onClick={()=>setVertical(v=>!v)}>{vertical?"Horizontal":"Vertical"} layout</button><button onClick={()=>setTrigger(v=>v==="hover"?"click":"hover")}>Trigger: {trigger}</button></div></>}
+createRoot(document.getElementById("root")).render(<Demo/>);
+</script></body></html>
