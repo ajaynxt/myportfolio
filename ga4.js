@@ -34,9 +34,9 @@ document.addEventListener("click",event=>{
  if(!el)return;
  let url;try{url=new URL(el.getAttribute("href")||"",location.href);}catch{return;}
  if(el.matches("[data-showcase-request]"))window.trackAJAYNXT("showcase_prompt_request");
- else if(url.hostname==="wa.me"||url.hostname==="api.whatsapp.com")window.trackAJAYNXT("whatsapp_click",{contact_method:"whatsapp"});
- else if(url.protocol==="tel:")window.trackAJAYNXT("phone_click",{contact_method:"phone"});
- else if(url.protocol==="mailto:")window.trackAJAYNXT("email_click",{contact_method:"email"});
+ else if((url.hostname==="wa.me"&&url.pathname.replace(/\/$/,"")==="/919929562585")||(url.hostname==="api.whatsapp.com"&&url.searchParams.get("phone")==="919929562585"))window.trackAJAYNXT("whatsapp_click",{contact_method:"whatsapp"});
+ else if(url.protocol==="tel:"&&url.pathname.replace(/[^0-9]/g,"").endsWith("9929562585"))window.trackAJAYNXT("phone_click",{contact_method:"phone"});
+ else if(url.protocol==="mailto:"&&url.pathname.toLowerCase()==="ajayx3neha@gmail.com")window.trackAJAYNXT("email_click",{contact_method:"email"});
  else if(el.closest("nav"))window.trackAJAYNXT("navigation_click");
  else if(el.closest(".project-card,.design-card,[data-project-item]"))window.trackAJAYNXT("portfolio_item_click");
 },{passive:true});
