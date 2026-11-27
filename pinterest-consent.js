@@ -65,3 +65,5 @@ function init(){
 }
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
+/* Shared navigation control loads independently of optional tracking choices. */
+(()=>{if(document.querySelector('script[src="/back-to-top.js"]'))return;const script=document.createElement("script");script.src="/back-to-top.js";script.defer=true;document.head.append(script);})();
