@@ -487,6 +487,55 @@ body.compact-flow>header .navlinks a[aria-current="location"]{background:#e1e8fc
 @media(prefers-reduced-motion:no-preference){.nx-studio-dialog[open]{animation:nx-window-in .25s var(--nx-ease) both}@keyframes nx-window-in{from{opacity:.65;transform:translateY(10px) scale(.975)}to{opacity:1;transform:none}}}
 @media(prefers-reduced-motion:reduce){.nx-gallery .demo-tile,.nx-gallery .native-demo-preview,.nx-preview-button,.nx-command-trigger,.nx-filters button,body.compact-flow #services .service{transition:none!important}}
 </style>
+<style id="nx-motion-v3">
+/* MotionSites public hero prompt adapted to the existing static site.
+   React Bits-inspired distance magnification and spotlight, original native implementations. */
+:root{--nx-ease-out:cubic-bezier(.16,1,.3,1);--nx-motion-fast:160ms;--nx-motion-medium:320ms;--nx-motion-long:560ms}
+body.compact-flow #home .editorial-top{letter-spacing:.045em}
+body.compact-flow #home .editorial-copy h1 em{color:#2745c8}
+body.compact-flow #home .hero-price{border-left:3px solid #4565e7;padding-left:14px}
+body.compact-flow #home .nx-visual{isolation:isolate;background:radial-gradient(ellipse at 55% 38%,#426aef 0,#233fae 48%,#101f52 100%)}
+#home .nx-visual::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;background:radial-gradient(ellipse at var(--nx-glow-x,75%) var(--nx-glow-y,18%),#d9e7ff42,transparent 58%);opacity:.8}
+#home .nx-visual::after{content:"";position:absolute;inset:0;border:1px solid #ffffff36;border-radius:inherit;box-shadow:inset 0 1px 1px #ffffff45,inset 0 0 30px #d5e6ff12;pointer-events:none}
+#home .nx-art{position:relative;z-index:1}
+.nx-gallery .demo-capture::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#ffffff1a,transparent 40%);opacity:0;transition:opacity var(--nx-motion-medium)}
+.nx-gallery .demo-info{position:relative}
+.nx-gallery .demo-info .nx-preview-button{background:#edf1ff;color:#2340b7;border-color:#dbe4ff}
+.nx-gallery .demo-info .nx-preview-button:hover{background:#203fbd;color:#fff;border-color:#203fbd}
+.nx-gallery .demo-tile:focus-within{border-color:#6782df;box-shadow:0 0 0 2px #d9e2ff}
+body.compact-flow #services .service{position:relative;isolation:isolate;overflow:hidden}
+body.compact-flow #services .service::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at var(--nx-glow-x,50%) var(--nx-glow-y,50%),#dce6ff,transparent 65%);opacity:0;transition:opacity var(--nx-motion-medium);pointer-events:none}
+.nx-scroll-meter{height:3px;position:fixed;z-index:29;top:0;left:0;right:0;pointer-events:none;background:transparent}
+.nx-scroll-meter>span{display:block;height:100%;background:linear-gradient(90deg,#3157e8,#83a1ff);transform:scaleX(0);transform-origin:left}
+.nx-motion-control{display:none}
+@media(min-width:1100px){
+.nx-scroll-meter{left:var(--nx-rail)}
+body.compact-flow>header .navlinks a{position:relative;padding-left:15px}
+body.compact-flow>header .navlinks a[aria-current=location]::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;background:#3157e8;border-radius:3px}
+.nx-motion-control{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:42px;padding:8px 10px;background:#f1f3f8;color:#354560;border:1px solid #dce2ec;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer}
+.nx-motion-control[hidden]{display:none}
+.nx-motion-control[aria-pressed=true]{background:#e3e9fb}
+.nx-mac-dock{box-shadow:0 14px 42px #19283d30,inset 0 1px 1px #fff,inset 0 -1px 0 #9eabc42a;border-color:#ffffffd9}
+.nx-mac-dock.nx-pointer-dock a>span:first-child{transform:translateY(var(--nx-dock-y,0px)) scale(var(--nx-dock-scale,1));transition:transform 240ms var(--nx-ease-out)}
+.nx-mac-dock a:focus-visible>span:first-child{outline:2px solid #203fbd;outline-offset:3px}
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+.nx-gallery .demo-tile:hover .demo-capture::after{opacity:1}
+body.compact-flow #services .service:hover::before{opacity:.7}
+body.compact-flow #home .hero-actions .btn{transition:transform var(--nx-motion-fast) var(--nx-ease-out),box-shadow var(--nx-motion-medium) var(--nx-ease-out)}
+body.compact-flow #home .hero-actions .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #18233520}
+body.compact-flow #home .hero-actions .btn:active{transform:scale(.98)}
+}
+@media(prefers-reduced-motion:reduce){
+.nx-scroll-meter{display:none}.nx-mac-dock.nx-pointer-dock a>span:first-child{transform:none!important;transition:none!important}
+#home .nx-visual::before{background:radial-gradient(ellipse at 75% 18%,#d9e7ff42,transparent 58%)}
+}
+body.nx-motion-off .nx-scroll-meter{display:none}
+body.nx-motion-off .nx-mac-dock a>span:first-child,body.nx-motion-off .nx-gallery .demo-tile,body.nx-motion-off .nx-gallery .native-demo-preview,body.nx-motion-off #services .service,body.nx-motion-off #home .hero-actions .btn{transition:none!important;transform:none!important}
+body.nx-motion-off .nx-studio-dialog[open]{animation:none!important}
+body.nx-motion-off #home .nx-float,body.nx-motion-off #home .nx-orbit ellipse{animation:none!important}
+html:has(body.nx-motion-off){scroll-behavior:auto!important}
+</style>
 </head>
 <body id="top" class="compact-flow">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -684,7 +733,7 @@ document.getElementById('send-email').addEventListener('click',()=>{const msg=ge
 const gallery=document.querySelector(".nx-gallery"),tools=document.querySelector(".nx-gallery-tools");if(!gallery||!tools)return;
 const cards=[...gallery.querySelectorAll(".demo-tile")],search=document.getElementById("nx-demo-search"),count=document.getElementById("nx-demo-count"),filters=[...tools.querySelectorAll("[data-nx-filter]")];let category="all";
 const norm=s=>s.toLowerCase().trim();const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
-const motion=(el)=>{if(!reduced.matches&&el.animate)el.animate([{transform:"translateY(8px)",opacity:.78},{transform:"translateY(0)",opacity:1}],{duration:240,easing:"cubic-bezier(.2,.75,.2,1)"});};
+const motion=(el)=>{if(!reduced.matches&&!document.body.classList.contains("nx-motion-off")&&el.animate)el.animate([{transform:"translateY(8px)",opacity:.78},{transform:"translateY(0)",opacity:1}],{duration:240,easing:"cubic-bezier(.2,.75,.2,1)"});};
 const apply=()=>{let n=0;const q=norm(search.value);for(const card of cards){const match=(category==="all"||card.dataset.nxCategory.split(" ").includes(category))&&norm(card.textContent+" "+card.dataset.nxSector+" "+card.dataset.nxDescription).includes(q);const before=card.hidden;card.hidden=!match;if(match){n++;if(before)motion(card);}}count.textContent=n===0?"No matching concepts. Try another keyword or category.":n+" of "+cards.length+" design concepts";};
 tools.hidden=false;search.addEventListener("input",apply);for(const b of filters)b.addEventListener("click",()=>{category=b.dataset.nxFilter;for(const other of filters)other.setAttribute("aria-pressed",String(other===b));apply();});
 const make=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt)e.textContent=txt;return e;};
@@ -698,6 +747,22 @@ const entries=[...document.querySelectorAll("#work .work-card"),...cards].map(ca
 cmd.addEventListener("click",command);document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();if(!dialog.open)command();}});
 if("IntersectionObserver" in window){const visible=new Map(),links=[...navlinks.querySelectorAll('a[href^="#"]')];const obs=new IntersectionObserver(items=>{for(const item of items)visible.set(item.target.id,item.isIntersecting);const current=[...visible].find(([,v])=>v)?.[0];if(!current)return;for(const a of links){if(a.getAttribute("href")==="#"+current)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current");}},{rootMargin:"-15% 0px -55% 0px"});for(const a of links){const target=document.getElementById(a.hash.slice(1));if(target)obs.observe(target);}
 const once=new IntersectionObserver(items=>{for(const item of items)if(item.isIntersecting){motion(item.target);once.unobserve(item.target);}},{threshold:.16});for(const item of [...cards,...document.querySelectorAll("#work .work-card,#services .service")])once.observe(item);}
+})();
+</script>
+<script id="nx-motion-v3-script">
+(()=>{"use strict";const body=document.body,media=matchMedia("(prefers-reduced-motion: reduce)"),pointer=matchMedia("(hover:hover) and (pointer:fine)"),dock=document.querySelector(".nx-mac-dock"),nav=document.querySelector("header .nav");let userOff=false;try{userOff=localStorage.getItem("nx-motion-off")==="1";}catch(e){}
+const off=()=>userOff||media.matches;
+const btn=document.createElement("button");btn.type="button";btn.className="nx-motion-control";btn.setAttribute("aria-label","Reduce studio motion");
+function sync(){body.classList.toggle("nx-motion-off",off());btn.setAttribute("aria-pressed",String(off()));btn.textContent=off()?"Motion reduced · On":"Reduce motion · Off";btn.disabled=media.matches;if(off()){resetDock();for(const a of document.getAnimations?.()||[]){if(a.effect?.target?.closest?.("#main .demo-tile,#main .work-card,#main .service,.nx-mac-dock,#home .editorial-copy"))a.cancel();}}}
+btn.addEventListener("click",()=>{userOff=!userOff;try{localStorage.setItem("nx-motion-off",userOff?"1":"0");}catch(e){}sync();});if(nav)nav.insertBefore(btn,nav.querySelector(".navcta"));media.addEventListener?.("change",sync);
+const items=dock?[...dock.querySelectorAll("a")]:[];let frame=0,mouseX=0,active=null;function resetDock(){if(dock)dock.classList.remove("nx-pointer-dock");for(const item of items){item.style.removeProperty("--nx-dock-scale");item.style.removeProperty("--nx-dock-y");}}
+function measureDock(){frame=0;if(off()||!pointer.matches||!dock||!active)return;const positions=items.map(a=>{const r=a.getBoundingClientRect();return r.left+r.width/2});dock.classList.add("nx-pointer-dock");items.forEach((a,i)=>{const dist=Math.abs(mouseX-positions[i]);const weight=Math.max(0,1-dist/112);const ease=weight*weight*(3-2*weight);a.style.setProperty("--nx-dock-scale",(1+ease*.44).toFixed(3));a.style.setProperty("--nx-dock-y",(-ease*10).toFixed(2)+"px");});}
+if(dock){dock.addEventListener("pointermove",e=>{if(off()||!pointer.matches)return;active=dock;mouseX=e.clientX;if(!frame)frame=requestAnimationFrame(measureDock);},{passive:true});dock.addEventListener("pointerleave",()=>{active=null;if(frame){cancelAnimationFrame(frame);frame=0;}resetDock();});dock.addEventListener("focusin",()=>{active=null;resetDock();});}
+sync();
+const meter=document.createElement("div");meter.className="nx-scroll-meter";meter.setAttribute("aria-hidden","true");const bar=document.createElement("span");meter.append(bar);body.append(meter);
+let scrollFrame=0;const renderProgress=()=>{scrollFrame=0;const height=document.documentElement.scrollHeight-innerHeight;bar.style.transform="scaleX("+Math.max(0,Math.min(1,height>0?scrollY/height:0))+")";};const schedule=()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(renderProgress);};addEventListener("scroll",schedule,{passive:true});addEventListener("resize",schedule,{passive:true});schedule();
+for(const surface of document.querySelectorAll("#home .nx-visual,#services .service")){let f=0,x=0,y=0;surface.addEventListener("pointermove",e=>{if(off()||!pointer.matches)return;x=e.clientX;y=e.clientY;if(!f)f=requestAnimationFrame(()=>{f=0;const r=surface.getBoundingClientRect();surface.style.setProperty("--nx-glow-x",((x-r.left)/r.width*100).toFixed(1)+"%");surface.style.setProperty("--nx-glow-y",((y-r.top)/r.height*100).toFixed(1)+"%");});},{passive:true});surface.addEventListener("pointerleave",()=>{if(f)cancelAnimationFrame(f);f=0;surface.style.removeProperty("--nx-glow-x");surface.style.removeProperty("--nx-glow-y");});}
+if(!off()&&"IntersectionObserver" in window){const headings=document.querySelectorAll("#main>section:not(#home) .section-head");const observer=new IntersectionObserver(entries=>{for(const e of entries){if(!e.isIntersecting)continue;observer.unobserve(e.target);if(off()||!e.target.animate)continue;e.target.animate([{transform:"translateY(10px)"},{transform:"translateY(0)"}],{duration:380,easing:"cubic-bezier(.16,1,.3,1)"});}},{threshold:.15});headings.forEach(h=>observer.observe(h));}
 })();
 </script>
 </body></html>
