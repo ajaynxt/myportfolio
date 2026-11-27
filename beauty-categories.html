@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beauty Categories — Video shopping concept</title><meta name="description" content="Interactive beauty category design concept with three cinematic video panels."><link rel="canonical" href="https://ajaynxt.com/beauty-categories.html"><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;background:#fff}button{font-family:inherit;cursor:pointer;border:0}.categories{width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;background:#fff;color:#fff}.category-grid{display:grid;grid-template-columns:minmax(0,1fr);transition:opacity 1s ease-out,transform 1s ease-out}.opacity-0{opacity:0}.opacity-100{opacity:1}.translate-y-12{transform:translateY(48px)}.translate-y-0{transform:translateY(0)}.category-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:24px;min-height:400px;overflow:hidden;transition:opacity 1s ease-out,transform 1s ease-out}.category-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 700ms}.category-card:hover video{transform:scale(1.05)}.category-overlay{position:absolute;inset:0;background:rgba(0,0,0,.1);transition:background 500ms}.category-card:hover .category-overlay{background:rgba(0,0,0,.2)}.category-name{position:relative;z-index:10;font-size:48px;line-height:1;font-weight:500;margin:0}.btn-primary{z-index:10;margin-top:auto;padding:12px 32px;background:#fff;color:#000;border-radius:999px;font-size:14px;line-height:20px}.category-card h2{flex:none}dialog{border:0;border-radius:20px;padding:28px;max-width:calc(100% - 32px);width:340px;color:#222}dialog::backdrop{background:#0006}dialog h2{font-weight:500;margin-top:0}dialog p{line-height:1.6;color:#666}dialog button{border-radius:999px;background:#222;color:#fff;padding:12px 24px}@media(min-width:640px){.category-card{padding:32px;min-height:500px}.category-name{font-size:60px}}@media(min-width:768px){.category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.category-card{padding:48px;min-height:750px}.category-name{font-size:72px}}@media(min-width:1024px){.category-name{font-size:96px}}
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(0, 0, 0, 0.05) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.btn-primary:hover::before { transform: translateX(100%); }
+.btn-primary:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+.category-name { translate: 0 0; transition: translate 500ms ease; }
+.category-card:hover .category-name { translate: 0 -8px; }
+.category-card { background: #998b80; }
+.categories button:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .category-grid, .category-card { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .category-name, .category-card video, .btn-primary, .btn-primary::before { transition: none !important; }
+  .category-card:hover video { transform: none !important; }
+}</style><script type="importmap">{"imports":{"react":"https://esm.sh/react@18.3.1","react-dom/client":"https://esm.sh/react-dom@18.3.1/client?external=react"}}</script></head><body><div id="root"></div><script type="module">import React, { useEffect, useRef, useState } from "react";
+
+
+const categories = [
+  { name: "face", video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_203023_87a26602-2898-4acc-a396-c7a2b5ad84fd.mp4" },
+  { name: "beauty tools", video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_203415_b86e3f19-2aec-46cd-9a86-b64c40118e38.mp4" },
+  { name: "body", video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_203051_85fee398-ea01-4aa0-972b-137a74213be5.mp4" }
+];
+
+function useInView(threshold = 0.15) {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    if (!("IntersectionObserver" in window)) { setIsVisible(true); return; }
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        setIsVisible(true);
+        observer.unobserve(node);
+      }
+    }, { threshold });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return { ref, isVisible };
+}
+
+function CategoryVideo({ url }) {
+  const video = useRef(null);
+  useEffect(() => {
+    const node = video.current;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    let inView = true;
+    function sync() {
+      if (reduced.matches || document.hidden || !inView) node.pause();
+      else node.play().catch(() => {});
+    }
+    const observer = "IntersectionObserver" in window
+      ? new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; sync(); })
+      : null;
+    observer?.observe(node);
+    reduced.addEventListener("change", sync);
+    document.addEventListener("visibilitychange", sync);
+    sync();
+    return () => {
+      observer?.disconnect();
+      reduced.removeEventListener("change", sync);
+      document.removeEventListener("visibilitychange", sync);
+      node.pause();
+    };
+  }, []);
+  return React.createElement("video", { ref: video, src: url, autoPlay: true, loop: true, muted: true, playsInline: true, preload: "metadata", "aria-hidden": true, className: "absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" });
+}
+
+function Categories({ onShop }) {
+  const { ref, isVisible } = useInView(0.1);
+  const h = React.createElement;
+  return h("section", { id: "categories", "aria-label": "Beauty categories", className: "categories bg-white text-white min-h-screen flex flex-col justify-center w-full" },
+    h("div", { ref, className: "category-grid grid grid-cols-1 md:grid-cols-3 transition-all duration-1000 ease-out " + (isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12") },
+      categories.map((category, index) => h("article", {
+        key: category.name, className: "category-card group relative flex flex-col justify-between items-start p-6 sm:p-8 md:p-12 min-h-[400px] sm:min-h-[500px] md:min-h-[750px] overflow-hidden transition-all duration-1000 ease-out " + (isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"),
+        style: { transitionDelay: index * 150 + "ms" }
+      },
+        h(CategoryVideo, { url: category.video }),
+        h("div", { className: "category-overlay absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500", "aria-hidden": true }),
+        h("h2", { className: "category-name relative z-10 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium group-hover:-translate-y-2 transition-transform duration-500", style: { writingMode: "vertical-lr", transform: "rotate(180deg)" } }, category.name),
+        h("button", { type: "button", className: "btn-primary relative z-10 mt-auto px-8 py-3 bg-white text-black rounded-full text-sm", onClick: () => onShop?.(category.name) }, "shop " + category.name)
+      ))
+    )
+  );
+}
+import { createRoot } from "react-dom/client";
+function App(){const dialog=useRef(null),[selection,setSelection]=useState("");return React.createElement(React.Fragment,null,React.createElement(Categories,{onShop:name=>{setSelection(name);dialog.current.showModal()}}),React.createElement("dialog",{ref:dialog},React.createElement("h2",null,"shop "+selection),React.createElement("p",null,"Beauty category design concept. No live shop or checkout is connected."),React.createElement("button",{onClick:()=>dialog.current.close()},"Close")))}
+createRoot(document.getElementById("root")).render(React.createElement(App));</script></body></html>
