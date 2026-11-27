@@ -1,7 +1,12 @@
-# robots.txt for AJAYNXT
+# AJAYNXT — public crawl access
+# AI/search crawlers inherit the same existing public crawl rules.
 User-agent: *
 Allow: /
 Disallow: /showcase-admin.html
 Disallow: /showcase-admin.js
 
 Sitemap: https://ajaynxt.com/sitemap.xml
+
+# Optional public content guides (not crawler directives):
+# https://ajaynxt.com/llms.txt
+# https://ajaynxt.com/ai.txt
