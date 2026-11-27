@@ -41,3 +41,9 @@ body:has(.nx-project-preview[open]) .cursor-ring,body:has(.nx-project-preview[op
 @media(max-width:680px){.nx-pv-layout{grid-template-columns:1fr;gap:12px;padding:12px}.nx-pv-top{padding:10px 12px}.nx-pv-info h3{font-size:18px}.nx-pv-nav{padding:0 12px 12px}.nx-project-preview{width:calc(100% - 20px);max-height:calc(100dvh - 20px)}}
 @media(hover:none){.editorial-archive .project-card .nx-pv-hover{opacity:1;transform:none;left:auto;top:auto;right:7px;bottom:7px;padding:7px 10px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){.nx-project-preview[open]{animation:none}.nx-pv-hover,.editorial-archive .project-card>a:is(.site-preview,.demo-capture) img{transition:none!important}}
+
+/* Projects: native cursor only. Also suppress old cached custom cursor overlays. */
+body[data-page="projects"] :is(.mst-cursor-dot,.mst-cursor-ring,.mst-cursor-label,.nx-pv-hover){display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+body[data-page="projects"],body[data-page="projects"] .project-card,body[data-page="projects"] .project-card img{cursor:auto!important}
+body[data-page="projects"] :is(a,button,summary,[role="button"]),body[data-page="projects"] .project-card a img{cursor:pointer!important}
+body[data-page="projects"] .project-card>a:is(.site-preview,.demo-capture) img{filter:none!important;transition:none!important}
