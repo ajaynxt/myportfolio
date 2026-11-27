@@ -7,6 +7,7 @@
   body.classList.add("mst-shell");
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pointerEffects = body.dataset.page !== "projects"; // Native cursor and stable controls on Projects.
 
   // Flow-field canvas: lightweight ambient motion, no video request/network dependency.
   const hero = document.querySelector(".hero");
@@ -89,7 +90,7 @@
   }
 
   // Pointer parallax for the portrait stage.
-  if (hero && !reduce && window.matchMedia("(pointer:fine)").matches) {
+  if (hero && pointerEffects && !reduce && window.matchMedia("(pointer:fine)").matches) {
     hero.addEventListener("pointermove", (event) => {
       const rect = hero.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - .5;
@@ -104,7 +105,7 @@
   }
 
   // Cursor-position spotlight for grids.
-  if (!reduce && window.matchMedia("(pointer:fine)").matches) {
+  if (pointerEffects && !reduce && window.matchMedia("(pointer:fine)").matches) {
     document.querySelectorAll(".project-card, .service-card, .process-list li").forEach((card) => {
       card.addEventListener("pointermove", (event) => {
         const r = card.getBoundingClientRect();
@@ -115,7 +116,7 @@
   }
 
   // Magnetic feel on primary CTAs, restrained for touch and accessibility.
-  if (!reduce && window.matchMedia("(pointer:fine)").matches) {
+  if (pointerEffects && !reduce && window.matchMedia("(pointer:fine)").matches) {
     document.querySelectorAll(".hero-actions .button, .view-more .button, .booking-form .button, .archive-cta .button, .three-page .btn").forEach((button) => {
       button.addEventListener("pointermove", (event) => {
         const r = button.getBoundingClientRect();
@@ -157,7 +158,7 @@
   /* ==========================================================================
      2. Award-Winning Custom Magnetic Cursor (Dennis Snellenberg / Olivier Larose)
      ========================================================================== */
-  if (!reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  if (pointerEffects && !reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     const dot = document.createElement("div");
     dot.className = "mst-cursor-dot";
     dot.setAttribute("aria-hidden", "true");
