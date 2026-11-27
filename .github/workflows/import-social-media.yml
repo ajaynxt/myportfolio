@@ -1,0 +1,37 @@
+name: Import public portfolio social media
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-social-media.yml'
+      - 'scripts/import-social-media.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-social-media
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install image and HTML utilities
+        run: npm install --prefix "$RUNNER_TEMP/social-media" --no-save --no-package-lock sharp cheerio
+      - name: Check public post media
+        env:
+          NODE_PATH: ${{ runner.temp }}/social-media/node_modules
+        run: node scripts/import-social-media.cjs
+      - name: Save only available originals
+        run: |
+          git add -A assets/social-media
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Import available public social portfolio media"
+          git pull --rebase origin main
+          git push origin HEAD:main
