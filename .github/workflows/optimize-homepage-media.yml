@@ -1,0 +1,39 @@
+name: Optimize homepage media delivery
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/optimize-homepage-media.yml'
+      - 'scripts/optimize-homepage-media.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: optimize-homepage-media
+  cancel-in-progress: false
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install image optimizer
+        run: npm install --prefix "$RUNNER_TEMP/homepage-media" --no-save --no-package-lock sharp
+      - name: Generate responsive WebP images
+        env:
+          NODE_PATH: ${{ runner.temp }}/homepage-media/node_modules
+        run: node scripts/optimize-homepage-media.cjs
+      - name: Commit verified variants and responsive HTML
+        run: |
+          git add index.html assets/client-previews assets/demo-previews assets/images/films assets/social-media
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Generate smaller responsive homepage WebP images"
+          git pull --rebase origin main
+          git push origin HEAD:main
