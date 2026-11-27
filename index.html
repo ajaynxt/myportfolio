@@ -608,6 +608,33 @@ body.compact-flow #post-slider .compact-open[data-media-ready]:not([data-local-v
 @media(min-width:761px){body.compact-flow #reel-slider .compact-media-card{flex-basis:clamp(205px,calc((100% - 48px)/3.4),310px)}body.compact-flow #post-slider .compact-media-card{flex-basis:clamp(220px,calc((100% - 32px)/3),355px)}}
 @media(max-width:760px){body.compact-flow #reel-slider .compact-open[data-media-ready],body.compact-flow #post-slider .compact-open[data-media-ready]{border-radius:8px}body.compact-flow #reel-slider .compact-open[data-media-ready] .compact-media-fallback{width:34px;height:34px}}
 </style>
+<style id="nx-balanced-density">
+/* Moderate desktop density without browser zoom or image distortion. */
+@media(min-width:761px){
+body.compact-flow #main>section:not(#home):not(.nx-capabilities){padding:clamp(22px,2.8vw,40px) 0!important}
+body.compact-flow #main>#home{padding:clamp(22px,3vw,42px) 0!important}
+body.compact-flow .editorial-hero h1{font-size:clamp(39px,4.4vw,70px);margin:12px 0}
+body.compact-flow .section-head{margin-bottom:14px;gap:12px}
+body.compact-flow .section-head h2{font-size:clamp(28px,3vw,46px);margin:6px 0}
+body.compact-flow .hero-actions{margin:12px 0}
+body.compact-flow #main>section.nx-capabilities{padding:19px 0 22px!important}
+body.compact-flow .nx-cap-top{margin-bottom:10px}
+body.compact-flow .nx-cap-track a{min-height:115px;padding:12px;gap:6px}
+body.compact-flow .nx-gallery{gap:14px}
+body.compact-flow .nx-gallery .demo-info{padding:12px;gap:5px}
+body.compact-flow .work-card .work-info h3{font-size:clamp(22px,2.5vw,30px)}
+body.compact-flow .service,.compact-flow .planning-grid article,.compact-flow .ugc-grid article{padding:14px}
+body.compact-flow .service h3,.compact-flow .planning-grid h3{font-size:20px}
+body.compact-flow #ugc .reel-heading,body.compact-flow #social-posts .reel-heading{margin:18px 0 12px}
+body.compact-flow #ugc #reel-slider .compact-media-card{flex-basis:clamp(180px,calc((100% - 48px)/4),250px)}
+body.compact-flow #social-posts #post-slider .compact-media-card{flex-basis:clamp(195px,calc((100% - 36px)/3.5),285px)}
+body.compact-flow #ugc .media-slider,body.compact-flow #social-posts .media-slider{margin-bottom:18px}
+body.compact-flow .contact-grid{gap:32px}
+body.compact-flow .contact h2{font-size:clamp(36px,4.4vw,56px)}
+body.compact-flow .contact-form{padding:20px}
+}
+@media(min-width:1100px){body.compact-flow #main section>.wrap{width:min(var(--max),calc(100% - 72px))}.nx-top-contact-inner{min-height:56px;padding:5px 0}}
+</style>
 </head>
 <body id="top" class="compact-flow">
 <a class="skip-link" href="#main">Skip to content</a>
