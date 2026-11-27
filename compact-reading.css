@@ -40,3 +40,25 @@ body.compact-reading{--paper:#f7f1e8;--ink:#30241d;--muted:#716359;--line:#e3d6c
 .compact-reading .band a:not(.btn){color:#f4d6a0}
 .compact-reading :focus-visible{outline:3px solid #805333;outline-offset:3px}
 .compact-reading img[data-screenshot-loaded]{background:var(--paper)}
+
+
+/* Desktop density: readable type, shorter sections and compact cards. */
+@media(min-width:761px){
+body.compact-reading{font-size:15px;line-height:1.6}
+.compact-reading>header{padding:10px 0}
+.compact-reading main.wrap{max-width:1080px;width:calc(100% - 64px);padding-bottom:16px}
+.compact-reading .ey{margin-top:20px}
+.compact-reading h1{font-size:clamp(34px,4vw,48px);line-height:1.08;margin:9px 0 12px}
+.compact-reading h2{font-size:clamp(21px,2.2vw,26px);margin:16px 0 8px}
+.compact-reading .lead{font-size:16px;line-height:1.55;margin-bottom:12px}
+.compact-reading .copy p{margin-bottom:10px}
+.compact-reading .actions{margin:14px 0 18px}
+.compact-reading .grid{gap:12px;margin:16px 0 20px}
+.compact-reading .card,.compact-reading .tool{padding:14px}
+.compact-reading .card h2{font-size:19px}
+.compact-reading .price-highlight{padding:11px 14px}
+.compact-reading .price-highlight strong{font-size:27px}
+.compact-reading .band{padding:16px 0}
+.compact-reading .band h2{font-size:22px}
+.compact-reading .client-hero-figure img{max-height:32vh;object-fit:contain}
+}
