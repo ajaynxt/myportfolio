@@ -26,7 +26,7 @@ function start(){
  if(started||choice!=="allow")return;
  started=true;
  if(!window.pintrk){const tracker=function(){tracker.queue.push(Array.prototype.slice.call(arguments));};tracker.queue=[];tracker.version="3.0";window.pintrk=tracker;const script=document.createElement("script");script.async=true;script.src="https://s.pinimg.com/ct/core.js";document.head.appendChild(script);}
- window.pintrk("load","2614394817874");
+ window.pintrk("load","2612996266005");
  window.pintrk("page");
  track("pagevisit");
 }
