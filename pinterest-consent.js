@@ -70,3 +70,6 @@ function init(){
 
 /* Editorial animations are independent of analytics and advertising consent. */
 (()=>{if(document.querySelector('script[src="/editorial-motion.js"]'))return;const script=document.createElement("script");script.src="/editorial-motion.js";script.defer=true;document.head.append(script);})();
+
+/* Global navigation is functional UI and is not gated on cookie consent. */
+(()=>{if(document.querySelector('script[src="/site-navigation.js"]'))return;const script=document.createElement("script");script.src="/site-navigation.js";script.defer=true;document.head.append(script);})();
