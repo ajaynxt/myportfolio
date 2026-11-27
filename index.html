@@ -635,6 +635,20 @@ body.compact-flow .contact-form{padding:20px}
 }
 @media(min-width:1100px){body.compact-flow #main section>.wrap{width:min(var(--max),calc(100% - 72px))}.nx-top-contact-inner{min-height:56px;padding:5px 0}}
 </style>
+<style id="nx-free-motion">
+/* Native motion studies inspired by React Bits public examples (reactbits.dev).
+   No React runtime, third-party animation scripts, or copied component source. */
+body.compact-flow #home .hero-actions .btn,body.compact-flow #main .nx-cap-track a{position:relative;isolation:isolate;overflow:hidden}
+.nx-motion-glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 32%,#ffffff50 49%,transparent 66%);transform:translateX(-130%);z-index:-1}
+.nx-motion-glare.nx-glare-active{animation:nxGlare .75s cubic-bezier(.22,.8,.3,1) both}
+@keyframes nxGlare{to{transform:translateX(130%)}}
+body.compact-flow .nx-cap-track a.nx-spot{background:radial-gradient(ellipse at var(--nx-sx,50%) var(--nx-sy,50%),#f4dec4 0,transparent 65%),#fffdf9}
+body.compact-flow .nx-gallery .demo-tile.nx-spot{border-color:#b8926f;box-shadow:0 9px 24px #80533320}
+body.compact-flow .nx-magnetic{translate:var(--nx-mx,0px) var(--nx-my,0px);transition:translate .22s cubic-bezier(.18,.9,.28,1),background .2s}
+.nx-hero-word{display:inline-block;white-space:nowrap}
+.nx-motion-off .nx-motion-glare,.nx-motion-off .nx-magnetic{animation:none!important;translate:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.nx-motion-glare,.nx-magnetic{animation:none!important;translate:none!important;transition:none!important}}
+</style>
 </head>
 <body id="top" class="compact-flow">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -867,5 +881,10 @@ if(!off()&&"IntersectionObserver" in window){const headings=document.querySelect
 </script>
 <script id="nx-capabilities-script">
 (()=>{const track=document.getElementById("nx-cap-track"),arrows=document.querySelector(".nx-cap-arrows");if(!track||!arrows)return;const buttons=[...arrows.querySelectorAll("button")],reduced=matchMedia("(prefers-reduced-motion: reduce)");function sync(){const max=track.scrollWidth-track.clientWidth;arrows.hidden=max<3;buttons[0].disabled=track.scrollLeft<3;buttons[1].disabled=track.scrollLeft>=max-3;}function move(dir){const card=track.querySelector("a");const distance=(card?.getBoundingClientRect().width||220)+12;track.scrollBy({left:dir*distance,behavior:reduced.matches||document.body.classList.contains("nx-motion-off")?"auto":"smooth"});}buttons.forEach(b=>b.addEventListener("click",()=>move(Number(b.dataset.capDir))));track.addEventListener("scroll",sync,{passive:true});track.addEventListener("keydown",e=>{if(e.target!==track)return;if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();move(e.key==="ArrowLeft"?-1:1);}});if("ResizeObserver" in window)new ResizeObserver(sync).observe(track);else addEventListener("resize",sync);sync();})();
+</script>
+<script id="nx-free-motion-script">
+(()=>{"use strict";const reduced=matchMedia("(prefers-reduced-motion: reduce)"),fine=matchMedia("(hover:hover) and (pointer:fine)"),off=()=>reduced.matches||document.body.classList.contains("nx-motion-off");const hero=document.querySelector("#hero-title");if(hero&&!off()&&hero.animate){for(const node of [...hero.childNodes]){if(node.nodeType!==Node.TEXT_NODE||!node.textContent.trim())continue;const f=document.createDocumentFragment();for(const word of node.textContent.split(/(\s+)/)){if(!word.trim()){f.append(document.createTextNode(word));continue}const w=document.createElement("span");w.className="nx-hero-word";w.textContent=word;f.append(w)}node.replaceWith(f)}const em=hero.querySelector("em");if(em&&em.childNodes.length===1){const str=em.textContent;em.replaceChildren();str.split(/(\s+)/).forEach(word=>{if(!word.trim())em.append(document.createTextNode(word));else{const w=document.createElement("span");w.className="nx-hero-word";w.textContent=word;em.append(w)}})}hero.querySelectorAll(".nx-hero-word").forEach((w,i)=>w.animate([{opacity:.1,filter:"blur(7px)",transform:"translateY(10px)"},{opacity:1,filter:"blur(0)",transform:"none"}],{duration:570,delay:i*65,easing:"cubic-bezier(.2,.8,.2,1)",fill:"backwards"}))}
+const items=[...document.querySelectorAll("#home .hero-actions .btn,.nx-cap-track a,.nx-gallery .demo-tile")];for(const item of items){const mag=item.matches("#home .hero-actions .btn");if(mag)item.classList.add("nx-magnetic");let glare=null;if(item.matches(".nx-cap-track a,#home .hero-actions .btn")){glare=document.createElement("span");glare.className="nx-motion-glare";glare.setAttribute("aria-hidden","true");item.append(glare)}item.addEventListener("pointerenter",()=>{if(off()||!fine.matches)return;item.classList.add("nx-spot");if(glare){glare.classList.remove("nx-glare-active");void glare.offsetWidth;glare.classList.add("nx-glare-active")}});item.addEventListener("pointermove",e=>{if(off()||!fine.matches)return;const b=item.getBoundingClientRect(),x=Math.max(0,Math.min(1,(e.clientX-b.left)/b.width)),y=Math.max(0,Math.min(1,(e.clientY-b.top)/b.height));item.style.setProperty("--nx-sx",x*100+"%");item.style.setProperty("--nx-sy",y*100+"%");if(mag){item.style.setProperty("--nx-mx",(x-.5)*7+"px");item.style.setProperty("--nx-my",(y-.5)*5+"px")}});item.addEventListener("pointerleave",()=>{item.classList.remove("nx-spot");item.style.setProperty("--nx-mx","0px");item.style.setProperty("--nx-my","0px")})}
+})();
 </script>
 </body></html>
