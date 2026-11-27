@@ -325,24 +325,31 @@ footer{background:#11151d;color:#b9c0ca;padding:28px 0}.footer-row{display:flex;
 
 .hero-expertise{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.hero-expertise a{padding:5px 9px;border:1px solid #d9dcd7;border-radius:5px;background:#fff;color:#203fbd;font-size:11px;font-weight:700;line-height:1.4}.hero-expertise a:hover,.hero-expertise a:focus-visible{border-color:#3157e8;background:#e8edff}.hero-expertise a:focus-visible{outline:2px solid #3157e8;outline-offset:2px}
 
-/* A single coherent vector illustration, instead of screenshots or multiple UI cards. */
-#home .growth-visual{margin:0;min-width:0;position:relative;padding:12px;background:#fff;border:1px solid #d9dcd7;border-radius:18px;box-shadow:0 20px 65px #20324d16}
-#home .growth-top,#home .growth-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:4px 5px 11px;font-size:10px;font-weight:750;letter-spacing:.07em;color:#536078}
-#home .growth-top>span{display:flex;gap:6px;align-items:center}#home .growth-top i{display:block;width:6px;height:6px;background:#3157e8;border-radius:50%}
-#home .growth-bottom{padding:12px 5px 4px;letter-spacing:0;font-size:12px}#home .growth-bottom a{color:#203fbd}
-#home .growth-illustration{display:block;width:100%;height:auto;overflow:visible;aspect-ratio:640/440;font-family:"DM Sans",Arial,sans-serif}
-#home .growth-node{text-decoration:none;cursor:pointer}#home .growth-node:hover .growth-node-ring,#home .growth-node:focus-visible .growth-node-ring{stroke-opacity:1;stroke-width:3}
-#home .growth-node:focus-visible{outline:none}#home .studio-motion-toggle{background:#f4f3ed;border:1px solid #d9dcd7;color:#203fbd;font:700 11px "DM Sans",sans-serif;padding:6px 10px;border-radius:5px;min-height:34px;cursor:pointer}
-#home .studio-motion-toggle[hidden]{display:none}#home .studio-motion-toggle:focus-visible{outline:2px solid #3157e8;outline-offset:2px}
-@keyframes growth-flow{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
-@keyframes growth-orbit{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-#home .growth-orbit{transform-origin:320px 220px}
-#home .motion-enabled .growth-flow{animation:growth-flow 3.8s var(--delay,0s) linear infinite}
-#home .motion-enabled .growth-orbit{animation:growth-orbit 18s linear infinite}
-#home .motion-paused .growth-flow,#home .motion-paused .growth-orbit{animation-play-state:paused}
-#home .growth-visual .growth-flow{stroke-opacity:.85}
-@media(max-width:760px){#home .growth-visual{padding:7px;border-radius:12px}#home .growth-top{font-size:8px;padding:3px 3px 7px;letter-spacing:.03em}#home .growth-bottom{padding:7px 3px 3px;font-size:10px}#home .studio-motion-toggle{font-size:10px;min-height:40px}}
-@media(prefers-reduced-motion:reduce){#home .growth-flow,#home .growth-orbit{animation:none!important}}
+/* High-contrast custom vector hero. The illustration is a concept, not a client screenshot. */
+#home .editorial-grid{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(28px,4vw,64px)}
+#home h1{font-size:clamp(42px,5.05vw,76px);line-height:1.04;letter-spacing:-.06em}
+#home .hero-price .nx-ugc-price{font:800 12px/1.4 "DM Sans",sans-serif;color:#203fbd;letter-spacing:0}
+#home .nx-visual{margin:0;min-width:0;background:radial-gradient(ellipse at 56% 48%,#385ee3 0,#233faf 46%,#142765 100%);color:#fff;border:1px solid #4766cc;border-radius:20px;box-shadow:0 22px 62px #233fa22d;position:relative;overflow:hidden;padding:16px}
+#home .nx-visual-top,#home .nx-visual-caption{position:relative;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;z-index:2;font-size:11px;font-weight:750}
+#home .nx-visual-top>span{display:flex;gap:8px;align-items:center;letter-spacing:.1em;color:#dce7ff}
+#home .nx-visual-top i{width:8px;height:8px;background:#d9f36a;border-radius:50%;box-shadow:0 0 0 4px #d9f36a22}
+#home .studio-motion-toggle{background:#ffffff17;color:#fff;border:1px solid #c7d6ff55;border-radius:5px;padding:7px 10px;font:700 11px "DM Sans",sans-serif;cursor:pointer;min-height:34px}
+#home .studio-motion-toggle[hidden]{display:none}
+#home .nx-art{display:block;width:100%;height:auto;aspect-ratio:620/350;font-family:Manrope,"DM Sans",Arial,sans-serif}
+#home .nx-visual-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;position:relative;z-index:1;margin:4px 0 15px}
+#home .nx-visual-links a{color:#fff;border:1px solid #d4dfff44;background:#ffffff12;border-radius:99px;padding:7px 11px;font-size:11px;font-weight:700;line-height:1.35;white-space:nowrap}
+#home .nx-visual-links a:hover,#home .nx-visual-links a:focus-visible{background:#d9f36a;color:#152443;border-color:#d9f36a}
+#home .nx-visual-caption{border-top:1px solid #c7d6ff33;padding:13px 2px 2px;color:#dce7ff;letter-spacing:0}
+#home .nx-visual-caption a{color:#d9f36a;font-weight:800}
+#home .nx-visual a:focus-visible,#home .studio-motion-toggle:focus-visible{outline:2px solid #d9f36a;outline-offset:3px}
+@keyframes nx-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes nx-dash{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+#home .motion-enabled .nx-float{animation:nx-float 4s var(--float-delay,0s) ease-in-out infinite}
+#home .motion-enabled .nx-orbit ellipse{animation:nx-dash 10s linear infinite}
+#home .motion-paused .nx-float,#home .motion-paused .nx-orbit ellipse{animation-play-state:paused}
+@media(max-width:900px){#home .editorial-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}#home h1{font-size:clamp(38px,5.2vw,60px)}}
+@media(max-width:760px){#home .editorial-grid{grid-template-columns:1fr;gap:16px}#home h1{font-size:clamp(39px,9vw,62px)}#home .nx-visual{padding:10px;border-radius:14px}#home .nx-visual-top{font-size:9px}#home .nx-visual-links{gap:5px;margin-bottom:10px}#home .nx-visual-links a{font-size:11px;padding:8px 10px}#home .studio-motion-toggle{min-height:40px}#home .nx-visual-caption{font-size:10px;padding-top:9px}}
+@media(prefers-reduced-motion:reduce){#home .nx-float,#home .nx-orbit ellipse{animation:none!important}}
 
 </style>
 <script src="/ga4.js" defer></script>
@@ -363,12 +370,74 @@ footer{background:#11151d;color:#b9c0ca;padding:28px 0}.footer-row{display:flex;
   <div class="editorial-grid">
     <div class="editorial-copy">
       <p class="editorial-name">AJAYNXT <span aria-hidden="true">/</span> AJAY SAINI</p>
-      <h1 id="hero-title">Make your business<br><em>stand out.</em></h1>
-      <p class="hero-copy">Website design, Google Ads, Meta Ads, Pinterest marketing, SEO and creative content for businesses in India and worldwide.</p>
-      <div class="hero-expertise" aria-label="Marketing services"><a href="/services/google-ads/">Google Ads</a><a href="/services/meta-ads/">Meta Ads</a><a href="/services/pinterest-marketing/">Pinterest</a><a href="/services/seo-keyword-research/">SEO Keywords</a></div><div class="hero-price"><span>Website development starting from</span><strong>₹10,000</strong><small>Final quote depends on project scope.</small></div>
+      <h1 id="hero-title">Build your brand.<br><em>Grow your business.</em></h1>
+      <p class="hero-copy">Premium websites, paid advertising, SEO and creative content — one digital studio for businesses in India and worldwide.</p>
+      <div class="hero-expertise" aria-label="Marketing services"><a href="/services/google-ads/">Google Ads</a><a href="/services/meta-ads/">Meta Ads</a><a href="/services/pinterest-marketing/">Pinterest</a><a href="/services/seo-keyword-research/">SEO Keywords</a></div><div class="hero-price"><span>Website development starting from</span><strong>₹10,000</strong><small>UGC videos from <strong class="nx-ugc-price">₹800/video</strong> · Final quote based on scope.</small></div>
       <div class="hero-actions"><a class="btn" href="#contact">Discuss your project <span aria-hidden="true">↗</span></a><a class="btn secondary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a></div>
     </div>
-    <figure class="hero-services-visual growth-visual" aria-label="Connected digital services"><div class="growth-top"><span>AJAYNXT <i aria-hidden="true"></i> DIGITAL GROWTH STUDIO</span><button class="studio-motion-toggle" type="button" aria-pressed="false" hidden>Pause motion</button></div><svg class="growth-illustration" viewBox="0 0 640 440" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Six connected AJAYNXT services"><defs><radialGradient id="growth-bg" cx="50%" cy="48%" r="67%"><stop stop-color="#eef3ff"/><stop offset="1" stop-color="#f9faf5"/></radialGradient><linearGradient id="growth-core" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#527aff"/><stop offset=".55" stop-color="#3157e8"/><stop offset="1" stop-color="#1939ae"/></linearGradient><linearGradient id="growth-ring" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f36a"/><stop offset=".5" stop-color="#d7e3ff"/><stop offset="1" stop-color="#3157e8"/></linearGradient><pattern id="growth-dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#a8b9d9" opacity=".36"/></pattern></defs><rect width="640" height="440" rx="22" fill="url(#growth-bg)"/><rect width="640" height="440" rx="22" fill="url(#growth-dots)"/><circle cx="320" cy="220" r="147" fill="none" stroke="#b9c9e9" stroke-opacity=".55" stroke-dasharray="2 9"/><circle cx="320" cy="220" r="119" fill="none" stroke="#d6e1f5" stroke-width="20"/><path d="M222 161.09 C168 161.09 170 83 151 83" fill="none" stroke="#c4d3ed" stroke-width="2.5" stroke-linecap="round"/><path class="growth-flow" style="--delay:0s" d="M222 161.09 C168 161.09 170 83 151 83" fill="none" stroke="#3157e8" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="12 88"/><path d="M418 161.09 C472 161.09 470 83 489 83" fill="none" stroke="#c4d3ed" stroke-width="2.5" stroke-linecap="round"/><path class="growth-flow" style="--delay:0.42s" d="M418 161.09 C472 161.09 470 83 489 83" fill="none" stroke="#3157e8" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="12 88"/><path d="M222 220 C168 220 170 220 151 220" fill="none" stroke="#c4d3ed" stroke-width="2.5" stroke-linecap="round"/><path class="growth-flow" style="--delay:0.84s" d="M222 220 C168 220 170 220 151 220" fill="none" stroke="#3157e8" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="12 88"/><path d="M418 220 C472 220 470 220 489 220" fill="none" stroke="#c4d3ed" stroke-width="2.5" stroke-linecap="round"/><path class="growth-flow" style="--delay:1.26s" d="M418 220 C472 220 470 220 489 220" fill="none" stroke="#3157e8" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="12 88"/><path d="M222 278.90999999999997 C168 278.90999999999997 170 357 151 357" fill="none" stroke="#c4d3ed" stroke-width="2.5" stroke-linecap="round"/><path class="growth-flow" style="--delay:1.68s" d="M222 278.90999999999997 C168 278.90999999999997 170 357 151 357" fill="none" stroke="#3157e8" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="12 88"/><path d="M418 278.90999999999997 C472 278.90999999999997 470 357 489 357" fill="none" stroke="#c4d3ed" stroke-width="2.5" stroke-linecap="round"/><path class="growth-flow" style="--delay:2.1s" d="M418 278.90999999999997 C472 278.90999999999997 470 357 489 357" fill="none" stroke="#3157e8" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="12 88"/><g class="growth-orbit"><circle cx="320" cy="220" r="129" fill="none" stroke="url(#growth-ring)" stroke-width="3" stroke-dasharray="86 724" stroke-linecap="round"/><circle cx="320" cy="91" r="5" fill="#d9f36a" stroke="#3157e8" stroke-width="2"/></g><circle cx="320" cy="225" r="100" fill="#203fbd" opacity=".13"/><circle cx="320" cy="220" r="97" fill="url(#growth-core)"/><circle cx="320" cy="220" r="83" fill="none" stroke="#fff" stroke-opacity=".3"/><path d="M298 185l22-13 22 13-22 13Z M298 191v22l22 13 22-13v-22" stroke="#d9f36a" stroke-width="2.4" stroke-linejoin="round" fill="none"/><text x="320" y="252" text-anchor="middle" fill="#fff" font-family="Manrope,Arial,sans-serif" font-weight="800" font-size="22" letter-spacing="-.6">YOUR BRAND</text><text x="320" y="275" text-anchor="middle" fill="#dce7ff" font-size="14" font-weight="600">Connected digital growth</text><a href="/services/website-design/" class="growth-node" aria-label="Web design"><title>Web design</title><g transform="translate(105 83)"><circle r="48" fill="#fff" stroke="#d2ddf0" stroke-width="1.5"/><circle class="growth-node-ring" r="42" fill="none" stroke="#3157e8" stroke-opacity=".15" stroke-width="2"/><g transform="translate(0 -8)" stroke="#3157e8" color="#3157e8" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="-16" y="-11" width="32" height="23" rx="3"/><path d="M-16-4H16M-8 18H8M0 12v6"/></g><text y="30" text-anchor="middle" font-size="12" font-weight="800" fill="#536078" letter-spacing="1">BUILD</text><text y="70" text-anchor="middle" fill="#171b25" font-weight="800" font-size="18">Web design</text></g></a><a href="/services/google-ads/" class="growth-node" aria-label="Google Ads"><title>Google Ads</title><g transform="translate(535 83)"><circle r="48" fill="#fff" stroke="#d2ddf0" stroke-width="1.5"/><circle class="growth-node-ring" r="42" fill="none" stroke="#3469dc" stroke-opacity=".15" stroke-width="2"/><g transform="translate(0 -8)" stroke="#3469dc" color="#3469dc" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M-17 14L-3-14Q0-19 5-11L19 14M-9 1L4 14"/><circle cx="-13" cy="14" r="5" fill="#34a853" stroke="none"/></g><text y="30" text-anchor="middle" font-size="12" font-weight="800" fill="#536078" letter-spacing="1">REACH</text><text y="70" text-anchor="middle" fill="#171b25" font-weight="800" font-size="18">Google Ads</text></g></a><a href="/services/seo-keyword-research/" class="growth-node" aria-label="SEO"><title>SEO</title><g transform="translate(105 220)"><circle r="48" fill="#fff" stroke="#d2ddf0" stroke-width="1.5"/><circle class="growth-node-ring" r="42" fill="none" stroke="#0e8066" stroke-opacity=".15" stroke-width="2"/><g transform="translate(0 -8)" stroke="#0e8066" color="#0e8066" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"><circle cx="-4" cy="-4" r="12"/><path d="M5 5l13 13M-10-4h12M-4-10V2"/></g><text y="30" text-anchor="middle" font-size="12" font-weight="800" fill="#536078" letter-spacing="1">DISCOVER</text><text y="70" text-anchor="middle" fill="#171b25" font-weight="800" font-size="18">SEO</text></g></a><a href="/services/meta-ads/" class="growth-node" aria-label="Meta Ads"><title>Meta Ads</title><g transform="translate(535 220)"><circle r="48" fill="#fff" stroke="#d2ddf0" stroke-width="1.5"/><circle class="growth-node-ring" r="42" fill="none" stroke="#0866ff" stroke-opacity=".15" stroke-width="2"/><g transform="translate(0 -8)" stroke="#0866ff" color="#0866ff" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M0 0C-7-13-12-14-16-6S-20 13-11 13 9-13 13-12 22 12 12 13 5 8 0 0Z"/></g><text y="30" text-anchor="middle" font-size="12" font-weight="800" fill="#536078" letter-spacing="1">CONNECT</text><text y="70" text-anchor="middle" fill="#171b25" font-weight="800" font-size="18">Meta Ads</text></g></a><a href="#ugc" class="growth-node" aria-label="UGC &amp; reels"><title>UGC &amp; reels</title><g transform="translate(105 357)"><circle r="48" fill="#fff" stroke="#d2ddf0" stroke-width="1.5"/><circle class="growth-node-ring" r="42" fill="none" stroke="#7c54c8" stroke-opacity=".15" stroke-width="2"/><g transform="translate(0 -8)" stroke="#7c54c8" color="#7c54c8" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="-16" y="-14" width="32" height="28" rx="5"/><path d="m-4-7 11 7-11 7Z" fill="currentColor" stroke="none"/></g><text y="30" text-anchor="middle" font-size="12" font-weight="800" fill="#536078" letter-spacing="1">CREATE</text><text y="70" text-anchor="middle" fill="#171b25" font-weight="800" font-size="18">UGC &amp; reels</text></g></a><a href="/services/pinterest-marketing/" class="growth-node" aria-label="Pinterest"><title>Pinterest</title><g transform="translate(535 357)"><circle r="48" fill="#fff" stroke="#d2ddf0" stroke-width="1.5"/><circle class="growth-node-ring" r="42" fill="none" stroke="#bd1238" stroke-opacity=".15" stroke-width="2"/><g transform="translate(0 -8)" stroke="#bd1238" color="#bd1238" stroke-width="2.7" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m-6 18 5-21M-6 6c-9-2-10-15-2-20 8-5 21 0 20 10-1 8-8 11-13 5M0-6l-2 8"/></g><text y="30" text-anchor="middle" font-size="12" font-weight="800" fill="#536078" letter-spacing="1">INSPIRE</text><text y="70" text-anchor="middle" fill="#171b25" font-weight="800" font-size="18">Pinterest</text></g></a></svg><figcaption class="growth-bottom"><span>Design. Reach. Create. Connect.</span><a href="#services">Explore all services ↗</a></figcaption></figure>
+    <figure class="hero-services-visual nx-visual" aria-label="AJAYNXT digital studio illustration">
+      <div class="nx-visual-top"><span><i aria-hidden="true"></i> THE DIGITAL STUDIO</span><button type="button" class="studio-motion-toggle" aria-pressed="false" hidden>Pause motion</button></div>
+      <svg class="nx-art" viewBox="0 0 620 350" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="nx-screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#e1e9ff"/></linearGradient>
+          <linearGradient id="nx-electric" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#739bff"/><stop offset=".48" stop-color="#4165f6"/><stop offset="1" stop-color="#2644cd"/></linearGradient>
+          <linearGradient id="nx-lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2ffba"/><stop offset="1" stop-color="#c0ee51"/></linearGradient>
+          <radialGradient id="nx-glow"><stop stop-color="#7898ff" stop-opacity=".6"/><stop offset="1" stop-color="#7898ff" stop-opacity="0"/></radialGradient>
+          <pattern id="nx-grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#c8d5ff" stroke-opacity=".11"/></pattern>
+        </defs>
+        <rect width="620" height="350" fill="url(#nx-grid)"/>
+        <ellipse cx="322" cy="186" rx="270" ry="174" fill="url(#nx-glow)"/>
+        <g fill="none" stroke="#c7d6ff" stroke-opacity=".3"><ellipse cx="310" cy="179" rx="278" ry="133" transform="rotate(-22 310 179)"/><ellipse cx="310" cy="179" rx="248" ry="109" transform="rotate(26 310 179)"/></g>
+        <g class="nx-orbit"><ellipse cx="310" cy="179" rx="278" ry="133" transform="rotate(-22 310 179)" fill="none" stroke="#d9f36a" stroke-width="2" stroke-dasharray="65 1700" stroke-linecap="round" pathLength="1000"/></g>
+        <ellipse cx="325" cy="309" rx="223" ry="18" fill="#091943" opacity=".36"/>
+        <g class="nx-monitor">
+          <rect x="94" y="57" width="343" height="220" rx="14" fill="#0f2468" opacity=".65" transform="translate(12 15)"/>
+          <rect x="94" y="57" width="343" height="220" rx="14" fill="url(#nx-screen)" stroke="#fff" stroke-width="2"/>
+          <path d="M108 57h315a14 14 0 0 1 14 14v18H94V71a14 14 0 0 1 14-14Z" fill="#dfe8ff"/>
+          <g fill="#8498c5"><circle cx="109" cy="73" r="4"/><circle cx="121" cy="73" r="4"/><circle cx="133" cy="73" r="4"/></g>
+          <rect x="187" y="66" width="150" height="14" rx="7" fill="#fff"/><text x="262" y="76" fill="#60729a" font-size="8" text-anchor="middle" font-weight="700">YOUR BUSINESS ONLINE</text>
+          <rect x="110" y="104" width="311" height="102" rx="7" fill="#102253"/>
+          <text x="123" y="122" font-size="8" font-weight="800" letter-spacing="1.2" fill="#d9f36a">DESIGNED TO STAND OUT</text>
+          <text x="123" y="152" font-size="26" font-weight="800" letter-spacing="-1" fill="#fff">Make it</text><text x="123" y="179" font-size="26" font-weight="800" letter-spacing="-1" fill="#d9f36a">remarkable.</text>
+          <path d="M320 112h85v85h-85z" fill="url(#nx-electric)" opacity=".5"/>
+          <path d="M329 191V119l68 72v-72" fill="none" stroke="#a9c2ff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="110" y="219" width="96" height="42" rx="5" fill="#d8e3ff"/><rect x="214" y="219" width="96" height="42" rx="5" fill="#e5efc9"/><rect x="318" y="219" width="103" height="42" rx="5" fill="#d8e3ff"/>
+          <g fill="#8398c5"><rect x="119" y="228" width="43" height="5" rx="2"/><rect x="119" y="239" width="72" height="4" rx="2"/><rect x="119" y="248" width="51" height="4" rx="2"/><rect x="327" y="228" width="43" height="5" rx="2"/><rect x="327" y="239" width="72" height="4" rx="2"/><rect x="327" y="248" width="51" height="4" rx="2"/></g><g fill="#829c5d"><rect x="223" y="228" width="46" height="5" rx="2"/><rect x="223" y="239" width="72" height="4" rx="2"/><rect x="223" y="248" width="52" height="4" rx="2"/></g>
+          <path d="M247 277h38v19l25 8h-88l25-8z" fill="#adbee6"/><rect x="212" y="302" width="108" height="6" rx="3" fill="#f0f5ff"/>
+        </g>
+        <g class="nx-phone">
+          <rect x="381" y="124" width="110" height="195" rx="19" fill="#0b1d54" opacity=".6" transform="translate(9 8)"/>
+          <rect x="381" y="124" width="110" height="195" rx="19" fill="#101e49" stroke="#acbfff" stroke-width="2"/>
+          <rect x="388" y="132" width="96" height="179" rx="13" fill="url(#nx-electric)"/>
+          <rect x="421" y="138" width="30" height="5" rx="2.5" fill="#101e49"/>
+          <path d="M388 231l96-62v142h-96Z" fill="#c2d2ff" opacity=".22"/>
+          <path d="M388 282l96-62v91h-96Z" fill="#d9f36a" opacity=".86"/>
+          <text x="398" y="162" fill="#fff" font-size="8" font-weight="800" letter-spacing="1.1">SHORT FORM</text>
+          <text x="398" y="180" fill="#fff" font-size="16" font-weight="800">CREATE.</text>
+          <circle cx="436" cy="219" r="25" fill="#fff" fill-opacity=".92"/><path d="m430 208 17 11-17 11Z" fill="#3157e8"/>
+          <rect x="400" y="269" width="61" height="6" rx="3" fill="#102253"/><rect x="400" y="280" width="48" height="4" rx="2" fill="#102253" opacity=".65"/>
+        </g>
+        <g class="nx-float nx-search" style="--float-delay:-1s">
+          <rect x="22" y="31" width="163" height="42" rx="21" fill="#fff" stroke="#d2e0ff"/>
+          <circle cx="43" cy="52" r="8" fill="none" stroke="#3157e8" stroke-width="2.5"/><path d="m49 58 6 6" stroke="#3157e8" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="63" y="56" fill="#172953" font-size="13" font-weight="800">Be discovered</text>
+        </g>
+        <g class="nx-float nx-ads" style="--float-delay:-2.1s">
+          <rect x="453" y="47" width="143" height="59" rx="12" fill="url(#nx-lime)"/>
+          <path d="M466 80V67l18-7v27l-18-7Zm0 0 5 12m13-25 5-5m-5 15 6 3" stroke="#183037" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="499" y="70" fill="#183037" font-size="9" font-weight="800" letter-spacing="1">PAID MEDIA</text><text x="499" y="86" fill="#183037" font-size="14" font-weight="800">Reach more</text>
+        </g>
+        <g class="nx-float nx-content" style="--float-delay:-.4s">
+          <rect x="32" y="229" width="135" height="54" rx="10" fill="#edf2ff" stroke="#fff"/>
+          <path d="m46 247 9-9 9 9-9 9Z M46 255l9 9 9-9" fill="none" stroke="#3157e8" stroke-width="2.5" stroke-linejoin="round"/>
+          <text x="73" y="250" font-size="9" fill="#53678e" font-weight="800">CREATIVE</text><text x="73" y="264" font-size="12" fill="#172953" font-weight="800">Brand design</text>
+        </g>
+        <g class="nx-float nx-pointer" style="--float-delay:-1.5s"><path d="M519 221l30 30-16 2-6 14-8-46Z" fill="#d9f36a" stroke="#0e2858" stroke-width="2" stroke-linejoin="round"/><path d="M549 220l9-9m-3 18 11-3m-18-11 2-11" stroke="#e5ff8e" stroke-width="2" stroke-linecap="round"/></g>
+        <g fill="#d9f36a"><circle cx="57" cy="174" r="3"/><circle cx="563" cy="143" r="3"/><path d="M553 300v16m-8-8h16M204 28v12m-6-6h12" stroke="#d9f36a" stroke-width="2" stroke-linecap="round"/></g>
+      </svg>
+      <div class="nx-visual-links" aria-label="Explore digital services"><a href="/services/website-design/">Website design</a><a href="/services/google-ads/">Google Ads</a><a href="/services/meta-ads/">Meta Ads</a><a href="/services/seo-keyword-research/">SEO</a><a href="/services/pinterest-marketing/">Pinterest</a><a href="#ugc">UGC &amp; video</a></div>
+      <figcaption class="nx-visual-caption"><span>One studio. Every digital touchpoint.</span><a href="#services">Explore services ↗</a></figcaption>
+    </figure>
   </div>
   <div class="editorial-bottom"><a href="#work" class="scroll-link"><span aria-hidden="true">↓</span> Explore selected work</a><div class="editorial-stat"><strong>03</strong> Client websites</div><div class="editorial-stat"><strong>25</strong> Concept demos</div><a class="editorial-lab" href="/3d.html">Explore 3D experience ↗</a></div>
 </div></section>
