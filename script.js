@@ -383,22 +383,32 @@ if (bookingForm instanceof HTMLFormElement) {
 }
 
 const filterButtons = [...document.querySelectorAll("[data-filter]")];
-const archiveCards = [...document.querySelectorAll("[data-category]")];
+const archiveCards = [...document.querySelectorAll(".project-card[data-category]")];
 const projectCount = document.querySelector("[data-project-count]");
-
-const applyFilter = (filter) => {
+const projectSearch = document.querySelector("[data-project-search]");
+const projectClear = document.querySelector("[data-clear-project-search]");
+const projectEmpty = document.querySelector("[data-project-empty]");
+let activeProjectFilter = "all";
+const applyFilter = (filter = activeProjectFilter) => {
+  activeProjectFilter = filter;
+  const words = (projectSearch?.value || "").trim().toLowerCase().split(/\s+/).filter(Boolean);
   let visible = 0;
-  archiveCards.forEach((card) => {
+  archiveCards.forEach(card => {
     const categories = (card.dataset.category || "").split(" ");
-    const show = filter === "all" || categories.includes(filter);
+    const text = (card.textContent + " " + card.dataset.category).toLowerCase();
+    const show = (filter === "all" || categories.includes(filter)) && words.every(word => text.includes(word));
     card.hidden = !show;
-    if (show) visible += 1;
+    if (show) visible++;
   });
-  filterButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.filter === filter)));
-  if (projectCount) projectCount.textContent = `${visible} projects shown`;
+  filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.filter === filter)));
+  if (projectCount) projectCount.textContent = visible + " of " + archiveCards.length + " projects shown";
+  if (projectEmpty) projectEmpty.hidden = visible !== 0;
+  if (projectClear) projectClear.hidden = !projectSearch?.value;
 };
-
-filterButtons.forEach((button) => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
+filterButtons.forEach(button => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
+projectSearch?.addEventListener("input", () => applyFilter());
+projectClear?.addEventListener("click", () => { if (projectSearch) { projectSearch.value = ""; applyFilter(); projectSearch.focus(); } });
+document.querySelector("[data-reset-projects]")?.addEventListener("click", () => { if (projectSearch) projectSearch.value = ""; applyFilter("all"); projectSearch?.focus(); });
 if (archiveCards.length) applyFilter("all");
 
 // Keep portfolio counters accurate without implying the showcased edits are the total body of work.
