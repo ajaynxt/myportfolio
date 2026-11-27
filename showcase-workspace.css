@@ -90,3 +90,18 @@
 .nx-ws-bottom-paging button:disabled{opacity:.45;cursor:default}
 .nx-ws-bottom-paging button:focus-visible{outline:3px solid #805333;outline-offset:2px}
 @media(max-width:760px){.nx-ws-results .nx-ws-paging{width:100%;justify-content:space-between}.nx-ws-results .nx-ws-paging #nx-ws-page{order:-2}.nx-ws-results .nx-ws-paging .nx-ws-page-numbers{order:5;justify-content:center;width:100%;padding:4px 0}.nx-ws-results .nx-ws-paging button{min-height:40px}.nx-ws-bottom-paging{padding:9px;gap:6px}.nx-ws-bottom-paging button{padding:8px;font-size:11px}}
+
+/* Real motion previews: one scaled live page at a time. */
+.nx-motion-surface{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:#eee1d2;z-index:1;opacity:0;transition:opacity .25s}
+.nx-motion-surface.is-ready{opacity:1}
+.nx-motion-surface iframe{position:absolute;left:50%;top:50%;width:1200px;height:760px;border:0;max-width:none;transform:translate(-50%,-50%) scale(var(--nx-preview-scale,.2));transform-origin:center;pointer-events:none}
+.nx-ws-cover .nx-ws-kind{z-index:2}
+.nx-ws-card .nx-motion-play{position:absolute;z-index:3;top:43px;right:7px;display:flex;align-items:center;gap:5px;min-height:30px;padding:6px 8px;border:1px solid #e3d6c7;border-radius:8px;background:#fffdf9f5;color:#69412b;font:750 11px/1.15 "DM Sans",sans-serif;cursor:pointer;box-shadow:0 2px 9px #30241d18}
+.nx-ws-card .nx-motion-play[aria-pressed=true]{background:#69412b;color:#fffdf9;border-color:#69412b}
+.nx-motion-play:focus-visible,.nx-motion-global:focus-visible{outline:3px solid #805333;outline-offset:2px}
+.nx-motion-global{min-height:38px;padding:7px 11px;border:1px solid #d9c6b3;border-radius:8px;background:#fffdf9;color:#69412b;font:750 12px "DM Sans",sans-serif;cursor:pointer}
+.nx-motion-global[aria-pressed=true]{background:#efe1d2}
+.nx-ws-preview-visual{position:relative}
+.nx-motion-dialog-note{font-size:11px;color:#716359;margin:7px 0 0}
+@media(max-width:420px){.nx-ws-card .nx-motion-play{top:40px;font-size:10px;padding:5px 6px;min-height:28px}}
+@media(prefers-reduced-motion:reduce){.nx-motion-surface{transition:none}}
