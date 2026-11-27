@@ -10,6 +10,9 @@ const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav-links");
 let designs = [];
 let activeFilter = "All";
+let page=0;
+const pagination=document.getElementById("showcase-pagination"),pagePrev=document.getElementById("showcase-prev"),pageNext=document.getElementById("showcase-next"),pageStatus=document.getElementById("showcase-page");
+const pageSize=()=>window.innerWidth<=620?1:window.innerWidth<=900?2:3;
 let searchEventSent = false;
 const seen = new Set();
 
@@ -71,7 +74,9 @@ function render() {
   grid.innerHTML = "";
   emptyState.hidden = filtered.length !== 0;
 
-  filtered.forEach((item) => {
+  const size=pageSize(),pages=Math.max(1,Math.ceil(filtered.length/size));page=Math.min(Math.max(page,0),pages-1);
+  pagination.hidden=filtered.length===0;pagePrev.disabled=page===0;pageNext.disabled=page>=pages-1;pageStatus.textContent="Page "+(page+1)+" / "+pages;
+  filtered.slice(page*size,(page+1)*size).forEach((item) => {
     const card = document.createElement("article");
     card.className = "design-card";
     card.dataset.designId = item.id;
@@ -117,7 +122,7 @@ async function init() {
 }
 
 filterButtons.forEach((button) => button.addEventListener("click", () => {
-  activeFilter = button.dataset.filter;
+  activeFilter = button.dataset.filter; page=0;
   filterButtons.forEach((item) => {
     const selected = item === button;
     item.classList.toggle("is-active", selected);
@@ -126,7 +131,7 @@ filterButtons.forEach((button) => button.addEventListener("click", () => {
   window.trackAJAYNXT?.("showcase_filter", { design_category: activeFilter });
   render();
 }));
-searchInput.addEventListener("input", () => {
+searchInput.addEventListener("input", () => { page=0;
   const hasQuery = Boolean(searchInput.value.trim());
   if (hasQuery && !searchEventSent) {
     window.trackAJAYNXT?.("showcase_search", { search_used: true });
@@ -135,7 +140,9 @@ searchInput.addEventListener("input", () => {
   if (!hasQuery) searchEventSent = false;
   render();
 });
-sortSelect.addEventListener("change", render);
+sortSelect.addEventListener("change",()=>{page=0;render();});
+pagePrev.addEventListener("click",()=>{page--;render();});pageNext.addEventListener("click",()=>{page++;render();});
+let lastSize=pageSize();window.addEventListener("resize",()=>{if(lastSize!==pageSize()){lastSize=pageSize();page=0;if(designs.length)render();}},{passive:true});
 menuButton?.addEventListener("click", () => {
   const open = nav.classList.toggle("is-open");
   menuButton.setAttribute("aria-expanded", String(open));
