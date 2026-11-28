@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>Leon Vasari — Filmography</title>
+<style>
+@font-face{font-family:"Inter Tight";src:url("https://fonts.gstatic.com/s/intertight/v9/NGS6v5_NC0k9P9H2TbE.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Newsreader";src:url("https://fonts.gstatic.com/s/newsreader/v24/cY9VfjOCX1hbuyalUrK4zQ.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Newsreader";src:url("https://fonts.gstatic.com/s/newsreader/v24/cY9XfjOCX1hbuyalUrK43Itz.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Noto Sans JP";src:url("https://fonts.gstatic.com/s/notosansjp/v54/-F62fjtqLzI2JPCgQBnw7HFowwII2lcnk-AFfrgQrvWXpdFg3KXxAMsKMbdN.119.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+:root{--paper:#EDEBE6;--sheet:#F4F2ED;--ink:#141414;--muted:#6D6A63;--cobalt:#1F3FB0;--rule:rgba(20,20,20,.9);--ease:cubic-bezier(.2,.8,.2,1);--H:min(46vh,31vw);--ws:60px;--d:190px}
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--paper);color:var(--ink);font-family:"Inter Tight","Noto Sans JP",system-ui,sans-serif;-webkit-font-smoothing:antialiased;user-select:none}
+button,a{font:inherit;color:inherit}
+button{background:none;border:0;padding:0}
+a{text-decoration:none}
+.lbl{font:600 10.5px/1 "Inter Tight","Noto Sans JP",system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.box{display:inline-flex;height:21px;align-items:center;padding:0 8px;border:1px solid var(--rule);background:transparent}
+.topbar{position:fixed;inset:0 0 auto 0;height:84px;padding:0 32px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;z-index:15;pointer-events:none}
+.topbar>*{pointer-events:auto}.topbar .back{justify-self:start}.career{justify-self:end}
+.logo{justify-self:center;color:var(--cobalt);display:flex;flex-direction:column;align-items:center;gap:5px;line-height:1}
+.logo .jp{font:700 22px/1 Georgia,"Noto Sans JP",serif;letter-spacing:.04em}
+.logo .en{font:600 9px/1 "Inter Tight",sans-serif;letter-spacing:.34em;padding-left:.34em}
+.tabs{position:fixed;left:50%;top:calc(50% - var(--H)/2 - 86px);transform:translateX(-50%);display:flex;z-index:14}
+.tabs::before{content:"";position:absolute;left:0;top:0;height:23px;background:var(--cobalt);width:var(--ind-w,0);transform:translateX(var(--ind-x,0));transition:width .6s var(--ease),transform .6s var(--ease);z-index:-1}
+.tabs button{height:23px;padding:0 11px;border:1px solid var(--rule);margin-left:-1px;white-space:nowrap;transition:color .45s var(--ease)}
+.tabs button:first-child{margin-left:0}.tabs button.active{color:#fff}
+.shelf{position:fixed;left:0;right:0;top:calc(50% - var(--H)/2 - 40px);height:calc(var(--H) + 80px);perspective:2200px;perspective-origin:50% 50%;touch-action:pan-y;z-index:5}
+.stage{position:absolute;left:50%;top:50%;transform-style:preserve-3d;width:0;height:0}
+.tape{position:absolute;width:0;height:0;transform-style:preserve-3d;will-change:transform;cursor:pointer}
+.face{position:absolute;height:var(--H);top:calc(var(--H)/-2);backface-visibility:hidden;border-radius:2px;overflow:hidden;background-repeat:no-repeat;background-color:#d7d2c9}
+.face::after{content:"";position:absolute;inset:0;background:#000;opacity:var(--shade,0);pointer-events:none}
+.sp{width:var(--ws);left:calc(var(--ws)/-2);transform:translateZ(calc(var(--d)/2))}
+.cv{width:var(--d);left:calc(var(--d)/-2);transform:rotateY(90deg) translateZ(calc(var(--ws)/2));box-shadow:0 30px 60px -28px rgba(20,16,10,.55)}
+.play{position:fixed;width:42px;height:42px;border:1px solid var(--cobalt);border-radius:50%;color:var(--cobalt);background:rgba(237,235,230,.75);display:grid;place-items:center;z-index:18;transform:translate(-50%,-50%) scale(0);transition:none}
+.play::after{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:10px solid currentColor;margin-left:2px}
+.caption{position:fixed;left:50%;top:calc(50% + var(--H)/2 + 30px);transform:translateX(-50%);display:grid;gap:9px;text-align:center;pointer-events:none;z-index:12;width:min(92vw,760px)}
+.mask{position:relative;overflow:hidden;min-height:1.2em}
+.mask>span{display:block;width:100%}.caption .title{font:400 31px/1.12 "Newsreader",Georgia,serif;letter-spacing:-.01em}.caption .sub{color:var(--cobalt);font-weight:500}.caption .year{font:500 11px/1 "Inter Tight",sans-serif;letter-spacing:.08em}
+.arrow{position:fixed;top:calc(50% + var(--H)/2 + 40px);width:44px;height:44px;display:grid;place-items:center;z-index:16}
+.arrow.prev{left:20px}.arrow.next{right:20px}.arrow svg{width:18px;height:10px;fill:none;stroke:currentColor;stroke-width:1.2}
+.footer{position:fixed;left:32px;right:32px;bottom:26px;display:flex;justify-content:space-between;z-index:10}
+.footer a{margin-left:9px}
+.grain{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='.45 0 0 0 0 .42 0 0 0 0 .38 0 0 0 0 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cursor{position:fixed;width:58px;height:58px;margin:-29px 0 0 -29px;left:0;top:0;z-index:100;pointer-events:none;display:none}
+.cursor .ring{position:absolute;inset:0;border:1.5px solid var(--ink);border-radius:50%;transition:transform .5s var(--ease),background .4s var(--ease),border-color .4s var(--ease)}
+.cursor .dot{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%) scale(1);transition:transform .4s var(--ease)}
+.cursor .clabel{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;font:600 10px/1.25 "Inter Tight","Noto Sans JP",sans-serif;letter-spacing:.1em;transform:scale(0);transition:transform .45s var(--ease)}
+.cursor.spine .ring{transform:scale(.72)}.cursor.btn .ring{transform:scale(.55)}.cursor.btn .dot{transform:translate(-50%,-50%) scale(0)}
+.cursor.open .ring{transform:scale(1.75);background:var(--cobalt);border-color:var(--cobalt)}.cursor.open .dot{transform:translate(-50%,-50%) scale(0)}.cursor.open .clabel{transform:scale(1)}
+.detail{position:fixed;inset:0;z-index:60;background:var(--sheet);visibility:hidden;overflow:hidden;clip-path:inset(0);transform:rotate(0);transform-origin:center;display:block}
+.detail .dlogo{position:absolute;left:50%;top:0;height:84px;transform:translateX(-50%);display:flex;align-items:center}
+.detail .close{position:absolute;left:32px;top:31px;z-index:4}
+.detail-grid{height:100%;display:grid;grid-template-columns:1fr 1fr;gap:4vw;padding:110px 6vw 56px 7vw}
+.detail-copy{align-self:center;max-width:520px;display:grid;gap:18px}.detail-copy .dm{overflow:hidden}.detail-copy .dm>*{display:block;transform:translateY(110%)}
+.detail-sub{color:var(--cobalt)}.detail-title{font:400 clamp(44px,5.4vw,84px)/1 "Newsreader",Georgia,serif;letter-spacing:-.025em}.detail-meta{color:var(--muted)}
+.detail-synopsis{font:400 17px/1.5 "Newsreader",Georgia,serif;max-width:42ch}.detail-credit{font:italic 400 15px/1.4 "Newsreader",Georgia,serif;color:var(--muted)}
+.watch{height:44px;border:1px solid var(--cobalt);color:var(--cobalt);padding:0 20px;margin-top:10px;display:inline-flex;align-items:center;width:max-content}
+.poster-wrap{height:min(100%,78vh);aspect-ratio:474/900;justify-self:center;align-self:center;max-width:100%}.poster-wrap svg{display:block;width:100%;height:100%}
+@media(pointer:fine){html,body,button,a{cursor:none}.cursor{display:block}}
+@media(max-width:767px){
+:root{--H:min(60vw,40svh)}
+.topbar{height:64px;padding:0 16px}.logo{gap:3px}.logo .jp{font-size:17px}.logo .en{font-size:7.5px}.topbar .lbl{font-size:9px}.career{display:none}
+.tabs{top:calc(50% - var(--H)/2 - 70px)}.tabs button{padding:0 7px;font-size:9px}
+.caption .title{font-size:24px}.arrow.prev{left:6px}.arrow.next{right:6px}.footer{left:16px;right:16px;bottom:18px}.footer .lbl{font-size:9px}
+.detail{overflow:auto}.detail-grid{height:auto;min-height:100%;display:flex;flex-direction:column;padding:84px 22px 40px;gap:24px}.poster-wrap{order:-1;height:46svh;flex:none}.detail-copy{align-self:stretch}.detail-title{font-size:42px}.detail-synopsis{font-size:16px}.detail .close{left:16px;top:21px}.detail .dlogo{height:64px}
+}
+@media(prefers-reduced-motion:reduce){.tabs::before{transition:none}.cursor *{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<a href="/showcase.html" class="box lbl back">BACK / 戻る</a>
+<div class="logo" aria-label="Leon Vasari"><span class="jp">莱昂·瓦萨里</span><span class="en">LEON VASARI</span></div>
+<div class="career lbl">CAREER 1958年〜1989年</div>
+</header>
+<nav class="tabs" aria-label="Decades">
+<button class="lbl">All / すべて</button><button class="lbl" data-decade="1950">1950s</button><button class="lbl" data-decade="1960">1960s</button><button class="lbl" data-decade="1970">1970s</button><button class="lbl" data-decade="1980">1980s</button>
+</nav>
+<section class="shelf" aria-label="Filmography shelf"><div class="stage"></div></section>
+<button class="play" aria-label="Open film"></button>
+<button class="arrow prev" aria-label="Previous film"><svg viewBox="0 0 18 10"><path d="M5 1 1 5l4 4M1 5h16"/></svg></button>
+<button class="arrow next" aria-label="Next film"><svg viewBox="0 0 18 10"><path d="m13 1 4 4-4 4M17 5H1"/></svg></button>
+<div class="caption" aria-live="polite"><div class="mask title"></div><div class="mask sub lbl"></div><div class="mask year"></div></div>
+<footer class="footer"><span class="lbl">© LEON VASARI. ALL RIGHTS RESERVED.</span><span class="lbl"><a href="#">FB</a> / <a href="#">TW</a></span></footer>
+<div class="grain"></div>
+<div class="cursor" aria-hidden="true"><div class="ring"></div><div class="dot"></div><div class="clabel">OPEN<br>開く</div></div>
+
+<section class="detail" role="dialog" aria-modal="true" aria-hidden="true">
+<button class="box lbl close">CLOSE / 閉じる</button>
+<div class="dlogo"><div class="logo"><span class="jp">莱昂·瓦萨里</span><span class="en">LEON VASARI</span></div></div>
+<div class="detail-grid">
+<div class="detail-copy">
+<div class="dm"><span class="detail-sub lbl"></span></div>
+<div class="dm"><h1 class="detail-title"></h1></div>
+<div class="dm"><span class="detail-meta lbl"></span></div>
+<div class="dm"><p class="detail-synopsis"></p></div>
+<div class="dm"><p class="detail-credit">Written and directed by Leon Vasari. 監督作品</p></div>
+<div class="dm"><button class="watch lbl">WATCH THE FILM / 映画を見る</button></div>
+</div>
+<div class="poster-wrap">
+<svg viewBox="0 0 474 900" aria-hidden="true">
+<defs>
+<clipPath id="posterClip"><rect x="0" y="0" width="474" height="900"/></clipPath>
+<filter id="inkBleed" x="-50%" y="-50%" width="200%" height="200%"><feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="3" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G"/></filter>
+<mask id="inkMask" maskUnits="userSpaceOnUse" x="-200" y="-200" width="874" height="1300"><g filter="url(#inkBleed)" fill="white">
+<circle cx="150" cy="330" r="0"/><circle cx="340" cy="600" r="0"/><circle cx="250" cy="120" r="0"/><circle cx="90" cy="760" r="0"/><circle cx="400" cy="250" r="0"/><circle cx="260" cy="860" r="0"/><circle cx="230" cy="470" r="0"/>
+</g></mask>
+</defs>
+<g clip-path="url(#posterClip)" mask="url(#inkMask)"><image class="poster-image" preserveAspectRatio="none"/></g>
+</svg>
+</div>
+</div>
+</section>
+
+<script>
+(()=>{"use strict";
+const REDUCE=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SHEET={
+covers:["https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261029_010644_837e04ca-2418-45c1-b8e0-0233265c4cd5.png&w=1744&q=85",1744,2336],
+spines:["https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261029_010738_a3e47ead-18f2-4974-9468-06d16a25edc5.png&w=2688&q=85",2688,1152],
+fix:["https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261029_010831_3ebb874b-93dc-433e-87ed-6299aba720f0.png&w=1520&q=85",1520,2688],
+fix2:["https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261029_092020_f96bc094-db7b-46de-9298-074a24e0a3b8.png&w=1520&q=85",1520,2688]
+};
+const CROP={
+"spine-valley":["spines",266,31,189,1089],"cover-valley":["covers",497,72,344,659],
+"spine-bluehour":["spines",492,31,189,1089],"cover-bluehour":["covers",914,72,342,659],
+"spine-river":["fix",197,54,324,2566],"cover-river":["covers",1332,72,344,659],
+"spine-summer":["spines",937,31,188,1089],"cover-summer":["covers",74,813,344,676],
+"spine-green":["spines",1157,31,185,1090],"cover-green":["covers",497,815,344,674],
+"spine-noon":["spines",44,32,184,1088],"cover-noon":["covers",74,72,347,659],
+"spine-observer":["fix2",371,15,349,2655],"cover-observer":["covers",915,815,342,675],
+"spine-birds":["spines",1573,31,183,1089],"cover-birds":["covers",1331,815,345,675],
+"spine-storm":["fix2",808,15,347,2656],"cover-storm":["covers",74,1571,345,681],
+"spine-tide":["spines",2012,31,188,1089],"cover-tide":["covers",496,1577,343,678],
+"spine-war":["spines",2236,31,189,1089],"cover-war":["covers",913,1579,343,676],
+"spine-door":["spines",2462,31,188,1089],"cover-door":["covers",1331,1579,344,677]
+};
+const films=[
+["valley","The Silent Valley","SHIZUKANA TANI","静かな谷",1958,"Drama",104,"A schoolteacher returns to the mountain village that exiled her father, and finds the valley has kept every one of its secrets."],
+["bluehour","The Blue Hour","AO NO TOKI","青の刻",1962,"Romance",97,"Over one long evening in a harbour town, a widow and a stranger trade small lies until the light runs out."],
+["river","River of Salt","SHIO NO KAWA","塩の川",1964,"Drama",121,"Two brothers drag a salt barge downriver to a city that no longer wants anything they carry."],
+["summer","The Last Summer","SAIGO NO NATSU","最後の夏",1966,"Drama",109,"The summer before the dam floods their village, three friends set fire to everything they cannot take with them."],
+["green","The Green Road","MIDORI NO MICHI","緑の道",1969,"Mystery",101,"A surveyor mapping a forest road keeps finding the same footprints, always one day ahead of him."],
+["noon","Noon in Ashes","HAI NO SHOGO","灰の正午",1971,"Western",112,"A rider crosses a white desert to settle an old debt, and learns too late who sent him."],
+["observer","The Observer","KANSATSUSHA","観察者",1973,"Thriller",96,"A night watchman begins to suspect that the building he guards has started watching him back."],
+["birds","The Fallen Birds","OCHITA TORI","落ちた鳥",1975,"Drama",118,"When the birds stop singing over a frontier town, the mayor's daughter is the only one who goes looking for the reason."],
+["storm","Light in the Storm","ARASHI NO HI","嵐の灯",1978,"Drama",127,"A lighthouse keeper and his son wait out a three-day storm with a shipwrecked sailor who will not give his name."],
+["tide","The Long Tide","NAGAI SHIO","長い潮",1981,"Drama",99,"A fisherman's wife counts the tides on the harbour wall while her husband's boat fails to come home."],
+["war","A Quiet War","SHIZUKANA SENSO","静かな戦争",1985,"Comedy",103,"Two neighbours fight a silent war over a garden wall for thirty years, and neither will say how it began."],
+["door","Red Door","AKAI TOBIRA","赤い扉",1989,"Thriller",114,"A projectionist follows a reel of unknown film through the corridors of a cinema on its final night."]
+].map(([id,title,romaji,kanji,year,genre,min,synopsis])=>({id,title,romaji,kanji,year,genre,min,synopsis}));
+Object.values(SHEET).forEach(([url])=>{const i=new Image;i.src=url});
+const $=s=>document.querySelector(s), stage=$(".stage"), shelf=$(".shelf"), play=$(".play"), detail=$(".detail"), cursor=$(".cursor"), tabs=$(".tabs");
+let H=0,ws=0,d=0,gap=0,W=innerWidth,s=17,T=17,hover=-1,active=5,mx=W/2,my=innerHeight/2,cx=mx,cy=my,tiltX=0,tiltY=0,onCover=false,isOpen=false,last=performance.now(),drag=null,suppress=false,inkRAF=0,detailAnims=[];
+const tapes=[];
+const mod=(n,m)=>((n%m)+m)%m, smooth=x=>x*x*(3-2*x);
+function crop(el,key){const [sid,x,y,w,h]=CROP[key],[url,SW,SH]=SHEET[sid];el.style.backgroundImage='url("'+url+'")';el.style.backgroundSize=(SW/w*100)+"% "+(SH/h*100)+"%";el.style.backgroundPosition=(x/(SW-w)*100)+"% "+(y/(SH-h)*100)+"%"}
+for(let v=0;v<36;v++){const i=v%12,t=document.createElement("div");t.className="tape";t.dataset.v=v;t.tabIndex=-1;const sp=document.createElement("div"),cv=document.createElement("div");sp.className="face sp";cv.className="face cv";crop(sp,"spine-"+films[i].id);crop(cv,"cover-"+films[i].id);t.append(sp,cv);stage.append(t);tapes.push({el:t,sp,cv,v,i,lift:0,targetLift:0});t.addEventListener("pointerenter",()=>{hover=v; if(Math.abs(rel(v,s))>.5)tapes[v].targetLift=1});t.addEventListener("pointerleave",()=>{if(hover===v)hover=-1;tapes[v].targetLift=0});t.addEventListener("click",()=>{if(suppress||isOpen)return;const r=rel(v,s);if(Math.abs(r)<.5)openDetail();else T=Math.round(T+r)})}
+function measure(){W=innerWidth;const p=document.createElement("i");p.style.cssText="position:absolute;visibility:hidden;height:var(--H)";document.body.append(p);H=p.getBoundingClientRect().height;p.remove();ws=H*142/840;d=H*474/900;gap=H*.03;stage.style.setProperty("--ws",ws+"px");stage.style.setProperty("--d",d+"px");setPlay();setTab()}
+function rel(v,pos){let r=mod(v-pos+18,36)-18;return r}
+function F(r){const B=Math.abs(r)<1?(r+Math.sin(Math.PI*r)/Math.PI)/2:Math.sign(r)*.5;return r*(ws+gap)+(d-ws+1.6*gap)*B}
+function setTab(){const dec=Math.floor(films[active].year/10)*10;const btn=[...tabs.querySelectorAll("[data-decade]")].find(b=>+b.dataset.decade===dec);[...tabs.children].forEach(b=>b.classList.toggle("active",b===btn));if(btn){tabs.style.setProperty("--ind-w",btn.offsetWidth+"px");tabs.style.setProperty("--ind-x",btn.offsetLeft+"px")}}
+function setPlay(){const settled=Math.abs(T-s),scale=smooth(Math.max(0,1-settled*3));play.style.left=(W/2-.5*d-6)+"px";play.style.top=(shelf.getBoundingClientRect().top+shelf.clientHeight/2+.36*H)+"px";play.style.transform="translate(-50%,-50%) scale("+(isOpen?0:scale)+")"}
+function putLine(mask,text,dir){if(REDUCE){mask.textContent=text;return}const n=document.createElement("span");n.textContent=text;n.style.transform="translateY("+(dir*105)+"%)";const old=[...mask.children];old.forEach(o=>{const a=o.animate([{transform:getComputedStyle(o).transform==="none"?"translateY(0)":o.style.transform},{transform:"translateY("+(-dir*105)+"%)"}],{duration:650,easing:"cubic-bezier(.2,.8,.2,1)",fill:"both"});a.finished.finally(()=>o.remove())});mask.append(n);n.animate([{transform:"translateY("+(dir*105)+"%)"},{transform:"translateY(0)"}],{duration:650,easing:"cubic-bezier(.2,.8,.2,1)",fill:"both"})}
+function setActive(i,dir=1){active=mod(i,12);const f=films[active];putLine($(".caption .title"),f.title,dir);putLine($(".caption .sub"),f.romaji+" / "+f.kanji,dir);putLine($(".caption .year"),String(f.year),dir);setTab()}
+function frame(now){const dt=Math.min(50,now-last);last=now;const k=REDUCE?1:(drag?18:5.2);s+=(T-s)*(1-Math.exp(-k*dt/1000));if(Math.abs(T-s)<1e-4)s=T;if(Math.abs(s)>48){const sh=Math.round(s/12)*12;s-=sh;T-=sh}
+const nextActive=mod(Math.round(s),12);if(nextActive!==active)setActive(nextActive,Math.sign(T-s)||1);
+const sh=shelf.getBoundingClientRect(),sy=sh.top+sh.height/2;const coverTest=Math.abs(mx-W/2)<.55*d&&Math.abs(my-sy)<.55*H&&Math.abs(T-s)<.3&&!isOpen;onCover=coverTest;const ty=coverTest?(mx-W/2)/(.55*d)*9:(mx-W/2)/W*5,tx=coverTest?-(my-sy)/(H/2)*6:0;const a=1-Math.exp(-7*dt/1000);tiltY+=(ty-tiltY)*a;tiltX+=(tx-tiltX)*a;
+for(const t of tapes){const r=rel(t.v,s),x=F(r);if(Math.abs(x)>W/2+1.5*d){t.el.style.visibility="hidden";continue}t.el.style.visibility="visible";const op=smooth(Math.max(0,1-Math.abs(r)));t.lift+=(t.targetLift-t.lift)*(1-Math.exp(-12*dt/1000));const y=-op*.025*H-t.lift*.045*H,z=op*.2*H;t.el.style.transform="translate3d("+x+"px,"+y+"px,"+z+"px) rotateZ("+(-4.5*op)+"deg) rotateX("+(tiltX*op)+"deg) rotateY("+(-90*op+tiltY*op)+"deg)";t.el.style.zIndex=Math.round(100-Math.abs(r)*4);t.sp.style.setProperty("--shade",op*.55);t.cv.style.setProperty("--shade",(1-op)*.5)}
+setPlay();cx+=(mx-cx)*(1-Math.exp(-16*dt/1000));cy+=(my-cy)*(1-Math.exp(-16*dt/1000));cursor.style.transform="translate3d("+cx+"px,"+cy+"px,0)";cursor.classList.toggle("open",onCover&&!isOpen);cursor.classList.toggle("spine",hover>=0&&!onCover&&!isOpen);requestAnimationFrame(frame)}
+function step(n){if(isOpen)return;T=Math.round(T)+n}
+$(".prev").onclick=()=>step(-1);$(".next").onclick=()=>step(1);play.onclick=openDetail;
+tabs.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const dec=b.dataset.decade?+b.dataset.decade:null,idx=dec?films.findIndex(f=>Math.floor(f.year/10)*10===dec):0;let cur=mod(Math.round(T),12),diff=idx-cur;if(diff>6)diff-=12;if(diff<-6)diff+=12;T=Math.round(T)+diff});
+addEventListener("wheel",e=>{if(isOpen)return;e.preventDefault();const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;T+=delta/(ws+gap)*.5;clearTimeout(window.__snap);window.__snap=setTimeout(()=>T=Math.round(T),160)},{passive:false});
+shelf.addEventListener("pointerdown",e=>{if(isOpen)return;drag={x:e.clientX,T};suppress=false;shelf.setPointerCapture?.(e.pointerId)});
+shelf.addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-drag.x;if(Math.abs(dx)>5)suppress=true;T=drag.T-dx/(ws+gap)});
+function end(){if(!drag)return;T=Math.round(T);drag=null;setTimeout(()=>suppress=false,80)}shelf.addEventListener("pointerup",end);shelf.addEventListener("pointercancel",end);
+addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY});
+document.addEventListener("pointerover",e=>{if(e.target.closest("button,a")&&!e.target.closest(".tape"))cursor.classList.add("btn")});document.addEventListener("pointerout",e=>{if(e.target.closest("button,a"))cursor.classList.remove("btn")});
+addEventListener("keydown",e=>{if(e.key==="ArrowRight")step(1);else if(e.key==="ArrowLeft")step(-1);else if(e.key==="Enter"&&!isOpen)openDetail();else if(e.key==="Escape"&&isOpen)closeDetail()});
+function coverRect(){let best=null,bestAbs=1e9;for(const t of tapes){const r=Math.abs(rel(t.v,s));if(r<bestAbs){bestAbs=r;best=t}}return best.cv.getBoundingClientRect()}
+function posterFor(f){const [sid,x,y,w,h]=CROP["cover-"+f.id],[url,SW,SH]=SHEET[sid],img=$(".poster-image");img.setAttribute("href",url);img.setAttribute("x",String(-x*474/w));img.setAttribute("y",String(-y*900/h));img.setAttribute("width",String(SW*474/w));img.setAttribute("height",String(SH*900/h))}
+function fillDetail(f){$(".detail-sub").textContent=f.romaji+" / "+f.kanji;$(".detail-title").textContent=f.title;$(".detail-meta").textContent=f.year+" / "+f.genre.toUpperCase()+" / "+f.min+" MIN";$(".detail-synopsis").textContent=f.synopsis;posterFor(f)}
+function resetBlobs(){detail.querySelectorAll("#inkMask circle").forEach(c=>c.setAttribute("r","0"))}
+function animateInk(start){cancelAnimationFrame(inkRAF);const circles=[...detail.querySelectorAll("#inkMask circle")],delays=[0,120,220,300,360,420,180],begin=start+520;function ink(t){let done=t-begin>2400;circles.forEach((c,i)=>{const p=Math.max(0,Math.min(1,(t-begin-delays[i])/1250)),q=1-Math.pow(1-p,3);c.setAttribute("r",String(720*q))});if(!done)inkRAF=requestAnimationFrame(ink)}inkRAF=requestAnimationFrame(ink)}
+function openDetail(){if(isOpen)return;isOpen=true;T=Math.round(T);s=T;setActive(mod(Math.round(T),12),1);const f=films[active];fillDetail(f);resetBlobs();const r=coverRect(),top=Math.max(0,r.top),left=Math.max(0,r.left),right=Math.max(0,innerWidth-r.right),bottom=Math.max(0,innerHeight-r.bottom);detail.style.visibility="visible";detail.setAttribute("aria-hidden","false");detail.style.transformOrigin=(r.left+r.width/2)+"px "+(r.top+r.height/2)+"px";detailAnims.forEach(a=>a.cancel());detailAnims=[];const dur=REDUCE?1:1050;const anim=detail.animate([{clipPath:"inset("+top+"px "+right+"px "+bottom+"px "+left+"px round 3px)",transform:"rotate(-4.5deg)"},{clipPath:"inset(0 0 0 0 round 0)",transform:"rotate(0deg)"}],{duration:dur,easing:"cubic-bezier(.76,0,.18,1)",fill:"both"});detailAnims.push(anim);[...detail.querySelectorAll(".detail-copy .dm>*")].forEach((el,i)=>{const a=el.animate([{transform:"translateY(110%)"},{transform:"translateY(0)"}],{duration:REDUCE?1:900,delay:REDUCE?0:620+i*75,easing:"cubic-bezier(.2,.8,.2,1)",fill:"both"});detailAnims.push(a)});if(REDUCE){detail.querySelectorAll("#inkMask circle").forEach(c=>c.setAttribute("r","720"))}else animateInk(performance.now());cursor.classList.remove("open","spine")}
+function closeDetail(){if(!isOpen)return;cancelAnimationFrame(inkRAF);const r=coverRect(),top=Math.max(0,r.top),left=Math.max(0,r.left),right=Math.max(0,innerWidth-r.right),bottom=Math.max(0,innerHeight-r.bottom);detailAnims.forEach(a=>a.cancel());detailAnims=[];const a=detail.animate([{clipPath:"inset(0 0 0 0 round 0)",transform:"rotate(0deg)"},{clipPath:"inset("+top+"px "+right+"px "+bottom+"px "+left+"px round 3px)",transform:"rotate(-4.5deg)"}],{duration:REDUCE?1:850,easing:"cubic-bezier(.76,0,.18,1)",fill:"both"});detailAnims.push(a);a.finished.finally(()=>{detail.style.visibility="hidden";detail.setAttribute("aria-hidden","true");detail.getAnimations().forEach(x=>x.cancel());detail.style.clipPath="";detail.style.transform="";resetBlobs();isOpen=false})}
+$(".close").onclick=closeDetail;$(".watch").onclick=()=>{};
+addEventListener("resize",measure);measure();setActive(active,1);requestAnimationFrame(frame);
+if(new URLSearchParams(location.search).has("showcase_preview")){document.querySelector(".grain").style.opacity=".35"}
+})();
+</script>
+</body></html>
