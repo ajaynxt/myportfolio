@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>Arriving Tomorrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ececec;--ink:#111}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{font-family:"Inter Tight","Helvetica Neue",Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none}
+#card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);overflow:hidden;background:var(--bg);width:100vmin;height:100vmin;font-size:1vmin;isolation:isolate}
+h1{position:absolute;top:5.4%;left:0;width:100%;text-align:center;font-size:4.1em;font-weight:600;letter-spacing:-.035em;line-height:1;z-index:3}
+.row{position:absolute;left:0;width:100%}
+#top{top:11%;height:48%;z-index:2}
+#bot{top:58%;height:36%;z-index:1}
+.g{position:absolute;top:0;bottom:0;left:50%;width:46em;margin-left:-23em;cursor:grab;touch-action:pan-y;filter:drop-shadow(0 .9em .7em rgba(0,0,0,.13)) drop-shadow(0 .15em .25em rgba(0,0,0,.08));outline:none}
+.g:active{cursor:grabbing}
+.g:focus-visible{outline:.22em dashed #555;outline-offset:.4em;border-radius:1em}
+.hov{position:absolute;inset:-6%;transition:transform .45s cubic-bezier(.3,1.5,.5,1);isolation:isolate;pointer-events:none}
+@media(hover:hover){.g:hover .hov{transform:translateY(-1.2%) scale(1.025)}}
+.tint{position:absolute;inset:0;background-color:var(--c);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.hov img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;filter:url(#shade);pointer-events:none}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:9em;height:12em;display:grid;place-items:center;background:none;border:0;color:var(--ink);font:inherit;cursor:pointer;z-index:5;touch-action:manipulation}
+#prev{left:1.5em}#next{right:1.5em}
+.arrow svg{width:3.6em;height:5.2em;transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+#prev:hover svg{transform:translateX(-.6em)}#next:hover svg{transform:translateX(.6em)}
+#prev:active svg,#next:active svg{transform:scale(.85)}
+.arrow:focus-visible{outline:.2em solid var(--ink);border-radius:1em}
+@media(prefers-reduced-motion:reduce){.hov,.arrow svg{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="shade" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="gamma" exponent="2.6"/><feFuncG type="gamma" exponent="2.6"/><feFuncB type="gamma" exponent="2.6"/></feComponentTransfer></filter></defs></svg>
+<main id="card" aria-label="Interactive mix-and-match outfit drop">
+<h1>ARRIVING TOMORROW</h1>
+<div id="top" class="row"></div>
+<div id="bot" class="row"></div>
+<button id="prev" class="arrow" aria-label="Previous outfit"><svg viewBox="0 0 24 34" fill="none" aria-hidden="true"><path d="M17 3 4 17l13 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button id="next" class="arrow" aria-label="Next outfit"><svg viewBox="0 0 24 34" fill="none" aria-hidden="true"><path d="M7 3l13 14L7 31" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</main>
+<script>
+'use strict';
+const ASSETS={
+top:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261106_065532_0fd0b9b0-7f8e-4519-b490-6478519b5186.png&w=1200&q=88',
+bot:'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261106_065534_5ab4e8d0-8d00-42b4-b0ac-6dc60ea7aac0.png&w=1200&q=88'
+};
+const COLOURS={sky:'#8dd2ef',lemon:'#f6dc55',grass:'#46cc45',lilac:'#b29de4',tang:'#fa8430',fuchsia:'#ee4cb3',cobalt:'#1d84d2'};
+const TOPS=['sky','grass','tang','fuchsia','lemon','sky','lilac','tang'];
+const BOTS=['lemon','lilac','grass','cobalt','fuchsia','tang','sky','lemon'];
+const card=document.getElementById('card'),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const rows={top:{name:'top',el:document.getElementById('top'),seq:TOPS,index:0,current:null,locked:false,drag:null},bot:{name:'bot',el:document.getElementById('bot'),seq:BOTS,index:0,current:null,locked:false,drag:null}};
+let lastInteraction=performance.now(),lastBoth=-Infinity;
+const touch=()=>{lastInteraction=performance.now()};
+function resize(){const s=Math.min(innerWidth,innerHeight);card.style.width=s+'px';card.style.height=s+'px';card.style.fontSize=s/100+'px'}
+resize();addEventListener('resize',resize);
+Object.values(ASSETS).forEach(src=>{const im=new Image();im.crossOrigin='anonymous';im.src=src});
+function garment(row){const colour=row.seq[row.index],g=document.createElement('div');g.className='g';g.setAttribute('role','button');g.tabIndex=0;g.setAttribute('aria-label',(row.name==='top'?'Hoodie':'Shorts')+', '+colour+'. Tap to change colour.');g.style.setProperty('--c',COLOURS[colour]);g.style.setProperty('--m','url("'+ASSETS[row.name]+'")');const hov=document.createElement('div');hov.className='hov';const tint=document.createElement('div');tint.className='tint';const img=new Image();img.alt='';img.draggable=false;img.src=ASSETS[row.name];hov.append(tint,img);g.append(hov);bindPiece(row,g);return g}
+const transform=(x,r)=>'translateX('+x+'%) rotate('+r+'deg)';
+function slide(row,dir=1,delay=0,fromPct=0){
+if(row.locked)return false;
+const old=row.current,sgn=row.name==='top'?dir:-dir;row.index=(row.index+dir+row.seq.length)%row.seq.length;
+const next=garment(row);row.current=next;row.el.append(next);
+if(reduce||typeof old.animate!=='function'){old.remove();return true}
+row.locked=true;old.style.pointerEvents='none';old.tabIndex=-1;next.style.pointerEvents='none';next.tabIndex=-1;
+const leave=old.animate([{transform:transform(fromPct,0)},{transform:transform(-sgn*150,-sgn*9)}],{duration:520,delay,easing:'cubic-bezier(.55,0,.75,.35)',fill:'both'});
+const enter=next.animate([{offset:0,transform:transform(sgn*150,sgn*10)},{offset:.42,transform:transform(sgn*150,sgn*10)},{offset:.78,transform:transform(-sgn*3,-sgn*3.5)},{offset:.90,transform:transform(sgn*.8,sgn*1.4)},{offset:1,transform:'none'}],{duration:1250,delay,easing:'cubic-bezier(.2,.75,.3,1)',fill:'backwards'});
+leave.finished.then(()=>old.remove()).catch(()=>old.remove());const unlock=()=>{row.locked=false;next.style.pointerEvents='';next.tabIndex=0;next.style.transform=''};enter.finished.then(unlock,unlock);return true
+}
+function both(dir){const now=performance.now();if(now-lastBoth<700||rows.top.locked||rows.bot.locked||rows.top.drag||rows.bot.drag)return false;lastBoth=now;slide(rows.top,dir,0);slide(rows.bot,dir,110);return true}
+function bindPiece(row,g){
+g.addEventListener('pointerdown',e=>{if(row.current!==g||row.locked||row.drag||e.button!==0)return;touch();row.drag={id:e.pointerId,x:e.clientX,dx:0,width:g.getBoundingClientRect().width};g.setPointerCapture(e.pointerId)});
+g.addEventListener('pointermove',e=>{const d=row.drag;if(!d||d.id!==e.pointerId)return;touch();d.dx=e.clientX-d.x;const p=d.dx/d.width;g.style.transform=transform(p*100,p*8)});
+const finish=(e,cancel)=>{const d=row.drag;if(!d||d.id!==e.pointerId)return;row.drag=null;touch();const p=d.dx/d.width;if(!cancel&&Math.abs(d.dx)<4){g.style.transform='';slide(row,1)}else if(!cancel&&Math.abs(p)>.14){g.style.transform='';slide(row,row.name==='top'?-Math.sign(p):Math.sign(p),0,p*100)}else{const start=g.style.transform||'none';g.style.transform='';if(!reduce){row.locked=true;const a=g.animate([{transform:start},{transform:'none'}],{duration:450,easing:'cubic-bezier(.3,1.6,.5,1)'});a.finished.then(()=>row.locked=false,()=>row.locked=false)}}};
+g.addEventListener('pointerup',e=>finish(e,false));g.addEventListener('pointercancel',e=>finish(e,true));g.addEventListener('lostpointercapture',e=>finish(e,true));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();touch();slide(row,1)}})
+}
+Object.values(rows).forEach(row=>{row.current=garment(row);row.el.append(row.current)});
+document.getElementById('prev').addEventListener('click',()=>{touch();both(-1)});
+document.getElementById('next').addEventListener('click',()=>{touch();both(1)});
+['pointermove','pointerdown','click','keydown'].forEach(name=>document.addEventListener(name,touch,{passive:true}));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();both(e.key==='ArrowRight'?1:-1)}});
+if(!reduce)setInterval(()=>{const now=performance.now();if(!document.hidden&&now-lastInteraction>3500&&both(1))lastInteraction=now-1300},250);
+</script>
+</body></html>
