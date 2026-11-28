@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{font-family:'Inter',sans-serif;margin:0;overflow-x:clip;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+.features-bg{position:fixed;inset:0;z-index:-10;background:#625446 url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260709_082449_46df5cc4-ad98-4541-9236-a2659c1478a4.png&w=1920&q=85') center/cover no-repeat}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.motion-reveal{opacity:1!important;transform:none!important}video{visibility:hidden}}
