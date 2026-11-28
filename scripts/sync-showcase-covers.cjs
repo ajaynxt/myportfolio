@@ -1,0 +1,16 @@
+/* Keep every UI/UX placement synchronized with the real screenshot catalogue. */
+function syncPages(pages,manifest){
+ const valid=Object.fromEntries(Object.entries(manifest).filter(([id,item])=>/^[a-z0-9-]+$/.test(id)&&item.path==='/assets/showcase-first-frames/'+id+'.webp'));
+ const image=(id,cls,priority='lazy',old='')=>{const path=valid[id]?.path;if(!path)return '';const item=valid[id],v=item.captureVersion?'?v='+item.captureVersion:'';return '<img class="'+cls+'" src="'+path+v+'"'+(old&&!old.startsWith('/assets/showcase-first-frames/')?' data-original="'+old+'"':'')+' width="960" height="600" loading="'+priority+'" decoding="async" alt="">'};
+ const src=t=>t?.match(/\bsrc="([^"]+)"/)?.[1]||'';
+ let home=pages['index.html'].replace(/<div\b[^>]*class="nx-industry-media"[^>]*>[\s\S]*?<\/div>/g,b=>{const id=b.match(/data-demo="([^"]+)"/)?.[1];if(!valid[id])return b;const old=b.match(/<img\b[^>]*class="nx-industry-poster"[^>]*>/)?.[0];const t=image(id,'nx-industry-poster','lazy',src(old));return old?b.replace(old,t):b.replace(/^(<div[^>]*>)/,'$1'+t)});
+ let showcase=pages['showcase.html'].replace(/<article class="nx-ws-card"[^>]*>[\s\S]*?<\/article>/g,b=>{const id=b.match(/data-demo="([^"]+)"/)?.[1];if(!valid[id])return b;const path=valid[id].path+(valid[id].captureVersion?'?v='+valid[id].captureVersion:'');b=b.replace(/data-img="[^"]*"/,'data-img="'+path+'"');return b.replace(/<div\b[^>]*class="[^"]*nx-real-preview[^"]*"[^>]*>[\s\S]*?<\/div>/g,block=>{const old=block.match(/<img\b[^>]*class="nx-preview-poster"[^>]*>/)?.[0],original=old?.match(/data-original="([^"]+)"/)?.[1]||src(old);const t=image(id,'nx-preview-poster',old?.includes('loading="eager"')?'eager':'lazy',original);return old?block.replace(old,t):block.replace(/^(<div[^>]*>)/,'$1'+t)})});
+ let projects=pages['projects.html'];
+ const picks=['hiven','sun-timeline','spin-product','savarra','bank-cards','noche-viva'].filter(id=>valid[id]);
+ const titles={'hiven':'HIVEN Raw Honey','sun-timeline':'The Life of the Sun','spin-product':'Spin Product','savarra':'Savarra','bank-cards':'3D Bank Cards','noche-viva':'Noche Viva'};
+ const strip='<div id="nx-project-ui-covers" class="nx-project-ui-covers" aria-label="Featured UI/UX designs">'+picks.map(id=>'<a href="/'+id+'.html" aria-label="Open '+titles[id]+'">'+image(id,'nx-project-ui-poster')+'<span>'+titles[id]+'</span></a>').join('')+'</div>';
+ if(picks.length){if(projects.includes('id="nx-project-ui-covers"'))projects=projects.replace(/<div id="nx-project-ui-covers"[\s\S]*?<\/div>/,strip);else projects=projects.replace(/(<section class="nx-project-motion-showcase"[\s\S]*?<\/section>)/,'$1\n'+strip)}
+ return {'index.html':home,'showcase.html':showcase,'projects.html':projects};
+}
+if(typeof module!=='undefined')module.exports=syncPages;
+if(typeof require!=='undefined'&&require.main===module){const fs=require('node:fs');const manifest=JSON.parse(fs.readFileSync('assets/showcase-first-frames/manifest.json','utf8'));for(const id of Object.keys(manifest)){if(!fs.existsSync('.'+manifest[id].path))delete manifest[id]}const paths=['index.html','showcase.html','projects.html'];const pages=Object.fromEntries(paths.map(p=>[p,fs.readFileSync(p,'utf8')]));const output=syncPages(pages,manifest);for(const p of paths)if(output[p]!==pages[p]){fs.writeFileSync(p,output[p]);console.log('Synced',p)}}
