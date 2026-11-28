@@ -1,0 +1,14 @@
+/* Independent, seamless social rails; preserve full original media. */
+body #ugc #reel-slider,body #social-posts #post-slider.nx-social-photo-grid{display:flex!important;flex-wrap:nowrap!important;gap:14px!important;width:100%;max-width:none;overflow-x:auto!important;overflow-y:hidden!important;padding:5px 0 10px!important;margin:0;scroll-snap-type:none!important;scroll-behavior:auto!important;scrollbar-width:none;overscroll-behavior-x:contain;align-items:stretch!important;touch-action:pan-x pan-y}
+#ugc #reel-slider::-webkit-scrollbar,#social-posts #post-slider::-webkit-scrollbar{display:none}
+body #ugc #reel-slider .compact-media-card{flex:0 0 clamp(185px,calc((100% - 42px)/4),265px)!important;min-width:0;max-width:none;border-radius:12px;scroll-snap-align:none!important}
+body #social-posts #post-slider .nx-social-photo-card{flex:0 0 clamp(220px,calc((100% - 28px)/3),350px)!important;min-width:0;max-width:none;width:auto;scroll-snap-align:none!important;scroll-snap-stop:normal!important}
+body #social-posts .nx-social-post-image{display:grid;place-items:center;aspect-ratio:1/1;background:#eee1d2;overflow:hidden}
+body #social-posts #post-slider .nx-social-post-image img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important}
+body #ugc #reel-slider .compact-open[data-media-ready]{display:block!important;aspect-ratio:9/16!important;position:relative;overflow:hidden;background:#eee1d2!important;height:auto!important}
+body #ugc #reel-slider .compact-open[data-media-ready] img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important}
+[data-nx-social-loop] .media-slider-controls{display:flex!important;justify-content:center;gap:8px;margin:8px 0 0}
+[data-nx-social-loop] .media-slider-controls button{min-height:36px;border:1px solid #bc7953;background:#faf6ef;color:#422d20;border-radius:8px;padding:7px 13px;cursor:pointer;font:600 12px/1.2 system-ui,sans-serif}
+[data-nx-social-loop] .media-slider-controls button:hover{background:#ead4bf}
+[data-nx-social-loop] .media-slider-controls button:focus-visible{outline:2px solid #805333;outline-offset:2px}
+@media(max-width:760px){body #ugc #reel-slider .compact-media-card{flex-basis:clamp(140px,43vw,215px)!important}body #social-posts #post-slider .nx-social-photo-card{flex-basis:clamp(190px,67vw,300px)!important}body #ugc #reel-slider,body #social-posts #post-slider.nx-social-photo-grid{gap:10px!important}}

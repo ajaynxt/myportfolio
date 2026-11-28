@@ -1,0 +1,22 @@
+/* Only two social rails. Local posters; no background Instagram embeds. */
+(()=>{"use strict";const reduce=matchMedia("(prefers-reduced-motion: reduce)");
+for(const rail of document.querySelectorAll("[data-nx-social-loop]")){const track=rail.querySelector("#reel-slider,#post-slider"),prev=rail.querySelector("[data-slide-prev]"),next=rail.querySelector("[data-slide-next]"),toggle=rail.querySelector("[data-slide-toggle]");if(!track||!prev||!next||!toggle||track.dataset.loopReady)continue;track.dataset.loopReady="1";
+const originals=[...track.children];if(originals.length<2)continue;
+const clones=originals.map(card=>{const clone=card.cloneNode(true);clone.setAttribute("aria-hidden","true");clone.dataset.loopCopy="1";clone.querySelectorAll("a,button,[tabindex]").forEach(e=>e.tabIndex=-1);const original=card.querySelector("a[data-reel-id]");const copy=clone.querySelector("a[data-reel-id]");if(copy&&original)copy.addEventListener("click",e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();original.click()});track.append(clone);return clone});
+let cycle=0,pos=0,raf=0,last=0,visible=false,hover=false,drag=false,hold=0,paused=reduce.matches;
+const speed=rail.dataset.nxSocialLoop==="reels"?32:25;
+function state(){toggle.textContent=paused?"Play":"Pause";toggle.setAttribute("aria-pressed",String(paused));toggle.setAttribute("aria-label",paused?"Resume automatic scrolling":"Pause automatic scrolling")}
+function measure(){cycle=clones[0].offsetLeft-originals[0].offsetLeft;pos=track.scrollLeft;if(cycle>0&&pos>=cycle&&!drag){pos%=cycle;track.scrollLeft=pos}}
+function allowed(){return visible&&!document.hidden&&!paused&&!reduce.matches&&!hover&&!drag&&!track.contains(document.activeElement)&&!document.querySelector("dialog[open]")&&!document.body.classList.contains("nx-motion-off")}
+function start(){if(!raf&&allowed())raf=requestAnimationFrame(tick)}
+function stop(){if(raf)cancelAnimationFrame(raf);raf=0;last=0}
+function sync(){if(allowed())start();else stop()}
+function tick(t){raf=0;if(!allowed()){last=0;return}if(last&&t>hold&&cycle>0){pos+=Math.min(t-last,50)*speed/1000;if(pos>=cycle)pos%=cycle;track.scrollLeft=pos}else pos=track.scrollLeft;last=t;raf=requestAnimationFrame(tick)}
+function move(dir){if(!cycle)return;hold=performance.now()+1800;const gap=parseFloat(getComputedStyle(track).columnGap)||0;let x=track.scrollLeft+dir*(originals[0].getBoundingClientRect().width+gap);if(x<0){track.scrollLeft+=cycle;x+=cycle}if(x>=cycle&&track.scrollLeft>=cycle){track.scrollLeft-=cycle;x-=cycle}track.scrollTo({left:x,behavior:reduce.matches?"auto":"smooth"});pos=track.scrollLeft}
+prev.onclick=()=>move(-1);next.onclick=()=>move(1);toggle.onclick=()=>{paused=!paused;state();sync()};
+track.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse"){hover=true;sync()}});track.addEventListener("pointerleave",()=>{hover=false;sync()});track.addEventListener("pointerdown",()=>{drag=true;sync()},{passive:true});
+const release=()=>{if(!drag)return;drag=false;hold=performance.now()+2000;pos=track.scrollLeft;sync()};addEventListener("pointerup",release,{passive:true});addEventListener("pointercancel",release,{passive:true});track.addEventListener("wheel",()=>{hold=performance.now()+2000},{passive:true});track.addEventListener("scroll",()=>{if(!raf||performance.now()<hold)pos=track.scrollLeft},{passive:true});track.addEventListener("focusin",sync);track.addEventListener("focusout",()=>requestAnimationFrame(sync));track.addEventListener("keydown",e=>{if(e.target===track&&["ArrowLeft","ArrowRight"].includes(e.key)){e.preventDefault();move(e.key==="ArrowLeft"?-1:1)}});
+if("IntersectionObserver"in window)new IntersectionObserver(([e])=>{visible=e.isIntersecting;sync()},{threshold:.1}).observe(rail);else visible=true;
+if("ResizeObserver"in window)new ResizeObserver(measure).observe(track);else addEventListener("resize",measure);
+document.addEventListener("visibilitychange",sync);reduce.addEventListener?.("change",()=>{paused=reduce.matches;state();sync()});new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:["class"]});document.querySelectorAll("dialog").forEach(d=>new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:["open"]}));measure();state();sync()
+}})();
