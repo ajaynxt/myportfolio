@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/showcase-front-screens.yml'
+      - 'showcase.html'
+      - 'hiven.html'
+      - 'freight-hero.html'
 permissions:
   contents: write
 concurrency:
