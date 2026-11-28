@@ -1,0 +1,30 @@
+{
+  "name": "michael-smith-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "gsap": "3.12.5",
+    "framer-motion": "11.18.2",
+    "hls.js": "1.5.18",
+    "react-router-dom": "6.28.1",
+    "tailwindcss-animate": "1.0.7"
+  },
+  "devDependencies": {
+    "vite": "6.0.11",
+    "typescript": "5.7.3",
+    "@vitejs/plugin-react": "4.3.4",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "tailwindcss": "3.4.17",
+    "postcss": "8.5.1",
+    "autoprefixer": "10.4.20"
+  }
+}
