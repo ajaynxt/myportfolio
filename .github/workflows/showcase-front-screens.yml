@@ -11,6 +11,7 @@ on:
       - 'sun-timeline.html'
       - 'bank-cards.html'
       - 'scripts/capture-showcase-covers.cjs'
+      - 'scripts/sync-showcase-covers.cjs'
 permissions:
   contents: write
 concurrency:
@@ -36,7 +37,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/showcase-first-frames
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Generate actual UI showcase first-frame images"
+          if ! git diff --cached --quiet; then git commit -m "Generate actual UI showcase first-frame images"; fi
           git pull --rebase origin main
+          node scripts/sync-showcase-covers.cjs
+          git add index.html showcase.html projects.html
+          if ! git diff --cached --quiet; then git commit -m "Sync UI screenshots across every portfolio placement"; fi
           git push origin HEAD:main
