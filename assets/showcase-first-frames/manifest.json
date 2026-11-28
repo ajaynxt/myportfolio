@@ -54,7 +54,10 @@
     "capturedAtMs": 11500
   },
   "ethan-vale": {
-    "path": "/assets/showcase-first-frames/ethan-vale.webp"
+    "path": "/assets/showcase-first-frames/ethan-vale.webp",
+    "captureVersion": 3,
+    "score": 4.34,
+    "capturedAtMs": 15500
   },
   "spin-product": {
     "path": "/assets/showcase-first-frames/spin-product.webp",
@@ -129,7 +132,10 @@
     "capturedAtMs": 8000
   },
   "tear-ticket": {
-    "path": "/assets/showcase-first-frames/tear-ticket.webp"
+    "path": "/assets/showcase-first-frames/tear-ticket.webp",
+    "captureVersion": 3,
+    "score": 0.51,
+    "capturedAtMs": 15500
   },
   "folder-float": {
     "path": "/assets/showcase-first-frames/folder-float.webp",
