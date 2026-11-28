@@ -66,7 +66,7 @@ function init(){
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
 /* Shared navigation control loads independently of optional tracking choices. */
-(()=>{if(document.querySelector('script[src="/back-to-top.js"]'))return;const script=document.createElement("script");script.src="/back-to-top.js";script.defer=true;document.head.append(script);})();
+(()=>{if(document.querySelector('script[src^="/back-to-top.js"]'))return;const script=document.createElement("script");script.src="/back-to-top.js?v=2";script.defer=true;document.head.append(script);})();
 
 /* Editorial animations are independent of analytics and advertising consent. */
 (()=>{if(document.querySelector('script[src="/editorial-motion.js"]'))return;const script=document.createElement("script");script.src="/editorial-motion.js";script.defer=true;document.head.append(script);})();

@@ -1,0 +1,10 @@
+
+.nx-back-top{position:fixed;z-index:90;right:max(14px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);width:48px;height:48px;display:grid;place-items:center;border:1px solid #cbb095;border-radius:50%;background:#fffaf3;color:#69412b;box-shadow:0 8px 24px #38291f30;cursor:pointer;padding:0;transition:background .2s,color .2s,box-shadow .2s;isolation:isolate}
+.nx-back-top[hidden]{display:none!important}.nx-back-top:hover{background:#69412b;color:#fffaf3;box-shadow:0 10px 25px #38291f40}.nx-back-top:focus-visible{outline:3px solid #805333;outline-offset:4px}.nx-back-top svg{width:44px;height:44px;display:block;pointer-events:none}.nx-back-top .nx-progress-ring{stroke:#b48a64;transition:stroke-dashoffset .15s linear}.nx-back-top:hover .nx-progress-ring{stroke:#f4d6a0}.nx-back-top .nx-up-arrow{stroke:currentColor;transition:transform .2s}.nx-back-top:hover .nx-up-arrow{transform:translateY(-2px)}.nx-back-top .nx-top-label{position:absolute;right:calc(100% + 8px);white-space:nowrap;background:#69412b;color:#fffaf3;border-radius:8px;padding:7px 10px;font:600 12px/1.3 system-ui,sans-serif;opacity:0;pointer-events:none}.nx-back-top:hover .nx-top-label,.nx-back-top:focus-visible .nx-top-label{opacity:1}
+@media(max-width:760px){.nx-back-top{right:max(8px,env(safe-area-inset-right,0px));top:54%;width:44px;height:44px}.nx-back-top svg{width:40px;height:40px}.nx-back-top .nx-top-label{display:none}}
+@media(prefers-reduced-motion:reduce){.nx-back-top,.nx-back-top *{transition:none!important}}
+
+/* Preserve native hidden state even if another stylesheet targets buttons. */
+.nx-back-top[hidden]{display:none!important}
+.nx-back-top .nx-up-arrow{fill:none;stroke:currentColor}
+body[data-page="projects"]:has(.nxpc-panel:not([hidden])) .nx-back-top{visibility:hidden}

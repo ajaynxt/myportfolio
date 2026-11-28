@@ -47,3 +47,11 @@ body.editorial-archive{--paper:#f7f1e8;--paper-soft:#f7f1e8;--ink:#30241d;--mute
 .editorial-archive .footer-grid{padding:16px 0}
 }
 @media(min-width:1000px){.editorial-archive .project-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Clean archive footer: avoid clipped, low-contrast shortcut labels. */
+body[data-page="projects"] .site-footer .keyboard-bar{display:none!important}
+body[data-page="projects"] .site-footer .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+body[data-page="projects"] .site-footer .footer-book{color:#e8c2a5!important}
+body[data-page="projects"] .site-footer .nx-consent-manage{margin:12px auto 0}
+body[data-page="projects"] .site-footer{padding-bottom:20px}
+@media(max-width:760px){body[data-page="projects"] .site-footer .footer-bottom{align-items:flex-start;gap:12px}}
