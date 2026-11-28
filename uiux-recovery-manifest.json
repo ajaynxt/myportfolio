@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-11-28",
+  "source_summary": "Recovered from 75 user-provided pasted prompt files dated 2026-11-27 to 2026-11-28.",
+  "current_showcase": {
+    "all_cards": 77,
+    "interactive_uiux": 48
+  },
+  "recovered_prompt_designs": {
+    "unique": 53,
+    "already_present_in_interactive": 23,
+    "missing_from_interactive": 30
+  },
+  "target_after_recovery": {
+    "interactive_uiux": 78,
+    "all_cards": 107
+  },
+  "missing_designs": [
+    {
+      "index": 1,
+      "name": "Leon Vasari Curved",
+      "status": "pending"
+    },
+    {
+      "index": 2,
+      "name": "VEYRA",
+      "status": "pending"
+    },
+    {
+      "index": 3,
+      "name": "Zestwell",
+      "status": "pending"
+    },
+    {
+      "index": 4,
+      "name": "Folio",
+      "status": "pending"
+    },
+    {
+      "index": 5,
+      "name": "Glaze",
+      "status": "pending"
+    },
+    {
+      "index": 6,
+      "name": "For Noor",
+      "status": "pending"
+    },
+    {
+      "index": 7,
+      "name": "Intelligent Performance",
+      "status": "pending"
+    },
+    {
+      "index": 8,
+      "name": "Bespoke Architecture",
+      "status": "pending"
+    },
+    {
+      "index": 9,
+      "name": "Vertex Shops",
+      "status": "pending"
+    },
+    {
+      "index": 10,
+      "name": "Noa Ellsworth",
+      "status": "pending"
+    },
+    {
+      "index": 11,
+      "name": "Berrywell",
+      "status": "pending"
+    },
+    {
+      "index": 12,
+      "name": "Haldoren",
+      "status": "pending"
+    },
+    {
+      "index": 13,
+      "name": "Krung Travel",
+      "status": "pending"
+    },
+    {
+      "index": 14,
+      "name": "Mossline",
+      "status": "pending"
+    },
+    {
+      "index": 15,
+      "name": "Folio Room",
+      "status": "pending"
+    },
+    {
+      "index": 16,
+      "name": "VELL",
+      "status": "pending"
+    },
+    {
+      "index": 17,
+      "name": "Tidewell",
+      "status": "pending"
+    },
+    {
+      "index": 18,
+      "name": "Orrel Studio",
+      "status": "pending"
+    },
+    {
+      "index": 19,
+      "name": "Nadia's Depot",
+      "status": "pending"
+    },
+    {
+      "index": 20,
+      "name": "VESTRA",
+      "status": "pending"
+    },
+    {
+      "index": 21,
+      "name": "MONS",
+      "status": "pending"
+    },
+    {
+      "index": 22,
+      "name": "LTX",
+      "status": "pending"
+    },
+    {
+      "index": 23,
+      "name": "Main Character Mode",
+      "status": "pending"
+    },
+    {
+      "index": 24,
+      "name": "OVRA",
+      "status": "pending"
+    },
+    {
+      "index": 25,
+      "name": "Obverse",
+      "status": "pending"
+    },
+    {
+      "index": 26,
+      "name": "NOWHERE®",
+      "status": "pending"
+    },
+    {
+      "index": 27,
+      "name": "Nova Agent",
+      "status": "pending"
+    },
+    {
+      "index": 28,
+      "name": "Reshoot",
+      "status": "pending"
+    },
+    {
+      "index": 29,
+      "name": "Iris",
+      "status": "pending"
+    },
+    {
+      "index": 30,
+      "name": "UNIT/0",
+      "status": "pending"
+    }
+  ]
+}
