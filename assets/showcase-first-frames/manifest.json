@@ -118,5 +118,11 @@
   },
   "freight-hero": {
     "path": "/assets/showcase-first-frames/freight-hero.webp"
+  },
+  "sun-timeline": {
+    "path": "/assets/showcase-first-frames/sun-timeline.webp"
+  },
+  "bank-cards": {
+    "path": "/assets/showcase-first-frames/bank-cards.webp"
   }
 }
