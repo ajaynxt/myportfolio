@@ -1,14 +1,13 @@
-/* Keep the real UI screenshot visible until the live preview has actually rendered. */
-.nx-real-preview .nx-preview-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:0;pointer-events:none;background:#e4d8cb}
+/* Static preview first: neutral canvas, never a brown placeholder. */
+.nx-ws-cover,.nx-ws-cover img,.nx-ws-preview-visual,.nx-ws-art{background:#f4f5f7!important}
+.nx-ws-art{color:#303641!important}
+.nx-real-preview{background:#f4f5f7!important}
+.nx-real-preview .nx-preview-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1;pointer-events:none;background:#f4f5f7!important}
 .nx-real-preview .nx-preview-poster[hidden]{display:none!important}
-.nx-real-preview:has(.nx-preview-poster:not([hidden])) .nx-real-fallback{visibility:visible}
-.nx-real-preview.has-poster .nx-real-fallback{visibility:hidden}
-.nx-real-preview .nx-real-frame,.nx-real-preview .nx-real-video{opacity:0;visibility:hidden;transition:opacity .25s ease;z-index:1}
+.nx-real-preview .nx-real-fallback{background:#f4f5f7!important;color:#505866!important;font-weight:650}
+.nx-real-preview:has(.nx-preview-poster:not([hidden])) .nx-real-fallback,.nx-real-preview.has-poster .nx-real-fallback,.nx-real-preview.is-ready .nx-real-fallback{visibility:hidden}
+.nx-real-preview .nx-real-frame,.nx-real-preview .nx-real-video{opacity:0;visibility:hidden;transition:opacity .25s ease;z-index:2;background:#f4f5f7!important}
 .nx-real-preview.is-ready:not(.is-error) .nx-real-frame,.nx-real-preview.is-ready:not(.is-error) .nx-real-video{opacity:1;visibility:visible}
 .nx-real-preview .nx-real-frame[hidden]{display:none!important}
-.nx-real-preview.is-ready .nx-real-fallback{visibility:hidden}
-.nx-real-preview .nx-real-fallback{background:linear-gradient(135deg,#f5ece0,#dfcbb7);font-weight:700}
-.nx-real-preview.has-poster .nx-preview-poster{z-index:1}
-.nx-real-preview.is-ready .nx-real-frame,.nx-real-preview.is-ready .nx-real-video{z-index:2}
 .nx-ws-cover .nx-ws-kind{z-index:3}
 @media(prefers-reduced-motion:reduce){.nx-real-preview .nx-real-frame,.nx-real-preview .nx-real-video{transition:none}}
