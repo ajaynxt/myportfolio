@@ -1,0 +1,72 @@
+name: Generate showcase front screens
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/showcase-front-screens.yml'
+permissions:
+  contents: write
+concurrency:
+  group: showcase-front-screens
+  cancel-in-progress: false
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --no-package-lock playwright sharp
+      - run: npx playwright install --with-deps chromium
+      - name: Capture actual UI front screens
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const sharp=require('sharp');
+          const fs=require('fs');
+          const {spawn}=require('child_process');
+          (async()=>{
+            const source=fs.readFileSync('showcase.html','utf8');
+            const ids=[...new Set([...source.matchAll(/data-demo="([a-z0-9-]+)"/g)].map(m=>m[1]))].filter(id=>fs.existsSync(id+'.html'));
+            const dir='assets/showcase-first-frames';
+            fs.mkdirSync(dir,{recursive:true});
+            const server=spawn('python3',['-m','http.server','8765','--bind','127.0.0.1'],{stdio:'ignore'});
+            const browser=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
+            const manifest={};let failed=0;
+            try{
+              await new Promise(r=>setTimeout(r,700));
+              for(const id of ids){
+                const page=await browser.newPage({viewport:{width:1200,height:760},deviceScaleFactor:1, reducedMotion:'no-preference'});
+                try{
+                  await page.goto('http://127.0.0.1:8765/'+id+'.html?showcase_preview=1',{waitUntil:'domcontentloaded',timeout:20000});
+                  await page.locator('body').waitFor({timeout:8000});
+                  await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1200))]));
+                  await page.waitForTimeout(2400);
+                  await page.addStyleTag({content:'#nx-demo-credit,#nx-back-home{display:none!important}'});
+                  const img=await page.screenshot({timeout:10000});
+                  await sharp(img).resize({width:900}).webp({quality:82}).toFile(dir+'/'+id+'.webp');
+                  manifest[id]={path:'/'+dir+'/'+id+'.webp'};
+                  console.log('Captured',id);
+                }catch(e){failed++;console.warn('Failed',id,e.message);}
+                finally{await page.close();}
+              }
+              fs.writeFileSync(dir+'/manifest.json',JSON.stringify(manifest,null,2)+'\n');
+              console.log('Captured '+Object.keys(manifest).length+' of '+ids.length);
+              if(failed)process.exitCode=1;
+            }finally{await browser.close();server.kill();}
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          NODE
+      - name: Commit generated screens
+        if: always()
+        run: |
+          if [ ! -f assets/showcase-first-frames/manifest.json ]; then exit 1; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/showcase-first-frames
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Generate actual UI showcase first-frame images"
+          git pull --rebase origin main
+          git push origin HEAD:main
