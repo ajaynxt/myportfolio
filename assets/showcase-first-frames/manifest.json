@@ -1,126 +1,243 @@
 {
   "arriving-tomorrow": {
-    "path": "/assets/showcase-first-frames/arriving-tomorrow.webp"
+    "path": "/assets/showcase-first-frames/arriving-tomorrow.webp",
+    "captureVersion": 3,
+    "score": 4.87,
+    "capturedAtMs": 8000
   },
   "drift": {
-    "path": "/assets/showcase-first-frames/drift.webp"
+    "path": "/assets/showcase-first-frames/drift.webp",
+    "captureVersion": 3,
+    "score": 11.36,
+    "capturedAtMs": 11500
   },
   "maren": {
-    "path": "/assets/showcase-first-frames/maren.webp"
+    "path": "/assets/showcase-first-frames/maren.webp",
+    "captureVersion": 3,
+    "score": 10.96,
+    "capturedAtMs": 11500
   },
   "kairn": {
-    "path": "/assets/showcase-first-frames/kairn.webp"
+    "path": "/assets/showcase-first-frames/kairn.webp",
+    "captureVersion": 3,
+    "score": 9.46,
+    "capturedAtMs": 11500
   },
   "reelmark": {
-    "path": "/assets/showcase-first-frames/reelmark.webp"
+    "path": "/assets/showcase-first-frames/reelmark.webp",
+    "captureVersion": 3,
+    "score": 6.54,
+    "capturedAtMs": 5000
   },
   "orvante": {
-    "path": "/assets/showcase-first-frames/orvante.webp"
+    "path": "/assets/showcase-first-frames/orvante.webp",
+    "captureVersion": 3,
+    "score": 7.92,
+    "capturedAtMs": 11500
   },
   "flowpath": {
-    "path": "/assets/showcase-first-frames/flowpath.webp"
+    "path": "/assets/showcase-first-frames/flowpath.webp",
+    "captureVersion": 3,
+    "score": 10.66,
+    "capturedAtMs": 11500
   },
   "spaceedu": {
-    "path": "/assets/showcase-first-frames/spaceedu.webp"
+    "path": "/assets/showcase-first-frames/spaceedu.webp",
+    "captureVersion": 3,
+    "score": 9.71,
+    "capturedAtMs": 11500
   },
   "kai-renn": {
-    "path": "/assets/showcase-first-frames/kai-renn.webp"
+    "path": "/assets/showcase-first-frames/kai-renn.webp",
+    "captureVersion": 3,
+    "score": 4.17,
+    "capturedAtMs": 11500
   },
   "ethan-vale": {
     "path": "/assets/showcase-first-frames/ethan-vale.webp"
   },
   "spin-product": {
-    "path": "/assets/showcase-first-frames/spin-product.webp"
+    "path": "/assets/showcase-first-frames/spin-product.webp",
+    "captureVersion": 3,
+    "score": 5.33,
+    "capturedAtMs": 5000
   },
   "noche-viva": {
-    "path": "/assets/showcase-first-frames/noche-viva.webp"
+    "path": "/assets/showcase-first-frames/noche-viva.webp",
+    "captureVersion": 3,
+    "score": 11.73,
+    "capturedAtMs": 11500
   },
   "harborlux": {
-    "path": "/assets/showcase-first-frames/harborlux.webp"
+    "path": "/assets/showcase-first-frames/harborlux.webp",
+    "captureVersion": 3,
+    "score": 11.19,
+    "capturedAtMs": 8000
   },
   "stride": {
-    "path": "/assets/showcase-first-frames/stride.webp"
+    "path": "/assets/showcase-first-frames/stride.webp",
+    "captureVersion": 3,
+    "score": 7.72,
+    "capturedAtMs": 2500
   },
   "motion-lab": {
-    "path": "/assets/showcase-first-frames/motion-lab.webp"
+    "path": "/assets/showcase-first-frames/motion-lab.webp",
+    "captureVersion": 3,
+    "score": 7.65,
+    "capturedAtMs": 11500
   },
   "studio-workspace": {
-    "path": "/assets/showcase-first-frames/studio-workspace.webp"
+    "path": "/assets/showcase-first-frames/studio-workspace.webp",
+    "captureVersion": 3,
+    "score": 6,
+    "capturedAtMs": 11500
   },
   "frostgate-kitchen": {
-    "path": "/assets/showcase-first-frames/frostgate-kitchen.webp"
+    "path": "/assets/showcase-first-frames/frostgate-kitchen.webp",
+    "captureVersion": 3,
+    "score": 11.03,
+    "capturedAtMs": 11500
   },
   "nova-ai": {
-    "path": "/assets/showcase-first-frames/nova-ai.webp"
+    "path": "/assets/showcase-first-frames/nova-ai.webp",
+    "captureVersion": 3,
+    "score": 8.85,
+    "capturedAtMs": 11500
   },
   "runway": {
-    "path": "/assets/showcase-first-frames/runway.webp"
+    "path": "/assets/showcase-first-frames/runway.webp",
+    "captureVersion": 3,
+    "score": 6.99,
+    "capturedAtMs": 8000
   },
   "embers-foundry": {
-    "path": "/assets/showcase-first-frames/embers-foundry.webp"
+    "path": "/assets/showcase-first-frames/embers-foundry.webp",
+    "captureVersion": 3,
+    "score": 10.36,
+    "capturedAtMs": 8000
   },
   "savarra": {
-    "path": "/assets/showcase-first-frames/savarra.webp"
+    "path": "/assets/showcase-first-frames/savarra.webp",
+    "captureVersion": 3,
+    "score": 10.98,
+    "capturedAtMs": 11500
   },
   "atelia": {
-    "path": "/assets/showcase-first-frames/atelia.webp"
+    "path": "/assets/showcase-first-frames/atelia.webp",
+    "captureVersion": 3,
+    "score": 10.86,
+    "capturedAtMs": 8000
   },
   "tear-ticket": {
     "path": "/assets/showcase-first-frames/tear-ticket.webp"
   },
   "folder-float": {
-    "path": "/assets/showcase-first-frames/folder-float.webp"
+    "path": "/assets/showcase-first-frames/folder-float.webp",
+    "captureVersion": 3,
+    "score": 3.54,
+    "capturedAtMs": 11500
   },
   "accordion-gallery": {
-    "path": "/assets/showcase-first-frames/accordion-gallery.webp"
+    "path": "/assets/showcase-first-frames/accordion-gallery.webp",
+    "captureVersion": 3,
+    "score": 8.52,
+    "capturedAtMs": 11500
   },
   "gridwork": {
-    "path": "/assets/showcase-first-frames/gridwork.webp"
+    "path": "/assets/showcase-first-frames/gridwork.webp",
+    "captureVersion": 3,
+    "score": 9.69,
+    "capturedAtMs": 11500
   },
   "aurai": {
-    "path": "/assets/showcase-first-frames/aurai.webp"
+    "path": "/assets/showcase-first-frames/aurai.webp",
+    "captureVersion": 3,
+    "score": 11.34,
+    "capturedAtMs": 11500
   },
   "coffee-profile": {
-    "path": "/assets/showcase-first-frames/coffee-profile.webp"
+    "path": "/assets/showcase-first-frames/coffee-profile.webp",
+    "captureVersion": 3,
+    "score": 7.28,
+    "capturedAtMs": 11500
   },
   "travel-moments": {
-    "path": "/assets/showcase-first-frames/travel-moments.webp"
+    "path": "/assets/showcase-first-frames/travel-moments.webp",
+    "captureVersion": 3,
+    "score": 7.62,
+    "capturedAtMs": 11500
   },
   "cargox": {
-    "path": "/assets/showcase-first-frames/cargox.webp"
+    "path": "/assets/showcase-first-frames/cargox.webp",
+    "captureVersion": 3,
+    "score": 7.05,
+    "capturedAtMs": 11500
   },
   "nuvo": {
-    "path": "/assets/showcase-first-frames/nuvo.webp"
+    "path": "/assets/showcase-first-frames/nuvo.webp",
+    "captureVersion": 3,
+    "score": 8.63,
+    "capturedAtMs": 11500
   },
   "prosthetics": {
-    "path": "/assets/showcase-first-frames/prosthetics.webp"
+    "path": "/assets/showcase-first-frames/prosthetics.webp",
+    "captureVersion": 3,
+    "score": 6.57,
+    "capturedAtMs": 11500
   },
   "boomerang": {
-    "path": "/assets/showcase-first-frames/boomerang.webp"
+    "path": "/assets/showcase-first-frames/boomerang.webp",
+    "captureVersion": 3,
+    "score": 8.11,
+    "capturedAtMs": 11500
   },
   "elo-one": {
-    "path": "/assets/showcase-first-frames/elo-one.webp"
+    "path": "/assets/showcase-first-frames/elo-one.webp",
+    "captureVersion": 3,
+    "score": 8.74,
+    "capturedAtMs": 11500
   },
   "nexora": {
-    "path": "/assets/showcase-first-frames/nexora.webp"
+    "path": "/assets/showcase-first-frames/nexora.webp",
+    "captureVersion": 3,
+    "score": 7.95,
+    "capturedAtMs": 5000
   },
   "offcut": {
-    "path": "/assets/showcase-first-frames/offcut.webp"
+    "path": "/assets/showcase-first-frames/offcut.webp",
+    "captureVersion": 3,
+    "score": 7.59,
+    "capturedAtMs": 11500
   },
   "novu": {
-    "path": "/assets/showcase-first-frames/novu.webp"
+    "path": "/assets/showcase-first-frames/novu.webp",
+    "captureVersion": 3,
+    "score": 10.09,
+    "capturedAtMs": 11500
   },
   "beauty-categories": {
-    "path": "/assets/showcase-first-frames/beauty-categories.webp"
+    "path": "/assets/showcase-first-frames/beauty-categories.webp",
+    "captureVersion": 3,
+    "score": 11.12,
+    "capturedAtMs": 11500
   },
   "hiven": {
-    "path": "/assets/showcase-first-frames/hiven.webp"
+    "path": "/assets/showcase-first-frames/hiven.webp",
+    "captureVersion": 3,
+    "score": 9.69,
+    "capturedAtMs": 8000
   },
   "freight-hero": {
-    "path": "/assets/showcase-first-frames/freight-hero.webp"
+    "path": "/assets/showcase-first-frames/freight-hero.webp",
+    "captureVersion": 3,
+    "score": 9.85,
+    "capturedAtMs": 11500
   },
   "sun-timeline": {
-    "path": "/assets/showcase-first-frames/sun-timeline.webp"
+    "path": "/assets/showcase-first-frames/sun-timeline.webp",
+    "captureVersion": 3,
+    "score": 5.46,
+    "capturedAtMs": 5000
   },
   "bank-cards": {
     "path": "/assets/showcase-first-frames/bank-cards.webp"
