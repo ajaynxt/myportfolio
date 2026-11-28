@@ -165,5 +165,13 @@
       "name": "UNIT/0",
       "status": "pending"
     }
+  ],
+  "dedupe_notes": [
+    {
+      "source": "Leon Vasari VHS filmography shelf hero detail/open-close/mobile rules",
+      "action": "do_not_add_as_new_card",
+      "mapped_to": "leon-vasari.html",
+      "reason": "The exact 520ms ink start, 1250ms radius animation to 720, 2.4s loop stop, 850ms close animation, cursor/play-ring hiding, and <=767px responsive rules are already implemented."
+    }
   ]
 }
