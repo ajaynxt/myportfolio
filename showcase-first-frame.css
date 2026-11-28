@@ -11,3 +11,8 @@
 .nx-real-preview .nx-real-frame[hidden]{display:none!important}
 .nx-ws-cover .nx-ws-kind{z-index:3}
 @media(prefers-reduced-motion:reduce){.nx-real-preview .nx-real-frame,.nx-real-preview .nx-real-video{transition:none}}
+
+/* Do not cover the still with an unpainted frame. */
+.nx-real-preview .nx-preview-poster{display:block!important}
+.nx-real-preview .nx-preview-poster[hidden]{display:none!important}
+.nx-real-preview.is-ready:not(.is-error) .nx-real-frame[hidden]{display:none!important}
