@@ -10,6 +10,7 @@ on:
       - 'freight-hero.html'
       - 'sun-timeline.html'
       - 'bank-cards.html'
+      - 'scripts/capture-showcase-covers.cjs'
 permissions:
   contents: write
 concurrency:
@@ -18,7 +19,7 @@ concurrency:
 jobs:
   screenshots:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,49 +27,8 @@ jobs:
           node-version: '22'
       - run: npm install --no-save --no-package-lock playwright sharp
       - run: npx playwright install --with-deps chromium
-      - name: Capture actual UI front screens
-        run: |
-          node <<'NODE'
-          const {chromium}=require('playwright');
-          const sharp=require('sharp');
-          const fs=require('fs');
-          const {spawn}=require('child_process');
-          (async()=>{
-            const source=fs.readFileSync('showcase.html','utf8');
-            const ids=[...new Set([...source.matchAll(/data-demo="([a-z0-9-]+)"/g)].map(m=>m[1]))].filter(id=>fs.existsSync(id+'.html'));
-            const dir='assets/showcase-first-frames';
-            fs.mkdirSync(dir,{recursive:true});
-            const server=spawn('python3',['-m','http.server','8765','--bind','127.0.0.1'],{stdio:'ignore'});
-            const browser=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
-            const manifest=fs.existsSync(dir+'/manifest.json')?JSON.parse(fs.readFileSync(dir+'/manifest.json','utf8')):{};let failed=0;
-            try{
-              await new Promise(r=>setTimeout(r,700));
-              for(const id of ids.filter(id=>!manifest[id]||!fs.existsSync(dir+'/'+id+'.webp'))){
-                const page=await browser.newPage({viewport:{width:1200,height:760},deviceScaleFactor:1, reducedMotion:'no-preference'});
-                try{
-                  await page.goto('http://127.0.0.1:8765/'+id+'.html?showcase_preview=1',{waitUntil:'domcontentloaded',timeout:35000});
-                  await page.locator('body').waitFor({timeout:8000});
-                  await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1200))]));
-                  await page.waitForTimeout(5000);
-                  await page.evaluate(()=>Promise.race([new Promise(resolve=>{let n=0;const t=setInterval(()=>{const root=document.getElementById('root');if(!root||root.childElementCount||++n>25){clearInterval(t);resolve()}},200)}),new Promise(r=>setTimeout(r,5500))]));
-                  await page.evaluate(()=>{const s=document.createElement('style');s.textContent='#nx-demo-credit,#nx-back-home{display:none!important}';document.head.append(s)});
-                  const cdp=await page.context().newCDPSession(page);
-                  const shot=await cdp.send('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false});
-                  const img=Buffer.from(shot.data,'base64');
-                  const stats=await sharp(img).stats();
-                  if(stats.entropy<0.12)throw new Error('Blank image; retry after UI mounts');
-                  await sharp(img).resize({width:900}).webp({quality:82}).toFile(dir+'/'+id+'.webp');
-                  manifest[id]={path:'/'+dir+'/'+id+'.webp'};
-                  console.log('Captured',id);
-                }catch(e){failed++;console.warn('Failed',id,e.message);}
-                finally{await page.close();}
-              }
-              fs.writeFileSync(dir+'/manifest.json',JSON.stringify(manifest,null,2)+'\n');
-              console.log('Captured '+Object.keys(manifest).length+' of '+ids.length);
-              if(failed)process.exitCode=1;
-            }finally{await browser.close();server.kill();}
-          })().catch(e=>{console.error(e);process.exitCode=1});
-          NODE
+      - name: Select best fully loaded UI covers
+        run: node scripts/capture-showcase-covers.cjs
       - name: Commit generated screens
         if: always()
         run: |
