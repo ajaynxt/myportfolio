@@ -24,7 +24,7 @@ async function ready(page){
 }
 async function capture(page,id){
  await page.goto(url(id),{waitUntil:'domcontentloaded',timeout:30000}).catch(e=>console.warn(id,'navigation:',e.message));
- await page.locator('body').waitFor({timeout:12000});
+ await page.locator('body').waitFor({state:'attached',timeout:12000});
  await page.addStyleTag({content:'#nx-demo-credit,#nx-back-home,.nx-return,.nx-back,a.back[href="https://ajaynxt.com/"]{display:none!important}'});
  await timeout(page.evaluate(()=>document.fonts.ready.then(()=>true)),2500).catch(()=>{});
  const cdp=await page.context().newCDPSession(page);let best=null;
