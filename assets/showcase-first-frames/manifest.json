@@ -112,5 +112,11 @@
   },
   "beauty-categories": {
     "path": "/assets/showcase-first-frames/beauty-categories.webp"
+  },
+  "hiven": {
+    "path": "/assets/showcase-first-frames/hiven.webp"
+  },
+  "freight-hero": {
+    "path": "/assets/showcase-first-frames/freight-hero.webp"
   }
 }
