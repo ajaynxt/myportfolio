@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Animated Bank Cards | AJAYNXT</title><meta name="description" content="Interactive 3D cylinder carousel of fictional animated bank cards."><link rel="canonical" href="https://ajaynxt.com/bank-cards.html"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script><style>html,body,#root{width:100%;height:100%;margin:0;background:#000;overflow:hidden;touch-action:none} .nx-return{position:fixed;z-index:10000;bottom:12px;right:12px;background:#faf6ef;color:#422d20;border:1px solid #bc7953;padding:10px 14px;border-radius:12px;text-decoration:none;font:600 12px system-ui}.nx-return[hidden]{display:none}</style></head><body><div id="root"></div><script type="text/babel" data-presets="react,typescript" data-filename="App.tsx">const {useState,useEffect,useRef}=React;
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Animated Bank Cards | AJAYNXT</title><meta name="description" content="Interactive 3D cylinder carousel of fictional animated bank cards."><link rel="canonical" href="https://ajaynxt.com/bank-cards.html"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script><script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"></script><style>html,body,#root{width:100%;height:100%;margin:0;background:#000;overflow:hidden;touch-action:none} .nx-return{position:fixed;z-index:10000;bottom:12px;right:12px;background:#faf6ef;color:#422d20;border:1px solid #bc7953;padding:10px 14px;border-radius:12px;text-decoration:none;font:600 12px system-ui}.nx-return[hidden]{display:none}</style></head><body><div id="root"></div><script type="text/babel" data-presets="react" data-filename="App.tsx">const {useState,useEffect,useRef}=React;
 
 const CARD_VIDEOS = [
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260506_030111_a9e15665-d379-4a7f-8116-695bbe452ad1.mp4',
@@ -35,8 +35,8 @@ const CARD_DETAILS = [
 
 function App() {
   const cardCount = 5;
-  const cardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const frameId = useRef<number>(0);
+  const cardsRefs = useRef([]);
+  const frameId = useRef(0);
   
   // Continuous scroll progress
   const progress = useRef<number>(0);
@@ -60,7 +60,7 @@ function App() {
   });
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e) => {
       // Screen-space cursor offset relative to window center, clamped to [-1.0, 1.0] range
       const rx = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
       const ry = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
