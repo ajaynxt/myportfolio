@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#2C221C">
+<meta name="robots" content="noindex,follow">
+<title>flowpath — Bridge the gaps</title>
+<link rel="stylesheet" href="https://db.onlinewebfonts.com/c/08e020de1811ec4489f82d1247a42c09?family=Helvetica+Now+Text">
+<link rel="preconnect" href="https://esm.sh" crossorigin>
+<link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+* { font-family: "Helvetica Now Text", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+html,body,#root { margin:0; min-height:100%; background:#2C221C; }
+.liquid-glass {
+ background:rgba(255,255,255,0.01); background-blend-mode:luminosity;
+ backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); border:none;
+ box-shadow:inset 0 1px 1px rgba(255,255,255,0.1); position:relative; overflow:hidden;
+}
+.liquid-glass::before {
+ content:''; position:absolute; inset:0; border-radius:inherit; padding:1.4px;
+ background:linear-gradient(180deg,rgba(255,255,255,0.45) 0%,rgba(255,255,255,0.15) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.15) 80%,rgba(255,255,255,0.45) 100%);
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+ -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
+}
+@keyframes dropdown-in { from { opacity:0; transform:translateY(-4px) scale(.96); } to { opacity:1; transform:translateY(0) scale(1); } }
+.animate-dropdown { animation:dropdown-in .2s ease-out; }
+.duration-400 { transition-duration:400ms; }
+.mobile-panel { transition:opacity 400ms cubic-bezier(.16,1,.3,1),transform 400ms cubic-bezier(.16,1,.3,1),visibility 400ms; }
+.flowpath:focus-visible,.flowpath :focus-visible { outline:2px solid white;outline-offset:4px; }
+@supports(height:100dvh){.flowpath.h-screen{height:100dvh}}
+@media(max-height:540px){.flowpath .hero-main{padding-top:1.5rem}.flowpath .hero-main h1{font-size:clamp(1.6rem,6vh,3.4rem)}.flowpath .hero-main p,.flowpath .hero-actions{margin-top:1rem}.flowpath .mobile-panel{max-height:calc(100dvh - 80px)}}
+@media(prefers-reduced-motion:reduce){.flowpath video{display:none}.flowpath *, .flowpath *::before{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<script type="importmap">{"imports":{"react":"https://esm.sh/react@18.3.1","react-dom/client":"https://esm.sh/react-dom@18.3.1/client?external=react","lucide-react":"https://esm.sh/lucide-react@0.468.0?external=react"}}</script>
+</head>
+<body>
+<div id="root"></div>
+<noscript><p style="color:white;padding:24px">Enable JavaScript to view the Flowpath interactive concept.</p></noscript>
+<script type="module">
+import React,{useState,useEffect,useRef} from 'react';
+import {createRoot} from 'react-dom/client';
+import {ChevronDown,Menu,X} from 'lucide-react';
+const h=React.createElement;
+const videoURL='https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260703_053131_1ec3dd1c-d627-44fb-ab20-6e1fce41b0d5.mp4';
+const groups=[{name:'Product',items:['Connections','Workflows','Insights']},{name:'Solutions',items:['Guides','Use cases','API reference']},{name:'About',items:['Our story','Open roles','Reach us']},{name:'Plans'}];
+const navText='text-white/90 hover:text-white text-sm font-medium transition-colors';
+const glassCTA='liquid-glass rounded-full px-5 py-2 text-white text-sm font-medium hover:bg-white/10 transition-colors';
+function Logo(){return h('a',{href:'#',onClick:e=>e.preventDefault(),className:'inline-flex items-center gap-2 text-white shrink-0','aria-label':'Flowpath home'},
+ h('svg',{width:28,height:28,viewBox:'0 0 28 28',fill:'none','aria-hidden':'true'},
+ h('path',{d:'M14 2 26 14 14 26 2 14 14 2Z',fill:'currentColor',opacity:.9}),
+ h('path',{d:'M14 5 23 14 14 23 5 14 14 5Z',fill:'currentColor',opacity:.5})),
+ h('span',{className:'text-lg sm:text-xl font-medium tracking-tight'},'flowpath'))}
+function Flowpath(){
+ const [open,setOpen]=useState(null),[mobile,setMobile]=useState(false);
+ const navRef=useRef(null),menuBtn=useRef(null),desktopButtons=useRef({});
+ const close=()=>{setOpen(null);setMobile(false)};
+ useEffect(()=>{
+ const pointer=e=>{if(!navRef.current?.contains(e.target))close()};
+ const escape=e=>{if(e.key==='Escape'){if(mobile)menuBtn.current?.focus();else if(open)desktopButtons.current[open]?.focus();close()}};
+ const wide=matchMedia('(min-width:768px)'),onResize=()=>{if(wide.matches)setMobile(false);else setOpen(null)};
+ document.addEventListener('pointerdown',pointer);document.addEventListener('keydown',escape);wide.addEventListener('change',onResize);
+ return()=>{document.removeEventListener('pointerdown',pointer);document.removeEventListener('keydown',escape);wide.removeEventListener('change',onResize)};
+ },[open,mobile]);
+ const demoLink=e=>{e.preventDefault();close()};
+ function desktopGroup(g){const active=open===g.name;
+ if(!g.items)return h('a',{key:g.name,href:'#',onClick:demoLink,className:navText},g.name);
+ return h('div',{key:g.name,className:'relative py-3',onMouseEnter:()=>setOpen(g.name),onMouseLeave:()=>setOpen(v=>v===g.name?null:v),onBlur:e=>{if(!e.currentTarget.contains(e.relatedTarget))setOpen(v=>v===g.name?null:v)}},
+ h('button',{type:'button',ref:el=>{desktopButtons.current[g.name]=el},className:navText+' inline-flex items-center gap-1',onClick:()=>setOpen(active?null:g.name),'aria-expanded':active,'aria-controls':'dropdown-'+g.name.toLowerCase()},g.name,h(ChevronDown,{className:'h-3.5 w-3.5 transition-transform duration-200 '+(active?'rotate-180':''),'aria-hidden':true})),
+ active&&h('div',{id:'dropdown-'+g.name.toLowerCase(),className:'liquid-glass !absolute top-full left-0 rounded-xl py-3 px-2 min-w-[160px] shadow-xl animate-dropdown z-50'},g.items.map(item=>h('a',{key:item,href:'#',onClick:demoLink,className:'block px-3 py-2 text-white/80 hover:text-white text-sm rounded-lg hover:bg-white/5 whitespace-nowrap'},item))))}
+ return h('section',{className:'flowpath relative h-screen w-full overflow-hidden flex flex-col isolate bg-[#2C221C]'},
+ h('video',{src:videoURL,autoPlay:true,muted:true,loop:true,playsInline:true,preload:'auto',className:'absolute inset-0 h-full w-full object-cover -z-20','aria-hidden':true}),
+ h('div',{className:'absolute inset-0 bg-black/10 -z-10','aria-hidden':true}),
+ h('header',{ref:navRef,className:'relative z-40 flex items-center justify-between w-full px-5 sm:px-6 md:px-12 lg:px-16 py-4 sm:py-5 shrink-0'},
+ h(Logo),
+ h('nav',{className:'hidden md:flex items-center gap-5 lg:gap-8','aria-label':'Main navigation'},groups.map(desktopGroup)),
+ h('div',{className:'hidden md:flex items-center gap-4 lg:gap-5'},h('a',{href:'#',onClick:demoLink,className:navText},'Log in'),h('a',{href:'#',onClick:demoLink,className:glassCTA},'Try it free')),
+ h('button',{ref:menuBtn,type:'button',onClick:()=>setMobile(v=>!v),className:'md:hidden relative w-10 h-10 rounded-full text-white','aria-label':mobile?'Close navigation':'Open navigation','aria-expanded':mobile,'aria-controls':'mobile-nav'},
+ h(Menu,{className:'absolute inset-2 h-6 w-6 transition-all duration-300 '+(mobile?'opacity-0 rotate-90 scale-75':'opacity-100 rotate-0 scale-100'),'aria-hidden':true}),
+ h(X,{className:'absolute inset-2 h-6 w-6 transition-all duration-300 '+(mobile?'opacity-100 rotate-0 scale-100':'opacity-0 -rotate-90 scale-75'),'aria-hidden':true})),
+ h('nav',{id:'mobile-nav','aria-label':'Mobile navigation','aria-hidden':!mobile,className:'mobile-panel absolute top-full left-5 right-5 sm:left-6 sm:right-6 md:hidden bg-[#2C221C]/95 backdrop-blur-xl rounded-2xl p-6 shadow-xl overflow-y-auto max-h-[calc(100dvh-100px)] '+(mobile?'visible opacity-100 translate-y-0':'invisible opacity-0 -translate-y-3 pointer-events-none')},
+ groups.map(g=>h('div',{key:g.name,className:'mb-3'},g.items?h('p',{className:'text-white text-sm font-medium mb-1'},g.name):h('a',{href:'#',onClick:demoLink,tabIndex:mobile?0:-1,className:navText+' block py-1'},g.name),
+ g.items&&h('div',{className:'pl-4 flex flex-col gap-1'},g.items.map(item=>h('a',{key:item,href:'#',onClick:demoLink,tabIndex:mobile?0:-1,className:'text-white/70 hover:text-white text-sm py-1.5'},item))))),
+ h('div',{className:'border-t border-white/15 pt-4 mt-4 flex items-center justify-between gap-4'},h('a',{href:'#',onClick:demoLink,tabIndex:mobile?0:-1,className:navText},'Log in'),h('a',{href:'#',onClick:demoLink,tabIndex:mobile?0:-1,className:glassCTA},'Try it free')))),
+ h('main',{className:'hero-main relative z-10 flex-1 flex items-start justify-center pt-16 sm:pt-20 md:pt-24 px-5 sm:px-6'},
+ h('div',{className:'text-center max-w-3xl'},
+ h('h1',{className:'text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-[-0.02em] font-normal'},'Bridge the',h('br'),'gaps. ',h('span',{className:'text-white/60'},'Ditch the'),h('br'),h('span',{className:'text-white/60'},'grindwork.')),
+ h('p',{className:'text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-md mx-auto mt-6 sm:mt-8'},'Flowpath unifies your complete wellness tools, so your crew spends less energy plugging gaps and more on real progress.'),
+ h('div',{className:'hero-actions flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8'},
+ h('a',{href:'#',onClick:demoLink,className:'px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-gray-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-colors'},'Begin your journey'),
+ h('a',{href:'#',onClick:demoLink,className:'px-5 sm:px-6 py-2.5 sm:py-3 liquid-glass rounded-full text-white text-sm font-semibold hover:bg-white/10 transition-colors'},'See it live')))));
+}
+createRoot(document.getElementById('root')).render(h(Flowpath));
+</script>
+</body>
+</html>
