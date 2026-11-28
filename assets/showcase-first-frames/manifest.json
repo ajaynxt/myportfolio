@@ -253,5 +253,41 @@
     "captureVersion": 3,
     "score": 9.92,
     "capturedAtMs": 11500
+  },
+  "blendy": {
+    "path": "/assets/showcase-first-frames/blendy.webp",
+    "captureVersion": 3,
+    "score": 6.85,
+    "capturedAtMs": 8000
+  },
+  "pricing-section": {
+    "path": "/assets/showcase-first-frames/pricing-section.webp",
+    "captureVersion": 3,
+    "score": 4.64,
+    "capturedAtMs": 11500
+  },
+  "maya-lind": {
+    "path": "/assets/showcase-first-frames/maya-lind.webp",
+    "captureVersion": 3,
+    "score": 7.03,
+    "capturedAtMs": 15500
+  },
+  "michael-smith": {
+    "path": "/assets/showcase-first-frames/michael-smith.webp",
+    "captureVersion": 3,
+    "score": 2.7,
+    "capturedAtMs": 15500
+  },
+  "aeris": {
+    "path": "/assets/showcase-first-frames/aeris.webp",
+    "captureVersion": 3,
+    "score": 11.06,
+    "capturedAtMs": 5000
+  },
+  "virtualfit": {
+    "path": "/assets/showcase-first-frames/virtualfit.webp",
+    "captureVersion": 3,
+    "score": 10.2,
+    "capturedAtMs": 5000
   }
 }
