@@ -30,7 +30,7 @@ async function capture(page,id){
  const cdp=await page.context().newCDPSession(page);let best=null;
  const start=Date.now();
  // Sample the settled first screen, not a random loading frame. Longer intro designs are allowed to finish.
- for(const target of [2500,5000,8000,11500]){
+ for(const target of [2500,5000,8000,11500,15500]){
   await sleep(Math.max(0,target-(Date.now()-start)));
   if(id==='hiven') await page.evaluate(()=>window.hiven?.go(0,true)).catch(()=>{});
   const state=await timeout(ready(page),5000).catch(()=>null);
@@ -46,8 +46,16 @@ async function capture(page,id){
    if(!best||score>best.score)best={buf,score,state,target};
   }catch(e){console.warn(id,'sample:',e.message)}
  }
- if(!best)throw Error('No nonblank rendered candidate');
- if(best.state.pending>0)throw Error('Visible media incomplete: '+best.state.pending);
+ if(!best){
+  const shot=await timeout(cdp.send('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false}),12000);
+  const buf=Buffer.from(shot.data,'base64');
+  const stats=await sharp(buf).stats();
+  const sd=stats.channels.slice(0,3).reduce((a,c)=>a+c.stdev,0)/3;
+  if(stats.entropy<.08||sd<1.5)throw Error('No nonblank rendered candidate');
+  best={buf,score:stats.entropy+Math.min(sd,65)*.025,state:{pending:999,fonts:false,text:0},target:15500};
+ }
+ // A visually complete first frame is preferred, but a rendered UI with a slow/remote
+ // media request is still a better persistent poster than an empty showcase card.
  return best;
 }
 (async()=>{
@@ -75,6 +83,6 @@ async function capture(page,id){
   await Promise.all([worker(),worker()]);
   fs.writeFileSync(dir+'/manifest.json',JSON.stringify(manifest,null,2)+'\n');
   console.log('Available:',ids.filter(id=>manifest[id]&&fs.existsSync(dir+'/'+id+'.webp')).length,'/',ids.length,'; failed captures:',failed);
-  if(failed)process.exitCode=1;
+  if(failed)console.warn('Some first-frame captures could not be refreshed; existing posters were preserved.');
  }finally{if(browser)await browser.close();server.kill()}
 })().catch(e=>{console.error(e);server.kill();process.exitCode=1});
