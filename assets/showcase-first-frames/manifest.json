@@ -246,7 +246,10 @@
     "capturedAtMs": 5000
   },
   "bank-cards": {
-    "path": "/assets/showcase-first-frames/bank-cards.webp"
+    "path": "/assets/showcase-first-frames/bank-cards.webp",
+    "captureVersion": 3,
+    "score": 6.05,
+    "capturedAtMs": 15500
   },
   "leon-vasari": {
     "path": "/assets/showcase-first-frames/leon-vasari.webp",
