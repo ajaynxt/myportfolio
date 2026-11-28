@@ -19,7 +19,7 @@ function start(){
 }
 window.addEventListener("ajaynxt-analytics-consent",event=>{
  choice=event.detail==="allow"?"allow":"deny";
- if(choice==="allow")start();
+ if(choice==="allow"){if(started)window.gtag("consent","update",consent("granted"));else start();}
  else if(started)window.gtag("consent","update",consent("denied"));
 });
 const types=new Set(["whatsapp_click","phone_click","email_click","enquiry_handoff","showcase_prompt_request","navigation_click","portfolio_item_click"]);
