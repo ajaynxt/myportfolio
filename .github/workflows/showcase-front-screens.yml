@@ -35,18 +35,18 @@ jobs:
             fs.mkdirSync(dir,{recursive:true});
             const server=spawn('python3',['-m','http.server','8765','--bind','127.0.0.1'],{stdio:'ignore'});
             const browser=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
-            const manifest={};let failed=0;
+            const manifest=fs.existsSync(dir+'/manifest.json')?JSON.parse(fs.readFileSync(dir+'/manifest.json','utf8')):{};let failed=0;
             try{
               await new Promise(r=>setTimeout(r,700));
-              for(const id of ids){
+              for(const id of ids.filter(id=>!manifest[id]||!fs.existsSync(dir+'/'+id+'.webp'))){
                 const page=await browser.newPage({viewport:{width:1200,height:760},deviceScaleFactor:1, reducedMotion:'no-preference'});
                 try{
-                  await page.goto('http://127.0.0.1:8765/'+id+'.html?showcase_preview=1',{waitUntil:'domcontentloaded',timeout:20000});
+                  await page.goto('http://127.0.0.1:8765/'+id+'.html?showcase_preview=1',{waitUntil:'domcontentloaded',timeout:35000});
                   await page.locator('body').waitFor({timeout:8000});
                   await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1200))]));
-                  await page.waitForTimeout(2400);
-                  await page.addStyleTag({content:'#nx-demo-credit,#nx-back-home{display:none!important}'});
-                  const img=await page.screenshot({timeout:10000});
+                  await page.waitForTimeout(3500);
+                  await page.evaluate(()=>{const s=document.createElement('style');s.textContent='#nx-demo-credit,#nx-back-home{display:none!important}';document.head.append(s)});
+                  const img=await page.screenshot({timeout:20000,animations:'disabled',caret:'hide'});
                   await sharp(img).resize({width:900}).webp({quality:82}).toFile(dir+'/'+id+'.webp');
                   manifest[id]={path:'/'+dir+'/'+id+'.webp'};
                   console.log('Captured',id);
