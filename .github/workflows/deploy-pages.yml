@@ -25,6 +25,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Restore cached Showcase first frames
+        id: showcase-posters
+        uses: actions/cache@v4
+        with:
+          path: assets/showcase-first-frames
+          key: showcase-first-frames-v1-${{ hashFiles('*.html', 'scripts/capture-showcase-first-frames.cjs') }}
+          restore-keys: |
+            showcase-first-frames-v1-
+      - name: Capture missing Showcase first frames
+        if: steps.showcase-posters.outputs.cache-hit != 'true'
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          NODE_PATH: ${{ runner.temp }}/showcase-capture/node_modules
+        run: |
+          npm install --prefix "$RUNNER_TEMP/showcase-capture" --no-save --no-package-lock playwright sharp
+          "$RUNNER_TEMP/showcase-capture/node_modules/.bin/playwright" install --with-deps chromium
+          node scripts/capture-showcase-first-frames.cjs
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
